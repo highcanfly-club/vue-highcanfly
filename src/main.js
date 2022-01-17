@@ -30,8 +30,11 @@ import Register from "@/views/auth/Register.vue";
 // views without layouts
 
 import Landing from "@/views/Landing.vue";
+import Policy from "@/views/Policy.vue";
 import Profile from "@/views/Profile.vue";
 import Index from "@/views/Index.vue";
+import MapFlers from "@/views/MapFlers.vue";
+import SitesDePratique from "@/views/SitesDePratique.vue";
 
 // routes
 
@@ -75,12 +78,24 @@ const routes = [
     ],
   },
   {
+    path: "/policy",
+    component: Policy,
+  },
+  {
     path: "/landing",
     component: Landing,
   },
   {
     path: "/profile",
     component: Profile,
+  },
+  {
+    path: "/map-flers",
+    component: MapFlers,
+  },
+  {
+    path: "/map-sites-de-pratique",
+    component: SitesDePratique,
   },
   {
     path: "/",
