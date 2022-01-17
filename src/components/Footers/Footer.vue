@@ -22,9 +22,10 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap text-center lg:text-left">
         <div class="w-full lg:w-6/12 px-4">
-          <h4 class="text-3xl font-semibold">Let's keep in touch!</h4>
+          <h4 class="text-3xl font-semibold">High Can Fly</h4>
           <h5 class="text-lg mt-0 mb-2 text-blueGray-600">
-            Find us on any of these platforms, we respond 1-2 business days.
+            119, rue Marceau Martin<br>
+            59128 Flers-en-Escrebieux
           </h5>
           <div class="mt-6 lg:mb-0 mb-6">
             <button
@@ -59,21 +60,21 @@
               <span
                 class="block uppercase text-blueGray-500 text-sm font-semibold mb-2"
               >
-                Useful Links
+                Liens utiles
               </span>
               <ul class="list-unstyled">
                 <li>
                   <a
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://www.creative-tim.com/presentation?ref=vn-footer"
+                    href="https://www.highcanfly.club/presentation?ref=vn-footer"
                   >
-                    About Us
+                    À propos
                   </a>
                 </li>
                 <li>
                   <a
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://blog.creative-tim.com?ref=vn-footer"
+                    href="https://www.highcanfly.club/blog?ref=vn-footer"
                   >
                     Blog
                   </a>
@@ -81,7 +82,7 @@
                 <li>
                   <a
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://www.github.com/creativetimofficial?ref=vn-footer"
+                    href="https://github.com/eltorio?ref=vn-footer"
                   >
                     Github
                   </a>
@@ -89,9 +90,9 @@
                 <li>
                   <a
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://www.creative-tim.com/bootstrap-themes/free?ref=vn-footer"
+                    href="/policy?ref=vn-footer"
                   >
-                    Free Products
+                    Politique de confidentialité
                   </a>
                 </li>
               </ul>
@@ -100,37 +101,29 @@
               <span
                 class="block uppercase text-blueGray-500 text-sm font-semibold mb-2"
               >
-                Other Resources
+                Autres sites
               </span>
               <ul class="list-unstyled">
                 <li>
                   <a
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://github.com/creativetimofficial/vue-notus/blob/main/LICENSE.md?ref=vn-footer"
+                    href="https://www.facebook.com/Comité-Départemental-de-Vol-Libre-du-Nord-2518839258194595?ref=vn-footer"
                   >
-                    MIT License
+                    Comité Départemental de Vol Libre du Nord
                   </a>
                 </li>
                 <li>
                   <a
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://creative-tim.com/terms?ref=vn-footer"
+                    href="https://federation.ffvl.fr/structure/14172?ref=vn-footer"
                   >
-                    Terms & Conditions
+                    HighCanFly - FFVL
                   </a>
                 </li>
                 <li>
                   <a
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://creative-tim.com/privacy?ref=vn-footer"
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://creative-tim.com/contact-us?ref=vn-footer"
+                    href="https://www.highcanfly.club/contact-us?ref=vn-footer"
                   >
                     Contact Us
                   </a>
@@ -146,12 +139,12 @@
       >
         <div class="w-full md:w-4/12 px-4 mx-auto text-center">
           <div class="text-sm text-blueGray-500 font-semibold py-1">
-            Copyright © {{ date }} Vue Notus by
+            
             <a
-              href="https://www.creative-tim.com?ref=vn-footer"
+              href="https://www.highcanfly.club?ref=vn-footer"
               class="text-blueGray-500 hover:text-blueGray-800"
             >
-              Creative Tim
+              Copyright © High Can Fly 2018-{{ date }}
             </a>
             .
           </div>
