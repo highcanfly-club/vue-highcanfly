@@ -67,52 +67,66 @@ export default {
 
     map = new google.maps.Map(map, mapOptions);
 
-    let markers = [];
+    let markersSrc = [];
 
-    markers.push({
-      marker: new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        animation: google.maps.Animation.DROP,
-        title: "Nos sites de pratiqque!",
-      }),
-      infowindow: new google.maps.InfoWindow({
-        content:
-          '<div class="info-window-content"><h2>High Can Fly</h2>' +
-          "<p>119 rue Marceau Martin, 59128 Flers</p></div>",
-      }),
-    });
-    markers.push({
-      marker: new google.maps.Marker({
-        position: new google.maps.LatLng(50.433434, 2.585812),
-        map: map,
-        animation: google.maps.Animation.DROP,
-        title: "Parc départemental d'Olhain",
-      }),
-      infowindow: new google.maps.InfoWindow({
-        content:
-          '<div class="info-window-content"><h2>Par départemental d\'Olhain</h2>' +
-          "<p>Parc départemental d'Olhain, niveau brevet de pilote</p></div>",
-      }),
+    markersSrc.push({
+      latitude: lat,
+      longitude: lng,
+      title: "HighCanFly",
+      content:
+        '<div class="info-window-content"><h2>High Can Fly</h2>' +
+        "<p>119 rue Marceau Martin, 59128 Flers</p></div>",
     });
 
-    markers.push({
-      marker: new google.maps.Marker({
-        position: new google.maps.LatLng(50.416309, 2.511816),
-        map: map,
-        animation: google.maps.Animation.DROP,
-        title: "La Comté",
-      }),
-      infowindow: new google.maps.InfoWindow({
-        content:
-          '<div class="info-window-content"><h2>La Comté</h2>' +
-          "<p>site thermique, niveau brevet initial à brevet de pilote</p></div>",
-      }),
+    markersSrc.push({
+      latitude: 50.433434,
+      longitude: 2.926172,
+      title: "Parc départemental d'Olhain",
+      content:
+        '<div class="info-window-content"><h2>Par départemental d\'Olhain</h2>' +
+        "<p>Parc départemental d'Olhain, niveau brevet de pilote</p></div>",
     });
 
-    markers.forEach((element) => {
-      google.maps.event.addListener(element.marker, "click", function () {
-        element.infowindow.open(map, element.marker);
+    markersSrc.push({
+      latitude: 50.401535,
+      longitude: 2.585812,
+      title: "Parc des Îles, Aquaterra",
+      content:
+        '<div class="info-window-content"><h2>Parc des Îles, Aquaterra</h2>' +
+        "<p>Notre site de gonflage</p></div>",
+    });
+
+    markersSrc.push({
+      latitude: 50.416309,
+      longitude: 2.511816,
+      title: "La Comté",
+      content:
+        '<div class="info-window-content"><h2>La Comté</h2>' +
+        "<p>site thermique, niveau brevet initial à brevet de pilote</p></div>",
+    });
+
+    markersSrc.push({
+      latitude: 50.679528,
+      longitude: 1.567023,
+      title: "Équihen-Plage",
+      content:
+        '<div class="info-window-content"><h2>Équihen-Plage</h2>' +
+        "<p>site de soaring, niveau brevet initial à brevet de pilote selon les conditions</p></div>",
+    });
+
+    markersSrc.forEach((element) => {
+      let marker = new google.maps.Marker({
+        position: new google.maps.LatLng(element.latitude, element.longitude),
+        map: map,
+        animation: google.maps.Animation.DROP,
+        title: element.title,
+      });
+
+      let infowindow = new google.maps.InfoWindow({
+        content: marker.content,
+      });
+      google.maps.event.addListener(marker, "click", function () {
+        infowindow.open(map, marker);
       });
     });
   },
