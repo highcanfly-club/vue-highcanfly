@@ -90,6 +90,10 @@ const routes = [
     component: Profile,
   },
   {
+    path: "/index",
+    component: Index,
+  },
+  {
     path: "/map-flers",
     component: MapFlers,
   },
@@ -99,7 +103,7 @@ const routes = [
   },
   {
     path: "/",
-    component: Index,
+    component: Landing,
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
