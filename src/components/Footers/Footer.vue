@@ -31,24 +31,21 @@
             <button
               class="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
               type="button"
+              onclick="location.href='https://twitter.com/HighCanFlyClub'"
             >
               <i class="fab fa-twitter"></i>
             </button>
             <button
               class="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
               type="button"
+              onclick="location.href='https://www.instagram.com/highcanfly_parapente/'"
             >
-              <i class="fab fa-facebook-square"></i>
-            </button>
-            <button
-              class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-              type="button"
-            >
-              <i class="fab fa-dribbble"></i>
+              <i class="fab fa-instagram-square"></i>
             </button>
             <button
               class="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
               type="button"
+              onclick="location:href='https://github.com/eltorio/vue-notus/tree/highcanfly'"
             >
               <i class="fab fa-github"></i>
             </button>
@@ -82,7 +79,7 @@
                 <li>
                   <a
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://github.com/eltorio?ref=vn-footer"
+                    href="https://github.com/eltorio/vue-note/tree/highcanfly?ref=vn-footer"
                   >
                     Github
                   </a>

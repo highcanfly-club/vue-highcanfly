@@ -148,7 +148,7 @@
   </div>
 </template>
 <script>
-import Navbar from "@/components/Navbars/AuthNavbar.vue";
+import Navbar from "@/components/Navbars/Navbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
 
 import team2 from "@/assets/img/team-2-800x800.jpg";

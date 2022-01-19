@@ -123,7 +123,7 @@ export default {
       });
 
       let infowindow = new google.maps.InfoWindow({
-        content: marker.content,
+        content: element.content,
       });
       google.maps.event.addListener(marker, "click", function () {
         infowindow.open(map, marker);
