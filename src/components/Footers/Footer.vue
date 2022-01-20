@@ -45,7 +45,7 @@
             <button
               class="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
               type="button"
-              onclick="location:href='https://github.com/eltorio/vue-notus/tree/highcanfly'"
+              onclick="location:href='https://github.com/eltorio/vue-highcanfly/tree/highcanfly'"
             >
               <i class="fab fa-github"></i>
             </button>
