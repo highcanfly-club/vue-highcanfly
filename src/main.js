@@ -36,6 +36,11 @@ import Index from "@/views/Index.vue";
 import MapFlers from "@/views/MapFlers.vue";
 import SitesDePratique from "@/views/SitesDePratique.vue";
 
+//vue3 openlayers
+import OpenLayersMap from 'vue3-openlayers';
+import 'vue3-openlayers/dist/vue3-openlayers.css';
+import Test from "@/views/OpenLayersTest.vue";
+
 // routes
 
 const routes = [
@@ -102,6 +107,10 @@ const routes = [
     component: SitesDePratique,
   },
   {
+    path: "/openlayer-test",
+    component: Test,
+  },
+  {
     path: "/",
     component: Landing,
   },
@@ -113,4 +122,9 @@ const router = createRouter({
   routes,
 });
 
-createApp(App).use(router).mount("#app");
+const app = createApp(App);
+
+app.use(router);
+app.use(OpenLayersMap);
+app.mount("#app");
+
