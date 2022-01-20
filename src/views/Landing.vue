@@ -195,8 +195,8 @@
                 </div>
                 <h3 class="text-3xl font-semibold">Petit club deviendra grand</h3>
                 <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
-                  La force d'un club est dans ses membres. 
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                  La force d'un club est dans ses membres.
+                  Nos projets de développement :
                 </p>
                 <ul class="list-none mt-6">
                   <li class="py-2">
@@ -209,7 +209,7 @@
                         </span>
                       </div>
                       <div>
-                        <h4 class="text-blueGray-500">Carefully crafted components</h4>
+                        <h4 class="text-blueGray-500">Accueil de jeunes pour une découverte au sol</h4>
                       </div>
                     </div>
                   </li>
@@ -223,7 +223,7 @@
                         </span>
                       </div>
                       <div>
-                        <h4 class="text-blueGray-500">Amazing page examples</h4>
+                        <h4 class="text-blueGray-500">Développement de nouveaux sites dans la région</h4>
                       </div>
                     </div>
                   </li>
@@ -237,7 +237,9 @@
                         </span>
                       </div>
                       <div>
-                        <h4 class="text-blueGray-500">Dynamic components</h4>
+                        <h4
+                          class="text-blueGray-500"
+                        >Favoriser la pratique «non motorisée» du parapente</h4>
                       </div>
                     </div>
                   </li>
@@ -253,36 +255,31 @@
           <div class="flex flex-wrap justify-center text-center mb-24">
             <div class="w-full lg:w-6/12 px-4">
               <h2 class="text-4xl font-semibold">Quelques uns de nos pilotes</h2>
-              <p class="text-lg leading-relaxed m-4 text-blueGray-500">
-                Le plus simple c'est de les rencontrer dans les airs.
-              </p>
+              <p
+                class="text-lg leading-relaxed m-4 text-blueGray-500"
+              >Le plus simple c'est de les rencontrer dans les airs.</p>
             </div>
           </div>
           <div class="flex flex-wrap">
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img alt="..." src="@/assets/img/highcanfly-106.jpg" class="shadow-lg rounded-full mx-auto max-w-120-px" />
+                <img
+                  alt="..."
+                  src="@/assets/img/highcanfly-106.jpg"
+                  class="shadow-lg rounded-full mx-auto max-w-120-px"
+                />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">R…</h5>
-                  <p class="mt-1 text-sm text-blueGray-400 uppercase font-semibold">Animateur fédéral</p>
+                  <p
+                    class="mt-1 text-sm text-blueGray-400 uppercase font-semibold"
+                  >Animateur fédéral</p>
                   <div class="mt-6">
                     <button
-                      class="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="bg-blueGray-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
+                      onclick="location.href='https://www.instagram.com/klerviaudreyronanbriac/'"
                     >
-                      <i class="fab fa-twitter"></i>
-                    </button>
-                    <button
-                      class="bg-lightBlue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <i class="fab fa-facebook-f"></i>
-                    </button>
-                    <button
-                      class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <i class="fab fa-dribbble"></i>
+                      <i class="fab fa-instagram"></i>
                     </button>
                   </div>
                 </div>
@@ -290,7 +287,11 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img alt="..." src="@/assets/img/highcanfly-105.jpg" class="shadow-lg rounded-full mx-auto max-w-120-px" />
+                <img
+                  alt="..."
+                  src="@/assets/img/highcanfly-105.jpg"
+                  class="shadow-lg rounded-full mx-auto max-w-120-px"
+                />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">H…</h5>
                   <p
@@ -315,28 +316,30 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img alt="..." src="@/assets/img/capucine.jpg" class="shadow-lg rounded-full mx-auto max-w-120-px" />
+                <img
+                  alt="..."
+                  src="@/assets/img/capucine.jpg"
+                  class="shadow-lg rounded-full mx-auto max-w-120-px"
+                />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">C…</h5>
-                  <p class="mt-1 text-sm text-blueGray-400 uppercase font-semibold">Compétitrice de haut niveau</p>
+                  <p
+                    class="mt-1 text-sm text-blueGray-400 uppercase font-semibold"
+                  >Compétitrice de haut niveau</p>
                   <div class="mt-6">
                     <button
-                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="bg-indigo-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
+                      onclick="location.href='https://www.instagram.com/capucine_dlt/'"
                     >
-                      <i class="fab fa-google"></i>
+                      <i class="fab fa-instagram"></i>
                     </button>
                     <button
                       class="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
+                      onclick="location.href='https://twitter.com/piitchy38'"
                     >
                       <i class="fab fa-twitter"></i>
-                    </button>
-                    <button
-                      class="bg-blueGray-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <i class="fab fa-instagram"></i>
                     </button>
                   </div>
                 </div>
@@ -344,10 +347,16 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img alt="..." src="@/assets/img/highcanfly-107.jpg" class="shadow-lg rounded-full mx-auto max-w-120-px" />
+                <img
+                  alt="..."
+                  src="@/assets/img/highcanfly-107.jpg"
+                  class="shadow-lg rounded-full mx-auto max-w-120-px"
+                />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">A…</h5>
-                  <p class="mt-1 text-sm text-blueGray-400 uppercase font-semibold">Notre secrétaire et trésorière</p>
+                  <p
+                    class="mt-1 text-sm text-blueGray-400 uppercase font-semibold"
+                  >Notre secrétaire et trésorière</p>
                   <div class="mt-6">
                     <button
                       class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
