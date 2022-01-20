@@ -1,8 +1,8 @@
 {
-  "name": "vue-notus",
+  "name": "vue-HighCanFly",
   "homepage": "https://demos.creative-tim.com/vue-notus/",
   "version": "1.1.0",
-  "description": "Vue Notus - A free Tailwind CSS and VueJS UI Kit and Admin by Creative Tim.",
+  "description": "HighCanFly website with Vue3/TailwindCSS",
   "repository": "https://github.com/eltorio/vue-highcanfly",
   "license": "MIT",
   "scripts": {
@@ -36,7 +36,7 @@
     "autoprefixer": "10.2.5",
     "eslint": "7.22.0",
     "eslint-plugin-vue": "7.7.0",
-    "postcss": "8.2.8",
+    "postcss": "8.4.5",
     "vue-template-compiler": "2.6.12"
   },
   "eslintConfig": {
