@@ -51,7 +51,7 @@
             </li>
             <li>
               <a
-                href="https://github.com/eltorio/vue-notus/blob/main/LICENSE.md?ref=vn-footer-small"
+                href="https://github.com/eltorio/vue-highcanfly/blob/main/LICENSE.md?ref=vn-footer-small"
                 class="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
               >
                 MIT License
