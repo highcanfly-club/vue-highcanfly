@@ -1,4 +1,7 @@
 // vue.config.js
 module.exports = {
-  runtimeCompiler: true,
+ // runtimeCompiler: true,
+  configureWebpack: {
+    devtool: 'source-map',
+  },
 };

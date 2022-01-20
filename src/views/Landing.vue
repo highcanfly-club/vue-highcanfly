@@ -411,11 +411,11 @@
         <div class="container mx-auto px-4 lg:pt-24 lg:pb-64">
           <div class="flex flex-wrap text-center justify-center">
             <div class="w-full lg:w-6/12 px-4">
-              <h2 class="text-4xl font-semibold text-white">Build something</h2>
+              <h2 class="text-4xl font-semibold text-white">Rejoignez nous</h2>
               <p class="text-lg leading-relaxed mt-4 mb-4 text-blueGray-400">
-                Put the potentially record low maximum sea ice extent tihs year
-                down to low ice. According to the National Oceanic and
-                Atmospheric Administration, Ted, Scambos.
+                Pour encourager une pratique plus vertueuse
+                du parapente, nous avons besoin de votre aide.
+                Que vous soyez débutant, pilote aguerri ou encadrant fédéral, venez voler.
               </p>
             </div>
           </div>
@@ -467,19 +467,20 @@
                 class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200"
               >
                 <div class="flex-auto p-5 lg:p-10">
-                  <h4 class="text-2xl font-semibold">Want to work with us?</h4>
+                  <h4 class="text-2xl font-semibold">Pour nous contacter</h4>
                   <p
                     class="leading-relaxed mt-1 mb-4 text-blueGray-500"
-                  >Complete this form and we will get back to you in 24 hours.</p>
+                  >Completer ce formulaire (envoyé par email)</p>
                   <div class="relative w-full mb-3 mt-8">
                     <label
                       class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                       for="full-name"
-                    >Full Name</label>
+                    >Nom</label>
                     <input
                       type="text"
                       class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Full Name"
+                      id="email_name"
                     />
                   </div>
 
@@ -492,6 +493,7 @@
                       type="email"
                       class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
+                      id="email_email"
                     />
                   </div>
 
@@ -501,17 +503,19 @@
                       for="message"
                     >Message</label>
                     <textarea
+                      id="email_message"
                       rows="4"
                       cols="80"
                       class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                      placeholder="Type a message..."
+                      placeholder="Votre message..."
                     />
                   </div>
                   <div class="text-center mt-6">
                     <button
                       class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
-                    >Send Message</button>
+                      onclick="location.href='mailto:parapente@highcanfly.club?subject=Contact%20formulaire%20web&body=NOM%20:%20'+document.getElementById('email_name').value+'%0ANOM%20:%20'+document.getElementById('email_email').value+'%0AMESSAGE%20:%20'+document.getElementById('email_message').value+''"
+                    >Envoyer</button>
                   </div>
                 </div>
               </div>
