@@ -34,13 +34,13 @@ import Policy from "@/views/Policy.vue";
 import Profile from "@/views/Profile.vue";
 import Index from "@/views/Index.vue";
 import MapFlers from "@/views/MapFlers.vue";
-import SitesDePratique from "@/views/SitesDePratique.vue";
+import SitesDePratique from "@/components/Maps/OLMapSitesDePratique.vue";
 
 //vue3 openlayers
 import OpenLayersMap from 'vue3-openlayers';
+
 import 'vue3-openlayers/dist/vue3-openlayers.css';
 import Test from "@/views/OpenLayersTest.vue";
-
 // routes
 
 const routes = [
@@ -126,5 +126,5 @@ const app = createApp(App);
 
 app.use(router);
 app.use(OpenLayersMap);
-app.mount("#app");
 
+const vm = app.mount("#app"); //eslint-disable-line
