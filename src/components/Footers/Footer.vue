@@ -62,10 +62,10 @@
                   >À propos</router-link>
                 </li>
                 <li>
-                  <a
+                  <router-link
+                    to="/blog"
                     class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                    href="https://www.highcanfly.club/blog?ref=vn-footer"
-                  >Blog</a>
+                  >Blog</router-link>
                 </li>
                 <li>
                   <a
