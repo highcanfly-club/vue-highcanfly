@@ -37,6 +37,11 @@
                 :loadTilesWhileInteracting="true"
                 style="height:400px"
               >
+                <ol-projection-register
+                  projectionName="EPSG:2154"
+                  :projectionExtent="[-357823.2365, 6037008.6939, 1313632.3628, 7230727.3772]"
+                  projectionDef="+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+                />
                 <ol-view
                   ref="view"
                   :center="center"
@@ -56,11 +61,11 @@
                     :format="format"
                     :layer="layerName"
                     :style="styleName"
+                    projection="EPSG:3857"
                   ></ol-source-wmts>
                 </ol-tile-layer>
               </ol-map>
-              <div>
-              </div>
+              <div></div>
             </div>
           </div>
         </div>
@@ -77,32 +82,6 @@ import {
   ref
 } from 'vue'
 
-// Standard IGN resolutions
-var ign_resolutions = [
-  156543.03392804103,
-  78271.5169640205,
-  39135.75848201024,
-  19567.879241005125,
-  9783.939620502562,
-  4891.969810251281,
-  2445.9849051256406,
-  1222.9924525628203,
-  611.4962262814101,
-  305.74811314070485,
-  152.87405657035254,
-  76.43702828517625,
-  38.218514142588134,
-  19.109257071294063,
-  9.554628535647034,
-  4.777314267823517,
-  2.3886571339117584,
-  1.1943285669558792,
-  0.5971642834779396,
-  0.29858214173896974,
-  0.14929107086948493,
-  0.07464553543474241,
-];
-
 export default {
   data() {
     return {
@@ -114,18 +93,21 @@ export default {
     FooterComponent,
   },
   setup() {
-    const center = ref([3.096878, 50.399668]);//lng,lat
-    //const center = ref([[-20037508, 20037508]]);
-    const projection = ref('EPSG:4326');
+    //const center = ref([3.096878, 50.399668]);//lng,lat
+    //const projection = ref('EPSG:4326');
+    //const center = ref([[344742.88, 6515781.17]]);
     //const projection = ref('EPSG:3857');
-    const zoom = ref(10);
+
+    const center = ref([706897.62,7033567.10])
+    const projection = ref('EPSG:2154');
+    const zoom = ref(9);
     const rotation = ref(0);
     const matrixSet = ref('PM');
     const url = ref('https://wxs.ign.fr/pratique/geoportail/wmts');
     const layerName = ref('GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2');
     const format = ref('image/png');
     const styleName = ref('normal');
-    const attribution = ref('Tiles © <a href="https://services.arcgisonline.com/arcgis/rest/services/Demographics/USA_Population_Density/MapServer/">ArcGIS</a>');
+    const attribution = ref('Tiles © <a href="https://www.ign.fr">IGN</a>');
 
     return {
       center,
@@ -138,7 +120,6 @@ export default {
       format,
       styleName,
       attribution,
-      ign_resolutions,
     }
   },
 };
