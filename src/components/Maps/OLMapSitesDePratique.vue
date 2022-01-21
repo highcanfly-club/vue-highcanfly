@@ -67,7 +67,7 @@ export default {
     const format = ref('image/png');
     const styleName = ref('normal');
     const attribution = ref('Tiles © <a href="https://www.ign.fr">IGN</a>');
-    const olformat = inject('ol-format'); //eslint-disable-line
+    const olformat = inject('ol-format'); 
     const geoJson = new olformat.GeoJSON();
 
     return {

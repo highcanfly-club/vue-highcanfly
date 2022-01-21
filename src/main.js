@@ -31,7 +31,8 @@ import Register from "@/views/auth/Register.vue";
 
 import Landing from "@/views/Landing.vue";
 import Policy from "@/views/Policy.vue";
-import Profile from "@/views/Profile.vue";
+import Blog from "@/views/Blog.vue";
+import About from "@/views/About.vue";
 import Index from "@/views/Index.vue";
 import MapFlers from "@/views/MapFlers.vue";
 import SitesDePratique from "@/views/SitesDePratique.vue";
@@ -91,8 +92,12 @@ const routes = [
     component: Landing,
   },
   {
-    path: "/profile",
-    component: Profile,
+    path: "/blog",
+    component: Blog,
+  },
+  {
+    path: "/about",
+    component: About,
   },
   {
     path: "/index",

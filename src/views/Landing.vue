@@ -420,7 +420,7 @@
             </div>
           </div>
           <div class="flex flex-wrap mt-12 justify-center">
-            <div class="w-full rounded bg-white shadow-lg"><olMapsitesDePratiqueComponent/></div>
+            <div class="w-full rounded bg-white shadow-lg"><div><olMapsitesDePratiqueComponent/></div></div>
             
             <!--
             <div class="w-full lg:w-3/12 px-4 text-center">
