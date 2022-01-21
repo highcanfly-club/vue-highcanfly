@@ -22,7 +22,7 @@
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.9",
     "qrcode.vue": "^3.3.3",
-    "tailwindcss": "2.0.4",
+    "tailwindcss": "2.2.16",
     "vue": "3.2.27",
     "vue-router": "4.0.12",
     "vue3-openlayers": "^0.1.56"
