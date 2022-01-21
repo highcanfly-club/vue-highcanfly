@@ -5,9 +5,7 @@
       href="#pablo"
       ref="btnDropdownRef"
       v-on:click="toggleDropdown($event)"
-    >
-      Navigation
-    </a>
+    >Navigation</a>
     <div
       ref="popoverDropdownRef"
       class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
@@ -18,45 +16,35 @@
     >
       <span
         class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-      >
-        Navigation
-      </span>
+      >Navigation</span>
       <router-link
         to="/landing"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-      >
-        Accueil
-      </router-link>
+      >Accueil</router-link>
       <router-link
-        to="/profile"
+        to="/blog"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-      >
-        Blog
-      </router-link>
+      >Blog</router-link>
+      <router-link
+        to="/about"
+        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+      >À propos</router-link>
       <router-link
         to="/policy"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-      >
-        Politique de confidentialité
-      </router-link>
+      >Politique de confidentialité</router-link>
       <div class="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
       <span
         class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-      >
-        Cartes
-      </span>
+      >Cartes</span>
       <a
         href="https://www.meteociel.fr/previsions-arome-1h/22396/la_comte.htm"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-      >
-        Météo à la Comté
-      </a>
+      >Météo à la Comté</a>
       <router-link
         to="/map-sites-de-pratique"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-      >
-        Nos sites de pratiques
-      </router-link>
+      >Nos sites de pratiques</router-link>
     </div>
   </div>
 </template>
