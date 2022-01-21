@@ -34,7 +34,7 @@ import Policy from "@/views/Policy.vue";
 import Profile from "@/views/Profile.vue";
 import Index from "@/views/Index.vue";
 import MapFlers from "@/views/MapFlers.vue";
-import SitesDePratique from "@/components/Maps/OLMapSitesDePratique.vue";
+import SitesDePratique from "@/views/SitesDePratique.vue";
 
 //vue3 openlayers
 import OpenLayersMap from 'vue3-openlayers';
