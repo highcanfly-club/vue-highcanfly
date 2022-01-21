@@ -100,7 +100,7 @@
                     <ol>
                       <li>Comité départemental de vol libre</li>
                       <li>Conseil départemtal du Nord</li>
-                      <li>Commission handicapé de la Fédération Française de vol libre</li>
+                      <li>Commission «handi» de la Fédération Française de vol libre</li>
                     </ol>
 
                     <router-link to="/landing" class="tfont-normal text-emerald-500">Accueil</router-link>
