@@ -2,7 +2,7 @@
               <ol-map
                 :loadTilesWhileAnimating="true"
                 :loadTilesWhileInteracting="true"
-                style="height:400px"
+                :style="{height : mapHeight}"
               >
                 <ol-projection-register
                   projectionName="EPSG:2154"
@@ -51,7 +51,13 @@ import {
 } from 'vue'
 
 export default {
-  setup() {
+    props: {
+    mapHeight: {
+      type: String,
+      default: '400px'
+    }
+  },
+  setup(props) { //eslint-disable-line
     //const center = ref([3.096878, 50.399668]);//lng,lat
     //const projection = ref('EPSG:4326');
     //const center = ref([[344742.88, 6515781.17]]);
