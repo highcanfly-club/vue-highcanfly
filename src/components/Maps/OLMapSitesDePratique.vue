@@ -37,7 +37,7 @@
                 <ol-style>
             <ol-style-stroke color="red" :width="2"></ol-style-stroke>
             <ol-style-fill color="rgba(255,255,255,0.1)"></ol-style-fill>
-            <ol-style-icon :src="markerIconYellow" :scale="0.1"></ol-style-icon>
+            <ol-style-icon :src="markerIconRed" :scale="0.5"></ol-style-icon>
         </ol-style>
 
     </ol-vector-layer>
@@ -45,7 +45,7 @@
 </template>
 <script>
 
-import markerIconYellow from '@/assets/img/marker.png';
+import markerIconRed from '@/assets/img/marker-red.svg';
 import {
   ref,inject
 } from 'vue'
@@ -82,7 +82,7 @@ export default {
       styleName,
       attribution,
       geoJson,
-      markerIconYellow
+      markerIconRed
     }
   },
 };
