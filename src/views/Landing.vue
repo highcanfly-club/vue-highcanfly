@@ -420,6 +420,9 @@
             </div>
           </div>
           <div class="flex flex-wrap mt-12 justify-center">
+            <div class="w-full rounded bg-white shadow-lg"><olMapsitesDePratiqueComponent/></div>
+            
+            <!--
             <div class="w-full lg:w-3/12 px-4 text-center">
               <div
                 class="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
@@ -438,11 +441,8 @@
               >
                 <i class="fas fa-poll text-xl"></i>
               </div>
-              <h5 class="text-xl mt-5 font-semibold text-white">Grow your market</h5>
-              <p class="mt-2 mb-4 text-blueGray-400">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
+              <h5 class="text-xl mt-5 font-semibold text-white">Où volons-nous?</h5>
+<olMapsitesDePratiqueComponent/>
             </div>
             <div class="w-full lg:w-3/12 px-4 text-center">
               <div
@@ -456,6 +456,7 @@
                 the bulk of the card's content.
               </p>
             </div>
+            -->
           </div>
         </div>
       </section>
@@ -531,26 +532,19 @@
 import Navbar from "@/components/Navbars/Navbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
 import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg";
+import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
 import qrCode from "qrcode.vue";
-
-import team1 from "@/assets/img/team-1-800x800.jpg";
-import team2 from "@/assets/img/team-2-800x800.jpg";
-import team3 from "@/assets/img/team-3-800x800.jpg";
-import team4 from "@/assets/img/team-4-470x470.png";
 
 export default {
   data() {
     return {
       backgroundImageURL: 'url("' + backgroundImageAsset + '")',
-      team1,
-      team2,
-      team3,
-      team4,
     };
   },
   components: {
     Navbar,
     FooterComponent,
+    olMapsitesDePratiqueComponent,
     qrCode,
   },
 };
