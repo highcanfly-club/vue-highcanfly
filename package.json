@@ -24,7 +24,7 @@
     "qrcode.vue": "^3.3.3",
     "tailwindcss": "2.0.4",
     "vue": "3.2.27",
-    "vue-router": "4.0.5",
+    "vue-router": "4.0.12",
     "vue3-openlayers": "^0.1.56"
   },
   "devDependencies": {
