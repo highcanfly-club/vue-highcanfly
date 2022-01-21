@@ -45,12 +45,12 @@
       >
         Cartes
       </span>
-      <router-link
-        to="/map-flers"
+      <a
+        href="https://www.meteociel.fr/previsions-arome-1h/22396/la_comte.htm"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
       >
-        Courrier
-      </router-link>
+        Météo à la Comté
+      </a>
       <router-link
         to="/map-sites-de-pratique"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
