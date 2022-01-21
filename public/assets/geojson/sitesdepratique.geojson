@@ -3,9 +3,9 @@
 "name": "sitesdepratique",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::2154" } },
 "features": [
-{ "type": "Feature", "properties": { "id": 4, "site": "La Comté", "html": "La Comté<br\/>Site thermique<br\/>Niveau brevet initial à confirmé selon les conditions" }, "geometry": { "type": "Point", "coordinates": [ 665373.929506568238139, 7035567.00270211417228 ] } },
-{ "type": "Feature", "properties": { "id": 1, "site": "Équihen-Plage", "html": null }, "geometry": { "type": "Point", "coordinates": [ 598554.819812893518247, 7065666.505925356410444 ] } },
+{ "type": "Feature", "properties": { "id": 1, "site": "Équihen-Plage", "html": "Équihen-Plage<br\/>Site de soaring<br\/>Niveau brevet de pilote" }, "geometry": { "type": "Point", "coordinates": [ 598554.819812893518247, 7065666.505925356410444 ] } },
 { "type": "Feature", "properties": { "id": 2, "site": "Parc d'Olhain", "html": "Parc d'Olhain<br\/>Niveau brevet initial à brevet de pilote" }, "geometry": { "type": "Point", "coordinates": [ 670535.528787676710635, 7037411.379060309380293 ] } },
-{ "type": "Feature", "properties": { "id": 3, "site": "Parc des Îles", "html": "Parc des Îles<br\/>Notre site de gonflage" }, "geometry": { "type": "Point", "coordinates": [ 694734.797560395672917, 7033759.364415483549237 ] } }
+{ "type": "Feature", "properties": { "id": 3, "site": "Parc des Îles", "html": "Parc des Îles<br\/>Notre site de gonflage" }, "geometry": { "type": "Point", "coordinates": [ 694734.797560395672917, 7033759.364415483549237 ] } },
+{ "type": "Feature", "properties": { "id": 4, "site": "La Comté", "html": "La Comté<br\/>Site thermique<br\/>Niveau brevet initial à confirmé selon les conditions" }, "geometry": { "type": "Point", "coordinates": [ 665373.929506568238139, 7035567.00270211417228 ] } }
 ]
 }

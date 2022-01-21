@@ -1,57 +1,76 @@
 <template>
-              <ol-map
-                :loadTilesWhileAnimating="true"
-                :loadTilesWhileInteracting="true"
-                :style="{height : mapHeight}"
-              >
-                <ol-projection-register
-                  projectionName="EPSG:2154"
-                  :projectionExtent="[-357823.2365, 6037008.6939, 1313632.3628, 7230727.3772]"
-                  projectionDef="+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
-                />
-                <ol-view
-                  ref="view"
-                  :center="center"
-                  :rotation="rotation"
-                  :projection="projection"
-                  :zoom="zoom"
-                />
-                <ol-zoom-control />
-                <ol-zoomslider-control />
-                <ol-fullscreen-control />
-                <ol-scaleline-control />
-                <ol-tile-layer>
-                  <ol-source-wmts
-                    :attributions="attribution"
-                    :url="url"
-                    :matrixSet="matrixSet"
-                    :format="format"
-                    :layer="layerName"
-                    :style="styleName"
-                    projection="EPSG:3857"
-                  ></ol-source-wmts>
-                </ol-tile-layer>
-                    <ol-vector-layer>
-        <ol-source-vector projection="EPSG:2154" url="/assets/geojson/sitesdepratique.geojson" :format="geoJson"/>
+  <ol-map
+    :loadTilesWhileAnimating="true"
+    :loadTilesWhileInteracting="true"
+    :style="{ height: mapHeight }"
+  >
+    <ol-projection-register
+      projectionName="EPSG:2154"
+      :projectionExtent="espg2154Extent"
+      projectionDef="+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+    />
+    <ol-view
+      ref="view"
+      :center="center"
+      :rotation="rotation"
+      :projection="projection"
+      :zoom="zoom"
+    />
+    <ol-zoom-control />
+    <ol-zoomslider-control />
+    <ol-fullscreen-control />
+    <ol-scaleline-control />
+    <ol-tile-layer>
+      <ol-source-wmts
+        :attributions="attribution"
+        :url="url"
+        :matrixSet="matrixSet"
+        :format="format"
+        :layer="layerName"
+        :style="styleName"
+        projection="EPSG:3857"
+      ></ol-source-wmts>
+    </ol-tile-layer>
 
-                <ol-style>
-            <ol-style-stroke color="red" :width="2"></ol-style-stroke>
-            <ol-style-fill color="rgba(255,255,255,0.1)"></ol-style-fill>
-            <ol-style-icon :src="markerIconRed" :scale="0.5"></ol-style-icon>
-        </ol-style>
+    <ol-interaction-select
+      @select="featureSelected"
+      :condition="selectCondition"
+      :filter="selectInteactionFilter"
+    >
+      <ol-style>
+        <ol-style-icon :src="markerIconRed" :scale="1"></ol-style-icon>
+      </ol-style>
+    </ol-interaction-select>
 
+    <ol-overlay :position="selectedSitePosition" v-if="selectedSiteHtml != ''">
+      <template v-slot="slotProps"> <!-- eslint-disable-line -->
+        <div class="flex max-w-xs py-4 px-4 bg-orange-500 shadow-lg rounded-lg my-20">
+            <div class="text-white" ><span v-html="selectedSiteHtml"/></div>
+        </div>
+      </template>
+    </ol-overlay>
+    <ol-vector-layer>
+      <ol-source-vector
+        projection="EPSG:2154"
+        url="/assets/geojson/sitesdepratique.geojson"
+        :format="geoJson"
+      />
+
+      <ol-style>
+        <ol-style-icon :src="markerIconRed" :scale="0.5"></ol-style-icon>
+      </ol-style>
     </ol-vector-layer>
-              </ol-map>
+  </ol-map>
 </template>
 <script>
 
-import markerIconRed from '@/assets/img/marker-red.svg';
+import markerIconRed from '@/assets/img/marker-orange.svg';
 import {
-  ref,inject
+  ref, inject
 } from 'vue'
 
 export default {
-    props: {
+  props: {
     mapHeight: {
       type: String,
       default: '400px'
@@ -63,7 +82,7 @@ export default {
     //const center = ref([[344742.88, 6515781.17]]);
     //const projection = ref('EPSG:3857');
 
-    const center = ref([706897.62,7033567.10])
+    const center = ref([706897.62, 7033567.10])
     const projection = ref('EPSG:2154');
     const zoom = ref(9);
     const rotation = ref(0);
@@ -73,8 +92,26 @@ export default {
     const format = ref('image/png');
     const styleName = ref('normal');
     const attribution = ref('Tiles © <a href="https://www.ign.fr">IGN</a>');
-    const olformat = inject('ol-format'); 
+    const olformat = inject('ol-format');
     const geoJson = new olformat.GeoJSON();
+    const espg2154Extent = [-357823.2365, 6037008.6939, 1313632.3628, 7230727.3772];
+    const selectConditions = inject('ol-selectconditions')
+    const selectCondition = selectConditions.pointerMove;
+    const selectedSiteHtml = ref('')
+    const selectedSitePosition = ref([]);
+    const extent = inject('ol-extent');
+
+    const featureSelected = (event) => {
+      if (event.selected[0] != undefined) {
+        console.log(event.selected[0].values_.html);
+        selectedSitePosition.value = extent.getCenter(event.selected[0].getGeometry().extent_);
+        selectedSiteHtml.value = event.selected[0].values_.html;
+      }
+      //debugger; //eslint-disable-line
+    }
+    const selectInteactionFilter = (feature) => {
+      return feature.values_ != undefined;
+    };
 
     return {
       center,
@@ -88,7 +125,13 @@ export default {
       styleName,
       attribution,
       geoJson,
-      markerIconRed
+      markerIconRed,
+      espg2154Extent,
+      featureSelected,
+      selectCondition,
+      selectInteactionFilter,
+      selectedSiteHtml,
+      selectedSitePosition,
     }
   },
 };
