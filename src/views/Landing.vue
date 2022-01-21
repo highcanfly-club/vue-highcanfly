@@ -514,7 +514,7 @@
                     <button
                       class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
-                      onclick="location.href='mailto:parapente@highcanfly.club?subject=Contact%20formulaire%20web&body=NOM%20:%20'+document.getElementById('email_name').value+'%0ANOM%20:%20'+document.getElementById('email_email').value+'%0AMESSAGE%20:%20'+document.getElementById('email_message').value+''"
+                      onclick="location.href='mailto:parapente@highcanfly.club?subject=Contact%20formulaire%20web&body=EMAIL%20:%20'+document.getElementById('email_name').value+'%0ANOM%20:%20'+document.getElementById('email_email').value+'%0AMESSAGE%20:%20'+document.getElementById('email_message').value+''"
                     >Envoyer</button>
                   </div>
                 </div>
