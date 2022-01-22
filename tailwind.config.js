@@ -11,10 +11,36 @@ module.exports = {
     "./src/*.vue",
   ],
   theme: {
-    colors: {
-      ...colors,
-    },
+
     extend: {
+      colors: {
+        "hcfdark": "#0e6835",
+        "hcflight": "#95be1f",
+        'watermelon': {
+          '50': '#f3f7f5', 
+          '100': '#e7f0eb', 
+          '200': '#c3d9cd', 
+          '300': '#9fc3ae', 
+          '400': '#569572', 
+          '500': '#0e6835',   //HighCanFly Dark = hcfdark
+          '600': '#0d5e30', 
+          '700': '#0b4e28', 
+          '800': '#083e20', 
+          '900': '#07331a'
+      },
+      'pistachio': {
+        '50': '#fafcf4', 
+        '100': '#f4f9e9', 
+        '200': '#e5efc7', 
+        '300': '#d5e5a5', 
+        '400': '#b5d262', 
+        '500': '#95be1f',   //HighCanFly Light = hcflight
+        '600': '#86ab1c', 
+        '700': '#708f17', 
+        '800': '#597213', 
+        '900': '#495d0f'
+    }
+      },
       minHeight: {
         "screen-75": "75vh",
       },
