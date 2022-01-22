@@ -8,7 +8,7 @@
         <div class="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
           <div class="pt-32 sm:pt-0">
             <h2 class="font-semibold text-4xl text-slate-600">
-              Club de parapente dans le Nord
+              Vue Notus - A beautiful extension for Tailwind CSS.
             </h2>
             <p class="mt-4 text-lg leading-relaxed text-slate-500">
               Vue Notus is Free and Open Source. It does not change any of the
@@ -44,9 +44,9 @@
       </div>
 
       <img
-        class="absolute top-0 b-auto right-0 pt-20 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px "
-        src="@/assets/img/logo_high_can_fly.svg"
-        alt="Notre logo réutilisable"
+        class="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px"
+        :src="patternVue"
+        alt="..."
       />
     </section>
 
@@ -748,7 +748,7 @@
   </div>
 </template>
 <script>
-import IndexNavbar from "@/components/Navbars/NavbarWhite.vue";
+import IndexNavbar from "@/components/Navbars/IndexNavbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
 
 import patternVue from "@/assets/img/pattern_vue.png";

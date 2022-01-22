@@ -26,13 +26,13 @@
             y="0"
           >
             <polygon
-              class="text-blueGray-200 fill-current"
+              class="text-slate-200 fill-current"
               points="2560 0 2560 100 0 100"
             ></polygon>
           </svg>
         </div>
       </section>
-      <section class="relative py-16 bg-blueGray-200">
+      <section class="relative py-16 bg-slate-200">
         <div class="container mx-auto px-4">
           <div
             class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"

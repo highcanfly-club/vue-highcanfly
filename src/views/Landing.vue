@@ -7,16 +7,16 @@
       >
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{ background: backgroundImageURL }"
+          v-bind:style="{ backgroundImage: 'url(' + backgroundImageURL + ')' }"
         >
-          <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+          <span id="blackOverlay" class="w-full h-full absolute opacity-40 bg-black"></span>
         </div>
         <div class="container relative mx-auto">
           <div class="items-center flex flex-wrap">
             <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
               <div class="pr-12">
                 <h1 class="text-white font-semibold text-5xl">Venez voler avec nous !</h1>
-                <p class="mt-4 text-lg text-blueGray-200">
+                <p class="mt-4 text-lg text-slate-200">
                   On vole aussi dans le nord de la France…
                   <br />Marcher et Voler, voilà ce qui nous ressemble.
                   <br />Vous êtes un pilote autonome, en progression ou débutant; partagez notre passion du vol libre.
@@ -38,12 +38,12 @@
             x="0"
             y="0"
           >
-            <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100" />
+            <polygon class="text-slate-200 fill-current" points="2560 0 2560 100 0 100" />
           </svg>
         </div>
       </div>
 
-      <section class="pb-20 bg-blueGray-200 -mt-24">
+      <section class="pb-20 bg-slate-200 -mt-24">
         <div class="container mx-auto px-6">
           <div class="flex flex-wrap">
             <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
@@ -57,7 +57,7 @@
                     <i class="fas fa-award"></i>
                   </div>
                   <h6 class="text-xl font-semibold">Club de parapente</h6>
-                  <p class="mt-2 mb-4 text-blueGray-500">
+                  <p class="mt-2 mb-4 text-slate-500">
                     Nous sommes une structure affiliée à la F.F.V.L.
                     <br />sous le numéro n°29070.
                     <br />Nous sommes aussi membre actif du comité départemental de vol libre.
@@ -89,14 +89,14 @@
                     <i class="fas fa-fingerprint"></i>
                   </div>
                   <a
-                    class="text-blueGray-600 hover:text-blueGray-800 text-xl font-semibold block pb-2 text-sm"
+                    class="text-slate-600 hover:text-slate-800 text-xl font-semibold block pb-2 text-sm"
                     href="https://intranet.ffvl.fr/structure/14172"
                   >
                     <h6
                       class="text-xl font-semibold"
                       onclick="location.href='https://intranet.ffvl.fr/structure/14172'"
                     >Notre page FFVL</h6>
-                    <div class="mt-2 mb-4 text-blueGray-500 grid justify-items-center">
+                    <div class="mt-2 mb-4 text-slate-500 grid justify-items-center">
                       <qrCode render-as="svg" value="https://intranet.ffvl.fr/structure/14172"></qrCode>
                     </div>
                   </a>
@@ -108,15 +108,15 @@
           <div class="flex flex-wrap items-center mt-32">
             <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
               <div
-                class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+                class="text-slate-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
               >
                 <i class="fas fa-user-friends text-xl"></i>
               </div>
               <h3 class="text-3xl mb-2 font-semibold leading-normal">Partageons nos expériences</h3>
-              <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+              <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600">
                 Le parapente fait partie de ces activités, comme l'alpinisme, qui créent des émotions fortes. Elles permettent de développer rapidement des liens forts avec les gens qui partagnet l'activité avec nous. 
               </p>
-              <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+              <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-slate-600">
                 Une sortie Hike and Fly laisse souvent de nombreux souvenirs de conversations pendant la montée,de partage d'émotions à la vue des paysages… et de vols fabuleux. 
               </p>
             </div>
@@ -192,7 +192,7 @@
                   <i class="fas fa-rocket text-xl"></i>
                 </div>
                 <h3 class="text-3xl font-semibold">Petit club deviendra grand</h3>
-                <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+                <p class="mt-4 text-lg leading-relaxed text-slate-500">
                   La force d'un club est dans ses membres.
                   Nos projets de développement :
                 </p>
@@ -207,7 +207,7 @@
                         </span>
                       </div>
                       <div>
-                        <h4 class="text-blueGray-500">Accueil de jeunes pour une découverte au sol</h4>
+                        <h4 class="text-slate-500">Accueil de jeunes pour une découverte au sol</h4>
                       </div>
                     </div>
                   </li>
@@ -221,7 +221,7 @@
                         </span>
                       </div>
                       <div>
-                        <h4 class="text-blueGray-500">Développement de nouveaux sites dans la région</h4>
+                        <h4 class="text-slate-500">Développement de nouveaux sites dans la région</h4>
                       </div>
                     </div>
                   </li>
@@ -236,7 +236,7 @@
                       </div>
                       <div>
                         <h4
-                          class="text-blueGray-500"
+                          class="text-slate-500"
                         >Favoriser la pratique «non motorisée» du parapente</h4>
                       </div>
                     </div>
@@ -254,7 +254,7 @@
             <div class="w-full lg:w-6/12 px-4">
               <h2 class="text-4xl font-semibold">Quelques uns de nos pilotes</h2>
               <p
-                class="text-lg leading-relaxed m-4 text-blueGray-500"
+                class="text-lg leading-relaxed m-4 text-slate-500"
               >Le plus simple c'est de les rencontrer dans les airs.</p>
             </div>
           </div>
@@ -269,11 +269,11 @@
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">R…</h5>
                   <p
-                    class="mt-1 text-sm text-blueGray-400 uppercase font-semibold"
+                    class="mt-1 text-sm text-slate-400 uppercase font-semibold"
                   >Animateur fédéral</p>
                   <div class="mt-6">
                     <button
-                      class="bg-blueGray-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="bg-slate-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                       onclick="location.href='https://www.instagram.com/klerviaudreyronanbriac/'"
                     >
@@ -293,7 +293,7 @@
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">H…</h5>
                   <p
-                    class="mt-1 text-sm text-blueGray-400 uppercase font-semibold"
+                    class="mt-1 text-sm text-slate-400 uppercase font-semibold"
                   >Moniteur professionnel</p>
                   <div class="mt-6">
                     <button
@@ -303,7 +303,7 @@
                       <i class="fab fa-google"></i>
                     </button>
                     <button
-                      class="bg-lightBlue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="bg-sky-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                     >
                       <i class="fab fa-facebook-f"></i>
@@ -322,7 +322,7 @@
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">C…</h5>
                   <p
-                    class="mt-1 text-sm text-blueGray-400 uppercase font-semibold"
+                    class="mt-1 text-sm text-slate-400 uppercase font-semibold"
                   >Compétitrice de haut niveau</p>
                   <div class="mt-6">
                     <button
@@ -333,7 +333,7 @@
                       <i class="fab fa-instagram"></i>
                     </button>
                     <button
-                      class="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="bg-sky-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                       onclick="location.href='https://twitter.com/piitchy38'"
                     >
@@ -353,7 +353,7 @@
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">A…</h5>
                   <p
-                    class="mt-1 text-sm text-blueGray-400 uppercase font-semibold"
+                    class="mt-1 text-sm text-slate-400 uppercase font-semibold"
                   >Notre secrétaire et trésorière</p>
                   <div class="mt-6">
                     <button
@@ -369,13 +369,13 @@
                       <i class="fab fa-google"></i>
                     </button>
                     <button
-                      class="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="bg-sky-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                     >
                       <i class="fab fa-twitter"></i>
                     </button>
                     <button
-                      class="bg-blueGray-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="bg-slate-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                     >
                       <i class="fab fa-instagram"></i>
@@ -388,7 +388,7 @@
         </div>
       </section>
 
-      <section class="pb-20 relative block bg-blueGray-800">
+      <section class="pb-20 relative block bg-slate-800">
         <div
           class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
           style="transform: translateZ(0);"
@@ -402,7 +402,7 @@
             x="0"
             y="0"
           >
-            <polygon class="text-blueGray-800 fill-current" points="2560 0 2560 100 0 100" />
+            <polygon class="text-slate-800 fill-current" points="2560 0 2560 100 0 100" />
           </svg>
         </div>
 
@@ -410,7 +410,7 @@
           <div class="flex flex-wrap text-center justify-center">
             <div class="w-full lg:w-6/12 px-4">
               <h2 class="text-4xl font-semibold text-white">Rejoignez nous</h2>
-              <p class="text-lg leading-relaxed mt-4 mb-4 text-blueGray-400">
+              <p class="text-lg leading-relaxed mt-4 mb-4 text-slate-400">
                 Pour encourager une pratique plus vertueuse
                 du parapente, nous avons besoin de votre aide.
                 Que vous soyez débutant, pilote aguerri ou encadrant fédéral, venez voler.
@@ -424,64 +424,29 @@
               </div>
             </div>
 
-            <!--
-            <div class="w-full lg:w-3/12 px-4 text-center">
-              <div
-                class="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
-              >
-                <i class="fas fa-medal text-xl"></i>
-              </div>
-              <h6 class="text-xl mt-5 font-semibold text-white">Excelent Services</h6>
-              <p class="mt-2 mb-4 text-blueGray-400">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-            <div class="w-full lg:w-3/12 px-4 text-center">
-              <div
-                class="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
-              >
-                <i class="fas fa-poll text-xl"></i>
-              </div>
-              <h5 class="text-xl mt-5 font-semibold text-white">Où volons-nous?</h5>
-<olMapsitesDePratiqueComponent/>
-            </div>
-            <div class="w-full lg:w-3/12 px-4 text-center">
-              <div
-                class="text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
-              >
-                <i class="fas fa-lightbulb text-xl"></i>
-              </div>
-              <h5 class="text-xl mt-5 font-semibold text-white">Launch time</h5>
-              <p class="mt-2 mb-4 text-blueGray-400">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-            -->
           </div>
         </div>
       </section>
-      <section class="relative block py-24 lg:pt-0 bg-blueGray-800">
+      <section class="relative block py-24 lg:pt-0 bg-slate-800">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
             <div class="w-full lg:w-6/12 px-4">
               <div
-                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200"
+                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-slate-200"
               >
                 <div class="flex-auto p-5 lg:p-10">
                   <h4 class="text-2xl font-semibold">Pour nous contacter</h4>
                   <p
-                    class="leading-relaxed mt-1 mb-4 text-blueGray-500"
+                    class="leading-relaxed mt-1 mb-4 text-slate-500"
                   >Completer ce formulaire (envoyé par email)</p>
                   <div class="relative w-full mb-3 mt-8">
                     <label
-                      class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                      class="block uppercase text-slate-600 text-xs font-bold mb-2"
                       for="full-name"
                     >Nom</label>
                     <input
                       type="text"
-                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Full Name"
                       id="email_name"
                     />
@@ -489,12 +454,12 @@
 
                   <div class="relative w-full mb-3">
                     <label
-                      class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                      class="block uppercase text-slate-600 text-xs font-bold mb-2"
                       for="email"
                     >Email</label>
                     <input
                       type="email"
-                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
                       id="email_email"
                     />
@@ -502,20 +467,20 @@
 
                   <div class="relative w-full mb-3">
                     <label
-                      class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                      class="block uppercase text-slate-600 text-xs font-bold mb-2"
                       for="message"
                     >Message</label>
                     <textarea
                       id="email_message"
                       rows="4"
                       cols="80"
-                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                      class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                       placeholder="Votre message..."
                     />
                   </div>
                   <div class="text-center mt-6">
                     <button
-                      class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      class="bg-slate-800 text-white active:bg-slate-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onclick="location.href='mailto:parapente@highcanfly.club?subject=Contact%20formulaire%20web&body=EMAIL%20:%20'+document.getElementById('email_name').value+'%0ANOM%20:%20'+document.getElementById('email_email').value+'%0AMESSAGE%20:%20'+document.getElementById('email_message').value+''"
                     >Envoyer</button>
@@ -540,7 +505,7 @@ import qrCode from "qrcode.vue";
 export default {
   data() {
     return {
-      backgroundImageURL: 'url("' + backgroundImageAsset + '")',
+      backgroundImageURL: backgroundImageAsset,
     };
   },
   components: {

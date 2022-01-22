@@ -24,11 +24,11 @@
             x="0"
             y="0"
           >
-            <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100" />
+            <polygon class="text-slate-200 fill-current" points="2560 0 2560 100 0 100" />
           </svg>
         </div>
       </section>
-      <section class="relative py-16 bg-blueGray-200">
+      <section class="relative py-16 bg-slate-200">
         <div class="container mx-auto px-4">
           <div
             class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
@@ -57,45 +57,45 @@
                   <div class="flex justify-center py-4 lg:pt-4 pt-8">
                     <div class="mr-4 p-3 text-center">
                       <span
-                        class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
+                        class="text-xl font-bold block uppercase tracking-wide text-slate-600"
                       >22</span>
-                      <span class="text-sm text-blueGray-400">Amis</span>
+                      <span class="text-sm text-slate-400">Amis</span>
                     </div>
                     <div class="mr-4 p-3 text-center">
                       <span
-                        class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
+                        class="text-xl font-bold block uppercase tracking-wide text-slate-600"
                       >10</span>
-                      <span class="text-sm text-blueGray-400">Photos</span>
+                      <span class="text-sm text-slate-400">Photos</span>
                     </div>
                     <div class="lg:mr-4 p-3 text-center">
                       <span
-                        class="text-xl font-bold block uppercase tracking-wide text-blueGray-600"
+                        class="text-xl font-bold block uppercase tracking-wide text-slate-600"
                       >89</span>
-                      <span class="text-sm text-blueGray-400">Commentaires</span>
+                      <span class="text-sm text-slate-400">Commentaires</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="text-center mt-12">
                 <h3
-                  class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2"
+                  class="text-4xl font-semibold leading-normal mb-2 text-slate-700 mb-2"
                 >Association High Can Fly</h3>
-                <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-                  <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
+                <div class="text-sm leading-normal mt-0 mb-2 text-slate-400 font-bold uppercase">
+                  <i class="fas fa-map-marker-alt mr-2 text-lg text-slate-400"></i>
                   Flers-en-Escrebieux, Nord, France
                   <br />119, rue Marceau Martin
                   <br />59128 Marceau Martin
                 </div>
-                <div class="mb-2 text-blueGray-600 mt-10">
-                  <i class="fas fa-dove mr-2 text-lg text-blueGray-400"></i>
+                <div class="mb-2 text-slate-600 mt-10">
+                  <i class="fas fa-dove mr-2 text-lg text-slate-400"></i>
                   Club de parapente affilié à la F.F.V.L.
                 </div>
               </div>
-              <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+              <div class="mt-10 py-10 border-t border-slate-200 text-center">
                 <div class="flex flex-wrap justify-center">
                   <div class="w-full lg:w-9/12 px-4">
                     <p
-                      class="mb-4 text-lg leading-relaxed text-blueGray-700"
+                      class="mb-4 text-lg leading-relaxed text-slate-700"
                     >Merci à nos partenaires:</p>
                     <ol>
                       <li>Comité départemental de vol libre</li>
