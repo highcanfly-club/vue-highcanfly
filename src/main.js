@@ -2,9 +2,9 @@ import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 
 // styles
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "@/assets/styles/tailwind.css";
+import "@/assets/styles/index.css";
+
 
 // mouting point for the whole app
 
@@ -34,6 +34,7 @@ import Policy from "@/views/Policy.vue";
 import Blog from "@/views/Blog.vue";
 import About from "@/views/About.vue";
 import Index from "@/views/Index.vue";
+import IndexOrig from "@/views/Index.orig.vue";
 import MapFlers from "@/views/MapFlers.vue";
 import SitesDePratique from "@/views/SitesDePratique.vue";
 
@@ -102,6 +103,10 @@ const routes = [
   {
     path: "/index",
     component: Index,
+  },
+  {
+    path: "/index-orig",
+    component: IndexOrig,
   },
   {
     path: "/map-flers",

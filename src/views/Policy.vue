@@ -5,7 +5,7 @@
       <section class="relative block h-500-px">
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{ background: backgroundImageURL }"
+          v-bind:style="{ backgroundImage: 'url(' + backgroundImageURL + ')' }"
         >
           <span
             id="blackOverlay"
@@ -26,13 +26,13 @@
             y="0"
           >
             <polygon
-              class="text-blueGray-200 fill-current"
+              class="text-slate-200 fill-current"
               points="2560 0 2560 100 0 100"
             ></polygon>
           </svg>
         </div>
       </section>
-      <section class="relative py-16 bg-blueGray-200">
+      <section class="relative py-16 bg-slate-200">
         <div class="container mx-auto px-4">
           <div
             class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
@@ -40,17 +40,17 @@
             <div class="px-6">
               <div class="text-center mt-12">
                 <h3
-                  class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2"
+                  class="text-4xl font-semibold leading-normal mb-2 text-slate-700 mb-2"
                 >
                   POLITIQUE DE CONFIDENTIALITÉ
                 </h3>
               </div>
-              <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+              <div class="mt-10 py-10 border-t border-slate-200 text-center">
                 <div class="flex flex-wrap justify-center">
                   <div class="w-full lg:w-9/12 px-4">
-                    <p class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">www.highcanfly.club<br />
+                    <p class="text-sm leading-normal mt-0 mb-2 text-slate-400 font-bold uppercase">www.highcanfly.club<br />
                       Association High Can Fly<br /></p>
-                    <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
+                    <p class="mb-4 text-lg leading-relaxed text-slate-700">
                       
                       <br />
                       <br />
@@ -238,13 +238,13 @@
 <script>
 import Navbar from "@/components/Navbars/Navbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
-import background from "@/assets/img/blancnezhugues-101.jpg";
+import backgroundImageAsset from "@/assets/img/blancnezhugues-101.jpg";
 //import team2 from "@/assets/img/team-2-800x800.jpg";
 
 export default {
   data() {
     return {
-      backgroundImageURL: 'url("'+background+'")',
+      backgroundImageURL: backgroundImageAsset,
     };
   },
   components: {

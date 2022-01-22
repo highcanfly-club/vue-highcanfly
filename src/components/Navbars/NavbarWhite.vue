@@ -1,18 +1,18 @@
 <template>
   <nav
-    class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
+    class="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow"
   >
     <div
-      class="container px-4 mx-auto flex flex-wrap items-start justify-between"
+      class="container px-4 mx-auto flex flex-wrap items-center justify-between"
     >
       <div
         class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
       >
         <router-link
-          class="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+          class="text-slate-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
           to="/"
         >
-          High Can Fly <img src="@/assets/img/logo_high_can_fly.svg" />
+          High Can Fly 
         </router-link>
 
       </div>
@@ -23,7 +23,7 @@
       >
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto ">
           <li class="flex items-center">
-            <PagesDropdown />
+            <PagesDropdownWhite />
           </li>
           <li class="flex items-center">
             <a
@@ -32,7 +32,7 @@
               target="_blank"
             >
               <i
-                class="lg:text-slate-200 text-slate-400 fab fa-instagram text-lg leading-lg"
+                class="text-slate-400 fab fa-instagram text-lg leading-lg"
               />
               <span class="lg:hidden inline-block ml-2">Share</span>
             </a>
@@ -45,7 +45,7 @@
               target="_blank"
             >
               <i
-                class="lg:text-slate-200 text-slate-400 fab fa-twitter text-lg leading-lg"
+                class="text-slate-400 fab fa-twitter text-lg leading-lg"
               />
               <span class="lg:hidden inline-block ml-2">Tweet</span>
             </a>
@@ -58,7 +58,7 @@
               target="_blank"
             >
               <i
-                class="lg:text-slate-200 text-slate-400 fab fa-github text-lg leading-lg"
+                class="text-slate-400 fab fa-github text-lg leading-lg"
               />
               <span class="lg:hidden inline-block ml-2">Star</span>
             </a>
@@ -66,7 +66,7 @@
 
           <li class="flex items-center">
             <button
-              class="bg-white text-slate-700 active:bg-slate-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+              class="bg-emerald-500 text-white active:bg-emerald-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
               type="button"
               onclick="location.href='https://intranet.ffvl.fr/ffvl_licenceonline/pre_rempli/NEW/14172'"
             >
@@ -79,7 +79,7 @@
   </nav>
 </template>
 <script>
-import PagesDropdown from "@/components/Dropdowns/PagesDropdown.vue";
+import PagesDropdownWhite from "@/components/Dropdowns/PagesDropdownWhite.vue";
 export default {
   data() {
     return {
@@ -92,7 +92,7 @@ export default {
     },
   },
   components: {
-    PagesDropdown,
+    PagesDropdownWhite,
   },
 };
 </script>
