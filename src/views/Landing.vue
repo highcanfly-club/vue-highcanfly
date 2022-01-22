@@ -114,12 +114,10 @@
               </div>
               <h3 class="text-3xl mb-2 font-semibold leading-normal">Partageons nos expériences</h3>
               <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Le parapente fait partie de ces activités, comme l'alpinisme, qui créent des émotions fortes. Elles permettent de développer rapidement des liens forts avec les gens qui partagnet l'activité avec nous. 
               </p>
               <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Une sortie Hike and Fly laisse souvent de nombreux souvenirs de conversations pendant la montée,de partage d'émotions à la vue des paysages… et de vols fabuleux. 
               </p>
             </div>
 
