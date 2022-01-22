@@ -9,7 +9,7 @@
           class="absolute top-0 w-full h-full bg-center bg-cover"
           v-bind:style="{ backgroundImage: 'url(' + backgroundImageURL + ')' }"
         >
-          <span id="blackOverlay" class="w-full h-full absolute opacity-40 bg-black"></span>
+          <span id="blackOverlay" class="w-full h-full absolute opacity-20 bg-black"></span>
         </div>
         <div class="container relative mx-auto">
           <div class="items-center flex flex-wrap">
