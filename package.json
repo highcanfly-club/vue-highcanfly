@@ -33,7 +33,7 @@
     "@vue/cli-plugin-babel": "5.0.0-rc.2",
     "@vue/cli-plugin-eslint": "5.0.0-rc.2",
     "@vue/cli-service": "5.0.0-rc.2",
-    "autoprefixer": "10.2.5",
+    "autoprefixer": "10.4.2",
     "eslint": "7.22.0",
     "eslint-plugin-vue": "7.7.0",
     "postcss": "8.4.5",
