@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100px" height="100px"
+	 viewBox="0 0 464 464" style="enable-background:new 0 0 464 464;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#494342;}
-	.st1{fill:#F93E15;}
-	.st2{fill:#F97315;}
+	.grey{fill:#494342;}
+	.orange-ext{fill:#F93E15;}
+	.orange{fill:#F97315;}
 </style>
-<path class="st0" d="M46.6,34.5h6.9v60.8c0,2.1-1.6,3.8-3.4,3.8s-3.4-1.7-3.4-3.8V34.5z"/>
-<path class="st1" d="M70.7,20.7c0,11.4-9.3,20.7-20.7,20.7s-20.7-9.3-20.7-20.7S38.6,0,50,0S70.7,9.3,70.7,20.7z"/>
-<path class="st2" d="M63.8,20.7c0,7.6-6.2,13.8-13.8,13.8s-13.8-6.2-13.8-13.8S42.4,6.9,50,6.9C57.6,6.9,63.8,13.1,63.8,20.7z"/>
+<path class="grey" d="M216,160h32v282.1c0,9.7-7.2,17.6-16,17.6s-16-7.9-16-17.6V160z"/>
+<path class="orange-ext" d="M328,96c0,53-43,96-96,96s-96-43-96-96s43-96,96-96S328,43,328,96z"/>
+<path class="orange" d="M296,96c0,35.3-28.7,64-64,64s-64-28.7-64-64s28.7-64,64-64S296,60.7,296,96z"/>
 </svg>
