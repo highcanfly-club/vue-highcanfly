@@ -27,7 +27,7 @@
     "vue3-openlayers": "^0.1.56"
   },
   "devDependencies": {
-    "@babel/core": "7.16.10",
+    "@babel/core": "7.16.12",
     "@babel/eslint-parser": "7.16.5",
     "@vue/cli-plugin-babel": "5.0.0-rc.2",
     "@vue/cli-plugin-eslint": "5.0.0-rc.2",
