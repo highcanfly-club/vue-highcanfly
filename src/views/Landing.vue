@@ -14,7 +14,7 @@
         <div class="container relative mx-auto">
           <div class="items-center flex flex-wrap">
             <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-              <div class="pr-12">
+              <div class="md:pr-12 pt-5 md:pt-0">
                 <h1 class="text-white font-semibold text-5xl">Venez voler avec nous !</h1>
                 <p class="mt-4 text-lg text-slate-200">
                   On vole aussi dans le nord de la France…
@@ -428,7 +428,7 @@
         </div>
       </section>
       <section class="relative block py-24 lg:pt-0 bg-slate-800">
-        <div class="container mx-auto px-4">
+        <div class="container pt-5 md:pt-0 mx-auto px-4">
           <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
             <div class="w-full lg:w-6/12 px-4">
               <div
