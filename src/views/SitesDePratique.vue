@@ -32,7 +32,7 @@
             class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
           >
             <div class="px-3 py-3">
-                  <olMapsitesDePratiqueComponent mapClass="h-screen/2"/>
+                  <olMapsitesDePratiqueComponent mapClass="h-screen-1/2"/>
             </div>
           </div>
         </div>
