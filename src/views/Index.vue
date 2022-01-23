@@ -44,7 +44,7 @@
       </div>
 
       <img
-        class="absolute top-0 b-auto right-0 pt-20 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px "
+        class="absolute top-0 b-auto right-5 pt-20 sm:w-5/12 -mt-48 sm:mt-0 w-9/12 max-h-860-px "
         src="@/assets/img/logo_high_can_fly.svg"
         alt="Notre logo réutilisable"
       />
