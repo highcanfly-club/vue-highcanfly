@@ -100,7 +100,7 @@ const routes = [
     component: About,
   },
   {
-    path: "/index",
+    path: "/index-new",
     component: Index,
   },
   {
