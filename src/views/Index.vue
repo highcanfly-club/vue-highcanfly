@@ -7,8 +7,9 @@
           <div class="pt-32 sm:pt-0">
             <h2 class="font-semibold text-4xl text-slate-600">Club de parapente dans le Nord</h2>
             <p class="mt-4 text-lg leading-relaxed text-slate-500">
-              Vue Notus is Free and Open Source. It does not change any of the
-              CSS from
+              Nous sommes une structure affiliée à la F.F.V.L.
+              sous le numéro n°29070.
+              Nous sommes aussi membre actif du comité départemental de vol libre.
               <a
                 href="https://tailwindcss.com/?ref=creativetim"
                 class="text-slate-600"
@@ -33,9 +34,11 @@
         </div>
       </div>
 
-      <div class="absolute top-0 b-auto sm:right-5 pt-20 sm:w-5/12 w-full -mt-2 sm:mt-0 max-h-860-px">
-        <img          
-          class="w-8/12 sm:w-full mx-auto"
+      <div
+        class="absolute top-0 b-auto sm:right-5 pt-20 sm:w-5/12 w-full -mt-2 sm:mt-0 max-h-860-px"
+      >
+        <img
+          class="w-7/12 sm:w-full mx-auto"
           src="@/assets/img/logo_high_can_fly.svg"
           alt="Notre logo réutilisable"
         />
