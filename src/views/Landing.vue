@@ -9,7 +9,7 @@
           class="absolute top-0 w-full h-full bg-center bg-cover"
           v-bind:style="{ backgroundImage: 'url(' + backgroundImageURL + ')' }"
         >
-          <span id="blackOverlay" class="w-full h-full absolute opacity-20 bg-black"></span>
+          <span id="blackOverlay" class="w-full h-full absolute opacity-30 bg-black"></span>
         </div>
         <div class="container relative mx-auto">
           <div class="items-center flex flex-wrap">
@@ -420,7 +420,7 @@
           <div class="flex flex-wrap mt-12 justify-center">
             <div class="px-2 py-2 w-full rounded-lg bg-white shadow-lg">
               <div>
-                <olMapsitesDePratiqueComponent mapClass="h-screen-1/2" />
+                <olMapsitesDePratiqueComponent mapClass="h-screen/2" />
               </div>
             </div>
 
@@ -447,7 +447,7 @@
                     <input
                       type="text"
                       class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      placeholder="Full Name"
+                      placeholder="Votre nom"
                       id="email_name"
                     />
                   </div>
@@ -475,7 +475,7 @@
                       rows="4"
                       cols="80"
                       class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                      placeholder="Votre message..."
+                      placeholder="Votre message…"
                     />
                   </div>
                   <div class="text-center mt-6">
