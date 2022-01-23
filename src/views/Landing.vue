@@ -420,7 +420,7 @@
           <div class="flex flex-wrap mt-12 justify-center">
             <div class="px-2 py-2 w-full rounded-lg bg-white shadow-lg">
               <div>
-                <olMapsitesDePratiqueComponent />
+                <olMapsitesDePratiqueComponent mapClass="h-screen/2" />
               </div>
             </div>
 
@@ -430,7 +430,7 @@
       <section class="relative block py-24 lg:pt-0 bg-slate-800">
         <div class="container pt-5 md:pt-0 mx-auto px-4">
           <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-            <div class="w-full lg:w-6/12 px-4">
+            <div class="w-full lg:w-6/12 px-4 pt-6 sm:pt-0">
               <div
                 class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-slate-200"
               >
