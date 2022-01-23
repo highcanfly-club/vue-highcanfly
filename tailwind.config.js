@@ -103,6 +103,11 @@ module.exports = {
         "350-px": "350px",
         "500-px": "500px",
         "600-px": "600px",
+        "screen/2": "50vh",
+        "screen/3": "calc(100vh / 3)",
+        "screen/4": "calc(100vh / 4)",
+        "screen/5": "calc(100vh / 5)",
+        "screen/6": "calc(100vh / 6)",
       },
       maxHeight: {
         "860-px": "860px",

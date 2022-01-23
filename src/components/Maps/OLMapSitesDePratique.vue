@@ -2,7 +2,7 @@
   <ol-map
     :loadTilesWhileAnimating="true"
     :loadTilesWhileInteracting="true"
-    :style="{ height: mapHeight }"
+    :class="mapClass"
   >
     <ol-projection-register
       projectionName="EPSG:2154"
@@ -71,9 +71,9 @@ import {
 
 export default {
   props: {
-    mapHeight: {
+    mapClass: {
       type: String,
-      default: '400px'
+      default: 'w-[400px]'
     }
   },
   setup(props) { //eslint-disable-line
