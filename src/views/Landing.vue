@@ -500,7 +500,7 @@ import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg"; //eslint-dis
 import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; //eslint-disable-line
 import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
 import qrCode from "qrcode.vue";
-import { ref, inject, reactive} from 'vue' ;//eslint-disable-line
+import { inject, reactive} from 'vue' ;
 
 export default {
   methods: {
@@ -512,7 +512,6 @@ export default {
     inject('getJpgOrWebpIfSupported')(backgroundImageAsset,backgroundImageAssetWebp,'lossy').then( file => {console.log('Webp support: ' + file);state.backgroundImageURL = file});
     return {
       state,
-      backgroundImageURL: state.backgroundImageURL,
     };
   },
 
