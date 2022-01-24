@@ -42,6 +42,9 @@ import OpenLayersMap from 'vue3-openlayers';
 
 import 'vue3-openlayers/dist/vue3-openlayers.css';
 import Test from "@/views/OpenLayersTest.vue";
+
+//Global functions
+import Highcanfly from "@/plugins/highcanfly";
 // routes
 
 const routes = [
@@ -135,5 +138,6 @@ const app = createApp(App);
 
 app.use(router);
 app.use(OpenLayersMap);
+app.use(Highcanfly);
 
 const vm = app.mount("#app"); //eslint-disable-line
