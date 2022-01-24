@@ -6,8 +6,9 @@
         class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75"
       >
         <div
+          id="bg-div"
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{ backgroundImage: 'url(' + backgroundImageURL + ')' }"
+          v-bind:style="{ backgroundImage: 'url(' + state.backgroundImageURL + ')' }"
         >
           <span id="blackOverlay" class="w-full h-full absolute opacity-30 bg-black"></span>
         </div>
@@ -113,12 +114,12 @@
                 <i class="fas fa-user-friends text-xl"></i>
               </div>
               <h3 class="text-3xl mb-2 font-semibold leading-normal">Partageons nos expériences</h3>
-              <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600">
-                Le parapente fait partie de ces activités, comme l'alpinisme, qui créent des émotions fortes. Elles permettent de développer rapidement des liens forts avec les gens qui partagnet l'activité avec nous. 
-              </p>
-              <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-slate-600">
-                Une sortie Hike and Fly laisse souvent de nombreux souvenirs de conversations pendant la montée,de partage d'émotions à la vue des paysages… et de vols fabuleux. 
-              </p>
+              <p
+                class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600"
+              >Le parapente fait partie de ces activités, comme l'alpinisme, qui créent des émotions fortes. Elles permettent de développer rapidement des liens forts avec les gens qui partagnet l'activité avec nous.</p>
+              <p
+                class="text-lg font-light leading-relaxed mt-0 mb-4 text-slate-600"
+              >Une sortie Hike and Fly laisse souvent de nombreux souvenirs de conversations pendant la montée,de partage d'émotions à la vue des paysages… et de vols fabuleux.</p>
             </div>
 
             <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
@@ -268,9 +269,7 @@
                 />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">R…</h5>
-                  <p
-                    class="mt-1 text-sm text-slate-400 uppercase font-semibold"
-                  >Animateur fédéral</p>
+                  <p class="mt-1 text-sm text-slate-400 uppercase font-semibold">Animateur fédéral</p>
                   <div class="mt-6">
                     <button
                       class="bg-slate-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
@@ -423,7 +422,6 @@
                 <olMapsitesDePratiqueComponent mapClass="h-screen-1/2" />
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -498,14 +496,27 @@
 <script>
 import Navbar from "@/components/Navbars/Navbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
-import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg";
+import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg"; //eslint-disable-line
+import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; //eslint-disable-line
 import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
 import qrCode from "qrcode.vue";
+import { ref, inject, reactive} from 'vue' ;//eslint-disable-line
 
 export default {
+  methods: {
+  },
+  setup() {
+    const state = reactive({//eslint-disable-line
+                            backgroundImageURL: '',
+                          });
+    inject('getJpgOrWebpIfSupported')(backgroundImageAsset,backgroundImageAssetWebp,'lossy').then( file => {console.log('Webp support: ' + file);state.backgroundImageURL = file});
+    return {
+      state,
+      backgroundImageURL: state.backgroundImageURL,
+    };
+  },
   data() {
     return {
-      backgroundImageURL: backgroundImageAsset,
     };
   },
   components: {
