@@ -126,11 +126,15 @@
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-emerald-500"
               >
-                <img
-                  alt="..."
-                  src="@/assets/img/highcanfly-103.jpg"
-                  class="w-full align-middle rounded-t-lg"
-                />
+                <picture>
+                  <source srcset="@/assets/img/highcanfly-103.webp" type="image/webp" />
+                  <source srcset="@/assets/img/highcanfly-103.jpg" type="image/jpeg" />
+                  <img
+                    class="w-full align-middle rounded-t-lg"
+                    src="@/assets/img/highcanfly-103.jpg"
+                    alt="..."
+                  />
+                </picture>
                 <blockquote class="relative p-8 mb-4">
                   <svg
                     preserveAspectRatio="none"
@@ -179,11 +183,15 @@
         <div class="container mx-auto px-4">
           <div class="items-center flex flex-wrap">
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-              <img
-                alt="..."
-                class="max-w-full rounded-lg shadow-lg"
-                src="@/assets/img/highcanfly-104.jpg"
-              />
+              <picture>
+                <source srcset="@/assets/img/highcanfly-104.webp" type="image/webp" />
+                <source srcset="@/assets/img/highcanfly-104.jpg" type="image/jpeg" />
+                <img
+                  alt="..."
+                  class="max-w-full rounded-lg shadow-lg"
+                  src="@/assets/img/highcanfly-104.jpg"
+                />
+              </picture>
             </div>
             <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
               <div class="md:pr-12">
@@ -262,11 +270,15 @@
           <div class="flex flex-wrap">
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img
-                  alt="..."
-                  src="@/assets/img/highcanfly-106.jpg"
-                  class="shadow-lg rounded-full mx-auto max-w-120-px"
-                />
+                <picture>
+                  <source srcset="@/assets/img/highcanfly-106.webp" type="image/webp" />
+                  <source srcset="@/assets/img/highcanfly-106.jpg" type="image/jpeg" />
+                  <img
+                    alt="..."
+                    src="@/assets/img/highcanfly-106.jpg"
+                    class="shadow-lg rounded-full mx-auto max-w-120-px"
+                  />
+                </picture>
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">R…</h5>
                   <p class="mt-1 text-sm text-slate-400 uppercase font-semibold">Animateur fédéral</p>
@@ -284,11 +296,15 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img
-                  alt="..."
-                  src="@/assets/img/highcanfly-105.jpg"
-                  class="shadow-lg rounded-full mx-auto max-w-120-px"
-                />
+                <picture>
+                  <source srcset="@/assets/img/highcanfly-105.webp" type="image/webp" />
+                  <source srcset="@/assets/img/highcanfly-105.jpg" type="image/jpeg" />
+                  <img
+                    alt="..."
+                    src="@/assets/img/highcanfly-105.jpg"
+                    class="shadow-lg rounded-full mx-auto max-w-120-px"
+                  />
+                </picture>
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">H…</h5>
                   <p
@@ -313,11 +329,15 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img
-                  alt="..."
-                  src="@/assets/img/capucine.jpg"
-                  class="shadow-lg rounded-full mx-auto max-w-120-px"
-                />
+                <picture>
+                  <source srcset="@/assets/img/capucine.webp" type="image/webp" />
+                  <source srcset="@/assets/img/capucine.jpg" type="image/jpeg" />
+                  <img
+                    alt="..."
+                    src="@/assets/img/capucine.jpg"
+                    class="shadow-lg rounded-full mx-auto max-w-120-px"
+                  />
+                </picture>
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">C…</h5>
                   <p
@@ -344,11 +364,15 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <img
-                  alt="..."
-                  src="@/assets/img/highcanfly-107.jpg"
-                  class="shadow-lg rounded-full mx-auto max-w-120-px"
-                />
+                <picture>
+                  <source srcset="@/assets/img/highcanfly-107.webp" type="image/webp" />
+                  <source srcset="@/assets/img/highcanfly-107.jpg" type="image/jpeg" />
+                  <img
+                    alt="..."
+                    src="@/assets/img/highcanfly-107.jpg"
+                    class="shadow-lg rounded-full mx-auto max-w-120-px"
+                  />
+                </picture>
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">A…</h5>
                   <p
@@ -500,16 +524,16 @@ import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg"; //eslint-dis
 import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; //eslint-disable-line
 import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
 import qrCode from "qrcode.vue";
-import { inject, reactive} from 'vue' ;
+import { inject, reactive } from 'vue';
 
 export default {
   methods: {
   },
   data() {
     const state = reactive({//eslint-disable-line
-                            backgroundImageURL: '',
-                          });
-    inject('getJpgOrWebpIfSupported')(backgroundImageAsset,backgroundImageAssetWebp,'lossy').then( file => {console.log('Webp support: ' + file);state.backgroundImageURL = file});
+      backgroundImageURL: '',
+    });
+    inject('getJpgOrWebpIfSupported')(backgroundImageAsset, backgroundImageAssetWebp, 'lossy').then(file => { console.log('Webp support: ' + file); state.backgroundImageURL = file });
     return {
       state,
     };
