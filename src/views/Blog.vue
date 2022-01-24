@@ -5,9 +5,7 @@
       <section class="relative block h-500-px">
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          style="
-            background-image: url('/assets/img/mountain.jpg');
-          "
+          v-bind:style="{ backgroundImage: 'url(' + state.backgroundImageURL + ')' }"
         >
           <span
             id="blackOverlay"
@@ -130,12 +128,20 @@ Tous les résultats sont en ligne sur le site web fédéral: <br/>
 <script>
 import Navbar from "@/components/Navbars/Navbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
+import backgroundImageAsset from "@/assets/img/mountain.jpg";
+import backgroundImageAssetWebp from "@/assets/img/mountain.webp";
+import { inject, reactive} from 'vue' ;
 
 import capucine from "@/assets/img/capucine.jpg";
 
 export default {
   data() {
+    const state = reactive({//eslint-disable-line
+                            backgroundImageURL: '',
+                          });
+    inject('getJpgOrWebpIfSupported')(backgroundImageAsset,backgroundImageAssetWebp,'lossy').then( file => {console.log('Webp support: ' + file);state.backgroundImageURL = file});
     return {
+      state,
       capucine,
     };
   },
