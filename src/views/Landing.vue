@@ -505,7 +505,7 @@ import { ref, inject, reactive} from 'vue' ;//eslint-disable-line
 export default {
   methods: {
   },
-  setup() {
+  data() {
     const state = reactive({//eslint-disable-line
                             backgroundImageURL: '',
                           });
@@ -515,10 +515,7 @@ export default {
       backgroundImageURL: state.backgroundImageURL,
     };
   },
-  data() {
-    return {
-    };
-  },
+
   components: {
     Navbar,
     FooterComponent,
