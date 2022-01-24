@@ -118,12 +118,19 @@
 <script>
 import Navbar from "@/components/Navbars/Navbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
-
+import backgroundImageAsset from "@/assets/img/mountain.jpg";
+import backgroundImageAssetWebp from "@/assets/img/mountain.webp";
+import { inject, reactive} from 'vue' ;
 import logo from "@/assets/img/logo_high_can_fly.svg";
 
 export default {
   data() {
+    const state = reactive({//eslint-disable-line
+                            backgroundImageURL: '',
+                          });
+    inject('getJpgOrWebpIfSupported')(backgroundImageAsset,backgroundImageAssetWebp,'lossy').then( file => {console.log('Webp support: ' + file);state.backgroundImageURL = file});
     return {
+      state,
       logo,
     };
   },
