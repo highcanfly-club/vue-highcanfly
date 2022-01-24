@@ -5,7 +5,7 @@
       <section class="relative block h-500-px">
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{ backgroundImage: 'url(' + backgroundImageURL + ')' }"
+          v-bind:style="{ backgroundImage: 'url(' + state.backgroundImageURL + ')' }"
         >
           <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-grey"></span>
         </div>
@@ -45,12 +45,18 @@
 import Navbar from "@/components/Navbars/Navbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
 import backgroundImageAsset from "@/assets/img/blancnezhugues-101.jpg";
+import backgroundImageAssetWebp from "@/assets/img/blancnezhugues-101.webp";
 import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
+import { inject, reactive} from 'vue' ;
 
 export default {
   data() {
+    const state = reactive({//eslint-disable-line
+                            backgroundImageURL: '',
+                          });
+    inject('getJpgOrWebpIfSupported')(backgroundImageAsset,backgroundImageAssetWebp,'lossy').then( file => {console.log('Webp support: ' + file);state.backgroundImageURL = file});
     return {
-      backgroundImageURL: backgroundImageAsset,
+      state,
     };
   },
   components: {
