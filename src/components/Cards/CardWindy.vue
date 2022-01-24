@@ -4,11 +4,24 @@
  >
   <div class="p-0.5 h-full">
    <iframe
+    v-if="loaded"
     class="w-full h-full rounded"
-    src="https://embed.windy.com/embed2.html?lat=50.475&lon=2.390&detailLat=50.419&detailLon=2.903&width=650&height=450&zoom=8&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=&calendar=24&pressure=true&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=default&radarRange=-1"
+    :src="src"
    ></iframe>
   </div>
  </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      loaded: false,
+      src: "https://embed.windy.com/embed2.html?lat=50.475&lon=2.390&detailLat=50.419&detailLon=2.903&width=650&height=450&zoom=8&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=&calendar=24&pressure=true&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=default&radarRange=-1",
+    }
+  },
+  mounted() {
+    this.loaded = true;
+  }
+}
+</script>
