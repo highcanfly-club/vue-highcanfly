@@ -66,9 +66,6 @@ module.exports = {
           '900': '#1c5924'
         }
       },
-      minHeight: {
-        "screen-75": "75vh",
-      },
       fontSize: {
         "55": "55rem",
       },
@@ -102,6 +99,25 @@ module.exports = {
         "350-px": "350px",
         "500-px": "500px",
         "600-px": "600px",
+        "screen-1/2": "50vh",
+        "screen-1/3": "calc(100vh / 3)",
+        "screen-2/3": "calc(2 * 100vh / 3)",
+        "screen-1/4": "calc(100vh / 4)",
+        "screen-3/4": "calc(3 * 100vh / 4)",
+        "screen-1/5": "calc(100vh / 5)",
+        "screen-2/5": "calc(2 * 100vh / 5)",
+        "screen-3/5": "calc(3 * 100vh / 5)",
+        "screen-4/5": "calc(4 * 100vh / 5)",
+        "screen-1/6": "calc(100vh / 6)",
+        "screen-5/6": "calc(5 * 100vh / 6)",
+      },
+      minHeight: {
+        "95-px": "95px",
+        "70-px": "70px",
+        "350-px": "350px",
+        "500-px": "500px",
+        "600-px": "600px",
+        "screen-75": "75vh",
         "screen-1/2": "50vh",
         "screen-1/3": "calc(100vh / 3)",
         "screen-2/3": "calc(2 * 100vh / 3)",
