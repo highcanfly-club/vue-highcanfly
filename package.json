@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
+    "wrangler": "npx wrangler pages dev -- yarn serve",
     "build": "vue-cli-service build && gulp licenses",
     "lint": "vue-cli-service lint",
     "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
@@ -24,7 +25,8 @@
     "qrcode.vue": "^3.3.3",
     "vue": "3.2.27",
     "vue-router": "4.0.12",
-    "vue3-openlayers": "^0.1.56"
+    "vue3-openlayers": "^0.1.56",
+    "wrangler": "^0.0.12"
   },
   "devDependencies": {
     "@babel/core": "7.16.12",
