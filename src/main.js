@@ -37,6 +37,8 @@ import IndexOrig from "@/views/Index.orig.vue";
 import MapFlers from "@/views/MapFlers.vue";
 import SitesDePratique from "@/views/SitesDePratique.vue";
 
+//sitemap
+import Sitemap from "@/views/Sitemap.vue";
 //vue3 openlayers
 import OpenLayersMap from 'vue3-openlayers';
 
@@ -46,6 +48,7 @@ import Test from "@/views/OpenLayersTest.vue";
 //Global functions
 import Highcanfly from "@/plugins/highcanfly";
 // routes
+
 
 const routes = [
   {
@@ -89,18 +92,22 @@ const routes = [
   {
     path: "/policy",
     component: Policy,
+    name: "Policy",
   },
   {
     path: "/landing",
     component: Landing,
+    name: "Landing",
   },
   {
     path: "/blog",
     component: Blog,
+    name: "Blog",
   },
   {
     path: "/about",
     component: About,
+    name: "À propos",
   },
   {
     path: "/index-new",
@@ -125,8 +132,10 @@ const routes = [
   {
     path: "/",
     component: Landing,
+    name: 'index',
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
+  { path: "/sitemap.xml", component: Sitemap},
 ];
 
 const router = createRouter({
