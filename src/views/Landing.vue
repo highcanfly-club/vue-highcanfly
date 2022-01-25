@@ -457,56 +457,67 @@
                 class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-slate-200"
               >
                 <div class="flex-auto p-5 lg:p-10">
-                  <h4 class="text-2xl font-semibold">Pour nous contacter</h4>
-                  <p
-                    class="leading-relaxed mt-1 mb-4 text-slate-500"
-                  >Completer ce formulaire (envoyé par email)</p>
-                  <div class="relative w-full mb-3 mt-8">
-                    <label
-                      class="block uppercase text-slate-600 text-xs font-bold mb-2"
-                      for="full-name"
-                    >Nom</label>
-                    <input
-                      type="text"
-                      class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      placeholder="Votre nom"
-                      id="email_name"
-                    />
-                  </div>
+                  <form @submit="checkForm" action="/sendemail" method="post">
+                    <h4 class="text-2xl font-semibold">Pour nous contacter</h4>
+                      <p v-if="errors.length">
+                        <b>Veuillez corriger ces erreurs:</b>
+                        <ul>
+                          <li v-for="error in errors" :key="error.id">{{ error }}</li>
+                        </ul>
+                      </p>
+                    <p class="leading-relaxed mt-1 mb-4 text-slate-500">Completer ce formulaire…</p>
+                    <div class="relative w-full mb-3 mt-8">
+                      <label
+                        class="block uppercase text-slate-600 text-xs font-bold mb-2"
+                        for="full-name"
+                      >Nom</label>
+                      <input
+                        type="text"
+                        class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        placeholder="Votre nom"
+                        id="email_name"
+                        name="name"
+                        v-model="name"
+                      />
+                    </div>
 
-                  <div class="relative w-full mb-3">
-                    <label
-                      class="block uppercase text-slate-600 text-xs font-bold mb-2"
-                      for="email"
-                    >Email</label>
-                    <input
-                      type="email"
-                      class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      placeholder="Email"
-                      id="email_email"
-                    />
-                  </div>
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-slate-600 text-xs font-bold mb-2"
+                        for="email"
+                      >Email</label>
+                      <input
+                        type="email"
+                        class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        placeholder="Email"
+                        id="email_email"
+                        name="email"
+                        v-model="email"
+                      />
+                    </div>
 
-                  <div class="relative w-full mb-3">
-                    <label
-                      class="block uppercase text-slate-600 text-xs font-bold mb-2"
-                      for="message"
-                    >Message</label>
-                    <textarea
-                      id="email_message"
-                      rows="4"
-                      cols="80"
-                      class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                      placeholder="Votre message…"
-                    />
-                  </div>
-                  <div class="text-center mt-6">
-                    <button
-                      class="bg-slate-800 text-white active:bg-slate-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                      type="button"
-                      onclick="location.href='mailto:parapente@highcanfly.club?subject=Contact%20formulaire%20web&body=EMAIL%20:%20'+document.getElementById('email_name').value+'%0ANOM%20:%20'+document.getElementById('email_email').value+'%0AMESSAGE%20:%20'+document.getElementById('email_message').value+''"
-                    >Envoyer</button>
-                  </div>
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-slate-600 text-xs font-bold mb-2"
+                        for="message"
+                      >Message</label>
+                      <textarea
+                        id="email_message"
+                        rows="4"
+                        cols="80"
+                        class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                        placeholder="Votre message…"
+                        name="message"
+                        v-model="message"
+                      />
+                    </div>
+                    <div class="text-center mt-6">
+                      <button
+                        class="bg-slate-800 text-white active:bg-slate-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="submit"
+                      >Envoyer</button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -527,15 +538,36 @@ import qrCode from "qrcode.vue";
 import { inject, reactive } from 'vue';
 
 export default {
+
   methods: {
+    checkForm: function (e) {
+      if (this.name && this.email && this.message) {
+        return true;
+      }
+
+      this.errors = [];
+
+      if (!this.name) {
+        this.errors.push('Nom requis.');
+      }
+      if (!this.email) {
+        this.errors.push('Email requis.');
+      }
+      if (!this.message) {
+        this.errors.push('Message requis.');
+      }
+      e.preventDefault();
+    }
   },
   data() {
+    const errors = [];
     const state = reactive({//eslint-disable-line
       backgroundImageURL: '',
     });
     inject('getJpgOrWebpIfSupported')(backgroundImageAsset, backgroundImageAssetWebp, 'lossy').then(file => { console.log('Webp support: ' + file); state.backgroundImageURL = file });
     return {
       state,
+      errors,
     };
   },
 
