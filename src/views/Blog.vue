@@ -148,7 +148,12 @@
                   <i class="fas fa-rss mr-2 text-lg text-slate-400"></i>
                   À la demande de la commission marche et vol de la fédération nous avons réalisé 
                   l'outil qui permet l'assemblage des traces lors d'une sortie marche et vol<br/>
-                  L'outil brut est <a href="https://cfdmv.highcanfly.club/">ici (en anglais)</a> mais il est intégré directement dans la page de saisie de vols vols…
+                  L'outil brut est <a href="https://cfdmv.highcanfly.club/">ici (en anglais)</a> mais il est intégré directement dans la page de saisie de vols vols…<br />
+                </div>
+                <div class="mb-2 text-slate-600 mt-10">
+                  <i class="fab fa-github mr-2 text-lg text-slate-400"></i>
+                   Si vous en avez les compétences il y a des dizaines de choses à faire pour améliorer le système.<br />
+                  Votre aide est la bienvenue ! <a  class="text-slate-400" href="https://github.com/eltorio/CFDTrackJoiner">Le code est sur Github</a>.
                 </div>
                 <div class="text-sm leading-normal mt-0 mb-2 text-slate-600 font-bold uppercase">
                   <i class="fas fa-medal mr-2 text-lg"></i>
