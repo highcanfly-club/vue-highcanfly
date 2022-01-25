@@ -5,12 +5,9 @@
       <section class="relative block h-500-px">
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{ background: backgroundImageURL }"
+          v-bind:style="{ backgroundImage: 'url(' + state.backgroundImageURL + ')' }"
         >
-          <span
-            id="blackOverlay"
-            class="w-full h-full absolute opacity-50 bg-grey"
-          ></span>
+          <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-grey"></span>
         </div>
         <div
           class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
@@ -25,10 +22,7 @@
             x="0"
             y="0"
           >
-            <polygon
-              class="text-slate-200 fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
+            <polygon class="text-slate-200 fill-current" points="2560 0 2560 100 0 100" />
           </svg>
         </div>
       </section>
@@ -37,9 +31,9 @@
           <div
             class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
           >
-<div class="px-6 py-6">
-<!-- Goes here-->
-</div>
+            <div class="px-6 py-6">
+              <!-- Goes here-->
+            </div>
           </div>
         </div>
       </section>
@@ -51,17 +45,23 @@
 import Navbar from "@/components/Navbars/Navbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
 import backgroundImageAsset from "@/assets/img/blancnezhugues-101.jpg";
-//import team2 from "@/assets/img/team-2-800x800.jpg";
+import backgroundImageAssetWebp from "@/assets/img/blancnezhugues-101.webp";
+import { inject, reactive } from 'vue';
 
 export default {
   data() {
+    const state = reactive({//eslint-disable-line
+      backgroundImageURL: '',
+    });
+    inject('getJpgOrWebpIfSupported')(backgroundImageAsset, backgroundImageAssetWebp, 'lossy').then(file => { console.log('Webp support: ' + file); state.backgroundImageURL = file });
     return {
-      backgroundImageURL: 'url("'+backgroundImageAsset+'")',
+      state,
     };
   },
   components: {
     Navbar,
     FooterComponent,
   },
+
 };
 </script>

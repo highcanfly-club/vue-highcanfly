@@ -31,6 +31,7 @@ import Register from "@/views/auth/Register.vue";
 import Landing from "@/views/Landing.vue";
 import Policy from "@/views/Policy.vue";
 import Blog from "@/views/Blog.vue";
+import Demo from "@/views/Demo.vue";
 import About from "@/views/About.vue";
 import Index from "@/views/Index.vue";
 import IndexOrig from "@/views/Index.orig.vue";
@@ -120,6 +121,10 @@ const routes = [
   {
     path: "/map-flers",
     component: MapFlers,
+  },
+  {
+    path: "/demo",
+    component: Demo,
   },
   {
     path: "/map-sites-de-pratique",
