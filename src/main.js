@@ -129,6 +129,7 @@ const routes = [
   {
     path: "/map-sites-de-pratique",
     component: SitesDePratique,
+    name:"Sites de pratique",
   },
   {
     path: "/openlayer-test",
@@ -140,7 +141,7 @@ const routes = [
     name: 'index',
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
-  { path: "/sitemap.xml", component: Sitemap},
+  { path: "/sitemap", component: Sitemap},
 ];
 
 const router = createRouter({
