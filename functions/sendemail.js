@@ -1,5 +1,5 @@
 //store these environment variables in Clouflare Pages UI
-//MAILJET_API_KEY = '89c9b3b4be6f6bcc1e96f5b17371d1fc';
+//MAILJET_API_KEY = '89c9b3b4be6f6bcc1e96f5b17401d1fc';
 //MAILJET_API_PWD = '69168d2a48f80294f3ffd51241f14856';
 //MAILJET_TO = 'your@email.com';
 
@@ -36,13 +36,13 @@ async function sendEmail({ api_key, api_pwd, dest, fromemail, name, message, red
             "Messages": [
               {
                 "From": {
-                  "Email": "parapente@highcanfly.club",
-                  "Name": "Ronan"
+                  "Email": `${dest}`,
+                  "Name": `${dest}`
                 },
                 "To": [
                   {
-                    "Email": "parapente@highcanfly.club",
-                    "Name": "Ronan"
+                    "Email": `${dest}`,
+                    "Name": `${dest}`
                   }
                 ],
                 "Subject": `Contact formulaire web:${fromemail} ` ,
