@@ -1,6 +1,7 @@
-const MAILGUN_API_KEY = '89c9b3b4be6f6bcc1e96f5b17371d1fc';
-const MAILGUN_API_PWD = '69168d2a48f80294f3ffd51241f14856';
-const MAILGUN_TO = 'parapente@highcanfly.club';
+//store these environment variables in Clouflare Pages UI
+//MAILJET_API_KEY = '89c9b3b4be6f6bcc1e96f5b17371d1fc';
+//MAILJET_API_PWD = '69168d2a48f80294f3ffd51241f14856';
+//MAILJET_TO = 'your@email.com';
 
 async function readRequestBody(request) {
     const { headers } = request
@@ -23,37 +24,11 @@ async function readRequestBody(request) {
     }
 }
 
-/*
-curl -s \
-            -X POST \
-            --user "89c9b3b4be6f6bcc1e96f5b17371d1fc:69168d2a48f80294f3ffd51241f14856" \
-            https://api.mailjet.com/v3.1/send \
-            -H 'Content-Type: application/json' \
-            -d '{
-            "Messages":[
-                {
-                "From": {
-                    "Email": "parapente@highcanfly.club",
-                    "Name": "Ronan"
-                },
-                "To": [
-                    {
-                    "Email": "parapente@highcanfly.club",
-                    "Name": "Ronan"
-                    }
-                ],
-                "Subject": "My first Mailjet email",
-                "TextPart": "Greetings from Mailjet.",
-                "HTMLPart": "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
-                "CustomID": "AppGettingStartedTest"
-                }
-            ]
-            }'
-*/
-
-async function sendEmail({ dest, fromemail, name, message, redirect }) {
+async function sendEmail({ api_key, api_pwd, dest, fromemail, name, message, redirect }) {
+    const MAILJET_API_KEY = api_key;
+    const MAILJET_API_PWD = api_pwd;
     if (!dest) {
-        return Response.redirect(url) // handle errors here
+        return Response.redirect(redirect) // handle errors here
     }
 
     const email = await fetch('https://api.mailjet.com/v3.1/send', {
@@ -78,7 +53,7 @@ async function sendEmail({ dest, fromemail, name, message, redirect }) {
             ]
           }),
         headers: {
-            'Authorization': `Basic ${btoa(MAILGUN_API_KEY + ":" + MAILGUN_API_PWD)}`,
+            'Authorization': `Basic ${btoa(MAILJET_API_KEY + ":" + MAILJET_API_PWD)}`,
             'Content-Type': 'application/json',
         },
         method: 'POST',
@@ -94,18 +69,25 @@ let getRedirectURL = function (context) {
 * All get return to index
 * */
 export async function onRequestGet(context) {
-    return Response.redirect(getRedirectURL(context));
+//    return Response.redirect(getRedirectURL(context));
+console.log(context.env);
+    return new Response('MAILJET_API_KEY : ' + context.env.MAILJET_TO);
 }
 
 
 export async function onRequestPost(context) {
+    let MAILJET_TO = context.env.MAILJET_TO;
+    let MAILJET_API_KEY = context.env.MAILJET_API_KEY;
+    let MAILJET_API_PWD = context.env.MAILJET_API_PWD;
     let reqBody = await readRequestBody(context.request);
     let params = JSON.parse(reqBody);
     let name = params.name;
     let email = params.email;
     let message = params.message;
     let sendGridApi = await sendEmail({
-        dest: MAILGUN_TO,
+        api_key: MAILJET_API_KEY,
+        api_pwd: MAILJET_API_PWD,
+        dest: MAILJET_TO,
         fromemail: email,
         name: name,
         message: message,
