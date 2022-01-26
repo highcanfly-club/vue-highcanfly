@@ -96,29 +96,37 @@ export async function onRequestPost(context) {
   let MAILJET_API_KEY = context.env.MAILJET_API_KEY;
   let MAILJET_API_PWD = context.env.MAILJET_API_PWD;
   let HCAPTCHA_SECRET = context.env.HCAPTCHA_SECRET;
+  let response_code = { hCaptchaResponse: false, mailjetResponse: 'ERROR' };
   let reqBody = await readRequestBody(context.request);
-  let params = JSON.parse(reqBody);
+  let params = reqBody; //JSON.parse(reqBody); //automatically parsed
   let hCaptchaSitekey = params.sitekey;
   let hCaptchaToken = params.token;
   let hCaptchaEkey = params.ekey;
   let name = params.name;
   let email = params.email;
   let message = params.message;
-  let hCaptchaVerified = await verifyHCaptcha(HCAPTCHA_SECRET,hCaptchaToken);
+  let hCaptchaVerified = await verifyHCaptcha(HCAPTCHA_SECRET, hCaptchaToken);
   let hCaptchaResponse = await hCaptchaVerified.json();
   let hCaptchaSucess = hCaptchaResponse.success;
 
-  let sendGridApi = {"statusText": "ERROR", "error-codes":"ERROR API"} ;
-  if (hCaptchaSucess)
-    {  sendGridApi = await sendEmail({
-        api_key: MAILJET_API_KEY,
-        api_pwd: MAILJET_API_PWD,
-        dest: MAILJET_TO,
-        fromemail: email,
-        name: name,
-        message: message,
-        redirect: getRedirectURL(context)
-      });
-}
-  return new Response('NAME: ' + name + '\nEMAIL: ' + email + '\nMESAGE: ' + message + '\nSitekey: ' + hCaptchaSitekey + '\nToken: ' + hCaptchaToken + '\neKey: ' + hCaptchaEkey+ '\nhCaptchaStatus: '+ hCaptchaSucess + '\nAPI: ' + sendGridApi.statusText);
+  let sendGridApi = { "statusText": "ERROR", "error-codes": "ERROR API" };
+  if (hCaptchaSucess) {
+    sendGridApi = await sendEmail({
+      api_key: MAILJET_API_KEY,
+      api_pwd: MAILJET_API_PWD,
+      dest: MAILJET_TO,
+      fromemail: email,
+      name: name,
+      message: message,
+      redirect: getRedirectURL(context)
+    });
+  }
+  console.log('NAME: ' + name + ' EMAIL: ' + email + ' MESAGE: ' + message + ' Sitekey: ' + hCaptchaSitekey + ' hCaptchaStatus: ' + hCaptchaSucess + ' API: ' + sendGridApi.statusText);
+  response_code.hCaptchaResponse = hCaptchaSucess;
+  response_code.mailjetResponse = sendGridApi.statusText;
+  return new Response(JSON.stringify(response_code,null,2), {
+    headers: {
+      "content-type": "application/json;charset=UTF-8"
+    }
+  })
 }
