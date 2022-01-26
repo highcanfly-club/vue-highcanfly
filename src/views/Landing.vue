@@ -3,32 +3,59 @@
     <navbar />
     <main>
       <div
-        class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75"
+        class="
+          relative
+          pt-16
+          pb-32
+          flex
+          content-center
+          items-center
+          justify-center
+          min-h-screen-75
+        "
       >
         <div
           id="bg-div"
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{ backgroundImage: 'url(' + state.backgroundImageURL + ')' }"
+          v-bind:style="{
+            backgroundImage: 'url(' + state.backgroundImageURL + ')',
+          }"
         >
-          <span id="blackOverlay" class="w-full h-full absolute opacity-30 bg-black"></span>
+          <span
+            id="blackOverlay"
+            class="w-full h-full absolute opacity-30 bg-black"
+          ></span>
         </div>
         <div class="container relative mx-auto">
           <div class="items-center flex flex-wrap">
             <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
               <div class="md:pr-12 pt-5 md:pt-0">
-                <h1 class="text-white font-semibold text-5xl">Venez voler avec nous !</h1>
+                <h1 class="text-white font-semibold text-5xl">
+                  Venez voler avec nous !
+                </h1>
                 <p class="mt-4 text-lg text-slate-200">
                   On vole aussi dans le nord de la France…
                   <br />Marcher et Voler, voilà ce qui nous ressemble.
-                  <br />Vous êtes un pilote autonome, en progression ou débutant; partagez notre passion du vol libre.
+                  <br />Vous êtes un pilote autonome, en progression ou
+                  débutant; partagez notre passion du vol libre.
                 </p>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
-          style="transform: translateZ(0);"
+          class="
+            top-auto
+            bottom-0
+            left-0
+            right-0
+            w-full
+            absolute
+            pointer-events-none
+            overflow-hidden
+            h-70-px
+          "
+          style="transform: translateZ(0)"
         >
           <svg
             class="absolute bottom-0 overflow-hidden"
@@ -39,7 +66,10 @@
             x="0"
             y="0"
           >
-            <polygon class="text-slate-200 fill-current" points="2560 0 2560 100 0 100" />
+            <polygon
+              class="text-slate-200 fill-current"
+              points="2560 0 2560 100 0 100"
+            />
           </svg>
         </div>
       </div>
@@ -49,19 +79,42 @@
           <div class="flex flex-wrap">
             <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+                class="
+                  relative
+                  flex flex-col
+                  min-w-0
+                  break-words
+                  bg-white
+                  w-full
+                  mb-8
+                  shadow-lg
+                  rounded-lg
+                "
               >
                 <div class="px-4 py-5 flex-auto">
                   <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
+                    class="
+                      text-white
+                      p-3
+                      text-center
+                      inline-flex
+                      items-center
+                      justify-center
+                      w-12
+                      h-12
+                      mb-5
+                      shadow-lg
+                      rounded-full
+                      bg-red-400
+                    "
                   >
                     <i class="fas fa-award"></i>
                   </div>
                   <h6 class="text-xl font-semibold">Club de parapente</h6>
                   <p class="mt-2 mb-4 text-slate-500">
                     Nous sommes une structure affiliée à la F.F.V.L.
-                    <br />sous le numéro n°29070.
-                    <br />Nous sommes aussi membre actif du comité départemental de vol libre.
+                    <br />sous le numéro n°29070. <br />Nous sommes aussi membre
+                    actif du comité départemental de vol libre.
                   </p>
                 </div>
               </div>
@@ -69,7 +122,17 @@
 
             <div class="w-full md:w-4/12 px-6 text-center">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+                class="
+                  relative
+                  flex flex-col
+                  min-w-0
+                  break-words
+                  bg-white
+                  w-full
+                  mb-8
+                  shadow-lg
+                  rounded-lg
+                "
               >
                 <div class="px-6 py-6 flex-auto">
                   <div class="px-4 py-4 flex-auto">
@@ -81,24 +144,62 @@
 
             <div class="pt-6 w-full md:w-4/12 px-4 text-center">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+                class="
+                  relative
+                  flex flex-col
+                  min-w-0
+                  break-words
+                  bg-white
+                  w-full
+                  mb-8
+                  shadow-lg
+                  rounded-lg
+                "
               >
                 <div class="px-4 py-5 flex-auto">
                   <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400"
+                    class="
+                      text-white
+                      p-3
+                      text-center
+                      inline-flex
+                      items-center
+                      justify-center
+                      w-12
+                      h-12
+                      mb-5
+                      shadow-lg
+                      rounded-full
+                      bg-emerald-400
+                    "
                   >
                     <i class="fas fa-fingerprint"></i>
                   </div>
                   <a
-                    class="text-slate-600 hover:text-slate-800 text-xl font-semibold block pb-2 text-sm"
+                    class="
+                      text-slate-600
+                      hover:text-slate-800
+                      text-xl
+                      font-semibold
+                      block
+                      pb-2
+                      text-sm
+                    "
                     href="https://intranet.ffvl.fr/structure/14172"
                   >
                     <h6
                       class="text-xl font-semibold"
                       onclick="location.href='https://intranet.ffvl.fr/structure/14172'"
-                    >Notre page FFVL</h6>
-                    <div class="mt-2 mb-4 text-slate-500 grid justify-items-center">
-                      <qrCode render-as="svg" value="https://intranet.ffvl.fr/structure/14172"></qrCode>
+                    >
+                      Notre page FFVL
+                    </h6>
+                    <div
+                      class="mt-2 mb-4 text-slate-500 grid justify-items-center"
+                    >
+                      <qrCode
+                        render-as="svg"
+                        value="https://intranet.ffvl.fr/structure/14172"
+                      ></qrCode>
                     </div>
                   </a>
                 </div>
@@ -109,26 +210,81 @@
           <div class="flex flex-wrap items-center mt-32">
             <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
               <div
-                class="text-slate-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+                class="
+                  text-slate-500
+                  p-3
+                  text-center
+                  inline-flex
+                  items-center
+                  justify-center
+                  w-16
+                  h-16
+                  mb-6
+                  shadow-lg
+                  rounded-full
+                  bg-white
+                "
               >
                 <i class="fas fa-user-friends text-xl"></i>
               </div>
-              <h3 class="text-3xl mb-2 font-semibold leading-normal">Partageons nos expériences</h3>
+              <h3 class="text-3xl mb-2 font-semibold leading-normal">
+                Partageons nos expériences
+              </h3>
               <p
-                class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600"
-              >Le parapente fait partie de ces activités, comme l'alpinisme, qui créent des émotions fortes. Elles permettent de développer rapidement des liens forts avec les gens qui partagnet l'activité avec nous.</p>
+                class="
+                  text-lg
+                  font-light
+                  leading-relaxed
+                  mt-4
+                  mb-4
+                  text-slate-600
+                "
+              >
+                Le parapente fait partie de ces activités, comme l'alpinisme,
+                qui créent des émotions fortes. Elles permettent de développer
+                rapidement des liens forts avec les gens qui partagnet
+                l'activité avec nous.
+              </p>
               <p
-                class="text-lg font-light leading-relaxed mt-0 mb-4 text-slate-600"
-              >Une sortie Hike and Fly laisse souvent de nombreux souvenirs de conversations pendant la montée,de partage d'émotions à la vue des paysages… et de vols fabuleux.</p>
+                class="
+                  text-lg
+                  font-light
+                  leading-relaxed
+                  mt-0
+                  mb-4
+                  text-slate-600
+                "
+              >
+                Une sortie Hike and Fly laisse souvent de nombreux souvenirs de
+                conversations pendant la montée,de partage d'émotions à la vue
+                des paysages… et de vols fabuleux.
+              </p>
             </div>
 
             <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-emerald-500"
+                class="
+                  relative
+                  flex flex-col
+                  min-w-0
+                  break-words
+                  bg-white
+                  w-full
+                  mb-6
+                  shadow-lg
+                  rounded-lg
+                  bg-emerald-500
+                "
               >
                 <picture>
-                  <source srcset="@/assets/img/highcanfly-103.webp" type="image/webp" />
-                  <source srcset="@/assets/img/highcanfly-103.jpg" type="image/jpeg" />
+                  <source
+                    srcset="@/assets/img/highcanfly-103.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    srcset="@/assets/img/highcanfly-103.jpg"
+                    type="image/jpeg"
+                  />
                   <img
                     class="w-full align-middle rounded-t-lg"
                     src="@/assets/img/highcanfly-103.jpg"
@@ -142,18 +298,24 @@
                     viewBox="0 0 583 95"
                     class="absolute left-0 w-full block h-95-px -top-94-px"
                   >
-                    <polygon points="-30,95 583,95 583,65" class="text-emerald-500 fill-current" />
+                    <polygon
+                      points="-30,95 583,95 583,65"
+                      class="text-emerald-500 fill-current"
+                    />
                   </svg>
-                  <h4 class="text-xl font-bold text-white">Coupe française de marche et vol</h4>
+                  <h4 class="text-xl font-bold text-white">
+                    Coupe française de marche et vol
+                  </h4>
                   <p class="text-md font-light mt-2 text-white">
                     Marcher avec son matériel et s'envoler c'est aussi un jeu.
-                    Participez avec nous au challenge des club à la CFDMV.
-                    En tant que membres pensez à déclarer vos vols.
+                    Participez avec nous au challenge des club à la CFDMV. En
+                    tant que membres pensez à déclarer vos vols.
                     <br />
                     <a
                       class="font-bold"
                       href="https://parapente.ffvl.fr/cfdmv/liste/2021/club/14172"
-                    >Les vols du club</a>
+                      >Les vols du club</a
+                    >
                   </p>
                 </blockquote>
               </div>
@@ -164,8 +326,19 @@
 
       <section class="relative py-20">
         <div
-          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
-          style="transform: translateZ(0);"
+          class="
+            bottom-auto
+            top-0
+            left-0
+            right-0
+            w-full
+            absolute
+            pointer-events-none
+            overflow-hidden
+            -mt-20
+            h-20
+          "
+          style="transform: translateZ(0)"
         >
           <svg
             class="absolute bottom-0 overflow-hidden"
@@ -176,7 +349,10 @@
             x="0"
             y="0"
           >
-            <polygon class="text-white fill-current" points="2560 0 2560 100 0 100" />
+            <polygon
+              class="text-white fill-current"
+              points="2560 0 2560 100 0 100"
+            />
           </svg>
         </div>
 
@@ -184,8 +360,14 @@
           <div class="items-center flex flex-wrap">
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
               <picture>
-                <source srcset="@/assets/img/highcanfly-104.webp" type="image/webp" />
-                <source srcset="@/assets/img/highcanfly-104.jpg" type="image/jpeg" />
+                <source
+                  srcset="@/assets/img/highcanfly-104.webp"
+                  type="image/webp"
+                />
+                <source
+                  srcset="@/assets/img/highcanfly-104.jpg"
+                  type="image/jpeg"
+                />
                 <img
                   alt="..."
                   class="max-w-full rounded-lg shadow-lg"
@@ -196,27 +378,55 @@
             <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
               <div class="md:pr-12">
                 <div
-                  class="text-emerald-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-emerald-300"
+                  class="
+                    text-emerald-600
+                    p-3
+                    text-center
+                    inline-flex
+                    items-center
+                    justify-center
+                    w-16
+                    h-16
+                    mb-6
+                    shadow-lg
+                    rounded-full
+                    bg-emerald-300
+                  "
                 >
                   <i class="fas fa-rocket text-xl"></i>
                 </div>
-                <h3 class="text-3xl font-semibold">Petit club deviendra grand</h3>
+                <h3 class="text-3xl font-semibold">
+                  Petit club deviendra grand
+                </h3>
                 <p class="mt-4 text-lg leading-relaxed text-slate-500">
-                  La force d'un club est dans ses membres.
-                  Nos projets de développement :
+                  La force d'un club est dans ses membres. Nos projets de
+                  développement :
                 </p>
                 <ul class="list-none mt-6">
                   <li class="py-2">
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 mr-3"
+                          class="
+                            text-xs
+                            font-semibold
+                            inline-block
+                            py-1
+                            px-2
+                            uppercase
+                            rounded-full
+                            text-emerald-600
+                            bg-emerald-200
+                            mr-3
+                          "
                         >
                           <i class="fas fa-fingerprint"></i>
                         </span>
                       </div>
                       <div>
-                        <h4 class="text-slate-500">Accueil de jeunes pour une découverte au sol</h4>
+                        <h4 class="text-slate-500">
+                          Accueil de jeunes pour une découverte au sol
+                        </h4>
                       </div>
                     </div>
                   </li>
@@ -224,13 +434,26 @@
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 mr-3"
+                          class="
+                            text-xs
+                            font-semibold
+                            inline-block
+                            py-1
+                            px-2
+                            uppercase
+                            rounded-full
+                            text-emerald-600
+                            bg-emerald-200
+                            mr-3
+                          "
                         >
                           <i class="fab fa-html5"></i>
                         </span>
                       </div>
                       <div>
-                        <h4 class="text-slate-500">Développement de nouveaux sites dans la région</h4>
+                        <h4 class="text-slate-500">
+                          Développement de nouveaux sites dans la région
+                        </h4>
                       </div>
                     </div>
                   </li>
@@ -238,15 +461,26 @@
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 mr-3"
+                          class="
+                            text-xs
+                            font-semibold
+                            inline-block
+                            py-1
+                            px-2
+                            uppercase
+                            rounded-full
+                            text-emerald-600
+                            bg-emerald-200
+                            mr-3
+                          "
                         >
                           <i class="far fa-paper-plane"></i>
                         </span>
                       </div>
                       <div>
-                        <h4
-                          class="text-slate-500"
-                        >Favoriser la pratique «non motorisée» du parapente</h4>
+                        <h4 class="text-slate-500">
+                          Favoriser la pratique «non motorisée» du parapente
+                        </h4>
                       </div>
                     </div>
                   </li>
@@ -261,18 +495,26 @@
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap justify-center text-center mb-24">
             <div class="w-full lg:w-6/12 px-4">
-              <h2 class="text-4xl font-semibold">Quelques uns de nos pilotes</h2>
-              <p
-                class="text-lg leading-relaxed m-4 text-slate-500"
-              >Le plus simple c'est de les rencontrer dans les airs.</p>
+              <h2 class="text-4xl font-semibold">
+                Quelques uns de nos pilotes
+              </h2>
+              <p class="text-lg leading-relaxed m-4 text-slate-500">
+                Le plus simple c'est de les rencontrer dans les airs.
+              </p>
             </div>
           </div>
           <div class="flex flex-wrap">
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
                 <picture>
-                  <source srcset="@/assets/img/highcanfly-106.webp" type="image/webp" />
-                  <source srcset="@/assets/img/highcanfly-106.jpg" type="image/jpeg" />
+                  <source
+                    srcset="@/assets/img/highcanfly-106.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    srcset="@/assets/img/highcanfly-106.jpg"
+                    type="image/jpeg"
+                  />
                   <img
                     alt="..."
                     src="@/assets/img/highcanfly-106.jpg"
@@ -281,10 +523,24 @@
                 </picture>
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">R…</h5>
-                  <p class="mt-1 text-sm text-slate-400 uppercase font-semibold">Animateur fédéral</p>
+                  <p
+                    class="mt-1 text-sm text-slate-400 uppercase font-semibold"
+                  >
+                    Animateur fédéral
+                  </p>
                   <div class="mt-6">
                     <button
-                      class="bg-slate-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-slate-700
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                       onclick="location.href='https://www.instagram.com/klerviaudreyronanbriac/'"
                     >
@@ -297,8 +553,14 @@
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
                 <picture>
-                  <source srcset="@/assets/img/highcanfly-105.webp" type="image/webp" />
-                  <source srcset="@/assets/img/highcanfly-105.jpg" type="image/jpeg" />
+                  <source
+                    srcset="@/assets/img/highcanfly-105.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    srcset="@/assets/img/highcanfly-105.jpg"
+                    type="image/jpeg"
+                  />
                   <img
                     alt="..."
                     src="@/assets/img/highcanfly-105.jpg"
@@ -309,16 +571,38 @@
                   <h5 class="text-xl font-bold">H…</h5>
                   <p
                     class="mt-1 text-sm text-slate-400 uppercase font-semibold"
-                  >Moniteur professionnel</p>
+                  >
+                    Moniteur professionnel
+                  </p>
                   <div class="mt-6">
                     <button
-                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-red-600
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-google"></i>
                     </button>
                     <button
-                      class="bg-sky-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-sky-600
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-facebook-f"></i>
@@ -330,8 +614,14 @@
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
                 <picture>
-                  <source srcset="@/assets/img/capucine.webp" type="image/webp" />
-                  <source srcset="@/assets/img/capucine.jpg" type="image/jpeg" />
+                  <source
+                    srcset="@/assets/img/capucine.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    srcset="@/assets/img/capucine.jpg"
+                    type="image/jpeg"
+                  />
                   <img
                     alt="..."
                     src="@/assets/img/capucine.jpg"
@@ -342,17 +632,39 @@
                   <h5 class="text-xl font-bold">C…</h5>
                   <p
                     class="mt-1 text-sm text-slate-400 uppercase font-semibold"
-                  >Compétitrice de haut niveau</p>
+                  >
+                    Compétitrice de haut niveau
+                  </p>
                   <div class="mt-6">
                     <button
-                      class="bg-indigo-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-indigo-500
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                       onclick="location.href='https://www.instagram.com/capucine_dlt/'"
                     >
                       <i class="fab fa-instagram"></i>
                     </button>
                     <button
-                      class="bg-sky-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-sky-400
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                       onclick="location.href='https://twitter.com/piitchy38'"
                     >
@@ -365,8 +677,14 @@
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
                 <picture>
-                  <source srcset="@/assets/img/highcanfly-107.webp" type="image/webp" />
-                  <source srcset="@/assets/img/highcanfly-107.jpg" type="image/jpeg" />
+                  <source
+                    srcset="@/assets/img/highcanfly-107.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    srcset="@/assets/img/highcanfly-107.jpg"
+                    type="image/jpeg"
+                  />
                   <img
                     alt="..."
                     src="@/assets/img/highcanfly-107.jpg"
@@ -377,28 +695,70 @@
                   <h5 class="text-xl font-bold">A…</h5>
                   <p
                     class="mt-1 text-sm text-slate-400 uppercase font-semibold"
-                  >Notre secrétaire et trésorière</p>
+                  >
+                    Notre secrétaire et trésorière
+                  </p>
                   <div class="mt-6">
                     <button
-                      class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-pink-500
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-dribbble"></i>
                     </button>
                     <button
-                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-red-600
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-google"></i>
                     </button>
                     <button
-                      class="bg-sky-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-sky-400
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-twitter"></i>
                     </button>
                     <button
-                      class="bg-slate-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-slate-700
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-instagram"></i>
@@ -413,8 +773,19 @@
 
       <section class="pb-20 relative block bg-slate-800">
         <div
-          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
-          style="transform: translateZ(0);"
+          class="
+            bottom-auto
+            top-0
+            left-0
+            right-0
+            w-full
+            absolute
+            pointer-events-none
+            overflow-hidden
+            -mt-20
+            h-20
+          "
+          style="transform: translateZ(0)"
         >
           <svg
             class="absolute bottom-0 overflow-hidden"
@@ -425,7 +796,10 @@
             x="0"
             y="0"
           >
-            <polygon class="text-slate-800 fill-current" points="2560 0 2560 100 0 100" />
+            <polygon
+              class="text-slate-800 fill-current"
+              points="2560 0 2560 100 0 100"
+            />
           </svg>
         </div>
 
@@ -434,9 +808,9 @@
             <div class="w-full lg:w-6/12 px-4">
               <h2 class="text-4xl font-semibold text-white">Rejoignez nous</h2>
               <p class="text-lg leading-relaxed mt-4 mb-4 text-slate-400">
-                Pour encourager une pratique plus vertueuse
-                du parapente, nous avons besoin de votre aide.
-                Que vous soyez débutant, pilote aguerri ou encadrant fédéral, venez voler.
+                Pour encourager une pratique plus vertueuse du parapente, nous
+                avons besoin de votre aide. Que vous soyez débutant, pilote
+                aguerri ou encadrant fédéral, venez voler.
               </p>
             </div>
           </div>
@@ -449,81 +823,7 @@
           </div>
         </div>
       </section>
-      <section class="relative block py-24 lg:pt-0 bg-slate-800">
-        <div class="container pt-5 md:pt-0 mx-auto px-4">
-          <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-            <div class="w-full lg:w-6/12 px-4 pt-6 sm:pt-0">
-              <div
-                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-slate-200"
-              >
-                <div class="flex-auto p-5 lg:p-10">
-                  <form @submit="checkForm" action="/sendemail" method="post">
-                    <h4 class="text-2xl font-semibold">Pour nous contacter</h4>
-                      <p v-if="errors.length">
-                        <b>Veuillez corriger ces erreurs:</b>
-                        <ul>
-                          <li v-for="error in errors" :key="error.id">{{ error }}</li>
-                        </ul>
-                      </p>
-                    <p class="leading-relaxed mt-1 mb-4 text-slate-500">Completer ce formulaire…</p>
-                    <div class="relative w-full mb-3 mt-8">
-                      <label
-                        class="block uppercase text-slate-600 text-xs font-bold mb-2"
-                        for="full-name"
-                      >Nom</label>
-                      <input
-                        type="text"
-                        class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        placeholder="Votre nom"
-                        id="email_name"
-                        name="name"
-                        v-model="name"
-                      />
-                    </div>
-
-                    <div class="relative w-full mb-3">
-                      <label
-                        class="block uppercase text-slate-600 text-xs font-bold mb-2"
-                        for="email"
-                      >Email</label>
-                      <input
-                        type="email"
-                        class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                        placeholder="Email"
-                        id="email_email"
-                        name="email"
-                        v-model="email"
-                      />
-                    </div>
-
-                    <div class="relative w-full mb-3">
-                      <label
-                        class="block uppercase text-slate-600 text-xs font-bold mb-2"
-                        for="message"
-                      >Message</label>
-                      <textarea
-                        id="email_message"
-                        rows="4"
-                        cols="80"
-                        class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                        placeholder="Votre message…"
-                        name="message"
-                        v-model="message"
-                      />
-                    </div>
-                    <div class="text-center mt-6">
-                      <button
-                        class="bg-slate-800 text-white active:bg-slate-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="submit"
-                      >Envoyer</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <emailForm />
     </main>
     <footer-component />
   </div>
@@ -534,11 +834,11 @@ import FooterComponent from "@/components/Footers/Footer.vue";
 import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg"; //eslint-disable-line
 import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; //eslint-disable-line
 import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
+import emailForm from "@/components/Forms/EmailForm.vue";
 import qrCode from "qrcode.vue";
-import { inject, reactive } from 'vue';
+import { inject, reactive } from "vue";
 
 export default {
-
   methods: {
     checkForm: function (e) {
       if (this.name && this.email && this.message) {
@@ -548,23 +848,31 @@ export default {
       this.errors = [];
 
       if (!this.name) {
-        this.errors.push('Nom requis.');
+        this.errors.push("Nom requis.");
       }
       if (!this.email) {
-        this.errors.push('Email requis.');
+        this.errors.push("Email requis.");
       }
       if (!this.message) {
-        this.errors.push('Message requis.');
+        this.errors.push("Message requis.");
       }
       e.preventDefault();
-    }
+    },
   },
   data() {
     const errors = [];
-    const state = reactive({//eslint-disable-line
-      backgroundImageURL: '',
+    const state = reactive({
+      //eslint-disable-line
+      backgroundImageURL: "",
     });
-    inject('getJpgOrWebpIfSupported')(backgroundImageAsset, backgroundImageAssetWebp, 'lossy').then(file => { console.log('Webp support: ' + file); state.backgroundImageURL = file });
+    inject("getJpgOrWebpIfSupported")(
+      backgroundImageAsset,
+      backgroundImageAssetWebp,
+      "lossy"
+    ).then((file) => {
+      console.log("Webp support: " + file);
+      state.backgroundImageURL = file;
+    });
     return {
       state,
       errors,
@@ -576,6 +884,7 @@ export default {
     FooterComponent,
     olMapsitesDePratiqueComponent,
     qrCode,
+    emailForm,
   },
 };
 </script>
