@@ -144,7 +144,7 @@
                       v-if="formVerified"
                       :sitekey="hCaptcha_sitekey"
                       theme="dark"
-                      class="rounded"
+                      class="flex justify-center rounded"
                       @verify="hCaptchaVerify"
                       @expired="hCaptchaExpire"
                       @challenge-expired="hCaptchaChallengeExpire"
@@ -215,7 +215,7 @@ import { ref } from "vue";
 export default {
   data() {
     const formerrors = [];
-    const formVerified = false;
+    const formVerified = ref(false);
     const hCaptcha_sitekey = ref("084f2b24-5eac-4e51-bf07-72aabc1d1f23");
     const hCaptcha_verified = ref(false);
     const hCaptcha_expired = ref(false);
