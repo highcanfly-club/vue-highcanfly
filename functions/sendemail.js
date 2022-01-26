@@ -69,9 +69,8 @@ let getRedirectURL = function (context) {
 * All get return to index
 * */
 export async function onRequestGet(context) {
-//    return Response.redirect(getRedirectURL(context));
-console.log(context.env);
-    return new Response('MAILJET_API_KEY : ' + context.env.MAILJET_TO);
+    return Response.redirect(getRedirectURL(context));
+
 }
 
 
