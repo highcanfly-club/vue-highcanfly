@@ -48,7 +48,6 @@ import Test from "@/views/OpenLayersTest.vue";
 
 //Global functions
 import Highcanfly from "@/plugins/highcanfly";
-import hCaptcha from "@/views/EmailForm.vue";
 // routes
 
 
@@ -135,10 +134,6 @@ const routes = [
   {
     path: "/openlayer-test",
     component: Test,
-  },
-  {
-    path: "/hcaptcha-test",
-    component: hCaptcha,
   },
   {
     path: "/",
