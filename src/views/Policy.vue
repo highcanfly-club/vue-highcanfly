@@ -244,6 +244,8 @@ import { inject, reactive} from 'vue' ;
 //import team2 from "@/assets/img/team-2-800x800.jpg";
 
 export default {
+  title: "High Can Fly | Club de parapente | Politique de confidentialité",
+  description: "Club de parapente dans le Nord FFVL n°29070. Notre politique de confidentialité, notre licence et comment nous gérons vos données…",
   data() {
     const state = reactive({//eslint-disable-line
                             backgroundImageURL: '',
