@@ -42,7 +42,7 @@
                 <h3
                   class="text-4xl font-semibold leading-normal mb-2 text-slate-700 mb-2"
                 >
-                  POLITIQUE DE CONFIDENTIALITÉ
+                  POLITIQUE DE CONFIDENTIALITÉ ET LICENCE
                 </h3>
               </div>
               <div class="mt-10 py-10 border-t border-slate-200 text-center">
@@ -54,12 +54,15 @@
                       
                       <br />
                       <br />
-                      <b>Le but de cette politique de confidentialité</b> <br />
+                      <b>Le but de cette politique de confidentialité et de cette licence</b> <br />
                       <br />
                       Le but de cette politique de confidentialité est
                       d'informer les utilisateurs de notre site des données
                       personnelles que nous recueillerons ainsi que les
-                      informations suivantes, le cas échéant :<br />
+                      informations suivantes, le cas échéant.<br />
+                      Le but de cette licence est de définir comment peut
+                      être utilisé notre site et les données qu'il contient.
+                      <br />
                       <br />
                       Les données personnelles que nous recueillerons<br />
                       L’utilisation des données recueillies<br />
@@ -207,14 +210,24 @@
                       besoin, nous pouvons informer les utilisateurs par
                       courriel des changements apportés à cette politique.<br />
                       <br />
+                      <b>License</b>
+                      <br />
+                      Dans un souci de transparence nous diffusons l'intégralité du code source de ce site 
+                      web. Attention Open Source ne signifie pas Domaine Publique.<br />
+                      Le code de notre site est diffusé sous <a class="font-bold" href="https://opensource.org/licenses/MIT">licence MIT</a> avec une clause d'attribution.<br />
+                      C'est à dire que si vous réutilisez du code vous devez en citer l'auteur… L'auteur c'est moi : Ronan Le Meillat !<br />
+                      Par contre l'ensemble des images est diffusé sous licence <a class="font-bold" href="https://creativecommons.org/licenses/by-sa/2.0/fr/">CC-EY-SA Licence Creative Commons</a>.<br /> 
+                      Ce travail est mis à disposition selon les termes de la Licence Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International.
+                      <br />
                       <b>Contact</b>
                       <br />
                       Si vous avez des questions à nous poser, n’hésitez pas à
                       communiquer avec nous en utilisant ce qui suit :<br />
                       parapente@highcanfly.club<br />
-                      119 rue Marceau Martin, 59129 Flers-en-Escrebieux<br />
+                      119 rue Marceau Martin, 5
+                      9129 Flers-en-Escrebieux<br />
                       <br />
-<br />
+                      <br />
                       <b>Licence de produits tiers</b>
                       <br />
                       Ce site web a été construit avec l'aide des frameworks <a href="">Vuejs</a> (licence <a href="https://opensource.org/licenses/MIT">MIT</a>), <a href="https://tailwindcss.com">Tailwind css</a> (licence <a href="https://opensource.org/licenses/MIT">MIT</a>) et avec les composants <a href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus">Vue Note</a> (licence <a href="https://opensource.org/licenses/MIT">MIT</a>)
