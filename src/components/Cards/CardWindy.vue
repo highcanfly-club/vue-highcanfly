@@ -1,6 +1,6 @@
 <template>
  <div
-  class="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded bg-slate-700"
+  class="relative flex flex-col h-full min-w-0 break-words w-full shadow-lg rounded bg-slate-700"
  >
   <div class="p-0.5 h-full">
    <iframe

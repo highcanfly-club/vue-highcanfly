@@ -41,6 +41,7 @@ import Index from "@/views/Index.vue";
 import IndexOrig from "@/views/Index.orig.vue";
 import MapFlers from "@/views/MapFlers.vue";
 import SitesDePratique from "@/views/SitesDePratique.vue";
+import Windy from "@/views/Windy.vue";
 
 //sitemap
 import Sitemap from "@/views/Sitemap.vue";
@@ -134,6 +135,11 @@ const routes = [
     path: "/contact",
     component: Contact,
     name: 'contactez-nous'
+  },
+  {
+    path: "/windy",
+    component: Windy,
+    name: 'Le vent (Windy)'
   },
   {
     path: "/map-sites-de-pratique",
