@@ -17,11 +17,13 @@ Utilisation du code source : le code de notre site est diffusé sous licence MIT
 Par contre l'ensemble des images est diffusé sous licence CC-EY-SA<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Ce travail est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licence Creative Commons Attribution -  Partage dans les Mêmes Conditions 4.0 International</a>.
 
 ### Pages actives directement
+
 <a href="htts://www.highcanfly.club/">/src/views/Landing.vue</a>
 <a href="htts://www.highcanfly.club/about">/src/views/About.vue</a>
 <a href="htts://www.highcanfly.club/blog">/src/views/Blog.vue</a>
 <a href="htts://www.highcanfly.club/map-site-de-pratique">/src/views/SitesDePratique.vue</a>
 <a href="htts://www.highcanfly.club/policy">/src/views/Policy.vue</a>
+
 ### Our theme : Vue Notus
 
 <b>A beautiful UI Kit and Admin for Tailwind CSS and VueJS.</b>
