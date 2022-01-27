@@ -32,6 +32,7 @@ import Landing from "@/views/Landing.vue";
 import Policy from "@/views/Policy.vue";
 import Blog from "@/views/Blog.vue";
 import Demo from "@/views/Demo.vue";
+import Contact from "@/views/Contact.vue";
 import About from "@/views/About.vue";
 import Index from "@/views/Index.vue";
 import IndexOrig from "@/views/Index.orig.vue";
@@ -125,6 +126,11 @@ const routes = [
   {
     path: "/demo",
     component: Demo,
+  },
+  {
+    path: "/contact",
+    component: Contact,
+    name: 'contactez-nous'
   },
   {
     path: "/map-sites-de-pratique",
