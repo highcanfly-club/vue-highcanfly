@@ -70,7 +70,7 @@
                 <li>
                   <a
                     class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                    href="/sitemap"
+                    href="/site-map"
                   >Plan du site</a>
                 </li>
                 <li>

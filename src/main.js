@@ -156,7 +156,7 @@ const routes = [
     name: 'index',
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
-  { path: "/sitemap", component: Sitemap},
+  { path: "/site-map", component: Sitemap},
 ];
 
 const router = createRouter({
