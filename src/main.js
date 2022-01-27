@@ -26,6 +26,9 @@ import Maps from "@/views/admin/Maps.vue";
 import Login from "@/views/auth/Login.vue";
 import Register from "@/views/auth/Register.vue";
 
+// Title mixin
+import titleMixin from "@/mixins/TitleMixin";
+
 // views without layouts
 
 import Landing from "@/views/Landing.vue";
@@ -160,5 +163,6 @@ const app = createApp(App);
 app.use(router);
 app.use(OpenLayersMap);
 app.use(Highcanfly);
+app.mixin(titleMixin);
 
 const vm = app.mount("#app"); //eslint-disable-line
