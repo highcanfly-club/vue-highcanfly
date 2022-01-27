@@ -18,11 +18,19 @@ Par contre l'ensemble des images est diffusé sous licence CC-EY-SA<a rel="licen
 
 ### Pages actives directement
 
-- [/src/views/Landing.vue](htts://www.highcanfly.club/)
-- [/src/views/About.vue](htts://www.highcanfly.club/about)
-- [/src/views/Blog.vue](htts://www.highcanfly.club/blog)
-- [/src/views/SitesDePratique.vue](htts://www.highcanfly.club/map-site-de-pratique)
-- [/src/views/Policy.vue](htts://www.highcanfly.club/policy)
+- [/src/views/Landing.vue](https://www.highcanfly.club/)
+  - [code](/src/views/Landing.vue)
+  - [code formulaire](/src/components/Forms/EmailForm.vue)
+  - [code hCaptcha](src/components/hCaptcha/hcaptcha.vue) et [code serveur](/functions/sendemail.js)
+- [/src/views/About.vue](https://www.highcanfly.club/about)
+  - [code](/src/views/About.vue)
+- [/src/views/Blog.vue](https://www.highcanfly.club/blog)
+  - [code](/src/views/Blog.vue)
+- [/src/views/SitesDePratique.vue](https://www.highcanfly.club/map-site-de-pratique)
+  - [code](/src/views/SitesDePratique.vue)
+  - [code carte](/src/components/Maps/OLMapSitesDePratique.vue)
+- [/src/views/Policy.vue](https://www.highcanfly.club/policy)
+  - [code](/src/views/Policy.vue)
 
 ### Bugs
 
