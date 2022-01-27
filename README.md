@@ -1,11 +1,30 @@
-# HighCanFly website heavily based on Vue Notus <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fvue-notus%2F%23%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20VueJS%20UI%20Kit%20and%20Admin.%20Let%20Vue%20Notus%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level.%20" target="_blank">![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)</a>
+# HighCanFly website (activement basé sur Vue Notus) <a href="https://twitter.com/HighCanFlyClub" target="_blank">![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)</a>
 
-![version](https://img.shields.io/badge/version-1.1.0-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) <a href="https://github.com/creativetimofficial/vue-notus/issues?q=is%3Aopen+is%3Aissue" target="_blank">![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/vue-notus.svg)</a> <a href="https://github.com/creativetimofficial/vue-notus/issues?q=is%3Aissue+is%3Aclosed" target="_blank">![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/vue-notus.svg)</a> <a href="https://gitter.im/creative-tim-general/Lobby" target="_blank">![Join the chat at https://gitter.im/NIT-dgp/General](https://badges.gitter.im/NIT-dgp/General.svg)</a> <a href="https://discord.gg/E4aHAQy" target="_blank">![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)</a>
+![version](https://img.shields.io/badge/version-1.0.1-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) <a href="https://github.com/eltorio/vue-highcanfly/issues?q=is%3Aopen+is%3Aissue" target="_blank">![GitHub issues open](https://img.shields.io/github/issues/eltorio/vue-highcanfly.svg)</a> <a href="https://github.com/eltorio/vue-highcanfly/issues?q=is%3Aissue+is%3Aclosed" target="_blank">![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/eltorio/vue-highcanfly.svg)</a>
+ <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Ce(tte) œuvre est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licence Creative Commons Attribution -  Partage dans les Mêmes Conditions 4.0 International</a>.
 
-![Vue Notus](https://github.com/creativetimofficial/public-assets/blob/master/vue-notus/vue-notus.jpg?raw=true)
+![Vue Notus](https://repository-images.githubusercontent.com/448899125/ce3dc56f-2f1e-49dc-83d3-c6297308bf46?raw=true)
 
-### Vue Notus : A beautiful UI Kit and Admin for Tailwind CSS and VueJS.
+### <a href="https://www.highcanfly.club">High Can Fly - club de parapente du nord</a>
 
+On vole aussi dans le nord de la France… 
+Marcher et Voler, voilà ce qui nous ressemble. 
+Vous êtes un pilote autonome, en progression ou débutant; partagez notre passion du vol libre.
+
+### Code source de notre site web
+
+Utilisation du code source : le code de notre site est diffusé sous licence MIT avec une clause d'attribution. C'est à dire que si vous réutilisez du code vous devez en citer l'auteur… L'auteur c'est moi !
+Par contre l'ensemble des images est diffusé sous licence CC-EY-SA<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Ce travail est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licence Creative Commons Attribution -  Partage dans les Mêmes Conditions 4.0 International</a>.
+
+### Pages actives directement
+<a href="htts://www.highcanfly.club/">/src/views/Landing.vue</a>
+<a href="htts://www.highcanfly.club/about">/src/views/About.vue</a>
+<a href="htts://www.highcanfly.club/blog">/src/views/Blog.vue</a>
+<a href="htts://www.highcanfly.club/map-site-de-pratique">/src/views/SitesDePratique.vue</a>
+<a href="htts://www.highcanfly.club/policy">/src/views/Policy.vue</a>
+### Our theme : Vue Notus
+
+<b>A beautiful UI Kit and Admin for Tailwind CSS and VueJS.</b>
 Start your development with a Free Tailwind CSS and VueJS UI Kit and Admin. Let Vue Notus amaze you with its cool features and build tools and get your project to a whole new level.
 
 Vue Notus is Free and Open Source. It features multiple HTML and VueJS elements and it comes with dynamic components for VueJS.
@@ -106,7 +125,7 @@ The documentation for the Vue Notus is hosted at our <a href="https://www.creati
 ## Quick start
 
 - <a href="https://www.creative-tim.com/product/vue-notus?ref=vn-github-readme" target="_blank">Download from Creative Tim</a>.
-- <a href="https://github.com/creativetimofficial/vue-notus" target="_blank">Check it on Github</a>.
+- <a href="https://github.com/eltorio/vue-highcanfly" target="_blank">Check it on Github</a>.
 
 ## Files and Folder
 
@@ -202,7 +221,7 @@ We use GitHub Issues as the official bug tracker for the Vue Notus. Here are som
 
 - Copyright 2021 <a href="https://www.creative-tim.com/?ref=vn-readme" target="_blank">Creative Tim</a>
 
-- Licensed under <a href="https://github.com/creativetimofficial/vue-notus/blob/main/LICENSE.md" target="_blank">MIT</a>
+- Licensed under <a href="https://github.com/eltorio/vue-highcanfly/blob/main/LICENSE.md" target="_blank">MIT</a>
 
 ## Useful Links
 
@@ -236,4 +255,4 @@ Instagram: <a href="https://www.instagram.com/creativetimofficial/" target="_bla
 - Documentation: <a href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus?ref=vn-readme" target="_blank">https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus</a>
 - License Agreement: <a href="https://www.creative-tim.com/license?ref=vn-readme" target="_blank">https://www.creative-tim.com/license?ref=vn-readme</a>
 - Support: <a href="https://www.creative-tim.com/contact-us?ref=vn-readme" target="_blank">https://www.creative-tim.com/contact-us?ref=vn-readme</a>
-- Issues: <a href="https://github.com/creativetimofficial/vue-notus/issues" target="_blank">Github Issues Page</a>
+- Issues: <a href="https://github.com/eltorio/vue-highcanfly/issues" target="_blank">Github Issues Page</a>
