@@ -839,6 +839,8 @@ import qrCode from "qrcode.vue";
 import { inject, reactive } from "vue";
 
 export default {
+  description: "Club de parapente dans le Nord FFVL n°29070. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.",
+  title: "High Can Fly | Club de parapente",
   methods: {
     checkForm: function (e) {
       if (this.name && this.email && this.message) {

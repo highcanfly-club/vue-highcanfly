@@ -50,6 +50,8 @@ import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratiqu
 import { inject, reactive} from 'vue' ;
 
 export default {
+  title: "High Can Fly | Club de parapente | Nos sites de pratique",
+  descritpion: "Les parapentistes volents. Les quelques endroits où vous nous trouverez dans les Hauts-de-France…",
   data() {
     const state = reactive({//eslint-disable-line
                             backgroundImageURL: '',

@@ -51,7 +51,8 @@ import backgroundImageAssetWebp from "@/assets/img/blancnezhugues-101.webp";
 import { inject, reactive } from 'vue';
 
 export default {
-  append_to_title: " | Demo page",
+  description: "Club de parapente dans le Nord FFVL n°29070. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.", 
+  title: "High Can Fly | Club de parapente | (test accueil)",
   data() {
     const state = reactive({//eslint-disable-line
       backgroundImageURL: '',

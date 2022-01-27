@@ -96,6 +96,7 @@ let getDownloadSitemapXMLHREF = function (text) {
     return theDownloadlink;
 };
 export default {
+    title: "High Can Fly | Club de parapente | Plan du site",
     data() {
         const routesXML = getRoutesXML(this.$router.getRoutes());
         const routesList = getRoutesList(this.$router.getRoutes());

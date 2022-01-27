@@ -27,7 +27,7 @@ import Login from "@/views/auth/Login.vue";
 import Register from "@/views/auth/Register.vue";
 
 // Title mixin
-import titleMixin from "@/mixins/TitleMixin";
+import metaMixin from "@/mixins/MetaMixin";
 
 // views without layouts
 
@@ -163,6 +163,6 @@ const app = createApp(App);
 app.use(router);
 app.use(OpenLayersMap);
 app.use(Highcanfly);
-app.mixin(titleMixin);
+app.mixin(metaMixin);
 
 const vm = app.mount("#app"); //eslint-disable-line

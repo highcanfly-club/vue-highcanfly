@@ -124,6 +124,8 @@ import { inject, reactive} from 'vue' ;
 import logo from "@/assets/img/logo_high_can_fly.svg";
 
 export default {
+  title: "High Can Fly | Club de parapente | À propos",
+  description: "Club de parapente dans le Nord FFVL n°29070. À propos de nous…",
   data() {
     const state = reactive({//eslint-disable-line
                             backgroundImageURL: '',
