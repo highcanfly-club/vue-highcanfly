@@ -46,9 +46,12 @@ import Navbar from "@/components/Navbars/Navbar.vue";
 import FooterComponent from "@/components/Footers/Footer.vue";
 import backgroundImageAsset from "@/assets/img/blancnezhugues-101.jpg";
 import backgroundImageAssetWebp from "@/assets/img/blancnezhugues-101.webp";
+
+
 import { inject, reactive } from 'vue';
 
 export default {
+  append_to_title: " | Demo page",
   data() {
     const state = reactive({//eslint-disable-line
       backgroundImageURL: '',
