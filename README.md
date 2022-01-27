@@ -1,4 +1,4 @@
-# HighCanFly website (activement basé sur Vue Notus) <a href="https://twitter.com/HighCanFlyClub" target="_blank">![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)</a>
+# HighCanFly site web (activement basé sur Vue Notus) <a href="https://twitter.com/HighCanFlyClub" target="_blank">![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)</a>
 
 ![version](https://img.shields.io/badge/version-1.0.1-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) <a href="https://github.com/eltorio/vue-highcanfly/issues?q=is%3Aopen+is%3Aissue" target="_blank">![GitHub issues open](https://img.shields.io/github/issues/eltorio/vue-highcanfly.svg)</a> <a href="https://github.com/eltorio/vue-highcanfly/issues?q=is%3Aissue+is%3Aclosed" target="_blank">![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/eltorio/vue-highcanfly.svg)</a>
  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Ce(tte) œuvre est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licence Creative Commons Attribution -  Partage dans les Mêmes Conditions 4.0 International</a>.
@@ -18,11 +18,21 @@ Par contre l'ensemble des images est diffusé sous licence CC-EY-SA<a rel="licen
 
 ### Pages actives directement
 
-<a href="htts://www.highcanfly.club/">/src/views/Landing.vue</a>
-<a href="htts://www.highcanfly.club/about">/src/views/About.vue</a>
-<a href="htts://www.highcanfly.club/blog">/src/views/Blog.vue</a>
-<a href="htts://www.highcanfly.club/map-site-de-pratique">/src/views/SitesDePratique.vue</a>
-<a href="htts://www.highcanfly.club/policy">/src/views/Policy.vue</a>
+- [/src/views/Landing.vue](htts://www.highcanfly.club/)
+- [/src/views/About.vue](htts://www.highcanfly.club/about)
+- [/src/views/Blog.vue](htts://www.highcanfly.club/blog)
+- [/src/views/SitesDePratique.vue](htts://www.highcanfly.club/map-site-de-pratique)
+- [/src/views/Policy.vue](htts://www.highcanfly.club/policy)
+
+### Bugs
+
+Si vous constatez un problème merci d'ouvrir une "issue" en précisant : 
+
+- le navigateur
+- sa version
+- la taille approximative de l'écran (ex 1000x600)
+- Sur mobile le modèle et l'orientation (ex Apple iPhone 8SE portrait)
+- Bien sûr le bug ! 
 
 ### Our theme : Vue Notus
 
