@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <h1>High Can Fly blog</h1>
-    <div>
-      <div class="loading" v-if="loading">Loading...</div>
+  <div class="">
+      <div class="loading" v-if="loading">
+            <h1>High Can Fly blog</h1>
+        Loading...</div>
       <div v-if="error" class="error">
         {{ error }}
       </div>
+      <!--
       <div class="container">
         <div v-for="post in posts" class="post-item" :key="post._id">
           <router-link :to="`/sanity-blog-test/${post.slug.current}`">
@@ -15,12 +16,12 @@
           <hr />
         </div>
       </div>
+      -->
       <div>
         <div v-for="post in posts" :key="post._id">
           <CardSinglePost :slug="post.slug.current" />
         </div>
       </div>
-    </div>
   </div>
 </template>
 
@@ -49,7 +50,7 @@ export default {
     this.fetchData();
   },
   components:{
-    SanityBlocks,
+    SanityBlocks, // eslint-disable-line
     CardSinglePost,
   },
   methods: {
