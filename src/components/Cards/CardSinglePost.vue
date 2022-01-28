@@ -92,6 +92,7 @@ const query = `*[slug.current == $slug] {
 export default {
   name: "SinglePost",
   components: { SanityBlocks },
+  props: ['slug'],
   data() {
     return {
       loading: true,
@@ -99,18 +100,22 @@ export default {
       blocks: [],
     };
   },
+  setup() {
+console.log(this);
+  },
   created() {
-    this.fetchData();
+    let slug = (this.slug != undefined) ? this.slug : this.$route.params.slug ;
+    this.fetchData(slug);
   },
   methods: {
     imageUrlFor(source) {
       return imageBuilder.image(source);
     },
-    fetchData() {
+    fetchData(slug) {
       this.error = this.post = null;
       this.loading = true;
 
-      SanityClient.fetch(query, { slug: this.$route.params.slug }).then(
+      SanityClient.fetch(query, { slug: slug }).then(
         (post) => {
           this.loading = false;
           this.post = post;
@@ -125,18 +130,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.content {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: 42em;
-}
-h1 {
-  text-align: center;
-}
-h6 {
-  color: #aaa;
-  padding: 1em;
-}
-</style>
