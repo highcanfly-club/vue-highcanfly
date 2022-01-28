@@ -34,12 +34,9 @@ import metaMixin from "@/mixins/MetaMixin";
 import Landing from "@/views/Landing.vue";
 import Policy from "@/views/Policy.vue";
 import Blog from "@/views/Blog.vue";
-import Demo from "@/views/Demo.vue";
 import Contact from "@/views/Contact.vue";
 import About from "@/views/About.vue";
 import Index from "@/views/Index.vue";
-import IndexOrig from "@/views/Index.orig.vue";
-import MapFlers from "@/views/MapFlers.vue";
 import SitesDePratique from "@/views/SitesDePratique.vue";
 import Windy from "@/views/Windy.vue";
 
@@ -49,7 +46,6 @@ import Sitemap from "@/views/Sitemap.vue";
 import OpenLayersMap from 'vue3-openlayers';
 
 import 'vue3-openlayers/dist/vue3-openlayers.css';
-import Test from "@/views/OpenLayersTest.vue";
 
 //Global functions
 import Highcanfly from "@/plugins/highcanfly";
@@ -120,18 +116,6 @@ const routes = [
     component: Index,
   },
   {
-    path: "/index-orig",
-    component: IndexOrig,
-  },
-  {
-    path: "/map-flers",
-    component: MapFlers,
-  },
-  {
-    path: "/demo",
-    component: Demo,
-  },
-  {
     path: "/contact",
     component: Contact,
     name: 'contactez-nous'
@@ -145,10 +129,6 @@ const routes = [
     path: "/map-sites-de-pratique",
     component: SitesDePratique,
     name:"Sites de pratique",
-  },
-  {
-    path: "/openlayer-test",
-    component: Test,
   },
   {
     path: "/",
