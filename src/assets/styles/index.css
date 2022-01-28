@@ -21,7 +21,7 @@
   z-index: 99;
 }
 
-.vue-scroll-up::after {
+/* .vue-scroll-up::after {
   border: 2px solid white;
   border-radius: 10px;
   content: '';
@@ -29,7 +29,7 @@
   height: 25px;
   margin: 0 auto;
   width: 10px;
-}
+} */
 
 .vue-scroll-up::before {
   animation: 2s top infinite;
