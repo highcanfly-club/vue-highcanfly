@@ -26,7 +26,10 @@
     "vue": "3.2.27",
     "vue-router": "4.0.12",
     "vue3-openlayers": "^0.1.57",
-    "wrangler": "^0.0.12"
+    "wrangler": "^0.0.12",
+    "@sanity/client":"^2.23.2",
+    "sanity-blocks-vue-component":"^1.0.1",
+    "@sanity/image-url":"^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "7.16.12",

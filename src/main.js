@@ -42,6 +42,10 @@ import Windy from "@/views/Windy.vue";
 
 //sitemap
 import Sitemap from "@/views/Sitemap.vue";
+
+//Sanity CMS
+import SanityBlogTest from '@/views/SanityBlogTest.vue';
+
 //vue3 openlayers
 import OpenLayersMap from 'vue3-openlayers';
 
@@ -137,6 +141,21 @@ const routes = [
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
   { path: "/site-map", component: Sitemap},
+  {
+    path: "/sanity-blog-test",
+    component: SanityBlogTest,
+    name: 'sanity-test',
+  },
+  {
+    path: "/sanity-blog-test/:slug",
+    name: "CardSinglePost",
+    component: () => import("@/components/Cards/CardSinglePost.vue"),
+  },
+  {
+    path: "/card-profile",
+    name: "CardSProfile",
+    component: () => import("@/components/Cards/CardProfile.vue"),
+  },
 ];
 
 const router = createRouter({
