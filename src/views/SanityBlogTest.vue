@@ -11,15 +11,21 @@
           <router-link :to="`/sanity-blog-test/${post.slug.current}`">
             <h2>{{ post.title }}</h2>
           </router-link>
-          <p>{{post.excerpt}}</p>
+          <SanityBlocks v-if="post.excerpt" :blocks="post.excerpt"/>
           <hr />
         </div>
+      </div>
+      <div>
+          <CardSinglePost :slug="'championnats-de-france-2021'" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { SanityBlocks } from "sanity-blocks-vue-component";
+import CardSinglePost from "@/components/Cards/CardSinglePost.vue";
+
 import sanity from "@/plugins/sanity-client";
 
 const query = `*[_type == "post"]{
@@ -39,6 +45,10 @@ export default {
   },
   created() {
     this.fetchData();
+  },
+  components:{
+    SanityBlocks,
+    CardSinglePost,
   },
   methods: {
     fetchData() {
