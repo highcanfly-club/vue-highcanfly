@@ -43,9 +43,6 @@ import Windy from "@/views/Windy.vue";
 //sitemap
 import Sitemap from "@/views/Sitemap.vue";
 
-//Sanity CMS
-import SanityBlog from '@/views/SanityBlog.vue';
-
 //vue3 openlayers
 import OpenLayersMap from 'vue3-openlayers';
 
