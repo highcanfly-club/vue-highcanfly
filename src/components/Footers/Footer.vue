@@ -253,10 +253,11 @@
     </div>
 
     <VueScrollUp
-      tag="span"
+      tag="div"
       :scroll-duration="1000"
-      :scroll-y="250"
-    />
+      :scroll-y="250">
+      <img style="position: absolute;" src="@/assets/img/arrow-top.svg"/>
+    </VueScrollUp>
   </footer>
 </template>
 <script>
