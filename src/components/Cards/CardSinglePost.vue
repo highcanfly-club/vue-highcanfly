@@ -101,7 +101,7 @@ export default {
     };
   },
   setup() {
-console.log(this);
+
   },
   created() {
     let slug = (this.slug != undefined) ? this.slug : this.$route.params.slug ;

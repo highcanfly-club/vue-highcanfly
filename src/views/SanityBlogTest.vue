@@ -16,7 +16,9 @@
         </div>
       </div>
       <div>
-          <CardSinglePost :slug="'championnats-de-france-2021'" />
+        <div v-for="post in posts" :key="post._id">
+          <CardSinglePost :slug="post.slug.current" />
+        </div>
       </div>
     </div>
   </div>
