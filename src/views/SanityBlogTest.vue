@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Welcome to your Vue + Sanity Blog</h1>
+    <h1>High Can Fly blog</h1>
     <div>
       <div class="loading" v-if="loading">Loading...</div>
       <div v-if="error" class="error">
