@@ -60,8 +60,8 @@ import { inject, reactive } from "vue";
 
 export default {
   description:
-    "Club de parapente dans le Nord FFVL n°29070. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.",
-  title: "High Can Fly | Club de parapente | (test accueil)",
+    "Club de parapente dans le Nord FFVL n°29070. Voici la dernière nouvelle !",
+  title: "High Can Fly | Club de parapente | News",
   data() {
     const slug = this.$route.params.slug;
     const state = reactive({
