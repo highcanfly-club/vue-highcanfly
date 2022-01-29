@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       loaded: false,
-      src: "https://embed.windy.com/embed2.html?lat=50.475&lon=2.390&detailLat=50.419&detailLon=2.903&width=650&height=450&zoom=8&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=&calendar=24&pressure=true&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=default&radarRange=-1",
+      src: "https://embed.windy.com/embed2.html?lat=50.475&lon=2.390&detailLat=50.419&detailLon=2.903&width=650&height=450&zoom=8&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=true&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=default&radarRange=-1",
     }
   },
   mounted() {
