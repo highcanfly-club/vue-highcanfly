@@ -45,6 +45,7 @@ export default {
     return {
       loading: true,
       posts: [],
+      error: null,
     };
   },
   created() {
