@@ -141,7 +141,7 @@ const routes = [
   {
     path: "/sanity-blog/:slug",
     name: "CardSinglePost",
-    component: () => import("@/components/Cards/CardSinglePost.vue"),
+    component: () => import("@/views/SinglePost.vue"),
   },
 ];
 
