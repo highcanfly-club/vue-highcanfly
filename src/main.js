@@ -9,43 +9,12 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import App from "@/App.vue";
 
-// layouts
-
-import Admin from "@/layouts/Admin.vue";
-import Auth from "@/layouts/Auth.vue";
-
-// views for Admin layout
-
-import Dashboard from "@/views/admin/Dashboard.vue";
-import Settings from "@/views/admin/Settings.vue";
-import Tables from "@/views/admin/Tables.vue";
-import Maps from "@/views/admin/Maps.vue";
-
-// views for Auth layout
-
-import Login from "@/views/auth/Login.vue";
-import Register from "@/views/auth/Register.vue";
-
 // Title mixin
 import metaMixin from "@/mixins/MetaMixin";
 
-// views without layouts
-
-import Landing from "@/views/Landing.vue";
-import Policy from "@/views/Policy.vue";
-import Blog from "@/views/Blog.vue";
-import Contact from "@/views/Contact.vue";
-import About from "@/views/About.vue";
-import Index from "@/views/Index.vue";
-import SitesDePratique from "@/views/SitesDePratique.vue";
-import Windy from "@/views/Windy.vue";
-
-//sitemap
-import Sitemap from "@/views/Sitemap.vue";
 
 //vue3 openlayers
 import OpenLayersMap from 'vue3-openlayers';
-
 import 'vue3-openlayers/dist/vue3-openlayers.css';
 
 //Global functions
@@ -57,87 +26,87 @@ const routes = [
   {
     path: "/admin",
     redirect: "/admin/dashboard",
-    component: Admin,
+    component: () => import("@/layouts/Admin.vue"),
     children: [
       {
         path: "/admin/dashboard",
-        component: Dashboard,
+        component: () => import("@/views/admin/Dashboard.vue"),
       },
       {
         path: "/admin/settings",
-        component: Settings,
+        component: () => import("@/views/admin/Settings.vue"),
       },
       {
         path: "/admin/tables",
-        component: Tables,
+        component: () => import("@/views/admin/Tables.vue"),
       },
       {
         path: "/admin/maps",
-        component: Maps,
+        component: () => import("@/views/admin/Maps.vue"),
       },
     ],
   },
   {
     path: "/auth",
     redirect: "/auth/login",
-    component: Auth,
+    component: () => import("@/layouts/Auth.vue"),
     children: [
       {
         path: "/auth/login",
-        component: Login,
+        component: () => import("@/views/auth/Login.vue"),
       },
       {
         path: "/auth/register",
-        component: Register,
+        component: () => import("@/views/auth/Register.vue"),
       },
     ],
   },
   {
     path: "/policy",
-    component: Policy,
+    component: () => import("@/views/Policy.vue"),
     name: "Policy",
   },
   {
     path: "/landing",
-    component: Landing,
+    component: () => import("@/views/Landing.vue"),
     name: "Landing",
   },
   {
     path: "/blog",
-    component: Blog,
+    component: () => import("@/views/Blog.vue"),
     name: "Blog",
   },
   {
     path: "/about",
-    component: About,
+    component: () => import("@/views/About.vue"),
     name: "À propos",
   },
   {
     path: "/index-new",
-    component: Index,
+    component: () => import("@/views/Index.vue"),
   },
   {
     path: "/contact",
-    component: Contact,
+    component: () => import("@/views/Contact.vue"),
     name: 'contactez-nous'
   },
   {
     path: "/windy",
-    component: Windy,
+    component: () => import("@/views/Windy.vue"),
     name: 'Le vent (Windy)'
   },
   {
     path: "/map-sites-de-pratique",
-    component: SitesDePratique,
+    component: () => import("@/views/SitesDePratique.vue"),
     name:"Sites de pratique",
   },
   {
     path: "/",
-    component: Landing,
+    component: () => import("@/views/Landing.vue"),
     name: 'index',
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
-  { path: "/site-map", component: Sitemap},
+  { path: "/site-map", component: () => import("@/views/Sitemap.vue")},
   {
     path: "/sanity-blog/:slug",
     component: () => import("@/views/SinglePost.vue"),
