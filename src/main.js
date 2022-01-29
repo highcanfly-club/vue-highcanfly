@@ -14,7 +14,7 @@ import metaMixin from "@/mixins/MetaMixin";
 
 
 //vue3 openlayers
-import OpenLayersMap from 'vue3-openlayers';
+//import OpenLayersMap from 'vue3-openlayers';
 import 'vue3-openlayers/dist/vue3-openlayers.css';
 
 //Global functions
@@ -119,9 +119,9 @@ const router = createRouter({
 });
 
 const app = createApp(App);
-
+window.app = app;
 app.use(router);
-app.use(OpenLayersMap);
+//app.use(OpenLayersMap);
 app.use(Highcanfly);
 app.mixin(metaMixin);
 
