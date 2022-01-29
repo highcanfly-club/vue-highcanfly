@@ -140,7 +140,6 @@ const routes = [
   { path: "/site-map", component: Sitemap},
   {
     path: "/sanity-blog/:slug",
-    name: "CardSinglePost",
     component: () => import("@/views/SinglePost.vue"),
   },
 ];
