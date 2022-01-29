@@ -18,8 +18,8 @@
       </div>
       -->
       <div>
-        <div v-for="post in posts" :key="post._id">
-          <CardSinglePost :slug="post.slug.current" />
+        <div v-for="(post,index) in posts" :key="post._id">
+          <CardSinglePost :slug="post.slug.current" :nbPosts="posts.length" :indexPosts="index"/>
         </div>
       </div>
   </div>

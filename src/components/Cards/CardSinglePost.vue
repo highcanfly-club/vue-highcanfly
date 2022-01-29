@@ -1,7 +1,7 @@
 
 <template>
   <section v-if="post" class="relative py-16 bg-slate-200">
-    <div class="container -mt-60 mb-32 mx-auto px-4">
+    <div class="container -mt-60 mx-auto px-4" :class="(indexPosts<(nbPosts-1)?'mb-32':'')" >
       <div
         class="
           relative
@@ -85,7 +85,7 @@
                 mb-2
               "
             >
-              {{ post.title }}
+              {{ post.title }} <!--index={{indexPosts}} total={{nbPosts}}-->
             </h3>
             <SanityBlocks :blocks="blocks" />
           </div>
@@ -128,7 +128,7 @@ const query = `*[slug.current == $slug] {
 export default {
   name: "SinglePost",
   components: { SanityBlocks },
-  props: ["slug"],
+  props: ["slug","nbPosts","indexPosts"],
   data() {
     return {
       loading: true,
