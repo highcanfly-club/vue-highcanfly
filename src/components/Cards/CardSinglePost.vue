@@ -55,8 +55,8 @@
                     "
                   >
                     {{
-                      new Date($data.post._createdAt).toLocaleString(
-                        undefined,
+                      new Date($data.post.publishedAt).toLocaleString(
+                        'fr-FR',
                         {
                           weekday: "long",
                           year: "numeric",
@@ -110,6 +110,7 @@ const imageBuilder = imageUrlBuilder(SanityClient);
 const query = `*[slug.current == $slug] {
   _id,
   _createdAt,
+  publishedAt,
   title,
   slug,
   body, 

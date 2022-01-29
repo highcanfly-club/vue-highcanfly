@@ -2,7 +2,7 @@
   <div class="">
       <div class="loading" v-if="loading">
             <h1>High Can Fly blog</h1>
-        Loading...</div>
+        Récupération des données...</div>
       <div v-if="error" class="error">
         {{ error }}
       </div>
@@ -33,10 +33,11 @@ import sanity from "@/plugins/sanity-client";
 
 const query = `*[_type == "post"]{
   _id,
+  publishedAt,
   title,
   slug,
   excerpt
-}[0...50]`;
+}[0...50]| order(publishedAt desc)`;
 
 export default {
   name: "Home",
