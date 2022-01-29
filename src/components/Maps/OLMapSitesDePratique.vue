@@ -63,10 +63,10 @@
   </ol-map>
 </template>
 <script>
-
+import OpenLayersMap from 'vue3-openlayers'; 
 import markerIconRed from '@/assets/img/marker-orange.svg';
 import {
-  ref, inject
+  ref, inject,
 } from 'vue'
 
 export default {
@@ -76,12 +76,11 @@ export default {
       default: 'w-[400px]'
     }
   },
-  setup(props) { //eslint-disable-line
-    //const center = ref([3.096878, 50.399668]);//lng,lat
-    //const projection = ref('EPSG:4326');
-    //const center = ref([[344742.88, 6515781.17]]);
-    //const projection = ref('EPSG:3857');
+  created(){
 
+  },
+  setup(props) { //eslint-disable-line
+    app.use(OpenLayersMap); //eslint-disable-line 
     const center = ref([706897.62, 7033567.10])
     const projection = ref('EPSG:2154');
     const zoom = ref(9);
@@ -107,7 +106,6 @@ export default {
         selectedSitePosition.value = extent.getCenter(event.selected[0].getGeometry().extent_);
         selectedSiteHtml.value = event.selected[0].values_.html;
       }
-      //debugger; //eslint-disable-line
     }
     const selectInteactionFilter = (feature) => {
       return feature.values_ != undefined;
