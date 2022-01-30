@@ -103,8 +103,8 @@
 <script>
 import { defineComponent,h } from 'vue';
 import { SanityBlocks } from "sanity-blocks-vue-component";
-import SanityClient from "@/plugins/sanity-client"; //eslint-disable-line
-import {sanityReplaceReferences} from "@/plugins/sanity-client"; //eslint-disable-line
+import SanityClient from "@/plugins/sanity-client"; 
+import {sanityReplaceReferences} from "@/plugins/sanity-client"; 
 import imageUrlBuilder from "@sanity/image-url";
 
 const imageBuilder = imageUrlBuilder(SanityClient);

@@ -44,7 +44,7 @@ export default {
   title: "High Can Fly | Club de parapente | News",
   description: "Nous sommes un club vivant, ici il y a quelques nouvelles. Mais nous sommes plus souvent dehors que devant un ordinateur",
   data() {
-    const state = reactive({//eslint-disable-line
+    const state = reactive({
       backgroundImageURL: '',
     });
     inject('getJpgOrWebpIfSupported')(backgroundImageAsset, backgroundImageAssetWebp, 'lossy').then(file => { console.log('Webp support: ' + file); state.backgroundImageURL = file });
