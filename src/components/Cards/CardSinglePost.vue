@@ -102,7 +102,8 @@
 
 <script>
 import { SanityBlocks } from "sanity-blocks-vue-component";
-import SanityClient from "@/plugins/sanity-client";
+import SanityClient from "@/plugins/sanity-client"; //eslint-disable-line
+import {sanityReplaceReferences} from "@/plugins/sanity-client"; //eslint-disable-line
 import imageUrlBuilder from "@sanity/image-url";
 
 const imageBuilder = imageUrlBuilder(SanityClient);
@@ -146,14 +147,20 @@ export default {
       return imageBuilder.image(source);
     },
     fetchData(slug) {
+      let _this=this;
       this.error = this.post = null;
       this.loading = true;
 
       SanityClient.fetch(query, { slug: slug }).then(
         (post) => {
-          this.loading = false;
-          this.post = post;
-          this.blocks = post.body;
+          let _post = post;
+          this.loading = true;
+          sanityReplaceReferences(_post,SanityClient).then(()=>{
+            _this.loading = false;
+            _this.post = _post;
+            _this.blocks = _post.body;
+            console.log(JSON.stringify(_this.blocks));
+          })
         },
         (error) => {
           this.error = error;
