@@ -87,7 +87,7 @@
             >
               {{ post.title }} <!--index={{indexPosts}} total={{nbPosts}}-->
             </h3>
-            <SanityBlocks :blocks="blocks" />
+            <SanityBlocks :blocks="blocks" :serializers="imageSerializer"/>
           </div>
           <div class="text-right text-sm text-slate-400 pt-10">
               <router-link :to="`/sanity-blog/${post.slug.current}`">
@@ -101,6 +101,7 @@
 </template>
 
 <script>
+import { defineComponent,h } from 'vue';
 import { SanityBlocks } from "sanity-blocks-vue-component";
 import SanityClient from "@/plugins/sanity-client"; //eslint-disable-line
 import {sanityReplaceReferences} from "@/plugins/sanity-client"; //eslint-disable-line
@@ -126,6 +127,15 @@ const query = `*[slug.current == $slug] {
 }[0]
 `;
 
+const imageSerializer = {types: {
+          image: defineComponent({
+            props: ['asset'],
+                        setup(props) {
+              return () => h('img', {src:props.asset.url,class: 'inline'});
+            },
+          }),
+        },};
+
 export default {
   name: "SinglePost",
   components: { SanityBlocks },
@@ -135,6 +145,7 @@ export default {
       loading: true,
       post: [],
       blocks: [],
+      imageSerializer,
     };
   },
   setup() {},
@@ -159,7 +170,6 @@ export default {
             _this.loading = false;
             _this.post = _post;
             _this.blocks = _post.body;
-            console.log(JSON.stringify(_this.blocks));
           })
         },
         (error) => {
