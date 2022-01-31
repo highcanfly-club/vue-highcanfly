@@ -30,7 +30,7 @@
     "vue-router": "^4.0.12",
     "vue3-openlayers": "^0.1.57",
     "walkjs": "^3.2.4",
-    "wrangler": "^0.0.12"
+    "wrangler": "^0.0.15"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
