@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar />
+    <navbar-grey />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
@@ -268,13 +268,13 @@
         </div>
       </section>
     </main>
-    <footer-component />
+    <main-footer />
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/Navbars/Navbar.vue";
-import FooterComponent from "@/components/Footers/Footer.vue";
+import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
+import MainFooter from "@/components/Footers/MainFooter.vue";
 import backgroundImageAsset from "@/assets/img/mountain.jpg";
 import backgroundImageAssetWebp from "@/assets/img/mountain.webp";
 import { inject, reactive } from "vue";
@@ -303,8 +303,8 @@ export default {
     };
   },
   components: {
-    Navbar,
-    FooterComponent,
+    NavbarGrey,
+    MainFooter,
   },
 };
 </script>

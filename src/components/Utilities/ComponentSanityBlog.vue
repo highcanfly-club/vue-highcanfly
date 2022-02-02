@@ -40,7 +40,7 @@ const query = `*[_type == "post"]{
 }[0...50]| order(publishedAt desc)`;
 
 export default {
-  name: "Home",
+ // name: "Home",
   data() {
     return {
       loading: true,

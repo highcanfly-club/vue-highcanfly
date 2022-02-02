@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar />
+    <navbar-grey />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
@@ -80,12 +80,12 @@
         </div>
       </section>
     </main>
-    <footer-component />
+    <main-footer />
   </div>
 </template>
 <script>
-import Navbar from "@/components/Navbars/Navbar.vue";
-import FooterComponent from "@/components/Footers/Footer.vue";
+import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
+import MainFooter from "@/components/Footers/MainFooter.vue";
 import { inject, reactive } from "vue";
 import backgroundImageAsset from "@/assets/img/highcanfly-102.jpg";
 import backgroundImageAssetWebp from "@/assets/img/highcanfly-102.webp";
@@ -188,8 +188,8 @@ export default {
     fetchData() {},
   },
   components: {
-    Navbar,
-    FooterComponent,
+    NavbarGrey,
+    MainFooter,
   },
   // render() {
   //     return getRoutesXML(this.$router.getRoutes());

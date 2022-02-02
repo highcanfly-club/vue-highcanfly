@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar />
+    <navbar-grey />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
@@ -32,21 +32,21 @@
             class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
           >
             <div class="px-3 py-3">
-                  <olMapsitesDePratiqueComponent mapClass="h-screen-1/2"/>
+                  <ol-mapsites-de-pratique mapClass="h-screen-1/2"/>
             </div>
           </div>
         </div>
       </section>
     </main>
-    <footer-component />
+    <main-footer />
   </div>
 </template>
 <script>
-import Navbar from "@/components/Navbars/Navbar.vue";
-import FooterComponent from "@/components/Footers/Footer.vue";
+import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
+import MainFooter from "@/components/Footers/MainFooter.vue";
 import backgroundImageAsset from "@/assets/img/blancnezhugues-101.jpg";
 import backgroundImageAssetWebp from "@/assets/img/blancnezhugues-101.webp";
-import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
+import olMapsitesDePratique from "@/components/Maps/OLMapSitesDePratique.vue";
 import { inject, reactive} from 'vue' ;
 
 export default {
@@ -62,9 +62,9 @@ export default {
     };
   },
   components: {
-    Navbar,
-    FooterComponent,
-    olMapsitesDePratiqueComponent,
+    NavbarGrey,
+    MainFooter,
+    olMapsitesDePratique,
   },
 
 };

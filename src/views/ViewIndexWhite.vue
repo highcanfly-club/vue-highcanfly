@@ -1,6 +1,6 @@
 <template>
   <div>
-    <index-navbar />
+    <navbar-white />
     <section class="header relative pt-16 items-center flex h-screen max-h-860-px">
       <div class="container mx-auto items-center flex flex-wrap">
         <div class="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
@@ -588,12 +588,12 @@
         </div>  
       </div>
     </section>
-    <footer-component />
+    <main-footer />
   </div>
 </template>
 <script>
-import IndexNavbar from "@/components/Navbars/NavbarWhite.vue";
-import FooterComponent from "@/components/Footers/Footer.vue";
+import NavbarWhite from "@/components/Navbars/NavbarWhite.vue";
+import MainFooter from "@/components/Footers/MainFooter.vue";
 import CardWindyComponent from "@/components/Cards/CardWindy.vue";
 
 import patternVue from "@/assets/img/pattern_vue.png";
@@ -629,8 +629,8 @@ export default {
     };
   },
   components: {
-    IndexNavbar,
-    FooterComponent,
+    NavbarWhite,
+    MainFooter,
     CardWindy
 },
 };

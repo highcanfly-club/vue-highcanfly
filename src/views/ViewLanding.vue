@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar />
+    <navbar-grey />
     <main>
       <div
         class="
@@ -829,8 +829,8 @@
   </div>
 </template>
 <script>
-import Navbar from "@/components/Navbars/Navbar.vue";
-import FooterComponent from "@/components/Footers/Footer.vue";
+import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
+import FooterComponent from "@/components/Footers/MainFooter.vue";
 import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg"; //eslint-disable-line
 import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; //eslint-disable-line
 import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
@@ -882,7 +882,7 @@ export default {
   },
 
   components: {
-    Navbar,
+    NavbarGrey,
     FooterComponent,
     olMapsitesDePratiqueComponent,
     qrCode,

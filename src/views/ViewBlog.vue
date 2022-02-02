@@ -1,17 +1,17 @@
 <template>
   <div>
-    <navbar />
+    <navbar-grey />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
           v-bind:style="{ backgroundImage: 'url(' + state.backgroundImageURL + ')' }"
         >
-          <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-grey"></span>
+          <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
         </div>
         <div
           class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
-          style="transform: translateZ(0)"
+          style="transform: translateZ(0);"
         >
           <svg
             class="absolute bottom-0 overflow-hidden"
@@ -26,36 +26,25 @@
           </svg>
         </div>
       </section>
-      <section class="relative py-16 bg-slate-200">
-        <div class="container mx-auto px-4">
-          <div
-            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
-          >
-            <div class="h-screen-2/3 px-1 py-1">
-                 <card-windy/>     
-            </div>
-          </div>
-        </div>
-      </section>
+      <sanity-blog />
     </main>
-    <footer-component />
+    <main-footer />
   </div>
 </template>
 <script>
-import Navbar from "@/components/Navbars/Navbar.vue";
-import FooterComponent from "@/components/Footers/Footer.vue";
+import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
+import MainFooter from "@/components/Footers/MainFooter.vue";
 import backgroundImageAsset from "@/assets/img/mountain.jpg";
 import backgroundImageAssetWebp from "@/assets/img/mountain.webp";
-import CardWindy from "../components/Cards/CardWindy.vue";
-
-
 import { inject, reactive } from 'vue';
+import SanityBlog from '@/components/Utilities/ComponentSanityBlog.vue';
+
 
 export default {
-  description: "Club de parapente dans le Nord FFVL n°29070. La carte des prévisions de vent dans la région, gracieusement offerte par Windy.", 
-  title: "High Can Fly | Club de parapente | Le vent par Windy",
+  title: "High Can Fly | Club de parapente | News",
+  description: "Nous sommes un club vivant, ici il y a quelques nouvelles. Mais nous sommes plus souvent dehors que devant un ordinateur",
   data() {
-    const state = reactive({//eslint-disable-line
+    const state = reactive({
       backgroundImageURL: '',
     });
     inject('getJpgOrWebpIfSupported')(backgroundImageAsset, backgroundImageAssetWebp, 'lossy').then(file => { console.log('Webp support: ' + file); state.backgroundImageURL = file });
@@ -64,10 +53,9 @@ export default {
     };
   },
   components: {
-    Navbar,
-    FooterComponent,
-    CardWindy,
+    NavbarGrey,
+    MainFooter,
+    SanityBlog,
   },
-
 };
 </script>
