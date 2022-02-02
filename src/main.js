@@ -25,36 +25,36 @@ import Highcanfly from "@/plugins/highcanfly";
 const routes = [
   {
     path: "/policy",
-    component: () => import("@/views/Policy.vue"),
+    component: () => import("@/views/ViewPolicy.vue"),
     name: "Policy",
   },
   {
     path: "/landing",
-    component: () => import("@/views/Landing.vue"),
+    component: () => import("@/views/ViewLanding.vue"),
     name: "Landing",
   },
   {
     path: "/blog",
-    component: () => import("@/views/Blog.vue"),
+    component: () => import("@/views/ViewBlog.vue"),
     name: "Blog",
   },
   {
     path: "/about",
-    component: () => import("@/views/About.vue"),
+    component: () => import("@/views/ViewAbout.vue"),
     name: "À propos",
   },
   {
     path: "/index-new",
-    component: () => import("@/views/Index.vue"),
+    component: () => import("@/views/ViewIndexWhite.vue"),
   },
   {
     path: "/contact",
-    component: () => import("@/views/Contact.vue"),
+    component: () => import("@/views/ViewContact.vue"),
     name: 'contactez-nous'
   },
   {
     path: "/windy",
-    component: () => import("@/views/Windy.vue"),
+    component: () => import("@/views/ViewWindy.vue"),
     name: 'Le vent (Windy)'
   },
   {
@@ -64,11 +64,11 @@ const routes = [
   },
   {
     path: "/",
-    component: () => import("@/views/Landing.vue"),
+    component: () => import("@/views/ViewLanding.vue"),
     name: 'index',
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
-  { path: "/site-map", component: () => import("@/views/Sitemap.vue")},
+  { path: "/site-map", component: () => import("@/views/ViewSitemap.vue")},
   {
     path: "/sanity-blog/:slug",
     component: () => import("@/views/SinglePost.vue"),
