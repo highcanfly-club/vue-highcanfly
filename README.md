@@ -42,6 +42,12 @@ Si vous constatez un problème merci d'ouvrir une "issue" en précisant :
 - Sur mobile le modèle et l'orientation (ex Apple iPhone 8SE portrait)
 - Bien sûr le bug ! 
 
+### [Structured content powered by Sanity.io](https://sanity.io)
+
+![Structured content powered by Sanity.io](https://cdn.sanity.io/images/3do82whm/next/51af00784c5addcf63ae7f0c416756acca7e63ac-353x71.svg?dl=sanity-logo.svg)
+The news are structured and stored and structured by Sanity.io .
+We use the Sanity client v3 and the GROQ query language.
+
 ### Our theme : Vue Notus
 
 <b>A beautiful UI Kit and Admin for Tailwind CSS and VueJS.</b>

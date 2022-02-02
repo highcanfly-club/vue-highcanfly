@@ -243,10 +243,9 @@
           <div class="text-sm text-slate-500 font-semibold py-1">
             <a
               href="https://www.highcanfly.club?ref=vn-footer"
-              class="text-slate-500 hover:text-slate-800"
+              class="whitespace-nowrap text-slate-500 hover:text-slate-800"
               >Copyright © High Can Fly 2018-{{ date }}</a
-            >
-            .
+            ><br /><a class="whitespace-nowrap" href="https://sanity.io">Données structurées propulsées gracieusement par Sanity.io</a>
           </div>
         </div>
       </div>
