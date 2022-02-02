@@ -198,7 +198,7 @@
                       pb-2
                       text-sm
                     "
-                    href="https://www.facebook.com/Comité-Départemental-de-Vol-Libre-du-Nord-2518839258194595?ref=vn-footer"
+                    href="https://cdvl59.cf"
                     >Comité Départemental de Vol Libre du Nord</a
                   >
                 </li>
