@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.4",
+    "@headlessui/vue": "^1.4.3",
+    "@heroicons/vue": "^1.0.5",
     "@popperjs/core": "2.11.2",
     "@sanity/client": "^3.0.3",
     "@sanity/image-url": "^1.0.1",
@@ -31,9 +33,7 @@
     "vue-router": "^4.0.12",
     "vue3-openlayers": "^0.1.58",
     "walkjs": "^3.2.4",
-    "wrangler": "^0.0.15",
-    "@headlessui/vue": "^1.4.3",
-    "@heroicons/vue": "^1.0.5"
+    "wrangler": "^0.0.15"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
@@ -45,7 +45,8 @@
     "eslint": "^8.8.0",
     "eslint-plugin-vue": "^8.4.1",
     "postcss": "^8.4.6",
-    "tailwindcss": "^3.0.18"
+    "tailwindcss": "^3.0.18",
+    "gitlog": "^4.0.4"
   },
   "eslintConfig": {
     "root": true,

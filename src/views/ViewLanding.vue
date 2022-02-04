@@ -156,8 +156,8 @@
                   rounded-lg
                 "
               >
-                <div class="px-4 py-5 flex-auto">
-                  <div
+                <div class="px-4 py-5 flex flex-col items-center">
+                                    <div
                     class="
                       text-white
                       p-3
@@ -173,93 +173,20 @@
                       bg-emerald-400
                     "
                   >
-                    <i class="fas fa-fingerprint"></i>
+                    <i class="fas fa-newspaper"></i>
                   </div>
-                  <a
-                    class="
-                      text-slate-600
-                      hover:text-slate-800
-                      text-xl
-                      font-semibold
-                      block
-                      pb-2
-                      text-sm
-                    "
-                    href="https://intranet.ffvl.fr/structure/14172"
-                  >
-                    <h6
-                      class="text-xl font-semibold"
-                      onclick="location.href='https://intranet.ffvl.fr/structure/14172'"
-                    >
-                      Notre page FFVL
-                    </h6>
-                    <div
-                      class="mt-2 mb-4 text-slate-500 grid justify-items-center"
-                    >
-                      <qrCode
-                        render-as="svg"
-                        value="https://intranet.ffvl.fr/structure/14172"
-                      ></qrCode>
-                    </div>
-                  </a>
+                  <div class="text-center">
+                    <h6 class="text-xl font-semibold"><router-link to="/blog">News</router-link></h6>
+                  </div>
+                  <div class="text-left">
+                  <mini-sanity-blog />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center mt-32">
-            <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
-              <div
-                class="
-                  text-slate-500
-                  p-3
-                  text-center
-                  inline-flex
-                  items-center
-                  justify-center
-                  w-16
-                  h-16
-                  mb-6
-                  shadow-lg
-                  rounded-full
-                  bg-white
-                "
-              >
-                <i class="fas fa-user-friends text-xl"></i>
-              </div>
-              <h3 class="text-3xl mb-2 font-semibold leading-normal">
-                Partageons nos expériences
-              </h3>
-              <p
-                class="
-                  text-lg
-                  font-light
-                  leading-relaxed
-                  mt-4
-                  mb-4
-                  text-slate-600
-                "
-              >
-                Le parapente fait partie de ces activités, comme l'alpinisme,
-                qui créent des émotions fortes. Elles permettent de développer
-                rapidement des liens forts avec les gens qui partagnet
-                l'activité avec nous.
-              </p>
-              <p
-                class="
-                  text-lg
-                  font-light
-                  leading-relaxed
-                  mt-0
-                  mb-4
-                  text-slate-600
-                "
-              >
-                Une sortie Hike and Fly laisse souvent de nombreux souvenirs de
-                conversations pendant la montée,de partage d'émotions à la vue
-                des paysages… et de vols fabuleux.
-              </p>
-            </div>
+          <div class="flex flex-wrap items-center mt-16">
 
             <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
               <div
@@ -320,6 +247,59 @@
                 </blockquote>
               </div>
             </div>
+            <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+              <div
+                class="
+                  text-slate-500
+                  p-3
+                  text-center
+                  inline-flex
+                  items-center
+                  justify-center
+                  w-16
+                  h-16
+                  mb-6
+                  shadow-lg
+                  rounded-full
+                  bg-white
+                "
+              >
+                <i class="fas fa-user-friends text-xl"></i>
+              </div>
+              <h3 class="text-3xl mb-2 font-semibold leading-normal">
+                Partageons nos expériences
+              </h3>
+              <p
+                class="
+                  text-lg
+                  font-light
+                  leading-relaxed
+                  mt-4
+                  mb-4
+                  text-slate-600
+                "
+              >
+                Le parapente fait partie de ces activités, comme l'alpinisme,
+                qui créent des émotions fortes. Elles permettent de développer
+                rapidement des liens forts avec les gens qui partagnet
+                l'activité avec nous.
+              </p>
+              <p
+                class="
+                  text-lg
+                  font-light
+                  leading-relaxed
+                  mt-0
+                  mb-4
+                  text-slate-600
+                "
+              >
+                Une sortie Hike and Fly laisse souvent de nombreux souvenirs de
+                conversations pendant la montée,de partage d'émotions à la vue
+                des paysages… et de vols fabuleux.
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
@@ -358,24 +338,7 @@
 
         <div class="container mx-auto px-4">
           <div class="items-center flex flex-wrap">
-            <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-              <picture>
-                <source
-                  srcset="@/assets/img/highcanfly-104.webp"
-                  type="image/webp"
-                />
-                <source
-                  srcset="@/assets/img/highcanfly-104.jpg"
-                  type="image/jpeg"
-                />
-                <img
-                  alt="..."
-                  class="max-w-full rounded-lg shadow-lg"
-                  src="@/assets/img/highcanfly-104.jpg"
-                />
-              </picture>
-            </div>
-            <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
+                        <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
               <div class="md:pr-12">
                 <div
                   class="
@@ -487,6 +450,24 @@
                 </ul>
               </div>
             </div>
+            <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+              <picture>
+                <source
+                  srcset="@/assets/img/highcanfly-104.webp"
+                  type="image/webp"
+                />
+                <source
+                  srcset="@/assets/img/highcanfly-104.jpg"
+                  type="image/jpeg"
+                />
+                <img
+                  alt="..."
+                  class="max-w-full rounded-lg shadow-lg"
+                  src="@/assets/img/highcanfly-104.jpg"
+                />
+              </picture>
+            </div>
+
           </div>
         </div>
       </section>
@@ -834,8 +815,8 @@ import FooterComponent from "@/components/Footers/MainFooter.vue";
 import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg"; //eslint-disable-line
 import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; //eslint-disable-line
 import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
+import MiniSanityBlog from "@/components/Utilities/ComponentMinSanityBlog.vue";
 import emailForm from "@/components/Forms/EmailForm.vue";
-import qrCode from "qrcode.vue";
 import { inject, reactive } from "vue";
 
 export default {
@@ -862,6 +843,7 @@ export default {
     },
   },
   data() {
+    console.log('commit date: '+process.env.VUE_APP_GIT_LAST_COMMIT);
     const errors = [];
     const state = reactive({
       //eslint-disable-line
@@ -885,8 +867,8 @@ export default {
     NavbarGrey,
     FooterComponent,
     olMapsitesDePratiqueComponent,
-    qrCode,
     emailForm,
+    MiniSanityBlog,
   },
 };
 </script>
