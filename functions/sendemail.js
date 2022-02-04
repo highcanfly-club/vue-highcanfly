@@ -62,6 +62,11 @@ async function sendEmail({ api_key, api_pwd, dest, fromemail, name, message, red
               "Name": `${dest}`
             }
           ],
+          "ReplyTo": 
+              {
+                "Email": `${fromemail}`,
+              "Name": `${name}`
+            },
           "Subject": `Contact formulaire web:${fromemail} `,
           "TextPart": `NOM :  ${name} \nEMAIL = ${fromemail} \nMESSAGE : ${message}`,
           "HTMLPart": `NOM :  ${name} <br />EMAIL : ${fromemail} <br />MESSAGE : ${message}`,
