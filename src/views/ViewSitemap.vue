@@ -144,7 +144,7 @@ let getDownloadSitemapXMLHREF = function (text) {
   return theDownloadlink;
 };
 export default {
-  title: "High Can Fly | Club de parapente | Plan du site",
+  title: "High Can Fly | Club de parapente du Nord | Plan du site",
   data() {
     const routesR = reactive({pathList:[]});
     const routesXML = reactive({xml:'',hrefdata:''});
