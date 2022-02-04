@@ -1,12 +1,10 @@
 <template>
   <div class="">
-      <div class="loading" v-if="loading">
-            <h1>High Can Fly blog</h1>
-        Récupération des données...</div>
-      <div v-if="error" class="error">
-        {{ error }}
-      </div>
-      <!--
+    <loading-spinner v-if="loading"/>
+    <div v-if="error" class="error">
+      {{ error }}
+    </div>
+    <!--
       <div class="container">
         <div v-for="post in posts" class="post-item" :key="post._id">
           <router-link :to="`/sanity-blog-test/${post.slug.current}`">
@@ -17,17 +15,22 @@
         </div>
       </div>
       -->
-      <div>
-        <div v-for="(post,index) in posts" :key="post._id">
-          <CardSinglePost :slug="post.slug.current" :nbPosts="posts.length" :indexPosts="index"/>
-        </div>
+    <div>
+      <div v-for="(post, index) in posts" :key="post._id">
+        <CardSinglePost
+          :slug="post.slug.current"
+          :nbPosts="posts.length"
+          :indexPosts="index"
+        />
       </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { SanityBlocks } from "sanity-blocks-vue-component";
 import CardSinglePost from "@/components/Cards/CardSinglePost.vue";
+import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
 
 import sanity from "@/plugins/sanity-client";
 
@@ -40,7 +43,7 @@ const query = `*[_type == "post"]{
 }[0...50]| order(publishedAt desc)`;
 
 export default {
- // name: "Home",
+  // name: "Home",
   data() {
     return {
       loading: true,
@@ -51,9 +54,10 @@ export default {
   created() {
     this.fetchData();
   },
-  components:{
+  components: {
     SanityBlocks, // eslint-disable-line
     CardSinglePost,
+    LoadingSpinner,
   },
   methods: {
     fetchData() {
