@@ -53,6 +53,11 @@ const routes = [
     name: 'contactez-nous'
   },
   {
+    path: "/trackjoiner",
+    component: () => import("@/views/ViewTrackjoiner.vue"),
+    name: 'Joignez vos traces'
+  },
+  {
     path: "/windy",
     component: () => import("@/views/ViewWindy.vue"),
     name: 'Le vent (Windy)'
