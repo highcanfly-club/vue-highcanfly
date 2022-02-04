@@ -41,7 +41,7 @@ import contactForm from "@/components/Forms/EmailForm.vue";
 import { inject, reactive } from 'vue';
 
 export default {
-  title: "High Can Fly | Club de parapente | Contactez-nous",
+  title: "High Can Fly | Club de parapente du Nord | Contactez-nous",
   description: "Pour contacter le club, chercher des informations…",
   data() {
     const state = reactive({//eslint-disable-line
