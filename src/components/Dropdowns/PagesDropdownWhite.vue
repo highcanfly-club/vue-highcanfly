@@ -49,6 +49,11 @@
         to="/map-sites-de-pratique"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
       >Nos sites de pratiques</router-link>
+      <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
+      <router-link
+        to="/trackjoiner"
+        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+      >Assemblez vos traces</router-link>
     </div>
   </div>
 </template>

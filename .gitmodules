@@ -1,0 +1,3 @@
+[submodule "CFDTrackJoiner"]
+	path = CFDTrackJoiner
+	url = git@github.com:eltorio/CFDTrackJoiner.git

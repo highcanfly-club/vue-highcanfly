@@ -61,7 +61,7 @@ import { inject, reactive } from "vue";
 export default {
   description:
     "Club de parapente dans le Nord FFVL n°29070. Voici la dernière nouvelle !",
-  title: "High Can Fly | Club de parapente | News",
+  title: "High Can Fly | Club de parapente du Nord | News",
   data() {
     const slug = this.$route.params.slug;
     const state = reactive({
