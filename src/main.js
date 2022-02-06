@@ -1,27 +1,6 @@
 import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 
-// styles
-import "@/assets/styles/index.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-
-// mouting point for the whole app
-
-import App from "@/App.vue";
-
-// Title mixin
-import metaMixin from "@/mixins/MetaMixin";
-
-
-//vue3 openlayers
-//import OpenLayersMap from 'vue3-openlayers';
-import 'vue3-openlayers/dist/vue3-openlayers.css';
-
-//Global functions
-import Highcanfly from "@/plugins/highcanfly";
-// routes
-
-
 const routes = [
   {
     path: "/policy",
@@ -83,6 +62,28 @@ const routes = [
     component: () => import("@/views/SinglePost.vue"),
   },
 ];
+
+// styles
+import "@/assets/styles/index.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+// mouting point for the whole app
+
+import App from "@/App.vue";
+
+// Title mixin
+import metaMixin from "@/mixins/MetaMixin";
+
+
+//vue3 openlayers
+//import OpenLayersMap from 'vue3-openlayers';
+import 'vue3-openlayers/dist/vue3-openlayers.css';
+
+//Global functions
+import Highcanfly from "@/plugins/highcanfly";
+// routes
+
+
 
 const router = createRouter({
   history: createWebHistory(),
