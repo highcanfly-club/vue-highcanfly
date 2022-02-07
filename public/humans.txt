@@ -1,1 +1,18 @@
-This website is designed and coded by Ronan Le Meillat. https://github.com/eltorio
+/* TEAM */
+	Creator: Ronan LE MEILLAT
+	Contact: Ronan [at] highcanfly.club
+	Twitter: @juanjobernabeu
+	From: Les Contamines-Monjoie, Haute-Savoie, France
+
+/* THANKS */
+
+	Hosting: Github, Cloudflare
+
+    Special thanks: Sanity.io for free structured data hosting
+
+
+/* SITE */
+	Language: French
+	Doctype:HTML5
+	IDE: Visual Studio Code
+    Frameworks: Vue3, TailwindCSS, CoreJS
