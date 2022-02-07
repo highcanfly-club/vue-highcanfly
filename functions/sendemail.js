@@ -106,7 +106,7 @@ export async function onRequestPost(context) {
   let params = reqBody; //JSON.parse(reqBody); //automatically parsed
   let hCaptchaSitekey = params.sitekey;
   let hCaptchaToken = params.token;
-  let hCaptchaEkey = params.ekey;
+  let hCaptchaEkey = params.ekey; //eslint-disable-line
   let name = params.name;
   let email = params.email;
   let message = params.message;

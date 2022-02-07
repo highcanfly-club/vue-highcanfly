@@ -1,3 +1,5 @@
+const canonicalURL = "https://www.highcanfly.club";
+
 let getRoutesList = function (router) {
     //eslint-disable-line
     let list = [];
@@ -21,14 +23,14 @@ let getRoutesList = function (router) {
     return list;
   };
   
-  let getRoutesXML = function (router) {
+  let getRoutesXML = function (router,baseURL = canonicalURL) {
     //eslint-disable-line
     let list = "";
     for (let i = 0; i < router.length; i++) {
       if (router[i].path != undefined)
-        list += `<url><loc>${router[i].path}</loc></url>\n`;
+        list += `<url><loc>${baseURL}${router[i].path}</loc></url>\n`;
     }
-    return `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
       ${list}
     </urlset>`;
   };
@@ -41,4 +43,4 @@ let getRoutesList = function (router) {
     return ret;
   };
 
-  export {getRoutesList,getRoutesXML,getSlugList};
+  export {getRoutesList,getRoutesXML,getSlugList,canonicalURL};

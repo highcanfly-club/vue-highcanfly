@@ -69,6 +69,7 @@ let getResponse = function () {
 };
 
 export async function onRequestGet(context) { //eslint-disable-line
+
     let stringXML = await getResponse()
     return new Response(stringXML, {
         headers: {
