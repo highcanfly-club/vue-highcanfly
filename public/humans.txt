@@ -1,7 +1,6 @@
 /* TEAM */
 	Creator: Ronan LE MEILLAT
 	Contact: Ronan [at] highcanfly.club
-	Twitter: @juanjobernabeu
 	From: Les Contamines-Monjoie, Haute-Savoie, France
 
 /* THANKS */
