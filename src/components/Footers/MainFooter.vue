@@ -138,6 +138,8 @@
         <div class="w-full px-4 mx-auto text-center">
           <div class="text-sm text-slate-500 font-semibold py-1">
             <a
+              @mouseover="date=commit_date"
+              @mouseleave="date=new Date().getFullYear()"
               href="https://www.highcanfly.club?ref=vn-footer"
               class="whitespace-nowrap text-slate-500 hover:text-slate-800"
               >Copyright © High Can Fly 2018-{{ date }}</a
@@ -159,6 +161,13 @@ import VueScrollUp from "@/plugins/vue-scroll-up";
 export default {
   data() {
     return {
+      commit_date: new Intl.DateTimeFormat("fr-FR", {
+                          year: "2-digit",
+                          month: "short",
+                          day: "2-digit",
+                          hour: "numeric",
+                          minute: "numeric",
+                        }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT)),
       date: new Date().getFullYear(),
     };
   },
