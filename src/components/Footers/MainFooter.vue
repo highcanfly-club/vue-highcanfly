@@ -138,11 +138,11 @@
         <div class="w-full px-4 mx-auto text-center">
           <div class="text-sm text-slate-500 font-semibold py-1">
             <a
-              @mouseover="date=commit_date"
-              @mouseleave="date=new Date().getFullYear()"
+              @mouseover="copyright_text = 'build: ' + commit_date"
+              @mouseleave="copyright_text='2018-'+ new Date().getFullYear()"
               href="https://www.highcanfly.club?ref=vn-footer"
               class="whitespace-nowrap text-slate-500 hover:text-slate-800"
-              >Copyright © High Can Fly 2018-{{ date }}</a
+              >Copyright © High Can Fly {{ copyright_text }}</a
             ><br /><a class="whitespace-nowrap text-slate-500 hover:text-slate-800" href="https://sanity.io"
               >Données structurées propulsées gracieusement par Sanity.io</a
             >
@@ -161,6 +161,7 @@ import VueScrollUp from "@/plugins/vue-scroll-up";
 export default {
   data() {
     return {
+      copyright_text: '2018-'+ new Date().getFullYear(),
       commit_date: new Intl.DateTimeFormat("fr-FR", {
                           year: "2-digit",
                           month: "short",
