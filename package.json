@@ -1,5 +1,6 @@
 {
   "name": "vue-highcanfly",
+  "sideEffects": ["src/assets/styles/index.css"],
   "homepage": "https://www.highcanfly.club/",
   "version": "1.1.0",
   "description": "HighCanFly website with Vue3/TailwindCSS",
@@ -9,34 +10,36 @@
     "serve": "vue-cli-service serve",
     "wrangler": "npx wrangler pages dev -- yarn serve",
     "build": "vue-cli-service build && gulp licenses",
-    "build-cf": "git fetch --recurse-submodules && vue-cli-service build && gulp licenses",
+    "build-cf": "git fetch --recurse-submodules && vue-cli-service build --report && gulp licenses",
+    "build-report": "vue-cli-service build --report",
     "lint": "vue-cli-service lint",
     "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run serve"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "5.15.4",
+    "@fortawesome/fontawesome-free": "~6.0.0",
     "@headlessui/vue": "^1.4.3",
     "@heroicons/vue": "^1.0.5",
     "@popperjs/core": "2.11.2",
-    "@sanity/client": "^3.0.3",
+    "@sanity/client": "^3.0.5",
     "@sanity/image-url": "^1.0.1",
     "@tailwindcss/forms": "^0.4.0",
-    "@vue/compiler-sfc": "^3.2.29",
+    "@vue/compiler-sfc": "^3.2.30",
     "chart.js": "^3.7.0",
     "core-js": "^3.21.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.9",
     "qrcode.vue": "^3.3.3",
     "sanity-blocks-vue-component": "^1.0.1",
-    "vue": "^3.2.27",
+    "vue": "^3.2.30",
     "vue-router": "^4.0.12",
-    "vue3-openlayers": "^0.1.58",
+    "vue3-openlayers": "^0.1.59",
     "walkjs": "^3.2.4",
-    "wrangler": "^0.0.15"
+    "wrangler": "^0.0.16",
+    "CFDTrackJoiner": "file:./CFDTrackJoiner"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.17.2",
     "@babel/eslint-parser": "^7.17.0",
     "@vue/cli-plugin-babel": "^5.0.0-rc.2",
     "@vue/cli-plugin-eslint": "^5.0.0-rc.2",
@@ -46,7 +49,8 @@
     "eslint-plugin-vue": "^8.4.1",
     "gitlog": "^4.0.4",
     "postcss": "^8.4.6",
-    "tailwindcss": "^3.0.18"
+    "tailwindcss": "^3.0.19",
+    "webpack": "~5.68.0"
   },
   "eslintConfig": {
     "root": true,
