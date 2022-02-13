@@ -843,7 +843,13 @@ export default {
     },
   },
   data() {
-    console.log('commit date: '+process.env.VUE_APP_GIT_LAST_COMMIT);
+    console.log('commit date: '+new Intl.DateTimeFormat("fr-FR", {
+                          year: "2-digit",
+                          month: "short",
+                          day: "2-digit",
+                          hour: "numeric",
+                          minute: "numeric",
+                        }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT)));
     const errors = [];
     const state = reactive({
       //eslint-disable-line
