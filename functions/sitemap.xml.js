@@ -45,11 +45,12 @@ const routes = [
     {
         path: "/",
         name: 'index',
+        _updatedAt: new Date("2022-02-12").toISOString()
     },
 ];
 
 const query = `*[_type == "post"]{
-    slug
+    slug,_updatedAt
   }| order(slug asc)`;
 
 let getResponse = function () {
@@ -69,7 +70,7 @@ let getResponse = function () {
 };
 
 export async function onRequestGet(context) { //eslint-disable-line
-
+console.log(context.env);
     let stringXML = await getResponse()
     return new Response(stringXML, {
         headers: {
