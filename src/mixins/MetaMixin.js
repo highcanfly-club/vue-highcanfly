@@ -16,10 +16,20 @@ function getTitle(vm) {
   }
 }
 
+function getCanonical(vm) {
+  const { canonical } = vm.$options
+  if (canonical) {
+    return typeof canonical === 'function'
+      ? canonical.call(vm)
+      : canonical
+  }
+}
+
 export default {
   created() {
     const title = getTitle(this)
     const description = getDescription(this);
+    const canonical = getCanonical(this);
 
     if (title) {
       document.title = title
@@ -27,6 +37,10 @@ export default {
     if (description) {
       document.querySelector('meta[name="description"]')
         .setAttribute('content', description);
+    }
+    if (canonical) {
+      document.querySelector('link[rel="canonical"]').href = canonical;
+        
     }
   }
 }

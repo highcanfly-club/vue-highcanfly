@@ -103,6 +103,7 @@ let getDownloadSitemapXMLHREF = function (text) {
 };
 export default {
   title: "High Can Fly | Club de parapente du Nord | Plan du site",
+  canonical: (new URL(window.location)),
   data() {
     const routesR = reactive({pathList:[]});
     const routesXML = reactive({xml:'',hrefdata:''});

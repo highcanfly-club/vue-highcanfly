@@ -52,6 +52,7 @@ import { inject, reactive} from 'vue' ;
 export default {
   title: "High Can Fly | Club de parapente du Nord | Nos sites de pratique",
   descritpion: "Les parapentistes volents. Les quelques endroits où vous nous trouverez dans les Hauts-de-France…",
+  canonical: (new URL(window.location)),
   data() {
     const state = reactive({//eslint-disable-line
                             backgroundImageURL: '',

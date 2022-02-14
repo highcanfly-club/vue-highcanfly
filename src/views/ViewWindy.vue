@@ -54,6 +54,7 @@ import { inject, reactive } from 'vue';
 export default {
   description: "Club de parapente dans le Nord FFVL n°29070. La carte des prévisions de vent dans la région, gracieusement offerte par Windy.", 
   title: "High Can Fly | Club de parapente du Nord | Le vent par Windy",
+  canonical: (new URL(window.location)),
   data() {
     const state = reactive({//eslint-disable-line
       backgroundImageURL: '',

@@ -43,6 +43,7 @@ import SanityBlog from '@/components/Utilities/ComponentSanityBlog.vue';
 export default {
   title: "High Can Fly | Club de parapente du Nord | News",
   description: "Nous sommes un club vivant, ici il y a quelques nouvelles. Mais nous sommes plus souvent dehors que devant un ordinateur",
+  canonical: (new URL(window.location)),
   data() {
     const state = reactive({
       backgroundImageURL: '',

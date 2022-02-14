@@ -259,6 +259,7 @@ import { inject, reactive} from 'vue' ;
 export default {
   title: "High Can Fly | Club de parapente | Politique de confidentialité",
   description: "Club de parapente dans le Nord FFVL n°29070. Notre politique de confidentialité, notre licence et comment nous gérons vos données…",
+  canonical: (new URL(window.location)),
   data() {
     const state = reactive({//eslint-disable-line
                             backgroundImageURL: '',
