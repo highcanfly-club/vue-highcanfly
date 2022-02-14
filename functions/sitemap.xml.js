@@ -11,7 +11,7 @@ const routes = [
     {
         path: "/landing",
         name: "Landing",
-        _updatedAt: commit
+        _updatedAt: commit.vue_highcanfly
     },
     {
         path: "/blog",
