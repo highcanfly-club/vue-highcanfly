@@ -24,3 +24,5 @@ commit.sh
 yarn.lock
 package-json.lock
 launch-serve
+commit.json
+package-lock.json
