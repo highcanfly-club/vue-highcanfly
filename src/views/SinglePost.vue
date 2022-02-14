@@ -62,6 +62,7 @@ export default {
   description:
     "Club de parapente dans le Nord FFVL n°29070. Voici la dernière nouvelle !",
   title: "High Can Fly | Club de parapente du Nord | News",
+  canonical: (new URL(window.location)),
   data() {
     const slug = this.$route.params.slug;
     const state = reactive({

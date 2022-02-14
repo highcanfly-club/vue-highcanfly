@@ -283,6 +283,7 @@ import logo from "@/assets/img/logo_high_can_fly.svg";
 export default {
   title: "High Can Fly | Club de parapente du Nord | À propos",
   description: "Club de parapente dans le Nord FFVL n°29070. À propos de nous…",
+  canonical: (new URL(window.location)),
   data() {
     const state = reactive({
       //eslint-disable-line
