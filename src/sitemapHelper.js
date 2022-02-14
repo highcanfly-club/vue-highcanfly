@@ -1,5 +1,3 @@
-const canonicalURL = "https://www.highcanfly.club";
-
 let getRoutesList = function (router) {
   //eslint-disable-line
   let list = [];
@@ -8,7 +6,7 @@ let getRoutesList = function (router) {
       list.push({
         id: i,
         path: router[i].path,
-        _updatedAt: router[i]._updatedAt 
+        _updatedAt: router[i]._updatedAt
       });
   }
   list.sort(function (a, b) {
@@ -24,13 +22,13 @@ let getRoutesList = function (router) {
   return list;
 };
 
-let getRoutesXML = function (router, baseURL = canonicalURL) {
+let getRoutesXML = function (router, baseURL) {
   let list = "";
   for (let i = 0; i < router.length; i++) {
-    if (!(typeof(router[i].path) === 'undefined')) 
-    { 
+    if (!(typeof(router[i].path) === 'undefined'))
+    {
       let lastmod = typeof(router[i]._updatedAt) === 'undefined' ? '' : `<lastmod>${router[i]._updatedAt}</lastmod>` ;
-      list += `<url><loc>${baseURL}${router[i].path}</loc>${lastmod}</url>\n`; 
+      list += `<url><loc>${baseURL}${router[i].path}</loc>${lastmod}</url>\n`;
     }
   }
   return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
@@ -46,4 +44,4 @@ let getSlugList = function (posts) {
   return ret;
 };
 
-export { getRoutesList, getRoutesXML, getSlugList, canonicalURL };
+export { getRoutesList, getRoutesXML, getSlugList };
