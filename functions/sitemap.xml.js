@@ -1,5 +1,6 @@
 import sanity from "@/plugins/sanity-client";
 import {getRoutesList,getRoutesXML,getSlugList} from "@/sitemapHelper.js";
+const commit = require('../commit.json');
 
 //ToDo extract automatically from router
 const routes = [
@@ -10,6 +11,7 @@ const routes = [
     {
         path: "/landing",
         name: "Landing",
+        _updatedAt: commit.vue_highcanfly
     },
     {
         path: "/blog",
@@ -28,11 +30,13 @@ const routes = [
     },
     {
         path: "/trackjoiner",
-        name: 'Joignez vos traces'
+        name: 'Joignez vos traces',
+        _updatedAt: commit.cfdtrackjoiner
     },
     {
         path: "/trackjoiner/help",
         name: 'Joignez vos traces',
+        _updatedAt: commit.cfdtrackjoiner
     },
     {
         path: "/windy",
@@ -45,11 +49,12 @@ const routes = [
     {
         path: "/",
         name: 'index',
+        _updatedAt: commit.vue_highcanfly
     },
 ];
 
 const query = `*[_type == "post"]{
-    slug
+    slug,_updatedAt
   }| order(slug asc)`;
 
 let getResponse = function () {
@@ -69,7 +74,7 @@ let getResponse = function () {
 };
 
 export async function onRequestGet(context) { //eslint-disable-line
-
+    console.log(commit);
     let stringXML = await getResponse()
     return new Response(stringXML, {
         headers: {

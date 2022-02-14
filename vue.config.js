@@ -1,5 +1,6 @@
 // vue.config.js
 const gitlog = require("gitlog").default;
+const fs = require('fs');
 
 // Option 1: Just use the function, returned commit type has specified fields
 const commits = gitlog({
@@ -7,24 +8,40 @@ const commits = gitlog({
   number: 1,
   fields: ["authorDate"],
 });
-process.env.VUE_APP_GIT_LAST_COMMIT = new Date(commits[0].authorDate);
 
+const commits_trackjoiner = gitlog(
+  {
+    repo: "CFDTrackJoiner",
+    number: 1,
+    fields: ["authorDate"],
+  }
+);
+process.env.VUE_APP_GIT_LAST_COMMIT = new Date(commits[0].authorDate);
+process.env.VUE_APP_GIT_TRACKJOINER_LAST_COMMIT = new Date(commits_trackjoiner[0].authorDate);
+fs.writeFile('./commit.json', JSON.stringify(
+  { vue_highcanfly: (new Date(commits[0].authorDate)).toISOString(), 
+    cfdtrackjoiner: (new Date(commits_trackjoiner[0].authorDate)).toISOString(), 
+  }), 
+  'utf8', function (err) {
+                            if (err) return console.log(err);
+                          }
+           );
 var path = require('path');
 
 module.exports = {
   runtimeCompiler: true,
   configureWebpack: {
-    devtool: 'source-map',
+    devtool: process.env.CF_PAGES === '1' ? false : 'eval-source-map',
     mode: 'production',
     resolve: {
-			fallback: {
-				"fs": false,
-				"http": require.resolve("stream-http"),
-				"https": require.resolve("https-browserify"),
-				"timers": require.resolve("timers-browserify"),
-				"stream": require.resolve("stream-browserify")
-				}
-			}
+      fallback: {
+        "fs": false,
+        "http": require.resolve("stream-http"),
+        "https": require.resolve("https-browserify"),
+        "timers": require.resolve("timers-browserify"),
+        "stream": require.resolve("stream-browserify")
+      }
+    }
   },
   chainWebpack(config) {
     config.resolve.alias.set('vue', path.resolve('./node_modules/vue')); //if using yarn rather than npm
