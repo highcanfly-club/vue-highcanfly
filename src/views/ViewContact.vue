@@ -43,6 +43,7 @@ import { inject, reactive } from 'vue';
 export default {
   title: "High Can Fly | Club de parapente du Nord | Contactez-nous",
   description: "Pour contacter le club, chercher des informations…",
+  canonical: (new URL(window.location)),
   data() {
     const state = reactive({//eslint-disable-line
       backgroundImageURL: '',

@@ -54,6 +54,7 @@ import { inject, reactive } from 'vue';
 export default {
   description: "Assemblez vos traces de marche et vol venant de votre vario, de votre téléphone et de votre montre", 
   title: "High Can Fly | Club de parapente du Nord | Assemblage de traces",
+  canonical: (new URL(window.location)),
   data() {
     const state = reactive({//eslint-disable-line
       backgroundImageURL: '',
