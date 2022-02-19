@@ -3,16 +3,7 @@
     <navbar-grey />
     <main>
       <div
-        class="
-          relative
-          pt-16
-          pb-32
-          flex
-          content-center
-          items-center
-          justify-center
-          min-h-screen-75
-        "
+        class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75"
       >
         <div
           id="bg-div"
@@ -44,17 +35,7 @@
           </div>
         </div>
         <div
-          class="
-            top-auto
-            bottom-0
-            left-0
-            right-0
-            w-full
-            absolute
-            pointer-events-none
-            overflow-hidden
-            h-70-px
-          "
+          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
           style="transform: translateZ(0)"
         >
           <svg
@@ -79,34 +60,11 @@
           <div class="flex flex-wrap">
             <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
               <div
-                class="
-                  relative
-                  flex flex-col
-                  min-w-0
-                  break-words
-                  bg-white
-                  w-full
-                  mb-8
-                  shadow-lg
-                  rounded-lg
-                "
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
               >
                 <div class="px-4 py-5 flex-auto">
                   <div
-                    class="
-                      text-white
-                      p-3
-                      text-center
-                      inline-flex
-                      items-center
-                      justify-center
-                      w-12
-                      h-12
-                      mb-5
-                      shadow-lg
-                      rounded-full
-                      bg-red-400
-                    "
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
                   >
                     <i class="fas fa-award"></i>
                   </div>
@@ -122,17 +80,7 @@
 
             <div class="w-full md:w-4/12 px-6 text-center">
               <div
-                class="
-                  relative
-                  flex flex-col
-                  min-w-0
-                  break-words
-                  bg-white
-                  w-full
-                  mb-8
-                  shadow-lg
-                  rounded-lg
-                "
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
               >
                 <div class="px-6 py-6 flex-auto">
                   <div class="px-4 py-4 flex-auto">
@@ -144,42 +92,21 @@
 
             <div class="pt-6 w-full md:w-4/12 px-4 text-center">
               <div
-                class="
-                  relative
-                  flex flex-col
-                  min-w-0
-                  break-words
-                  bg-white
-                  w-full
-                  mb-8
-                  shadow-lg
-                  rounded-lg
-                "
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
               >
                 <div class="px-4 py-5 flex flex-col items-center">
-                                    <div
-                    class="
-                      text-white
-                      p-3
-                      text-center
-                      inline-flex
-                      items-center
-                      justify-center
-                      w-12
-                      h-12
-                      mb-5
-                      shadow-lg
-                      rounded-full
-                      bg-emerald-400
-                    "
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400"
                   >
                     <i class="fas fa-newspaper"></i>
                   </div>
                   <div class="text-center">
-                    <h6 class="text-xl font-semibold"><router-link to="/blog">News</router-link></h6>
+                    <h6 class="text-xl font-semibold">
+                      <router-link to="/blog">News</router-link>
+                    </h6>
                   </div>
                   <div class="text-left">
-                  <mini-sanity-blog />
+                    <mini-sanity-blog />
                   </div>
                 </div>
               </div>
@@ -187,21 +114,9 @@
           </div>
 
           <div class="flex flex-wrap items-center mt-16">
-
             <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
               <div
-                class="
-                  relative
-                  flex flex-col
-                  min-w-0
-                  break-words
-                  bg-white
-                  w-full
-                  mb-6
-                  shadow-lg
-                  rounded-lg
-                  bg-emerald-500
-                "
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-emerald-500"
               >
                 <picture>
                   <source
@@ -249,20 +164,7 @@
             </div>
             <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
               <div
-                class="
-                  text-slate-500
-                  p-3
-                  text-center
-                  inline-flex
-                  items-center
-                  justify-center
-                  w-16
-                  h-16
-                  mb-6
-                  shadow-lg
-                  rounded-full
-                  bg-white
-                "
+                class="text-slate-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
               >
                 <i class="fas fa-user-friends text-xl"></i>
               </div>
@@ -270,14 +172,7 @@
                 Partageons nos expériences
               </h3>
               <p
-                class="
-                  text-lg
-                  font-light
-                  leading-relaxed
-                  mt-4
-                  mb-4
-                  text-slate-600
-                "
+                class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600"
               >
                 Le parapente fait partie de ces activités, comme l'alpinisme,
                 qui créent des émotions fortes. Elles permettent de développer
@@ -285,39 +180,20 @@
                 l'activité avec nous.
               </p>
               <p
-                class="
-                  text-lg
-                  font-light
-                  leading-relaxed
-                  mt-0
-                  mb-4
-                  text-slate-600
-                "
+                class="text-lg font-light leading-relaxed mt-0 mb-4 text-slate-600"
               >
                 Une sortie Hike and Fly laisse souvent de nombreux souvenirs de
                 conversations pendant la montée,de partage d'émotions à la vue
                 des paysages… et de vols fabuleux.
               </p>
             </div>
-
           </div>
         </div>
       </section>
 
       <section class="relative py-20">
         <div
-          class="
-            bottom-auto
-            top-0
-            left-0
-            right-0
-            w-full
-            absolute
-            pointer-events-none
-            overflow-hidden
-            -mt-20
-            h-20
-          "
+          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
           style="transform: translateZ(0)"
         >
           <svg
@@ -338,23 +214,10 @@
 
         <div class="container mx-auto px-4">
           <div class="items-center flex flex-wrap">
-                        <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
+            <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
               <div class="md:pr-12">
                 <div
-                  class="
-                    text-emerald-600
-                    p-3
-                    text-center
-                    inline-flex
-                    items-center
-                    justify-center
-                    w-16
-                    h-16
-                    mb-6
-                    shadow-lg
-                    rounded-full
-                    bg-emerald-300
-                  "
+                  class="text-emerald-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-emerald-300"
                 >
                   <i class="fas fa-rocket text-xl"></i>
                 </div>
@@ -370,18 +233,7 @@
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            inline-block
-                            py-1
-                            px-2
-                            uppercase
-                            rounded-full
-                            text-emerald-600
-                            bg-emerald-200
-                            mr-3
-                          "
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 mr-3"
                         >
                           <i class="fas fa-fingerprint"></i>
                         </span>
@@ -397,18 +249,7 @@
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            inline-block
-                            py-1
-                            px-2
-                            uppercase
-                            rounded-full
-                            text-emerald-600
-                            bg-emerald-200
-                            mr-3
-                          "
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 mr-3"
                         >
                           <i class="fab fa-html5"></i>
                         </span>
@@ -424,18 +265,7 @@
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            inline-block
-                            py-1
-                            px-2
-                            uppercase
-                            rounded-full
-                            text-emerald-600
-                            bg-emerald-200
-                            mr-3
-                          "
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 mr-3"
                         >
                           <i class="far fa-paper-plane"></i>
                         </span>
@@ -467,7 +297,6 @@
                 />
               </picture>
             </div>
-
           </div>
         </div>
       </section>
@@ -511,17 +340,7 @@
                   </p>
                   <div class="mt-6">
                     <button
-                      class="
-                        bg-slate-700
-                        text-white
-                        w-8
-                        h-8
-                        rounded-full
-                        outline-none
-                        focus:outline-none
-                        mr-1
-                        mb-1
-                      "
+                      class="bg-slate-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                       onclick="location.href='https://www.instagram.com/klerviaudreyronanbriac/'"
                     >
@@ -557,33 +376,13 @@
                   </p>
                   <div class="mt-6">
                     <button
-                      class="
-                        bg-red-600
-                        text-white
-                        w-8
-                        h-8
-                        rounded-full
-                        outline-none
-                        focus:outline-none
-                        mr-1
-                        mb-1
-                      "
+                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                     >
                       <i class="fab fa-google"></i>
                     </button>
                     <button
-                      class="
-                        bg-sky-600
-                        text-white
-                        w-8
-                        h-8
-                        rounded-full
-                        outline-none
-                        focus:outline-none
-                        mr-1
-                        mb-1
-                      "
+                      class="bg-sky-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                     >
                       <i class="fab fa-facebook-f"></i>
@@ -618,34 +417,14 @@
                   </p>
                   <div class="mt-6">
                     <button
-                      class="
-                        bg-indigo-500
-                        text-white
-                        w-8
-                        h-8
-                        rounded-full
-                        outline-none
-                        focus:outline-none
-                        mr-1
-                        mb-1
-                      "
+                      class="bg-indigo-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                       onclick="location.href='https://www.instagram.com/capucine_dlt/'"
                     >
                       <i class="fab fa-instagram"></i>
                     </button>
                     <button
-                      class="
-                        bg-sky-400
-                        text-white
-                        w-8
-                        h-8
-                        rounded-full
-                        outline-none
-                        focus:outline-none
-                        mr-1
-                        mb-1
-                      "
+                      class="bg-sky-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                       onclick="location.href='https://twitter.com/piitchy38'"
                     >
@@ -681,65 +460,25 @@
                   </p>
                   <div class="mt-6">
                     <button
-                      class="
-                        bg-pink-500
-                        text-white
-                        w-8
-                        h-8
-                        rounded-full
-                        outline-none
-                        focus:outline-none
-                        mr-1
-                        mb-1
-                      "
+                      class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                     >
                       <i class="fab fa-dribbble"></i>
                     </button>
                     <button
-                      class="
-                        bg-red-600
-                        text-white
-                        w-8
-                        h-8
-                        rounded-full
-                        outline-none
-                        focus:outline-none
-                        mr-1
-                        mb-1
-                      "
+                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                     >
                       <i class="fab fa-google"></i>
                     </button>
                     <button
-                      class="
-                        bg-sky-400
-                        text-white
-                        w-8
-                        h-8
-                        rounded-full
-                        outline-none
-                        focus:outline-none
-                        mr-1
-                        mb-1
-                      "
+                      class="bg-sky-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                     >
                       <i class="fab fa-twitter"></i>
                     </button>
                     <button
-                      class="
-                        bg-slate-700
-                        text-white
-                        w-8
-                        h-8
-                        rounded-full
-                        outline-none
-                        focus:outline-none
-                        mr-1
-                        mb-1
-                      "
+                      class="bg-slate-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                       type="button"
                     >
                       <i class="fab fa-instagram"></i>
@@ -754,18 +493,7 @@
 
       <section class="pb-20 relative block bg-slate-800">
         <div
-          class="
-            bottom-auto
-            top-0
-            left-0
-            right-0
-            w-full
-            absolute
-            pointer-events-none
-            overflow-hidden
-            -mt-20
-            h-20
-          "
+          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
           style="transform: translateZ(0)"
         >
           <svg
@@ -798,7 +526,9 @@
           <div class="flex flex-wrap mt-12 justify-center">
             <div class="px-2 py-2 w-full rounded-lg bg-white shadow-lg">
               <div>
-                <olMapsitesDePratiqueComponent mapClass="h-screen-1/2" />
+                <lazy-observer @on-change="onChangeMap">
+                  <olMapsitesDePratiqueComponent mapClass="h-screen-1/2" />
+                </lazy-observer>
               </div>
             </div>
           </div>
@@ -817,12 +547,14 @@ import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; //eslin
 import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
 import MiniSanityBlog from "@/components/Utilities/ComponentMinSanityBlog.vue";
 import emailForm from "@/components/Forms/EmailForm.vue";
+import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import { inject, reactive } from "vue";
 
 export default {
-  description: "Club de parapente dans le Nord FFVL n°29070. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.",
+  description:
+    "Club de parapente dans le Nord FFVL n°29070. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.",
   title: "High Can Fly | Club de parapente du Nord",
-  canonical: (new URL(window.location)),
+  canonical: new URL(window.location),
   methods: {
     checkForm: function (e) {
       if (this.name && this.email && this.message) {
@@ -842,15 +574,24 @@ export default {
       }
       e.preventDefault();
     },
+    onChangeMap(entry, unobserve) {
+      if (entry.isIntersecting) {
+        unobserve();
+        console.log("Lazy map");
+      }
+    },
   },
   data() {
-    console.log('commit date: '+new Intl.DateTimeFormat("fr-FR", {
-                          year: "2-digit",
-                          month: "short",
-                          day: "2-digit",
-                          hour: "numeric",
-                          minute: "numeric",
-                        }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT)));
+    console.log(
+      "commit date: " +
+        new Intl.DateTimeFormat("fr-FR", {
+          year: "2-digit",
+          month: "short",
+          day: "2-digit",
+          hour: "numeric",
+          minute: "numeric",
+        }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT))
+    );
     const errors = [];
     const state = reactive({
       //eslint-disable-line
@@ -869,13 +610,13 @@ export default {
       errors,
     };
   },
-
   components: {
     NavbarGrey,
     FooterComponent,
     olMapsitesDePratiqueComponent,
     emailForm,
     MiniSanityBlog,
+    LazyObserver,
   },
 };
 </script>
