@@ -1,6 +1,8 @@
 {
   "name": "vue-highcanfly",
-  "sideEffects": ["src/assets/styles/index.css"],
+  "sideEffects": [
+    "src/assets/styles/index.css"
+  ],
   "homepage": "https://www.highcanfly.club/",
   "version": "1.1.0",
   "description": "HighCanFly website with Vue3/TailwindCSS",
@@ -25,6 +27,7 @@
     "@sanity/image-url": "^1.0.1",
     "@tailwindcss/forms": "^0.4.0",
     "@vue/compiler-sfc": "^3.2.31",
+    "CFDTrackJoiner": "file:./CFDTrackJoiner",
     "chart.js": "^3.7.1",
     "core-js": "^3.21.1",
     "gulp": "4.0.2",
@@ -34,9 +37,7 @@
     "vue": "^3.2.31",
     "vue-router": "^4.0.12",
     "vue3-openlayers": "^0.1.61",
-    "walkjs": "^3.2.4",
-    "wrangler": "^0.0.16",
-    "CFDTrackJoiner": "file:./CFDTrackJoiner"
+    "walkjs": "^3.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -50,7 +51,8 @@
     "gitlog": "^4.0.4",
     "postcss": "^8.4.6",
     "tailwindcss": "^3.0.23",
-    "webpack": "~5.69.1"
+    "webpack": "~5.69.1",
+    "wrangler": "0.0.16"
   },
   "eslintConfig": {
     "root": true,
