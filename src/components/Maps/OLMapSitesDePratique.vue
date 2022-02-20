@@ -79,7 +79,7 @@ export default {
   created(){
 
   },
-  setup(props) { //eslint-disable-line
+  setup() {
     app.use(OpenLayersMap); //eslint-disable-line 
     const center = ref([706897.62, 7033567.10])
     const projection = ref('EPSG:2154');

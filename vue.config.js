@@ -16,16 +16,20 @@ const commits_trackjoiner = gitlog(
     fields: ["authorDate"],
   }
 );
+
+const commit = {
+  vue_highcanfly: (new Date(commits[0].authorDate)).toISOString(),
+  cfdtrackjoiner: (new Date(commits_trackjoiner[0].authorDate)).toISOString(),
+};
+
 process.env.VUE_APP_GIT_LAST_COMMIT = new Date(commits[0].authorDate);
 process.env.VUE_APP_GIT_TRACKJOINER_LAST_COMMIT = new Date(commits_trackjoiner[0].authorDate);
-fs.writeFile('./commit.json', JSON.stringify(
-  { vue_highcanfly: (new Date(commits[0].authorDate)).toISOString(), 
-    cfdtrackjoiner: (new Date(commits_trackjoiner[0].authorDate)).toISOString(), 
-  }), 
+fs.writeFile('./commit.json',
+  JSON.stringify(commit),
   'utf8', function (err) {
-                            if (err) return console.log(err);
-                          }
-           );
+    if (err) return console.log(err);
+  }
+);
 var path = require('path');
 
 module.exports = {
