@@ -1,5 +1,8 @@
+import sanity from "@/plugins/sanity-client";
+import {routes} from "@/staticRoutes.js";
+
+
 let getRoutesList = function (router) {
-  //eslint-disable-line
   let list = [];
   for (let i = 0; i < router.length; i++) {
     if (router[i].name != undefined)
@@ -31,7 +34,8 @@ let getRoutesXML = function (router, baseURL) {
       list += `<url><loc>${baseURL}${router[i].path}</loc>${lastmod}</url>\n`;
     }
   }
-  return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  //return `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/assets/sitemap.xsl"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  return `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
       ${list}
     </urlset>`;
 };
@@ -44,4 +48,25 @@ let getSlugList = function (posts) {
   return ret;
 };
 
-export { getRoutesList, getRoutesXML, getSlugList };
+const query = `*[_type == "post"]{
+  slug,_updatedAt
+}| order(slug asc)`;
+
+let getResponsePaths = function (canonicalURL) {
+  let baseURL = canonicalURL;
+  return new Promise((resolve, reject) => {
+      sanity.fetch(query).then(
+          (posts) => {
+              const slugList = getSlugList(posts);
+              let routesList = getRoutesList(routes);
+              routesList = routesList.concat(slugList);
+              resolve({xml: getRoutesXML(routesList, baseURL),paths: routesList});
+          },
+          (error) => {
+              reject(error);
+          });
+  }
+  );
+};
+
+export { getRoutesList, getRoutesXML, getSlugList, getResponsePaths, routes};

@@ -22,11 +22,13 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap text-center lg:text-left">
         <div class="w-full lg:w-6/12 px-4">
+        <address class="not-italic text-sm mt-0 mb-2 text-slate-600">
           <h4 class="text-3xl font-semibold">High Can Fly</h4>
-          <h5 class="text-lg mt-0 mb-2 text-slate-600">
-            119, rue Marceau Martin
+            119 rue Marceau Martin
             <br />59128 Flers-en-Escrebieux
-          </h5>
+            <br />Nord
+            <br />Hauts-de-France
+          </address>
           <div class="mt-6 lg:mb-0 mb-6">
             <button
               class="bg-white text-sky-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"

@@ -15,17 +15,7 @@
           ></span>
         </div>
         <div
-          class="
-            top-auto
-            bottom-0
-            left-0
-            right-0
-            w-full
-            absolute
-            pointer-events-none
-            overflow-hidden
-            h-70-px
-          "
+          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
           style="transform: translateZ(0)"
         >
           <svg
@@ -47,32 +37,18 @@
       <section class="relative py-16 bg-slate-200">
         <div class="container mx-auto px-4">
           <div
-            class="
-              relative
-              text-slate-600
-              bg-pistachio-400
-              min-h-screen-1/3
-              flex flex-col
-              min-w-0
-              break-words
-              bg-white
-              w-full
-              mb-6
-              shadow-xl
-              rounded-lg
-              -mt-64
-            "
+            class="relative text-slate-600 bg-pistachio-400 min-h-screen-1/3 flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
           >
             <div class="px-6 py-6">
               <ul id="array-rendering">
-                <li v-for="item in routesR.pathList" :key="item.id">
+                <li v-for="item in routesReactive.pathList" :key="item.id">
                   <i class="fas fa-link mr-2 text-slate-400"></i>
                   <a :href="item.path">{{ item.path }}</a>
                 </li>
               </ul>
 
               <i class="fas fa-sitemap mr-2 text-slate-400"></i>
-              <a :href="routesXML.hrefdata" download="sitemap.xml"
+              <a :href="routesReactive.hrefdata" download="sitemap.xml"
                 >Télécharger le sitemap.xml</a
               >
             </div>
@@ -89,40 +65,29 @@ import MainFooter from "@/components/Footers/MainFooter.vue";
 import { inject, reactive } from "vue";
 import backgroundImageAsset from "@/assets/img/highcanfly-102.jpg";
 import backgroundImageAssetWebp from "@/assets/img/highcanfly-102.webp";
-import sanity from "@/plugins/sanity-client";
-import {getRoutesList,getRoutesXML,getSlugList} from "@/sitemapHelper.js";
-const query = `*[_type == "post"]{
-  slug
-}| order(slug asc)`;
+import {
+  getResponsePaths,
+} from "@/sitemapHelper.js";
 
 
 let getDownloadSitemapXMLHREF = function (text) {
+  //eslint-disable-line
   var theDownloadlink =
     "data:octet/stream;charset=utf-8," + encodeURIComponent(text);
   return theDownloadlink;
 };
 export default {
   title: "High Can Fly | Club de parapente du Nord | Plan du site",
-  canonical: (new URL(window.location)),
   data() {
-    const routesR = reactive({pathList:[]});
-    const routesXML = reactive({xml:'',hrefdata:''});
-    sanity.fetch(query).then(
-      (posts) => {
-        const slugList = getSlugList(posts);
-        let routesList = getRoutesList(this.$router.getRoutes());
-        routesList = routesList.concat(slugList);
-        routesR.pathList = routesList;
-        routesXML.xml = getRoutesXML(routesList);
-        routesXML.hrefdata = getDownloadSitemapXMLHREF(routesXML.xml); //eslint-disable-line
-      },
-      (error) => {
-        this.error = error;
-      }
-    );
+    const routesReactive = reactive({ pathList:[], xml: "", hrefdata: "" });
+    const canonical = new URL(window.location).origin;
+    getResponsePaths(canonical).then((sol) => {
+      routesReactive.xml = sol.xml;
+      routesReactive.hrefdata = getDownloadSitemapXMLHREF(routesReactive.xml);
+      routesReactive.pathList = sol.paths;
+    });
 
     const state = reactive({
-      //eslint-disable-line
       backgroundImageURL: "",
     });
     inject("getJpgOrWebpIfSupported")(
@@ -136,8 +101,7 @@ export default {
     return {
       backgroundImageURL: 'url("' + backgroundImageAsset + '")',
       state,
-      routesR,
-      routesXML,
+      routesReactive,
     };
   },
   created() {
