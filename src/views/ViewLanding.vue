@@ -527,7 +527,7 @@
             <div class="px-2 py-2 w-full rounded-lg bg-white shadow-lg">
               <div>
                 <lazy-observer @on-change="onChangeMap">
-                  <olMapsitesDePratiqueComponent mapClass="h-screen-1/2" />
+                  <olMapsitesDePratiqueComponent v-if="loadMap" mapClass="h-screen-1/2" />
                 </lazy-observer>
               </div>
             </div>
@@ -542,9 +542,9 @@
 <script>
 import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg"; //eslint-disable-line
-import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; //eslint-disable-line
-import olMapsitesDePratiqueComponent from "@/components/Maps/OLMapSitesDePratique.vue";
+import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg"; 
+import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; 
+import { defineAsyncComponent } from 'vue';
 import MiniSanityBlog from "@/components/Utilities/ComponentMinSanityBlog.vue";
 import emailForm from "@/components/Forms/EmailForm.vue";
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
@@ -555,6 +555,7 @@ export default {
     "Club de parapente dans le Nord FFVL n°29070. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.",
   title: "High Can Fly | Club de parapente du Nord",
   canonical: new URL(window.location),
+  loadMap: false,
   methods: {
     checkForm: function (e) {
       if (this.name && this.email && this.message) {
@@ -577,7 +578,8 @@ export default {
     onChangeMap(entry, unobserve) {
       if (entry.isIntersecting) {
         unobserve();
-        console.log("Lazy map");
+        this.loadMap = true;
+        console.log("Loading map lazily");
       }
     },
   },
@@ -592,6 +594,7 @@ export default {
           minute: "numeric",
         }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT))
     );
+    const loadMap = this.loadMap;
     const errors = [];
     const state = reactive({
       //eslint-disable-line
@@ -608,12 +611,13 @@ export default {
     return {
       state,
       errors,
+      loadMap
     };
   },
   components: {
     NavbarGrey,
     FooterComponent,
-    olMapsitesDePratiqueComponent,
+    olMapsitesDePratiqueComponent: defineAsyncComponent( () => import("@/components/Maps/OLMapSitesDePratique.vue") ),
     emailForm,
     MiniSanityBlog,
     LazyObserver,
