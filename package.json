@@ -15,6 +15,7 @@
     "build-cf": "git fetch --recurse-submodules && vue-cli-service build --report && gulp licenses",
     "build-report": "vue-cli-service build --report",
     "lint": "vue-cli-service lint",
+    "get-meteo-icons": "node get-meteo-icons.js",
     "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run serve"
   },
@@ -37,7 +38,8 @@
     "vue": "^3.2.31",
     "vue-router": "^4.0.12",
     "vue3-openlayers": "^0.1.61",
-    "walkjs": "^3.2.4"
+    "walkjs": "^3.2.4",
+    "crypto-js": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -52,7 +54,8 @@
     "postcss": "^8.4.6",
     "tailwindcss": "^3.0.23",
     "webpack": "~5.69.1",
-    "wrangler": "0.0.16"
+    "wrangler": "0.0.16",
+    "node-fetch": "~2.6.7"
   },
   "eslintConfig": {
     "root": true,
