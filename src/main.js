@@ -61,11 +61,16 @@ const routes = [
     path: "/sanity-blog/:slug",
     component: () => import("@/views/SinglePost.vue"),
   },
+  {
+    path: "/meteo",
+    component: () => import('@/components/Cards/CardMeteo.vue'),
+  }
 ];
 
 // styles
 import "@/assets/styles/index.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@/components/weather-icons/css/weather-icons.css"
 
 // mouting point for the whole app
 
