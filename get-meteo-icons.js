@@ -76,7 +76,7 @@ getMeteoFranceIconsArray().then(icons => {
                         .then(blob => blob.text())
                         .then(svg => { fs.writeFile(`./src/assets/forecast/${icon.name}.svg`,svg,function (err) {
                             if (err) return console.log(err);
-                            console.log(`Wrote ./src/assets/forecast/${icon.name}.svg from ${icon.url}`);
+                            console.log(`Wrote ./public/assets/forecast/${icon.name}.svg from ${icon.url}`);
                           }) })
     });
 });
