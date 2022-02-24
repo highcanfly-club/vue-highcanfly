@@ -1,33 +1,39 @@
 <template>
   <div>
     <navbar-white />
-    <section class="header relative pt-16 items-center flex h-screen max-h-860-px">
+    <section
+      class="header relative pt-16 items-center flex h-screen max-h-860-px"
+    >
       <div class="container mx-auto items-center flex flex-wrap">
         <div class="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
           <div class="pt-32 sm:pt-0">
-            <h2 class="font-semibold text-4xl text-slate-600">Club de parapente dans le Nord</h2>
+            <h2 class="font-semibold text-4xl text-slate-600">
+              Club de parapente dans le Nord
+            </h2>
             <p class="mt-4 text-lg leading-relaxed text-slate-500">
-              Nous sommes une structure affiliée à la F.F.V.L.
-              sous le numéro
+              Nous sommes une structure affiliée à la F.F.V.L. sous le numéro
               <a
                 href="https://tailwindcss.com/?ref=creativetim"
                 class="text-slate-600"
                 target="_blank"
-              >n°29070</a>
-              .
-              Nous sommes aussi membre actif du comité départemental de vol libre.
+                >n°29070</a
+              >
+              . Nous sommes aussi membre actif du comité départemental de vol
+              libre.
             </p>
             <div class="mt-12">
               <a
                 href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus?ref=vn-index"
                 target="_blank"
                 class="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-emerald-500 active:bg-emerald-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-              >Get started</a>
+                >Get started</a
+              >
               <a
                 href="https://github.com/eltorio/vue-highcanfly/tree/highcanfly?ref=vn-index"
                 class="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-slate-700 active:bg-slate-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 target="_blank"
-              >Github Star</a>
+                >Github Star</a
+              >
             </div>
           </div>
         </div>
@@ -47,7 +53,7 @@
     <section class="mt-48 md:mt-40 pb-40 relative bg-slate-100">
       <div
         class="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-        style="transform: translateZ(0);"
+        style="transform: translateZ(0)"
       >
         <svg
           class="absolute bottom-0 overflow-hidden"
@@ -58,12 +64,77 @@
           x="0"
           y="0"
         >
-          <polygon class="text-slate-100 fill-current" points="2560 0 2560 100 0 100" />
+          <polygon
+            class="text-slate-100 fill-current"
+            points="2560 0 2560 100 0 100"
+          />
         </svg>
+      </div>
+      <div class="w-screen">
+        <div class="container mx-auto">
+          <div class="flex flex-row overflow-x-auto items-center">
+            <div
+              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] overflow-y-auto"
+            >
+              <div
+                class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
+              >
+                <card-meteo
+                  :place="{
+                    lat: 50.679484,
+                    lon: 1.567162,
+                    name: 'Équihen-plage',
+                    fly: { sectors: [[250, 290]], wind: [0, 6.11] },
+                  }"
+                />
+              </div>
+            </div>
+            <div
+              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] overflow-y-auto"
+            >
+              <div
+                class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
+              >
+                <card-meteo
+                  :place="{
+                    lat: 50.416924,
+                    lon: 2.513619,
+                    name: 'la Comté',
+                    fly: {
+                      sectors: [
+                        [-1, 15],
+                        [270, 360],
+                      ],
+                      wind: [0, 6.11],
+                    },
+                  }"
+                />
+              </div>
+            </div>
+            <div
+              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] overflow-y-auto"
+            >
+              <div
+                class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
+              >
+                <card-meteo
+                  :place="{
+                    lat: 50.43358,
+                    lon: 2.585847,
+                    name: 'Parc d\'Ohlain',
+                    fly: { sectors: [[180, 225]], wind: [0, 6.11] },
+                  }"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="container mx-auto">
         <div class="flex flex-wrap items-center">
-          <div class="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-32">
+          <div
+            class="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-32"
+          >
             <div
               class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-emerald-500"
             >
@@ -79,9 +150,14 @@
                   viewBox="0 0 583 95"
                   class="absolute left-0 w-full block h-95-px -top-94-px"
                 >
-                  <polygon points="-30,95 583,95 583,65" class="text-emerald-500 fill-current" />
+                  <polygon
+                    points="-30,95 583,95 583,65"
+                    class="text-emerald-500 fill-current"
+                  />
                 </svg>
-                <h4 class="text-xl font-bold text-white">Great for your awesome project</h4>
+                <h4 class="text-xl font-bold text-white">
+                  Great for your awesome project
+                </h4>
                 <p class="text-md font-light mt-2 text-white">
                   Putting together a page has never been easier than matching
                   together pre-made components. From landing pages presentation
@@ -115,7 +191,9 @@
                     >
                       <i class="fas fa-drafting-compass"></i>
                     </div>
-                    <h6 class="text-xl mb-1 font-semibold">JavaScript Components</h6>
+                    <h6 class="text-xl mb-1 font-semibold">
+                      JavaScript Components
+                    </h6>
                     <p class="mb-4 text-slate-500">
                       We also feature many dynamic components for React, NextJS,
                       Vue and Angular.
@@ -166,8 +244,12 @@
             >
               <i class="fas fa-sitemap text-xl"></i>
             </div>
-            <h3 class="text-3xl mb-2 font-semibold leading-normal">CSS Components</h3>
-            <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600">
+            <h3 class="text-3xl mb-2 font-semibold leading-normal">
+              CSS Components
+            </h3>
+            <p
+              class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600"
+            >
               Every element that you need in a product comes built in as a
               component. All components fit perfectly with each other and can
               have different colours.
@@ -175,28 +257,36 @@
             <div class="block pb-6">
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Buttons</span>
+                >Buttons</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Inputs</span>
+                >Inputs</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Labels</span>
+                >Labels</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Menus</span>
+                >Menus</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Navbars</span>
+                >Navbars</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Pagination</span>
+                >Pagination</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Progressbars</span>
+                >Progressbars</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Typography</span>
+                >Typography</span
+              >
             </div>
             <a
               href="https://www.creative-tim.com/learning-lab/tailwind/vue/alerts/notus?ref=vn-index"
@@ -209,7 +299,9 @@
           </div>
 
           <div class="w-full md:w-5/12 px-4 mr-auto ml-auto mt-32">
-            <div class="relative flex flex-col min-w-0 w-full mb-6 mt-48 md:mt-0">
+            <div
+              class="relative flex flex-col min-w-0 w-full mb-6 mt-48 md:mt-0"
+            >
               <img
                 alt="..."
                 :src="componentBtn"
@@ -265,7 +357,9 @@
                   href="https://www.creative-tim.com/learning-lab/tailwind/react/alerts/notus?ref=vn-index"
                   target="_blank"
                 >
-                  <div class="bg-sky-500 shadow-lg rounded-lg text-center p-8 mt-8">
+                  <div
+                    class="bg-sky-500 shadow-lg rounded-lg text-center p-8 mt-8"
+                  >
                     <img
                       alt="..."
                       class="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
@@ -278,7 +372,9 @@
                   href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/alerts/notus?ref=vn-index"
                   target="_blank"
                 >
-                  <div class="bg-slate-700 shadow-lg rounded-lg text-center p-8 mt-8">
+                  <div
+                    class="bg-slate-700 shadow-lg rounded-lg text-center p-8 mt-8"
+                  >
                     <img
                       alt="..."
                       class="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
@@ -293,20 +389,26 @@
                   href="https://www.creative-tim.com/learning-lab/tailwind/js/alerts/notus?ref=vn-index"
                   target="_blank"
                 >
-                  <div class="bg-yellow-500 shadow-lg rounded-lg text-center p-8">
+                  <div
+                    class="bg-yellow-500 shadow-lg rounded-lg text-center p-8"
+                  >
                     <img
                       alt="..."
                       class="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
                       src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/js.png"
                     />
-                    <p class="text-lg text-white mt-4 font-semibold">JavaScript</p>
+                    <p class="text-lg text-white mt-4 font-semibold">
+                      JavaScript
+                    </p>
                   </div>
                 </a>
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/angular/alerts/notus?ref=vn-index"
                   target="_blank"
                 >
-                  <div class="bg-red-700 shadow-lg rounded-lg text-center p-8 mt-8">
+                  <div
+                    class="bg-red-700 shadow-lg rounded-lg text-center p-8 mt-8"
+                  >
                     <img
                       alt="..."
                       class="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
@@ -319,7 +421,9 @@
                   href="https://www.creative-tim.com/learning-lab/tailwind/vue/alerts/notus?ref=vn-index"
                   target="_blank"
                 >
-                  <div class="bg-emerald-500 shadow-lg rounded-lg text-center p-8 mt-8">
+                  <div
+                    class="bg-emerald-500 shadow-lg rounded-lg text-center p-8 mt-8"
+                  >
                     <img
                       alt="..."
                       class="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
@@ -338,41 +442,55 @@
             >
               <i class="fas fa-drafting-compass text-xl"></i>
             </div>
-            <h3 class="text-3xl mb-2 font-semibold leading-normal">Javascript Components</h3>
-            <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600">
+            <h3 class="text-3xl mb-2 font-semibold leading-normal">
+              Javascript Components
+            </h3>
+            <p
+              class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600"
+            >
               In order to create a great User Experience some components require
               JavaScript. In this way you can manipulate the elements on the
               page and give more options to your users.
             </p>
-            <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600">
+            <p
+              class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600"
+            >
               We created a set of Components that are dynamic and come to help
               you.
             </p>
             <div class="block pb-6">
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Alerts</span>
+                >Alerts</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Dropdowns</span>
+                >Dropdowns</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Menus</span>
+                >Menus</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Modals</span>
+                >Modals</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Navbars</span>
+                >Navbars</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Popovers</span>
+                >Popovers</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Tabs</span>
+                >Tabs</span
+              >
               <span
                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-slate-500 bg-white uppercase last:mr-0 mr-2 mt-2"
-              >Tooltips</span>
+                >Tooltips</span
+              >
             </div>
             <a
               href="https://www.creative-tim.com/learning-lab/tailwind/vue/alerts/notus?ref=vn-index"
@@ -413,7 +531,9 @@
                       </span>
                     </div>
                     <div>
-                      <h4 class="text-slate-500">Built by Developers for Developers</h4>
+                      <h4 class="text-slate-500">
+                        Built by Developers for Developers
+                      </h4>
                     </div>
                   </div>
                 </li>
@@ -427,7 +547,9 @@
                       </span>
                     </div>
                     <div>
-                      <h4 class="text-slate-500">Carefully crafted code for Components</h4>
+                      <h4 class="text-slate-500">
+                        Carefully crafted code for Components
+                      </h4>
                     </div>
                   </div>
                 </li>
@@ -441,7 +563,9 @@
                       </span>
                     </div>
                     <div>
-                      <h4 class="text-slate-500">Dynamic Javascript Components</h4>
+                      <h4 class="text-slate-500">
+                        Dynamic Javascript Components
+                      </h4>
                     </div>
                   </div>
                 </li>
@@ -481,7 +605,9 @@
           <div class="w-full lg:w-12/12 px-4 -mt-24">
             <div class="flex flex-wrap">
               <div class="w-full lg:w-4/12 px-4">
-                <h5 class="text-xl font-semibold pb-4 text-center">Login Page</h5>
+                <h5 class="text-xl font-semibold pb-4 text-center">
+                  Login Page
+                </h5>
                 <router-link to="/auth/login">
                   <div
                     class="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150"
@@ -496,7 +622,9 @@
               </div>
 
               <div class="w-full lg:w-4/12 px-4">
-                <h5 class="text-xl font-semibold pb-4 text-center">Profile Page</h5>
+                <h5 class="text-xl font-semibold pb-4 text-center">
+                  Profile Page
+                </h5>
                 <router-link to="/profile">
                   <div
                     class="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150"
@@ -511,7 +639,9 @@
               </div>
 
               <div class="w-full lg:w-4/12 px-4">
-                <h5 class="text-xl font-semibold pb-4 text-center">Landing Page</h5>
+                <h5 class="text-xl font-semibold pb-4 text-center">
+                  Landing Page
+                </h5>
                 <router-link to="/landing">
                   <div
                     class="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150"
@@ -539,19 +669,26 @@
             >
               <i class="fas fa-code-branch text-xl"></i>
             </div>
-            <h3 class="text-3xl mb-2 font-semibold leading-normal text-white">Open Source</h3>
-            <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-400">
+            <h3 class="text-3xl mb-2 font-semibold leading-normal text-white">
+              Open Source
+            </h3>
+            <p
+              class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-400"
+            >
               Since
               <a
                 href="https://tailwindcss.com/?ref=creativetim"
                 class="text-slate-300"
                 target="_blank"
-              >Tailwind CSS</a>
+                >Tailwind CSS</a
+              >
               is an open source project we wanted to continue this movement too.
               You can give this version a try to feel the design and also test
               the quality of the code!
             </p>
-            <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-slate-400">
+            <p
+              class="text-lg font-light leading-relaxed mt-0 mb-4 text-slate-400"
+            >
               Get it free on Github and please help us spread the news with a
               Star!
             </p>
@@ -559,7 +696,8 @@
               href="https://github.com/creativetimofficial/vue-notus?ref=vn-index"
               target="_blank"
               class="github-star mt-4 inline-block text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-slate-700 active:bg-slate-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-            >Github Star</a>
+              >Github Star</a
+            >
           </div>
 
           <div class="w-full md:w-4/12 px-4 mr-auto ml-auto mt-32 relative">
@@ -574,18 +712,15 @@
     <section class="pb-16 bg-slate-200 relative pt-32">
       <div
         class="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-        style="transform: translateZ(0);"
-      >
-
-      </div>
+        style="transform: translateZ(0)"
+      ></div>
 
       <div class="container mx-auto">
-              <div
+        <div
           class="flex flex-wrap justify-center bg-white shadow-xl rounded-lg h-[500px] -mt-64 relative z-10"
         >
-        <card-windy/>
-
-        </div>  
+          <card-windy />
+        </div>
       </div>
     </section>
     <main-footer />
@@ -594,7 +729,8 @@
 <script>
 import NavbarWhite from "@/components/Navbars/NavbarWhite.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import CardWindyComponent from "@/components/Cards/CardWindy.vue";
+import CardWindy from "@/components/Cards/CardWindy.vue";
+import CardMeteo from "@/components/Cards/CardMeteo.vue";
 
 import patternVue from "@/assets/img/pattern_vue.png";
 import componentBtn from "@/assets/img/component-btn.png";
@@ -607,10 +743,10 @@ import documentation from "@/assets/img/documentation.png";
 import login from "@/assets/img/login.jpg";
 import profile from "@/assets/img/profile.jpg";
 import landing from "@/assets/img/landing.jpg";
-import CardWindy from "../components/Cards/CardWindy.vue";
 
 export default {
-  description: "Club de parapente dans le Nord FFVL n°29070. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.", 
+  description:
+    "Club de parapente dans le Nord FFVL n°29070. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.",
   title: "High Can Fly | Club de parapente du Nord | (test accueil)",
   data() {
     return {
@@ -625,13 +761,13 @@ export default {
       login,
       profile,
       landing,
-      CardWindyComponent,
     };
   },
   components: {
     NavbarWhite,
     MainFooter,
-    CardWindy
-},
+    CardMeteo,
+    CardWindy,
+  },
 };
 </script>
