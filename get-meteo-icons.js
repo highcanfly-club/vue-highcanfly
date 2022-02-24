@@ -4,17 +4,20 @@ const METEO_FRANCE_STORE = './public/assets/forecast/';
 
 const getMeteoFranceIconsArray = function (
     places = [
-        { lat: 44.661432, lon: -1.176416 }, //Arcachon
-        { lat: 45.872769, lon: 6.890741 }, //Aiguille du midi,
-        { lat: 48.385469, lon: -4.491038 }, //Brest
-        { lat: 50.416924, lon: 2.513619 }, //la Comté
-        { lat: 42.697679, lon: 9.449846 }, //Bastia
-        { lat: 48.54973, lon: 7.752666 }, //Ostwald
-        { lat: 14.637992, lon: -61.095531 }, //Saint-Joseph (Martinique)
-        { lat: -20.93398, lon: 55.595733 }, //Saint-André (La Réunion)
-        { lat: 46.803303, lon: -56.174957 }, //Saint-Pierre (Collectivité de Saint-Pierre-et-Miquelon)
-        { lat: -22.264542, lon: 166.447897 }, //Nouméa (Nouvelle-Calédonie)
-        { lat: -12.782469, lon: 45.228132 } //Pamandzi (Mayotte)
+        { lat: 44.661432, lon: -1.176416, name: 'Arcachon' },
+        { lat: 45.879449, lon: 6.888846, name: 'Aiguille du midi' },
+        { lat: 48.385469, lon: -4.491038, name: 'Brest' },
+        { lat: 50.416924, lon: 2.513619, name: 'la Comté' },
+        { lat: 50.679484, lon: 1.567162, name: 'Équihen-plage' },
+        { lat: 50.43358, lon: 2.585847, name: 'Parc d\'Ohlain' },
+        { lat: 50.401719, lon: 2.92927, name: 'Parc des Îles' },
+        { lat: 42.697679, lon: 9.449846, name: 'Bastia' },
+        { lat: 48.54973, lon: 7.752666, name: 'Ostwald' },
+        { lat: 14.637992, lon: -61.095531, name: 'Saint-Joseph (Martinique)' },
+        { lat: -20.93398, lon: 55.595733, name: 'Saint-André (La Réunion)' },
+        { lat: 46.803303, lon: -56.174957, name: 'Saint-Pierre (Collectivité de Saint-Pierre-et-Miquelon)' },
+        { lat: -22.264542, lon: 166.447897, name: 'Nouméa (Nouvelle-Calédonie)' },
+        { lat: -12.782469, lon: 45.228132, name: 'Pamandzi (Mayotte)' }
     ]
 ) {
     const API_TOKEN = "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
