@@ -70,7 +70,6 @@ const routes = [
 // styles
 import "@/assets/styles/index.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "@/components/weather-icons/css/weather-icons.css"
 
 // mouting point for the whole app
 
