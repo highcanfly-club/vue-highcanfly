@@ -1,5 +1,6 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
+const METEO_FRANCE_STORE = './public/assets/forecast/';
 
 const getMeteoFranceIconsArray = function (
     places = [
@@ -71,12 +72,27 @@ const getMeteoFranceIconsArray = function (
 };
 
 getMeteoFranceIconsArray().then(icons => {
+    const curIcons = require(`${METEO_FRANCE_STORE}mf-icons.json`);
+    console.log(`There was ${curIcons.length} in mf-icons.json`);
+    let newIcons = icons.concat(curIcons);
+    newIcons = newIcons.filter((value, index, self) =>
+        index === self.findIndex((t) => (
+            t.name === value.name
+        ))
+    );
+    console.log(`Now there is ${newIcons.length} in mf-icons.json`);
+    fs.writeFile(`${METEO_FRANCE_STORE}mf-icons.json`, JSON.stringify(newIcons), function (err) {
+        if (err) return console.log(err);
+        console.log(`Wrote json icons`);
+    });
     icons.forEach(icon => {
         fetch(icon.url).then(response => response.blob())
-                        .then(blob => blob.text())
-                        .then(svg => { fs.writeFile(`./src/assets/forecast/${icon.name}.svg`,svg,function (err) {
-                            if (err) return console.log(err);
-                            console.log(`Wrote ./public/assets/forecast/${icon.name}.svg from ${icon.url}`);
-                          }) })
+            .then(blob => blob.text())
+            .then(svg => {
+                fs.writeFile(`${METEO_FRANCE_STORE}${icon.name}.svg`, svg, function (err) {
+                    if (err) return console.log(err);
+                    process.stdout.write('.');
+                })
+            })
     });
 });
