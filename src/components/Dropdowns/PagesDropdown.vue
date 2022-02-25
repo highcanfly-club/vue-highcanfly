@@ -41,10 +41,10 @@
         to="/windy"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
       >Le vent (Windy)</router-link>
-      <a
-        href="https://www.meteociel.fr/previsions-arome-1h/22396/la_comte.htm"
+      <router-link
+        to="/meteo"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
-      >Météo à la Comté</a>
+      >Météo sur nos sites</router-link>
       <router-link
         to="/map-sites-de-pratique"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"

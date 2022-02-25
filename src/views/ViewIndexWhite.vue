@@ -70,76 +70,8 @@
           />
         </svg>
       </div>
-      <div class="w-screen mb-20">
-        <div class="container mx-auto">
-          <div class="flex flex-row overflow-x-auto items-center">
-            <div
-              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] min-w-[38rem] overflow-y-auto"
-            >
-              <div
-                class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
-              >
-                <card-meteo
-                  :place="{
-                    lat: 50.679484,
-                    lon: 1.567162,
-                    name: 'Équihen-Plage',
-                    fly: { sectors: [[250, 290]], wind: [0, 6.11] },
-                  }"
-                />
-              </div>
-            </div>
-            <div
-              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] min-w-[38rem] overflow-y-auto"
-            >
-              <div
-                class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
-              >
-                <card-meteo
-                  :place="{
-                    lat: 50.416924,
-                    lon: 2.513619,
-                    name: 'La Comté',
-                    fly: {
-                      sectors: [
-                        [-1, 15],
-                        [270, 360],
-                      ],
-                      wind: [0, 5.55],
-                    },
-                  }"
-                />
-              </div>
-            </div>
-            <div
-              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] min-w-[38rem] overflow-y-auto"
-            >
-              <div
-                class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
-              >
-                <card-meteo
-                  :place="{
-                    lat: 50.43358,
-                    lon: 2.585847,
-                    name: 'Parc d\'Ohlain',
-                    fly: { sectors: [[180, 225]], wind: [0, 5.55] },
-                  }"
-                />
-              </div>
-            </div>
-            <div
-              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] min-w-[38rem] overflow-y-auto"
-            >
-              <div
-                class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
-              >
-                <card-meteo
-                  :place="{ lat: 50.401719, lon: 2.92927, name: 'Gonflage au Parc des Îles', fly:{sectors: [[-1,361]], wind: [0,4]}  }"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="w-screen mb-20 flex-col sm:flex">
+        <card-multi-meteo />
       </div>
       <div class="container mx-auto">
         <div class="flex flex-wrap items-center">
@@ -741,7 +673,7 @@
 import NavbarWhite from "@/components/Navbars/NavbarWhite.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import CardWindy from "@/components/Cards/CardWindy.vue";
-import CardMeteo from "@/components/Cards/CardMeteo.vue";
+import CardMultiMeteo from "@/components/Cards/CardMultiMeteo.vue";
 
 import patternVue from "@/assets/img/pattern_vue.png";
 import componentBtn from "@/assets/img/component-btn.png";
@@ -777,7 +709,7 @@ export default {
   components: {
     NavbarWhite,
     MainFooter,
-    CardMeteo,
+    CardMultiMeteo,
     CardWindy,
   },
 };
