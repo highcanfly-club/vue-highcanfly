@@ -70,11 +70,11 @@
           />
         </svg>
       </div>
-      <div class="w-screen">
+      <div class="w-screen mb-20">
         <div class="container mx-auto">
           <div class="flex flex-row overflow-x-auto items-center">
             <div
-              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] overflow-y-auto"
+              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] min-w-[38rem] overflow-y-auto"
             >
               <div
                 class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
@@ -90,7 +90,7 @@
               </div>
             </div>
             <div
-              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] overflow-y-auto"
+              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] min-w-[38rem] overflow-y-auto"
             >
               <div
                 class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
@@ -112,7 +112,7 @@
               </div>
             </div>
             <div
-              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] overflow-y-auto"
+              class="flex flex-col m-4 w-full sm:w-[38rem] h-[50rem] min-w-[38rem] overflow-y-auto"
             >
               <div
                 class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
