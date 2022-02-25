@@ -35,7 +35,7 @@ var path = require('path');
 module.exports = {
   runtimeCompiler: true,
   configureWebpack: {
-    devtool: process.env.CF_PAGES === '1' ? false : 'source-map',//'eval-source-map',
+    devtool: process.env.CF_PAGES === '1' ? false : 'eval',//'source-map',//'eval-source-map',
     mode: 'production',
     resolve: {
       fallback: {
