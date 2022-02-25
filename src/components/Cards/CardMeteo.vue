@@ -4,7 +4,7 @@
         <thead>
           <tr>
             <td colspan="11" class="text-center">
-              {{
+              {{(place.name.localeCompare(forecast !== undefined ? forecast.position.name : null)!=0 ? `${place.name} - ` : '')}}{{
                 forecast !== undefined ? forecast.position.name : "chargement"
               }}
               ({{ forecast !== undefined ? forecast.position.alti : "…" }}m)
@@ -36,35 +36,35 @@
         </thead>
         <tbody v-if="forecast">
           <tr v-for="(detail, index) in forecast.forecast" :key="detail.id">
-            <td class="text-center">
+            <td class="align-baseline text-center">
               {{
                 index != 0
                   ? getStartDay(detail.dt, forecast.forecast[index - 1].dt)
                   : getStartDay(detail.dt,null)
               }}
             </td>
-            <td class="text-center">{{ getHour(detail.dt) }}</td>
-            <td class="text-center">{{ detail.T.value }}°</td>
-            <td class="hidden md:inline-flex text-center">{{ detail.T.windchill }}°</td>
-            <td class="text-center">
+            <td class="align-baseline text-center">{{ getHour(detail.dt) }}</td>
+            <td class="align-baseline text-center">{{ detail.T.value }}°</td>
+            <td class="align-baseline hidden md:inline-flex text-center">{{ detail.T.windchill }}°</td>
+            <td class="align-baseline text-center">
               {{ Math.round(detail.wind.speed * 3.6) }}
             </td>
-            <td class="hidden md:inline-flex text-center">
+            <td class="align-baseline hidden md:inline-flex text-center">
               {{
                 detail.wind.gust !== 0
                   ? Math.round(detail.wind.gust * 3.6)
                   : "…"
               }}
             </td>
-            <td class="text-center">
+            <td class="align-baseline text-center">
               {{
                 getRain(detail.rain).height == 0
                   ? "…"
                   : getRain(detail.rain).height
               }}
             </td>
-            <td class="text-center hidden md:inline-flex">{{ detail.humidity }}%</td>
-            <td class="text-center">{{ Math.round(detail.sea_level) }}</td>
+            <td class="align-baseline text-center hidden md:inline-flex">{{ detail.humidity }}%</td>
+            <td class="align-baseline text-center">{{ Math.round(detail.sea_level) }}</td>
             <td class="place-items-center">
               <img
                 class="mx-auto w-8 h-8"
@@ -111,24 +111,24 @@ const icons_base = "/assets/forecast/";
 const API_TOKEN = "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
 let icons = new Set();
 const places = [
-  { lat: 44.661432, lon: -1.176416, name: "Arcachon" },
-  { lat: 45.879449, lon: 6.888846, name: "Aiguille du midi",fly:{sectors: [[0,15],[270,360]], wind: [0,6.11]} },
-  { lat: 48.385469, lon: -4.491038, name: "Brest" },
-  { lat: 50.416924, lon: 2.513619, name: "la Comté", fly:{sectors: [[-1,15],[270,360]], wind: [0,6.11]} },
-  { lat: 50.679484, lon: 1.567162, name: "Équihen-plage", fly:{sectors: [[250,290]], wind: [0,6.11]}  },
-  { lat: 50.43358, lon: 2.585847, name: "Parc d'Ohlain" },
-  { lat: 50.401719, lon: 2.92927, name: "Parc des Îles" },
-  { lat: 42.697679, lon: 9.449846, name: "Bastia" },
-  { lat: 48.54973, lon: 7.752666, name: "Ostwald" },
-  { lat: 14.637992, lon: -61.095531, name: "Saint-Joseph (Martinique)" },
-  { lat: -20.93398, lon: 55.595733, name: "Saint-André (La Réunion)" },
+  { lat: 44.661432, lon: -1.176416, name: 'Arcachon' },
+  { lat: 45.879449, lon: 6.888846, name: 'Aiguille du midi',fly:{sectors: [[0,15],[270,360]], wind: [0,6.11]} },
+  { lat: 48.385469, lon: -4.491038, name: 'Brest' },
+  { lat: 50.416924, lon: 2.513619, name: 'La Comté', fly:{sectors: [[-1,15],[270,360]], wind: [0,6.11]} },
+  { lat: 50.679484, lon: 1.567162, name: 'Équihen-Plage', fly:{sectors: [[250,290]], wind: [0,6.11]}  },
+  { lat: 50.43358, lon: 2.585847, name: 'Parc d\'Ohlain' },
+  { lat: 50.401719, lon: 2.92927, name: 'Parc des Îles', fly:{sectors: [[-1,361]], wind: [0,3]}  },
+  { lat: 42.697679, lon: 9.449846, name: 'Bastia' },
+  { lat: 48.54973, lon: 7.752666, name: 'Ostwald' },
+  { lat: 14.637992, lon: -61.095531, name: 'Saint-Joseph (Martinique)' },
+  { lat: -20.93398, lon: 55.595733, name: 'Saint-André (La Réunion)' },
   {
     lat: 46.803303,
     lon: -56.174957,
-    name: "Saint-Pierre (Collectivité de Saint-Pierre-et-Miquelon)"
+    name: 'Saint-Pierre (Collectivité de Saint-Pierre-et-Miquelon)'
   },
-  { lat: -22.264542, lon: 166.447897, name: "Nouméa (Nouvelle-Calédonie)" },
-  { lat: -12.782469, lon: 45.228132, name: "Pamandzi (Mayotte)" }
+  { lat: -22.264542, lon: 166.447897, name: 'Nouméa (Nouvelle-Calédonie)' },
+  { lat: -12.782469, lon: 45.228132, name: 'Pamandzi (Mayotte)' }
 ];
 export default {
   forecast: reactive({}),
