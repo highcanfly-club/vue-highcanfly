@@ -251,8 +251,7 @@ export default {
       forecast,
       flying = {
         sectors: [
-          [-1, 15],
-          [270, 360],
+          [-1, 360],
         ],
         wind: [0, 6.11],
       }
@@ -280,9 +279,7 @@ export default {
       return sun.sunrise < givendate && givendate < sun.sunset;
     },
     getWindAdequate(flying) {
-      let speed = `v ≤ ${(Math.round(flying.wind[1] * 3.6 * 10) / 10).toFixed(
-        1
-      )} km/h `;
+      let speed = `v ≤ ${Math.round(flying.wind[1] )} m/s `;
       let sectors = "orientation ";
       flying.sectors.forEach((sector, index) => {
         sectors += `${index ? "et " : ""}de ${sector[0]}° à ${sector[1]}° `;

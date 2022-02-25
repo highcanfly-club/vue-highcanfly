@@ -63,7 +63,7 @@ const routes = [
   },
   {
     path: "/meteo",
-    component: () => import('@/components/Cards/CardMeteo.vue'),
+    component: () => import('@/views/ViewMeteo.vue'),
   }
 ];
 
