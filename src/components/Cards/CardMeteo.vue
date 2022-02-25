@@ -1,134 +1,174 @@
 <template>
-<div>
-      <table class="border-collapse table-auto w-full text-sm rounded-xl">
-        <thead>
-          <tr>
-            <td colspan="11" class="text-center">
-              {{(place.name.localeCompare(forecast !== undefined ? forecast.position.name : null)!=0 ? `${place.name} - ` : '')}}{{
-                forecast !== undefined ? forecast.position.name : "chargement"
-              }}
-              ({{ forecast !== undefined ? forecast.position.alti : "…" }}m)
-            </td>
-          </tr>
-          <tr>
-            <td colspan="11" class="text-center">
-              <a href="https://meteo.fr/" target="_blank" rel="noopener">
-                Météo France AROME
-                {{
-                  forecast !== undefined ? getDate(forecast.updated_on) : "…"
-                }}
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <th class="text-center">Jour</th>
-            <th>Heure</th>
-            <th>Temp</th>
-            <th class="hidden md:inline-flex">Rosée</th>
-            <th>moy.</th>
-            <th class="hidden md:inline-flex">raf.</th>
-            <th>Pluie</th>
-            <th class="hidden md:inline-flex">Humidité</th>
-            <th><span class="hidden md:inline-flex">Pression</span><span class="md:hidden inline-flex">hPa</span></th>
-            <th>Icone</th>
-            <th>dir.</th>
-          </tr>
-        </thead>
-        <tbody v-if="forecast">
-          <tr v-for="(detail, index) in forecast.forecast" :key="detail.id">
-            <td class="align-baseline text-center">
-              {{
-                index != 0
-                  ? getStartDay(detail.dt, forecast.forecast[index - 1].dt)
-                  : getStartDay(detail.dt,null)
-              }}
-            </td>
-            <td class="align-baseline text-center">{{ getHour(detail.dt) }}</td>
-            <td class="align-baseline text-center">{{ detail.T.value }}°</td>
-            <td class="align-baseline hidden md:inline-flex text-center">{{ detail.T.windchill }}°</td>
-            <td class="align-baseline text-center">
-              {{ Math.round(detail.wind.speed * 3.6) }}
-            </td>
-            <td class="align-baseline hidden md:inline-flex text-center">
-              {{
-                detail.wind.gust !== 0
-                  ? Math.round(detail.wind.gust * 3.6)
-                  : "…"
-              }}
-            </td>
-            <td class="align-baseline text-center">
-              {{
-                getRain(detail.rain).height == 0
-                  ? "…"
-                  : getRain(detail.rain).height
-              }}
-            </td>
-            <td class="align-baseline text-center hidden md:inline-flex">{{ detail.humidity }}%</td>
-            <td class="align-baseline text-center">{{ Math.round(detail.sea_level) }}</td>
-            <td class="place-items-center">
-              <img
-                class="mx-auto w-8 h-8"
-                :src="getWeather(detail.weather).url"
-              />
-            </td>
-            <td class="place-items-center">
-             <!-- {{`direction: ${detail.wind.direction} speed: ${detail.wind.speed} isFlyable: ${isFlyable(detail.wind)}` }} -->
-              <svg
-                :style="getWindImg(detail.wind.direction).style"
-                class="mx-auto w-7 h-7 fill-transparent stroke-red-400 stroke-2"
-                :class="
-                        isFlyable(detail.wind) ? 
-                            'stroke-green-400' 
-                            : 'stroke-red-400' "
-                version="1.1"
-                id="Calque_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                viewBox="0 0 50 50"
-                style="enable-background: new 0 0 50 50"
-                xml:space="preserve"
-              >
-                <g id="surface1">
-                  <path
-                    d="M43.1,24c-0.6,0.6-1.4,0.9-2.2,0.9s-1.6-0.3-2.2-0.9L28.2,13.7v30c0,1.7-1.4,3-3.1,3s-3.3-1.3-3.3-3v-30
+  <div>
+    <table class="border-collapse table-auto w-full text-sm rounded-xl">
+      <thead>
+        <tr>
+          <td colspan="11" class="text-center">
+            {{
+              place.name.localeCompare(
+                forecast !== undefined ? forecast.position.name : null
+              ) != 0
+                ? `${place.name} - `
+                : ""
+            }}{{
+              forecast !== undefined ? forecast.position.name : "chargement"
+            }}
+            ({{ forecast !== undefined ? forecast.position.alti : "…" }}m)
+          </td>
+        </tr>
+        <tr>
+          <td colspan="11" class="text-center">
+            <a href="https://meteo.fr/" target="_blank" rel="noopener">
+              Météo France AROME
+              {{ forecast !== undefined ? getDate(forecast.updated_on) : "…" }}
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <th class="text-center">Jour</th>
+          <th>Heure</th>
+          <th>Temp</th>
+          <th class="hidden md:inline-flex">Rosée</th>
+          <th>moy.</th>
+          <th class="hidden md:inline-flex">raf.</th>
+          <th>Pluie</th>
+          <th class="hidden md:inline-flex">Humidité</th>
+          <th>
+            <span class="hidden md:inline-flex">Pression</span
+            ><span class="md:hidden inline-flex">hPa</span>
+          </th>
+          <th>Icone</th>
+          <th>dir.</th>
+        </tr>
+      </thead>
+      <tbody v-if="forecast">
+        <tr v-for="(detail, index) in forecast.forecast" :key="detail.id">
+          <td class="align-baseline text-center">
+            {{
+              index != 0
+                ? getStartDay(detail.dt, forecast.forecast[index - 1].dt)
+                : getStartDay(detail.dt, null)
+            }}
+          </td>
+          <td class="align-baseline text-center">{{ getHour(detail.dt) }}</td>
+          <td class="align-baseline text-center">{{ detail.T.value }}°</td>
+          <td class="align-baseline hidden md:inline-flex text-center">
+            {{ detail.T.windchill }}°
+          </td>
+          <td class="align-baseline text-center">
+            {{ Math.round(detail.wind.speed * 3.6) }}
+          </td>
+          <td class="align-baseline hidden md:inline-flex text-center">
+            {{
+              detail.wind.gust !== 0 ? Math.round(detail.wind.gust * 3.6) : "…"
+            }}
+          </td>
+          <td class="align-baseline text-center">
+            {{
+              getRain(detail.rain).height == 0
+                ? "…"
+                : getRain(detail.rain).height
+            }}
+          </td>
+          <td class="align-baseline text-center hidden md:inline-flex">
+            {{ detail.humidity }}%
+          </td>
+          <td class="align-baseline text-center">
+            {{ Math.round(detail.sea_level) }}
+          </td>
+          <td class="place-items-center">
+            <img
+              class="mx-auto w-8 h-8"
+              :src="getWeather(detail.weather).url"
+            />
+          </td>
+          <td class="place-items-center">
+            <!-- {{`direction: ${detail.wind.direction} speed: ${detail.wind.speed} isFlyable: ${isFlyable(detail.wind)}` }} -->
+            <svg
+              :style="getWindImg(detail.wind.direction).style"
+              class="mx-auto w-7 h-7 fill-transparent stroke-red-400 stroke-2"
+              :class="isFlyable(detail) ? 'stroke-green-400' : 'stroke-red-400'"
+              version="1.1"
+              id="Calque_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 50 50"
+              style="enable-background: new 0 0 50 50"
+              xml:space="preserve"
+            >
+              <g id="surface1">
+                <path
+                  d="M43.1,24c-0.6,0.6-1.4,0.9-2.2,0.9s-1.6-0.3-2.2-0.9L28.2,13.7v30c0,1.7-1.4,3-3.1,3s-3.3-1.3-3.3-3v-30
 		L11.4,24c-1.2,1.2-3.2,1.2-4.5,0s-1.2-3.2,0-4.4L22.8,3.9c1.2-1.2,3.2-1.2,4.5,0l15.8,15.6C44.3,20.8,44.3,22.8,43.1,24z"
-                  />
-                </g>
-              </svg>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+                />
+              </g>
+            </svg>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
 import { reactive } from "vue";
 const icons_base = "/assets/forecast/";
-  // "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/";
+// "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/";
 const API_TOKEN = "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
 let icons = new Set();
 const places = [
-  { lat: 44.661432, lon: -1.176416, name: 'Arcachon' },
-  { lat: 45.879449, lon: 6.888846, name: 'Aiguille du midi',fly:{sectors: [[0,15],[270,360]], wind: [0,6.11]} },
-  { lat: 48.385469, lon: -4.491038, name: 'Brest' },
-  { lat: 50.416924, lon: 2.513619, name: 'La Comté', fly:{sectors: [[-1,15],[270,360]], wind: [0,6.11]} },
-  { lat: 50.679484, lon: 1.567162, name: 'Équihen-Plage', fly:{sectors: [[250,290]], wind: [0,6.11]}  },
-  { lat: 50.43358, lon: 2.585847, name: 'Parc d\'Ohlain' },
-  { lat: 50.401719, lon: 2.92927, name: 'Parc des Îles', fly:{sectors: [[-1,361]], wind: [0,3]}  },
-  { lat: 42.697679, lon: 9.449846, name: 'Bastia' },
-  { lat: 48.54973, lon: 7.752666, name: 'Ostwald' },
-  { lat: 14.637992, lon: -61.095531, name: 'Saint-Joseph (Martinique)' },
-  { lat: -20.93398, lon: 55.595733, name: 'Saint-André (La Réunion)' },
+  { lat: 44.661432, lon: -1.176416, name: "Arcachon" },
+  {
+    lat: 45.879449,
+    lon: 6.888846,
+    name: "Aiguille du midi",
+    fly: {
+      sectors: [
+        [0, 15],
+        [270, 360],
+      ],
+      wind: [0, 6.11],
+    },
+  },
+  { lat: 48.385469, lon: -4.491038, name: "Brest" },
+  {
+    lat: 50.416924,
+    lon: 2.513619,
+    name: "La Comté",
+    fly: {
+      sectors: [
+        [-1, 15],
+        [270, 360],
+      ],
+      wind: [0, 6.11],
+    },
+  },
+  {
+    lat: 50.679484,
+    lon: 1.567162,
+    name: "Équihen-Plage",
+    fly: { sectors: [[250, 290]], wind: [0, 6.11] },
+  },
+  { lat: 50.43358, lon: 2.585847, name: "Parc d'Ohlain" },
+  {
+    lat: 50.401719,
+    lon: 2.92927,
+    name: "Parc des Îles",
+    fly: { sectors: [[-1, 361]], wind: [0, 3] },
+  },
+  { lat: 42.697679, lon: 9.449846, name: "Bastia" },
+  { lat: 48.54973, lon: 7.752666, name: "Ostwald" },
+  { lat: 14.637992, lon: -61.095531, name: "Saint-Joseph (Martinique)" },
+  { lat: -20.93398, lon: 55.595733, name: "Saint-André (La Réunion)" },
   {
     lat: 46.803303,
     lon: -56.174957,
-    name: 'Saint-Pierre (Collectivité de Saint-Pierre-et-Miquelon)'
+    name: "Saint-Pierre (Collectivité de Saint-Pierre-et-Miquelon)",
   },
-  { lat: -22.264542, lon: 166.447897, name: 'Nouméa (Nouvelle-Calédonie)' },
-  { lat: -12.782469, lon: 45.228132, name: 'Pamandzi (Mayotte)' }
+  { lat: -22.264542, lon: 166.447897, name: "Nouméa (Nouvelle-Calédonie)" },
+  { lat: -12.782469, lon: 45.228132, name: "Pamandzi (Mayotte)" },
 ];
 export default {
   forecast: reactive({}),
@@ -137,12 +177,12 @@ export default {
       type: Object,
       default() {
         return places[3];
-      }
+      },
     },
     lang: {
       type: String,
-      default: "fr"
-    }
+      default: "fr",
+    },
   },
   mounted() {
     this.getWeatherAtPlace(this.place);
@@ -155,14 +195,33 @@ export default {
     };
   },
   methods: {
-    isFlyable(wind, flying = {sectors: [[-1,15],[270,360]], wind: [0,6.11]}){
+    isFlyable(
+      forecast,
+      flying = {
+        sectors: [
+          [-1, 15],
+          [270, 360],
+        ],
+        wind: [0, 6.11],
+      }
+    ) {
       let directionOK = false;
-      flying.sectors.forEach(sector => {
-                if ((sector[0]<=wind.direction)&&(wind.direction<=sector[1])){
-                  directionOK = true;
-                }
+      flying.sectors.forEach((sector) => {
+        if (
+          sector[0] <= forecast.wind.direction &&
+          forecast.wind.direction <= sector[1]
+        ) {
+          directionOK = true;
+        }
       });
-      return (directionOK && (flying.wind[0]<=wind.speed) && (wind.speed<=flying.wind[1]));
+      return (
+        directionOK &&
+        flying.wind[0] <= forecast.wind.speed &&
+        forecast.wind.speed <= flying.wind[1] &&
+        flying.wind[0] <= forecast.wind.gust &&
+        forecast.wind.gust <= flying.wind[1] &&
+        this.getRain(forecast.rain).height == 0
+      );
     },
     getWeatherAtPlace(place) {
       let src = `https://webservice.meteofrance.com/forecast?token=${API_TOKEN}&lat=${place.lat}&lon=${place.lon}&lang=${this.lang}`;
@@ -180,14 +239,14 @@ export default {
           : {
               desc: weather.desc,
               icon: weather.icon,
-              url: `${icons_base}${weather.icon}.svg`
+              url: `${icons_base}${weather.icon}.svg`,
             };
       return wt;
     },
     getWindImg(direction) {
       return {
         src: `${icons_base}wind.svg`,
-        style: { transform: `rotate(${direction+180}deg)` }
+        style: { transform: `rotate(${direction + 180}deg)` },
       };
     },
     getRain(rain) {
@@ -198,7 +257,7 @@ export default {
       let ts = new Intl.DateTimeFormat(this.lang, {
         year: "numeric",
         month: "short",
-        day: "2-digit"
+        day: "2-digit",
       }).format(new Date(dt * 1000));
       return ts;
     },
@@ -208,25 +267,28 @@ export default {
         month: "short",
         day: "2-digit",
         hour: "numeric",
-        minute: "numeric"
+        minute: "numeric",
       }).format(new Date(dt * 1000));
       return ts;
     },
     getHour(dt) {
       let ts = new Intl.DateTimeFormat(this.lang, {
-        hour: "numeric"
+        hour: "numeric",
       }).format(new Date(dt * 1000));
       return ts;
     },
     getStartDay(dt, dt_prec = null) {
       let ts = "";
-      if ((new Date(dt_prec * 1000).getDay() != new Date(dt * 1000).getDay()) || dt_prec == null ) {
+      if (
+        new Date(dt_prec * 1000).getDay() != new Date(dt * 1000).getDay() ||
+        dt_prec == null
+      ) {
         ts = new Intl.DateTimeFormat(this.lang, {
-          weekday: "long"
+          weekday: "long",
         }).format(new Date(dt * 1000));
       }
       return ts;
-    }
-  }
+    },
+  },
 };
 </script>
