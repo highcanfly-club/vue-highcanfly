@@ -1,166 +1,181 @@
 <template>
   <div>
-    <table class="border-collapse table-auto w-full text-sm rounded-xl">
-      <thead>
-        <tr>
-          <td colspan="11" class="text-center">
-            {{
-              place.name.localeCompare(
-                forecast !== undefined ? forecast.position.name : null
-              ) != 0
-                ? `${place.name} - `
-                : ""
-            }}{{
-              forecast !== undefined ? forecast.position.name : "chargement"
-            }}
-            ({{ forecast !== undefined ? forecast.position.alti : "…" }}m)
-          </td>
-        </tr>
-        <tr>
-          <td colspan="11" class="text-center">
-            <a href="https://meteo.fr/" target="_blank" rel="noopener">
-              Météo France AROME
-              {{ forecast !== undefined ? getDate(forecast.updated_on) : "…" }}
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="col" class="text-center">Jour</th>
-          <th scope="col">Heure</th>
-          <th scope="col">Temp</th>
-          <th scope="col" class="hidden md:inline-flex">Rosée</th>
-          <th scope="col">moy.</th>
-          <th scope="col" class="hidden md:inline-flex">raf.</th>
-          <th scope="col">Pluie</th>
-          <th scope="col" class="hidden md:inline-flex">Humidité</th>
-          <th scope="col">
-            <span class="hidden md:inline-flex">Pression</span>
-            <span class="md:hidden inline-flex">hPa</span>
-          </th>
-          <th scope="col">Tendance</th>
-          <th scope="col">dir.</th>
-        </tr>
-      </thead>
-      <tbody v-if="forecast">
-        <!-- eslint-disable-next-line vue/no-v-for-template-key -->
-        <template v-for="(detail, index) in forecast.forecast" :key="detail.id">
-          <tr
-            :class="
-              isDaylight(forecast.daily_forecast, new Date(detail.dt * 1000)) &&
-              isFlyable(detail, place.fly)
-                ? 'bg-green-50'
-                : null
-            "
-          >
-            <td class="align-baseline text-center">
-              <el-popover
-                placement="top-start"
-                title="Éphéméride"
-                :width="200"
-                trigger="hover"
-                :content="
-                  getEphemeride(
-                    forecast.daily_forecast,
-                    new Date(detail.dt * 1000)
-                  )
-                "
-              >
-                <template #reference>
-                  {{
-                    index != 0
-                      ? getStartDay(detail.dt, forecast.forecast[index - 1].dt)
-                      : getStartDay(detail.dt, null)
-                  }}
-                </template>
-              </el-popover>
-            </td>
-            <td class="align-baseline text-center">{{ getHour(detail.dt) }}</td>
-            <td class="align-baseline text-center">{{ detail.T.value }}°</td>
-            <td class="align-baseline hidden md:inline-flex text-center">
-              {{ detail.T.windchill }}°
-            </td>
-            <td class="align-baseline text-center">
-              {{ Math.round(detail.wind.speed * 3.6) }}
-            </td>
-            <td class="align-baseline hidden md:inline-flex text-center">
+    <lazy-observer @on-change="onlazyMeteo">
+      <table class="border-collapse table-auto w-full text-sm rounded-xl">
+        <thead>
+          <tr>
+            <td colspan="11" class="text-center">
               {{
-                detail.wind.gust !== 0
-                  ? Math.round(detail.wind.gust * 3.6)
-                  : "…"
+                place.name.localeCompare(
+                  forecast !== undefined ? forecast.position.name : null
+                ) != 0
+                  ? `${place.name} - `
+                  : ""
+              }}{{
+                forecast !== undefined ? forecast.position.name : "chargement"
               }}
-            </td>
-            <td class="align-baseline text-center">
-              {{
-                getRain(detail.rain).height == 0
-                  ? "…"
-                  : getRain(detail.rain).height
-              }}
-            </td>
-            <td class="align-baseline text-center hidden md:inline-flex">
-              {{ detail.humidity }}%
-            </td>
-            <td class="align-baseline text-center">
-              {{ Math.round(detail.sea_level) }}
-            </td>
-            <td class="place-items-center">
-              <img
-                class="mx-auto w-8 h-8"
-                :src="getWeather(detail.weather).url"
-              />
-            </td>
-            <td class="place-items-center">
-              <!-- {{`direction: ${detail.wind.direction} speed: ${detail.wind.speed} isFlyable: ${isFlyable(detail.wind)}` }} -->
-              <el-popover
-                class="break-normal"
-                placement="top-start"
-                title="Vent admissible"
-                :width="200"
-                trigger="hover"
-                :content="getWindAdequate(place.fly)"
-              >
-                <template #reference>
-                  <svg
-                    :style="getWindImg(detail.wind.direction).style"
-                    class="mx-auto w-7 h-7 fill-transparent stroke-red-400 stroke-2"
-                    :class="
-                      isDaylight(
-                        forecast.daily_forecast,
-                        new Date(detail.dt * 1000)
-                      )
-                        ? isFlyable(detail, place.fly)
-                          ? 'stroke-green-400'
-                          : 'stroke-red-400'
-                        : 'stroke-slate-300'
-                    "
-                    version="1.1"
-                    id="Calque_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    x="0px"
-                    y="0px"
-                    viewBox="0 0 50 50"
-                    style="enable-background: new 0 0 50 50"
-                    xml:space="preserve"
-                  >
-                    <g id="surface1">
-                      <path
-                        d="M43.1,24c-0.6,0.6-1.4,0.9-2.2,0.9s-1.6-0.3-2.2-0.9L28.2,13.7v30c0,1.7-1.4,3-3.1,3s-3.3-1.3-3.3-3v-30
-		L11.4,24c-1.2,1.2-3.2,1.2-4.5,0s-1.2-3.2,0-4.4L22.8,3.9c1.2-1.2,3.2-1.2,4.5,0l15.8,15.6C44.3,20.8,44.3,22.8,43.1,24z"
-                      />
-                    </g>
-                  </svg>
-                </template>
-              </el-popover>
+              ({{ forecast !== undefined ? forecast.position.alti : "…" }}m)
             </td>
           </tr>
-        </template>
-      </tbody>
-    </table>
+          <tr>
+            <td colspan="11" class="text-center">
+              <a href="https://meteo.fr/" target="_blank" rel="noopener">
+                Météo France AROME
+                {{
+                  forecast !== undefined ? getDate(forecast.updated_on) : "…"
+                }}
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="col" class="text-center">Jour</th>
+            <th scope="col">Heure</th>
+            <th scope="col">Temp</th>
+            <th scope="col" class="hidden md:inline-flex">Rosée</th>
+            <th scope="col">moy.</th>
+            <th scope="col" class="hidden md:inline-flex">raf.</th>
+            <th scope="col">Pluie</th>
+            <th scope="col" class="hidden md:inline-flex">Humidité</th>
+            <th scope="col">
+              <span class="hidden md:inline-flex">Pression</span>
+              <span class="md:hidden inline-flex">hPa</span>
+            </th>
+            <th scope="col">Tendance</th>
+            <th scope="col">dir.</th>
+          </tr>
+        </thead>
+        <tbody v-if="forecast">
+          <!-- eslint-disable vue/no-v-for-template-key -->
+          <template
+            v-for="(detail, index) in forecast.forecast"
+            :key="detail.id"
+          >
+            <tr
+              :class="
+                isDaylight(
+                  forecast.daily_forecast,
+                  new Date(detail.dt * 1000)
+                ) && isFlyable(detail, place.fly)
+                  ? 'bg-green-50'
+                  : null
+              "
+            >
+              <td class="align-baseline text-center">
+                <el-popover
+                  placement="top-start"
+                  title="Éphéméride"
+                  :width="200"
+                  trigger="hover"
+                  :content="
+                    getEphemeride(
+                      forecast.daily_forecast,
+                      new Date(detail.dt * 1000)
+                    )
+                  "
+                >
+                  <template #reference>
+                    {{
+                      index != 0
+                        ? getStartDay(
+                            detail.dt,
+                            forecast.forecast[index - 1].dt
+                          )
+                        : getStartDay(detail.dt, null)
+                    }}
+                  </template>
+                </el-popover>
+              </td>
+              <td class="align-baseline text-center">
+                {{ getHour(detail.dt) }}
+              </td>
+              <td class="align-baseline text-center">{{ detail.T.value }}°</td>
+              <td class="align-baseline hidden md:inline-flex text-center">
+                {{ detail.T.windchill }}°
+              </td>
+              <td class="align-baseline text-center">
+                {{ Math.round(detail.wind.speed * 3.6) }}
+              </td>
+              <td class="align-baseline hidden md:inline-flex text-center">
+                {{
+                  detail.wind.gust !== 0
+                    ? Math.round(detail.wind.gust * 3.6)
+                    : "…"
+                }}
+              </td>
+              <td class="align-baseline text-center">
+                {{
+                  getRain(detail.rain).height == 0
+                    ? "…"
+                    : getRain(detail.rain).height
+                }}
+              </td>
+              <td class="align-baseline text-center hidden md:inline-flex">
+                {{ detail.humidity }}%
+              </td>
+              <td class="align-baseline text-center">
+                {{ Math.round(detail.sea_level) }}
+              </td>
+              <td class="place-items-center">
+                <img
+                  class="mx-auto w-8 h-8"
+                  :src="getWeather(detail.weather).url"
+                />
+              </td>
+              <td class="place-items-center">
+                <!-- {{`direction: ${detail.wind.direction} speed: ${detail.wind.speed} isFlyable: ${isFlyable(detail.wind)}` }} -->
+                <el-popover
+                  class="break-normal"
+                  placement="top-start"
+                  title="Vent admissible"
+                  :width="200"
+                  trigger="hover"
+                  :content="getWindAdequate(place.fly)"
+                >
+                  <template #reference>
+                    <svg
+                      :style="getWindImg(detail.wind.direction).style"
+                      class="mx-auto w-7 h-7 fill-transparent stroke-red-400 stroke-2"
+                      :class="
+                        isDaylight(
+                          forecast.daily_forecast,
+                          new Date(detail.dt * 1000)
+                        )
+                          ? isFlyable(detail, place.fly)
+                            ? 'stroke-green-400'
+                            : 'stroke-red-400'
+                          : 'stroke-slate-300'
+                      "
+                      version="1.1"
+                      id="Calque_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 50 50"
+                      style="enable-background: new 0 0 50 50"
+                      xml:space="preserve"
+                    >
+                      <g id="surface1">
+                        <path
+                          d="M43.1,24c-0.6,0.6-1.4,0.9-2.2,0.9s-1.6-0.3-2.2-0.9L28.2,13.7v30c0,1.7-1.4,3-3.1,3s-3.3-1.3-3.3-3v-30
+		L11.4,24c-1.2,1.2-3.2,1.2-4.5,0s-1.2-3.2,0-4.4L22.8,3.9c1.2-1.2,3.2-1.2,4.5,0l15.8,15.6C44.3,20.8,44.3,22.8,43.1,24z"
+                        />
+                      </g>
+                    </svg>
+                  </template>
+                </el-popover>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </lazy-observer>
   </div>
 </template>
 
 <script>
 import { reactive } from "vue";
+import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import { ElPopover } from "element-plus";
 // const icons_base = "/assets/forecast/";
 const icons_base =
@@ -240,19 +255,25 @@ export default {
     return {
       forecast: this.forecast,
       icons,
-     // place: this.place, //eslint-disable-line
+      // place: this.place, //eslint-disable-line
     };
   },
   components: {
-    ElPopover
+    ElPopover,
+    LazyObserver,
   },
   methods: {
+    onlazyMeteo(entry, unobserve) {
+      if (entry.isIntersecting) {
+        unobserve();
+        this.loadMap = true;
+        console.log(`Loading meteo for ${this.place.name} lazily`);
+      }
+    },
     isFlyable(
       forecast,
       flying = {
-        sectors: [
-          [-1, 360],
-        ],
+        sectors: [[-1, 360]],
         wind: [0, 6.11],
       }
     ) {
@@ -279,7 +300,7 @@ export default {
       return sun.sunrise < givendate && givendate < sun.sunset;
     },
     getWindAdequate(flying) {
-      let speed = `v ≤ ${Math.round(flying.wind[1] )} m/s `;
+      let speed = `v ≤ ${Math.round(flying.wind[1])} m/s `;
       let sectors = "orientation ";
       flying.sectors.forEach((sector, index) => {
         sectors += `${index ? "et " : ""}de ${sector[0]}° à ${sector[1]}° `;
