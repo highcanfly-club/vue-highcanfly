@@ -105,7 +105,7 @@
                         [-1, 15],
                         [270, 360],
                       ],
-                      wind: [0, 6.11],
+                      wind: [0, 5.55],
                     },
                   }"
                 />
@@ -122,7 +122,7 @@
                     lat: 50.43358,
                     lon: 2.585847,
                     name: 'Parc d\'Ohlain',
-                    fly: { sectors: [[180, 225]], wind: [0, 6.11] },
+                    fly: { sectors: [[180, 225]], wind: [0, 5.55] },
                   }"
                 />
               </div>
@@ -134,7 +134,7 @@
                 class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
               >
                 <card-meteo
-                  :place="{ lat: 50.401719, lon: 2.92927, name: 'Parc des Îles', fly:{sectors: [[-1,361]], wind: [0,3]}  }"
+                  :place="{ lat: 50.401719, lon: 2.92927, name: 'Gonflage au Parc des Îles', fly:{sectors: [[-1,361]], wind: [0,4]}  }"
                 />
               </div>
             </div>
