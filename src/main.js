@@ -83,6 +83,9 @@ import metaMixin from "@/mixins/MetaMixin";
 //import OpenLayersMap from 'vue3-openlayers';
 import 'vue3-openlayers/dist/vue3-openlayers.css';
 
+//element-plus
+import 'element-plus/dist/index.css';
+
 //Global functions
 import Highcanfly from "@/plugins/highcanfly";
 // routes
