@@ -40,6 +40,11 @@ const routes = [
         name: 'Le vent (Windy)'
     },
     {
+        path: "/meteo",
+        name: "Météo sur nos sites",
+        _updatedAt: (new Date((new Date()).setHours(7,0))).toISOString(),
+    },
+    {
         path: "/map-sites-de-pratique",
         name: "Sites de pratique",
     },
