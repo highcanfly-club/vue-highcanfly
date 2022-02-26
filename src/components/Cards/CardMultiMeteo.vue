@@ -83,7 +83,7 @@ export default {
       ? this.$route.params.slug
       : null;
       console.log(slug);
-      let _places = slug ?  ( this.getPlaceWithSlug(slug) ? this.getPlaceWithSlug(slug) : places) : places ;//[this.getPlaceWithSlug(slug)] : places;
+      let _places = slug ?  ( this.getPlaceWithSlug(slug).length > 0 ? this.getPlaceWithSlug(slug) : places) : places ;//[this.getPlaceWithSlug(slug)] : places;
       console.log(_places);
     return {
       places: _places,
