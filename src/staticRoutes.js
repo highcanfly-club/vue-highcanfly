@@ -43,7 +43,7 @@ const routes = [
     {
         path: "/meteo",
         name: "Météo sur nos sites",
-        _updatedAt: (new Date((new Date()).setHours(7,0))).toISOString(),
+        _updatedAt: (new Date((new Date()).setHours(7, 0))).toISOString(),
     },
     {
         path: "/map-sites-de-pratique",
@@ -56,8 +56,8 @@ const routes = [
     },
 ];
 places.forEach(place => {
-    if (place.slug !== undefined){
-        routes.push({path: `/meteo/${place.slug}`, name: `Météo à ${place.name}`});
+    if (place.slug !== undefined) {
+        routes.push({ path: `/meteo/${place.slug}`, name: `Météo à ${place.name}`, _updatedAt: (new Date((new Date()).setHours(7, 0))).toISOString() });
     }
 });
-export {routes};
+export { routes };
