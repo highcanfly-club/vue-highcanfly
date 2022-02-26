@@ -1,5 +1,6 @@
 //ToDo extract automatically from router
 const commit = require('../commit.json');
+const places = require('./places.json');
 const routes = [
     {
         path: "/policy",
@@ -42,7 +43,7 @@ const routes = [
     {
         path: "/meteo",
         name: "Météo sur nos sites",
-        _updatedAt: (new Date((new Date()).setHours(7,0))).toISOString(),
+        _updatedAt: (new Date((new Date()).setHours(7, 0))).toISOString(),
     },
     {
         path: "/map-sites-de-pratique",
@@ -54,4 +55,9 @@ const routes = [
         _updatedAt: commit.vue_highcanfly
     },
 ];
-export {routes};
+places.forEach(place => {
+    if (place.slug !== undefined) {
+        routes.push({ path: `/meteo/${place.slug}`, name: `Météo à ${place.name}`, _updatedAt: (new Date((new Date()).setHours(7, 0))).toISOString() });
+    }
+});
+export { routes };
