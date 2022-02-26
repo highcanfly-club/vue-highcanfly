@@ -56,8 +56,8 @@ import CardMultiMeteo from "@/components/Cards/CardMultiMeteo.vue";
 import { inject, reactive } from 'vue';
 
 export default {
-  description: "Club de parapente dans le Nord FFVL n°29070. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.", 
-  title: "High Can Fly | Club de parapente du Nord | (test accueil)",
+  description: "La météo sur nos sites est l'élément indispensable pour un club de parapente du Nord FFVL. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.", 
+  title: "High Can Fly | Club de parapente du Nord | La météo sur nos sites de pratiques ",
   canonical: (new URL(window.location)),
   data() {
     const state = reactive({//eslint-disable-line
