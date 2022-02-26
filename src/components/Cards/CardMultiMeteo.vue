@@ -4,20 +4,24 @@
       class="flex flex-wrap sm:flex-nowrap sm:flex-row overflow-x-auto items-center"
     >
       <div
-        v-for="place in places"
+        v-for="(place, index) in places"
         :key="place.name"
         class="m-4 w-full sm:w-[38rem] h-[50rem] sm:min-w-[38rem] overflow-y-auto"
       >
         <div
           class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
         >
-          <card-meteo :place="place" />
+          <lazy-observer :id="index" @on-change="onlazyMeteo">
+            <card-meteo ref="card_meteo" :place="place" :lazy="true" :id="index"/>
+          </lazy-observer>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import LazyObserver from "@/components/Utilities/LazyObserver.vue";
+//import { defineAsyncComponent } from "vue";
 import CardMeteo from "@/components/Cards/CardMeteo.vue";
 const places = [
   {
@@ -69,8 +73,17 @@ export default {
       places,
     };
   },
+  methods: {
+     onlazyMeteo(entry, unobserve, id) {
+      if (entry.isIntersecting && this.$refs.card_meteo !== undefined) {
+        unobserve();
+        this.$refs.card_meteo[id].getWeatherAtPlace();
+      }
+    },
+  },
   components: {
-    CardMeteo,
+    LazyObserver,
+    CardMeteo
   },
 };
 </script>
