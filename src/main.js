@@ -61,6 +61,10 @@ const routes = [
     path: "/sanity-blog/:slug",
     component: () => import("@/views/SinglePost.vue"),
   },
+  {
+    path: "/meteo",
+    component: () => import('@/views/ViewMeteo.vue'),
+  }
 ];
 
 // styles
@@ -78,6 +82,9 @@ import metaMixin from "@/mixins/MetaMixin";
 //vue3 openlayers
 //import OpenLayersMap from 'vue3-openlayers';
 import 'vue3-openlayers/dist/vue3-openlayers.css';
+
+//element-plus
+import 'element-plus/dist/index.css';
 
 //Global functions
 import Highcanfly from "@/plugins/highcanfly";

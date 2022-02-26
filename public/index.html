@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= BASE_URL %>apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>favicon-16x16.png">
-    <link rel="manifest" href="<%= BASE_URL %>site.webmanifest">
-    <link rel="mask-icon" href="<%= BASE_URL %>safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <link rel ="canonical" href="https://www.highcanfly.club/" />
     <meta name="description" content="Club de parapente dans le Nord. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070."/>
     <meta name="keywords" content="parapente, nord, marche, vol"/>
@@ -22,13 +22,13 @@
       {
         "@context": "https://schema.org",
         "@type": "SportsClub",
-        "sport": "Parapente",
         "description": "Club de Parapente du Nord",
         "name": "High Can Fly Parapente",
         "alternateName": "Highcanfly",
         "naics": "711211",
         "image": "https://www.highcanfly.club/img/assets/img/logo_high_can_fly.svg",
         "logo": "https://www.highcanfly.club/img/assets/img/logo_high_can_fly.svg",
+        "telephone": "+33 3 66 72 14 65",
         "nonprofitStatus": "Nonprofit501c7",
         "url": "https://www.highcanfly.club",
         "address": {
@@ -40,9 +40,18 @@
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": "50.399619",
-          "longitude": "3.096906"
+          "latitude": 50.399619,
+          "longitude": 3.096906
         },
+        "areaServed": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+              "@type": "GeoCoordinates",
+              "latitude": 50.43358,
+              "longitude": 2.585847
+          },
+          "geoRadius": 200000
+      },
         "sameAs" : [
                       "https://twitter.com/HighCanFlyClub",
                       "https://www.instagram.com/highcanfly_parapente/",
