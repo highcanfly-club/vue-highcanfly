@@ -1,6 +1,5 @@
 <template>
   <div>
-    <lazy-observer @on-change="onlazyMeteo">
       <table class="border-collapse table-auto w-full text-sm rounded-xl">
         <thead>
           <tr>
@@ -169,17 +168,14 @@
           </template>
         </tbody>
       </table>
-    </lazy-observer>
   </div>
 </template>
 
 <script>
 import { reactive } from "vue";
-import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import { ElPopover } from "element-plus";
-// const icons_base = "/assets/forecast/";
-const icons_base =
-  "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/";
+const icons_base = "/assets/forecast/";
+// const icons_base =  "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/";
 const API_TOKEN = "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
 let icons = new Set();
 const places = [
@@ -237,6 +233,15 @@ const places = [
 export default {
   forecast: reactive({}),
   props: {
+    id: {
+      type: Number,
+      default: null,
+    },
+    lazy: {
+      type: Boolean,
+      default: false,
+
+    },
     place: {
       type: Object,
       default() {
@@ -249,27 +254,21 @@ export default {
     },
   },
   mounted() {
-    this.getWeatherAtPlace(this.place);
+    if (!this.$props.lazy)
+    {
+      this.getWeatherAtPlace(this.place);
+      }
   },
   data() {
     return {
       forecast: this.forecast,
       icons,
-      // place: this.place, //eslint-disable-line
     };
   },
   components: {
     ElPopover,
-    LazyObserver,
   },
   methods: {
-    onlazyMeteo(entry, unobserve) {
-      if (entry.isIntersecting) {
-        unobserve();
-        this.loadMap = true;
-        console.log(`Loading meteo for ${this.place.name} lazily`);
-      }
-    },
     isFlyable(
       forecast,
       flying = {
@@ -343,9 +342,9 @@ export default {
       });
       return sun;
     },
-    getWeatherAtPlace(place) {
+    getWeatherAtPlace(place = this.place) {
       let src = `https://webservice.meteofrance.com/forecast?token=${API_TOKEN}&lat=${place.lat}&lon=${place.lon}&lang=${this.lang}`;
-      console.log(`Retrieve from ${src}`);
+      console.log(`Retrieve forecasts from ${src}`);
       fetch(src).then((result) => {
         result.json().then((forecast) => {
           this.forecast = forecast;

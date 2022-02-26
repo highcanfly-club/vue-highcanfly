@@ -13,6 +13,10 @@ export default {
     };
   },
   props: {
+    id: {
+      type: [String, Number],
+      default: null
+    },
     root: {
       type: [Object],
       default: null
@@ -30,6 +34,9 @@ export default {
   methods: {
     unobserve() {
       this.LazyObserver.unobserve(this.$el);
+    },
+    observe() {
+      this.LazyObserver.observe(this.$el);
     }
   },
   mounted() {
@@ -39,9 +46,9 @@ export default {
       threshold: this.threshold
     };
     this.LazyObserver = new IntersectionObserver(entries => {
-      this.$emit("on-change", entries[0], this.unobserve);
+      this.$emit("on-change", entries[0], this.unobserve, this.id);
     }, options);
-    this.LazyObserver.observe(this.$el);
+    this.observe();
   },
   beforeDestroy() {
     if (this.LazyObserver) {
