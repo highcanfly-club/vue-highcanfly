@@ -27,21 +27,41 @@
 <script>
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import CardMeteo from "@/components/Cards/CardMeteo.vue";
+import { ref } from "vue";
 const places = require("@/places.json");
 
 export default {
+  slug: ref(''),
+  places: ref(places),
   data() {
-    const slug = this.$route.params.slug
-      ? this.$route.params.slug
-      : null;
-      console.log(slug);
-      let _places = slug ?  ( this.getPlaceWithSlug(slug).length > 0 ? this.getPlaceWithSlug(slug) : places) : places ;//[this.getPlaceWithSlug(slug)] : places;
-      console.log(_places);
+    this.slug =  this.$route.params.slug ? this.$route.params.slug : null;
+    this.places = this.getPlaces(this.slug);
     return {
-      places: _places,
+        slug: this.slug,
+        places: this.places,
     };
   },
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      () => {
+        this.slug =  this.$route.params.slug ? this.$route.params.slug : null;
+        this.places = this.getPlaces(this.slug);
+      },
+      { immediate: true }
+    )
+  },
   methods: {
+    getPlaces(slug) {
+      let _places = slug
+        ? this.getPlaceWithSlug(slug).length > 0
+          ? this.getPlaceWithSlug(slug) || slug === "all"
+          : places
+        : places.filter((place) => {
+            return place.default === true;
+          });
+      return _places;
+    },
     onlazyMeteo(entry, unobserve, id) {
       if (entry.isIntersecting && this.$refs.card_meteo !== undefined) {
         unobserve();
