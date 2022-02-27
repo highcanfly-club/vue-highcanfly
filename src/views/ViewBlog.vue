@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar-grey />
+    <navbar-default />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
@@ -32,7 +32,7 @@
   </div>
 </template>
 <script>
-import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
+import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import backgroundImageAsset from "@/assets/img/mountain.jpg";
 import backgroundImageAssetWebp from "@/assets/img/mountain.webp";
@@ -54,7 +54,7 @@ export default {
     };
   },
   components: {
-    NavbarGrey,
+    NavbarDefault,
     MainFooter,
     SanityBlog,
   },

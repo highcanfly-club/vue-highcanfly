@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar-grey />
+    <navbar-default />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
@@ -60,7 +60,7 @@
   </div>
 </template>
 <script>
-import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
+import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import { inject, reactive } from "vue";
 import backgroundImageAsset from "@/assets/img/highcanfly-102.jpg";
@@ -111,7 +111,7 @@ export default {
     fetchData() {},
   },
   components: {
-    NavbarGrey,
+    NavbarDefault,
     MainFooter,
   },
 };

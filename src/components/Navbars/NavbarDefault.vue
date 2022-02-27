@@ -7,7 +7,8 @@
         class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
       >
         <router-link
-          class="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
+          :class="color"
+          class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
           to="/"
         >
           High Can Fly
@@ -21,7 +22,7 @@
       >
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
           <li class="flex items-center">
-            <PagesDropdown color="text-white" colorhover="text-slate-200"/>
+            <PagesDropdown :color="color" :colorhover="colorhover"/>
           </li>
           <li class="flex items-center">
             <a
@@ -29,7 +30,7 @@
               href="https://www.instagram.com/highcanfly_parapente/"
               target="_blank"
             >
-              <i class="lg:text-slate-200 text-slate-400 fab fa-instagram text-lg leading-lg" />
+              <i :class="iconscolor" class=" fab fa-instagram text-lg leading-lg" />
               <span class="lg:hidden inline-block ml-2">Share</span>
             </a>
           </li>
@@ -40,7 +41,7 @@
               href="https://twitter.com/HighCanFlyClub"
               target="_blank"
             >
-              <i class="lg:text-slate-200 text-slate-400 fab fa-twitter text-lg leading-lg" />
+              <i :class="iconscolor" class=" fab fa-twitter text-lg leading-lg" />
               <span class="lg:hidden inline-block ml-2">Tweet</span>
             </a>
           </li>
@@ -51,14 +52,15 @@
               href="https://github.com/eltorio/vue-highcanfly/tree/highcanfly?ref=vn-auth-navbar"
               target="_blank"
             >
-              <i class="lg:text-slate-200 text-slate-400 fab fa-github text-lg leading-lg" />
+              <i :class="iconscolor" class=" fab fa-github text-lg leading-lg" />
               <span class="lg:hidden inline-block ml-2">Star</span>
             </a>
           </li>
 
           <li class="flex items-center">
             <button
-              class="bg-white text-slate-700 active:bg-slate-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+              :class="buttoncolor"
+              class="text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
               type="button"
               onclick="location.href='https://intranet.ffvl.fr/ffvl_licenceonline/pre_rempli/NEW/14172'"
             >
@@ -82,6 +84,24 @@
 <script>
 import PagesDropdown from "@/components/Dropdowns/PagesDropdown.vue";
 export default {
+  props: {
+    color: {
+      type: String,
+      default: "text-white",
+    },
+    iconscolor: {
+      type: String,
+      default: "text-slate-200",
+    },
+    buttoncolor: {
+      type: String,
+      default: "bg-white text-slate-700 active:bg-slate-50",
+    },
+    colorhover: {
+      type: String,
+      default: "text-slate-200",
+    },
+  },
   data() {
     return {
       navbarOpen: false,

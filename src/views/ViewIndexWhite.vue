@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar-white />
+    <navbar-default color="text-slate-700" colorhover="text-slate-200" iconscolor="text-slate-700" buttoncolor="bg-gradient-to-r from-watermelon-500 to-pistachio-500 text-white active:bg-emerald-600"/>
     <section
       class="header relative pt-16 items-center flex h-screen max-h-860-px"
     >
@@ -670,7 +670,7 @@
   </div>
 </template>
 <script>
-import NavbarWhite from "@/components/Navbars/NavbarWhite.vue";
+import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import CardWindy from "@/components/Cards/CardWindy.vue";
 import CardMultiMeteo from "@/components/Cards/CardMultiMeteo.vue";
@@ -707,7 +707,7 @@ export default {
     };
   },
   components: {
-    NavbarWhite,
+    NavbarDefault,
     MainFooter,
     CardMultiMeteo,
     CardWindy,

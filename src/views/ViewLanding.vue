@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar-grey />
+    <navbar-default />
     <main>
       <div
         class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75"
@@ -540,7 +540,7 @@
   </div>
 </template>
 <script>
-import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
+import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
 import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg"; 
 import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; 
@@ -615,7 +615,7 @@ export default {
     };
   },
   components: {
-    NavbarGrey,
+    NavbarDefault,
     FooterComponent,
     olMapsitesDePratiqueComponent: defineAsyncComponent( () => import("@/components/Maps/OLMapSitesDePratique.vue") ),
     emailForm,
