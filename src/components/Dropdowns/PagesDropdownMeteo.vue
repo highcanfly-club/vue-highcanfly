@@ -9,7 +9,7 @@
         style="transform: rotate(90deg)"
         class="fa-solid fa-arrow-down-short-wide"
       ></i>
-      Météo ailleurs</a
+      Météo d'ailleurs</a
     >
     <div
       ref="popoverDropdownMeteoRef"
