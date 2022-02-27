@@ -11,7 +11,11 @@ gulp.task("licenses", async function () {
 =========================================================
 * © 2018-2022 Association Highcanfly
 =========================================================
-This website use Vue Notus theme from Creative Tim (MIT License)
+This website use:
+- Vuejs v3
+- Font Awesome
+- Vue Notus theme from Creative Tim (MIT License)
+- And many others
 */`)
     )
     .pipe(gulp.dest("./", { overwrite: true }));
@@ -24,7 +28,11 @@ This website use Vue Notus theme from Creative Tim (MIT License)
 =========================================================
 * © 2018-2022 Association Highcanfly
 =========================================================
-This website use Vue Notus theme from Creative Tim (MIT License)
+This website use:
+- Vuejs v3
+- Font Awesome
+- Vue Notus theme from Creative Tim (MIT License)
+- And many others
 -->`)
     )
     .pipe(gulp.dest("./", { overwrite: true }));
@@ -38,7 +46,11 @@ This website use Vue Notus theme from Creative Tim (MIT License)
 =========================================================
 * © 2018-2022 Association Highcanfly
 =========================================================
-This website use Vue Notus theme from Creative Tim (MIT License)
+This website use:
+- Vuejs v3
+- Font Awesome
+- Vue Notus theme from Creative Tim (MIT License)
+- And many others
 
 */`)
     )
