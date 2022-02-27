@@ -28,7 +28,7 @@
       <router-link
         v-for="place in places"
         :key="place.slug"
-        :to="{ name: 'meteo', params: { slug: place.slug, key:$router.path }}"
+        :to="`/meteo/${place.slug}`"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
         >{{ place.name }}</router-link
       >
