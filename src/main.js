@@ -63,6 +63,7 @@ const routes = [
   },
   {
     path: "/meteo",
+    name: "meteo",
     component: () => import('@/views/ViewMeteo.vue'),
   },
   {
@@ -104,7 +105,7 @@ const router = createRouter({
 const app = createApp(App);
 window.app = app;
 app.use(router);
-//app.use(OpenLayersMap);
+
 app.use(Highcanfly);
 app.mixin(metaMixin);
 
