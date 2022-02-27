@@ -34,7 +34,7 @@
           >
             <div class="px-6 py-6">
               -->
-             <card-multi-meteo />
+             <card-multi-meteo :key="slug"/>
              <!--
             </div>
           </div>
@@ -53,9 +53,10 @@ import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp";
 import CardMultiMeteo from "@/components/Cards/CardMultiMeteo.vue";
 
 
-import { inject, reactive } from 'vue';
+import { inject, reactive, ref } from 'vue';
 
 export default {
+  slug: ref(''),
   description: "La météo sur nos sites est l'élément indispensable pour un club de parapente du Nord FFVL. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.", 
   title: "High Can Fly | Club de parapente du Nord | La météo sur nos sites de pratiques ",
   canonical: (new URL(window.location)),
@@ -66,6 +67,7 @@ export default {
     inject('getJpgOrWebpIfSupported')(backgroundImageAsset, backgroundImageAssetWebp, 'lossy').then(file => { console.log('Webp support: ' + file); state.backgroundImageURL = file });
     return {
       state,
+       slug: this.slug,
     };
   },
   components: {
