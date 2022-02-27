@@ -21,7 +21,7 @@
       >
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
           <li class="flex items-center">
-            <PagesDropdown />
+            <PagesDropdown color="text-white" colorhover="text-slate-200"/>
           </li>
           <li class="flex items-center">
             <a

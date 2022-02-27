@@ -1,7 +1,7 @@
 <template>
   <div>
     <a
-      class="lg:text-white lg:hover:text-slate-200 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+      :class="`${color} hover:${colorhover} px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`"
       href="#pablo"
       ref="btnDropdownRef"
       v-on:click="toggleDropdown($event)"
@@ -61,6 +61,16 @@
 import { createPopper } from "@popperjs/core";
 
 export default {
+  props: {
+    color: {
+      type: String,
+      default: "text-white",
+    },
+    colorhover: {
+      type: String,
+      default: "text-slate-200",
+    },
+  },
   data() {
     return {
       dropdownPopoverShow: false,
