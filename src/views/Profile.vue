@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar-grey />
+    <navbar-default />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
@@ -148,7 +148,7 @@
   </div>
 </template>
 <script>
-import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
+import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
 
 import team2 from "@/assets/img/team-2-800x800.jpg";
@@ -160,7 +160,7 @@ export default {
     };
   },
   components: {
-    NavbarGrey,
+    NavbarDefault,
     FooterComponent,
   },
 };
