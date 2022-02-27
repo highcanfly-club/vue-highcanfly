@@ -23,7 +23,7 @@
       >
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto ">
           <li class="flex items-center">
-            <PagesDropdownWhite />
+            <PagesDropdown color="text-slate-700" colorhover="text-slate-200"/>
           </li>
           <li class="flex items-center">
             <a
@@ -79,7 +79,7 @@
   </nav>
 </template>
 <script>
-import PagesDropdownWhite from "@/components/Dropdowns/PagesDropdownWhite.vue";
+import PagesDropdown from "@/components/Dropdowns/PagesDropdown.vue";
 export default {
   data() {
     return {
@@ -92,7 +92,7 @@ export default {
     },
   },
   components: {
-    PagesDropdownWhite,
+    PagesDropdown,
   },
 };
 </script>
