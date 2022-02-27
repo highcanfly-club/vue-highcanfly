@@ -4,6 +4,7 @@
         "lon": 2.513619,
         "slug": "la-comte",
         "name": "La Comté",
+        "default": true,
         "fly": {
             "sectors": [
                 [
@@ -26,6 +27,7 @@
         "lon": 2.585847,
         "slug": "ohlain",
         "name": "Parc d'Ohlain",
+        "default": true,
         "fly": {
             "sectors": [
                 [
@@ -44,6 +46,7 @@
         "lon": 1.567162,
         "slug": "equihen",
         "name": "Équihen-Plage",
+        "default": true,
         "fly": {
             "sectors": [
                 [
@@ -61,6 +64,7 @@
         "lat": 50.401719,
         "lon": 2.92927,
         "slug": "aquaterra",
+        "default": true,
         "name": "Gonflage au Parc des Îles",
         "fly": {
             "sectors": [
@@ -80,6 +84,7 @@
         "lon": 2.778216,
         "slug": "11-19",
         "name": "⚠ Terrils jumeaux ⚠",
+        "default": true,
         "fly": {
             "sectors": [
                 [
@@ -94,6 +99,68 @@
             "wind": [
                 0,
                 1.666
+            ]
+        }
+    },
+    {
+        "lat": 45.949472,
+        "lon": 6.739542,
+        "name": "Plaine-Joux",
+        "slug": "plaine-joux",
+        "fly": {
+            "sectors": [
+                [
+                    150,
+                    200
+                ]
+            ],
+            "wind": [
+                0,
+                5.55
+            ]
+        }
+    },
+    {
+        "lat": 45.937921,
+        "lon": 6.851649,
+        "name": "Planpraz",
+        "slug": "planpraz",
+        "fly": {
+            "sectors": [
+                [
+                    200,
+                    260
+                ],
+                [
+                    70,
+                    110
+                ]
+            ],
+            "wind": [
+                0,
+                5.55
+            ]
+        }
+    },
+    {
+        "lat": 45.879449,
+        "lon": 6.888846,
+        "name": "Aiguille du midi",
+        "slug": "aiguille-du-midi",
+        "fly": {
+            "sectors": [
+                [
+                    300,
+                    340
+                ],
+                [
+                    100,
+                    166
+                ]
+            ],
+            "wind": [
+                0,
+                2
             ]
         }
     }

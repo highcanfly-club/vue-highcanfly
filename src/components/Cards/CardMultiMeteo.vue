@@ -31,10 +31,14 @@ const places = require("@/places.json");
 
 export default {
   data() {
-    const slug = this.$route.params.slug
-      ? this.$route.params.slug
-      : null;
-      let _places = slug ?  ( this.getPlaceWithSlug(slug).length > 0 ? this.getPlaceWithSlug(slug) : places) : places ;
+    const slug = this.$route.params.slug ? this.$route.params.slug : null;
+    let _places = slug
+      ? this.getPlaceWithSlug(slug).length > 0
+        ? this.getPlaceWithSlug(slug)
+        : places
+      : places.filter((place) => {
+          return place.default === true;
+        });
     return {
       places: _places,
     };
