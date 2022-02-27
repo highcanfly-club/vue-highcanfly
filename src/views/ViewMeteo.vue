@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar-default />
+    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200" buttoncolor="bg-white text-slate-700 active:bg-slate-50"/>
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
