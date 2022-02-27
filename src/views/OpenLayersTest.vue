@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar-grey />
+    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200" buttoncolor="bg-white text-slate-700 active:bg-slate-50"/>
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
@@ -57,7 +57,7 @@
   </div>
 </template>
 <script>
-import NavbarGrey from "@/components/Navbars/NavbarGrey.vue";
+import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
 import backgroundImageAsset from "@/assets/img/blancnezhugues-101.jpg";
 import {
@@ -71,7 +71,7 @@ export default {
     };
   },
   components: {
-    NavbarGrey,
+    NavbarDefault,
     FooterComponent,
   },
     setup() {
