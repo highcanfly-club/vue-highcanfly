@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @mouseleave="toggleDropdown($event)">
     <a
       :class="`${color} hover:${colorhover} px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`"
       href="#pablo"
