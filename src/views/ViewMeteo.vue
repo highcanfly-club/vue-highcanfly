@@ -70,6 +70,15 @@ export default {
        slug: this.slug,
     };
   },
+    created() {
+    this.$watch(
+      () => this.$route.params,
+      () => {
+        this.slug =  this.$route.params.slug ? this.$route.params.slug : null;
+      },
+      { immediate: true }
+    )
+  },
   components: {
     NavbarDefault,
     MainFooter,
