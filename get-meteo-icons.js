@@ -84,7 +84,7 @@ getMeteoFranceIconsArray().then(icons => {
     ))
   );
   console.log(`Now there is ${newIcons.length} in mf-icons.json`);
-  fs.writeFile(`${METEO_FRANCE_STORE}mf-icons.json`, JSON.stringify(newIcons), function (err) {
+  fs.writeFile(`${METEO_FRANCE_STORE}mf-icons.json`, JSON.stringify(newIcons, null, '\t'), function (err) {
     if (err) return console.log(err);
     console.log(`Wrote json icons`);
   });
