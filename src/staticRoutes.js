@@ -1,6 +1,13 @@
 //ToDo extract automatically from router
 const commit = require('../commit.json');
 const places = require('./places.json');
+const getRandomISODateNearLastHour = function () {
+    let dt = (new Date()).getTime();
+    dt -= 3600 * 1000;
+    let dt2 = new Date(dt);
+    dt2.setMinutes(Math.random() * 60, Math.random() * 60, Math.random() * 100);
+    return dt2.toISOString();
+};
 const routes = [
     {
         path: "/policy",
@@ -43,7 +50,7 @@ const routes = [
     {
         path: "/meteo",
         name: "Météo sur nos sites",
-        _updatedAt: (new Date((new Date()).setHours(7, 0))).toISOString(),
+        _updatedAt: getRandomISODateNearLastHour(),
     },
     {
         path: "/map-sites-de-pratique",
@@ -57,7 +64,7 @@ const routes = [
 ];
 places.forEach(place => {
     if (place.slug !== undefined) {
-        routes.push({ path: `/meteo/${place.slug}`, name: `Météo à ${place.name}`, _updatedAt: (new Date((new Date()).setHours(7, 0))).toISOString() });
+        routes.push({ path: `/meteo/${place.slug}`, name: `Météo à ${place.name}`, _updatedAt: getRandomISODateNearLastHour() });
     }
 });
 export { routes };
