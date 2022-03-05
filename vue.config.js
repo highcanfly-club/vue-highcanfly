@@ -32,6 +32,20 @@ fs.writeFile('./commit.json',
 );
 var path = require('path');
 
+const sanityConf = {
+  projectId: process.env.SANITY_PROJECT_ID, // find this at manage.sanity.io or in your sanity.json
+  dataset: process.env.SANITY_DATASET, // this is from those question during 'sanity init'
+  useCdn: true,
+  apiVersion: "2021-10-21"
+};
+process.env.sanityConf = sanityConf;
+fs.writeFile('./sanity-conf.json',
+  JSON.stringify(sanityConf),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
+
 module.exports = {
   runtimeCompiler: true,
   configureWebpack: {

@@ -1,5 +1,5 @@
 import sanity from "@/plugins/sanity-client";
-import {routes} from "@/staticRoutes.js";
+import {getRoutes} from "@/staticRoutes.js";
 
 
 let getRoutesList = function (router) {
@@ -52,13 +52,13 @@ const query = `*[_type == "post"]{
   slug,_updatedAt
 }| order(slug asc)`;
 
-let getResponsePaths = function (canonicalURL) {
+let getResponsePaths = function (canonicalURL,now = Date.now()) {
   let baseURL = canonicalURL;
   return new Promise((resolve, reject) => {
       sanity.fetch(query).then(
           (posts) => {
               const slugList = getSlugList(posts);
-              let routesList = getRoutesList(routes);
+              let routesList = getRoutesList(getRoutes(now));
               routesList = routesList.concat(slugList);
               resolve({xml: getRoutesXML(routesList, baseURL),paths: routesList});
           },
@@ -69,4 +69,4 @@ let getResponsePaths = function (canonicalURL) {
   );
 };
 
-export { getRoutesList, getRoutesXML, getSlugList, getResponsePaths, routes};
+export { getRoutesList, getRoutesXML, getSlugList, getResponsePaths};
