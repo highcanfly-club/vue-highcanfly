@@ -1,6 +1,15 @@
-import sanity from "@/plugins/sanity-client";
+import sanityClient from "@sanity/client";
 import {getRoutes} from "@/staticRoutes.js";
 
+const isWorkingAtWorker = function(){
+  let test = false;
+  try {
+    test = (WebSocketPair !== undefined); //eslint-disable-line
+  } catch (error) {
+    test = false;
+  }
+   return test;
+};
 
 let getRoutesList = function (router) {
   let list = [];
@@ -52,10 +61,24 @@ const query = `*[_type == "post"]{
   slug,_updatedAt
 }| order(slug asc)`;
 
+const getSanityClient = function(){
+    if (isWorkingAtWorker()){
+      const client = require('../sanity-conf.json');
+        return sanityClient(client);
+    }else{
+        return sanityClient({
+          projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
+          dataset: process.env.VUE_APP_SANITY_DATASET,
+          token: process.env.VUE_APP_SANITY_READ_TOKEN,
+          useCdn: true,
+          apiVersion: process.env.VUE_APP_SANITY_VERSION,
+        });
+    }
+};
 let getResponsePaths = function (canonicalURL,now = Date.now()) {
   let baseURL = canonicalURL;
   return new Promise((resolve, reject) => {
-      sanity.fetch(query).then(
+    getSanityClient().fetch(query).then(
           (posts) => {
               const slugList = getSlugList(posts);
               let routesList = getRoutesList(getRoutes(now));
@@ -69,4 +92,4 @@ let getResponsePaths = function (canonicalURL,now = Date.now()) {
   );
 };
 
-export { getRoutesList, getRoutesXML, getSlugList, getResponsePaths};
+export { getRoutesList, getRoutesXML, getSlugList, getResponsePaths, isWorkingAtWorker};
