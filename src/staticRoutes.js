@@ -2,7 +2,7 @@
 const commit = require('../commit.json');
 const places = require('./places.json');
 const getRandomISODateNearLastHour = function () {
-    let dt = new Date(Date.now());
+    let dt = (global.fetchDate !== undefined) ? global.fetchDate : new Date(Date.now()); //workaroud for Cloudflare always return 0
     let timesamp = dt.getTime();
     timesamp -= 3600 * 1000;
     let dt2 = new Date(timesamp);
