@@ -2,9 +2,10 @@
 const commit = require('../commit.json');
 const places = require('./places.json');
 const getRandomISODateNearLastHour = function () {
-    let dt = (new Date()).getTime();
-    dt -= 3600 * 1000;
-    let dt2 = new Date(dt);
+    let dt = new Date();
+    let timesamp = dt.getTime();
+    timesamp -= 3600 * 1000;
+    let dt2 = new Date(timesamp);
     dt2.setMinutes(Math.random() * 60, Math.random() * 60, Math.random() * 100);
     return dt2.toISOString();
 };
