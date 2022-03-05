@@ -26,3 +26,4 @@ package-json.lock
 launch-serve
 commit.json
 package-lock.json
+sanity-conf.json
