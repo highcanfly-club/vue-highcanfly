@@ -1,8 +1,8 @@
 //ToDo extract automatically from router
 const commit = require('../commit.json');
 const places = require('./places.json');
-const getRandomISODateNearLastHour = function () {
-    let dt = (global.fetchDate !== undefined) ? global.fetchDate : new Date(Date.now()); //workaroud for Cloudflare always return 0
+const getRandomISODateNearLastHour = function () {//workaroud for Cloudflare always return 0
+    let dt = (globalThis.fetchDate !== undefined) ? global.fetchDate : new Date(Date.now()); //eslint-disable-line 
     let timesamp = dt.getTime();
     timesamp -= 3600 * 1000;
     let dt2 = new Date(timesamp);
