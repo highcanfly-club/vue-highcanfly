@@ -130,6 +130,16 @@
 		"desc": "Snow showers"
 	},
 	{
+		"name": "p21j",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p21j.svg",
+		"desc": "Snow"
+	},
+	{
+		"name": "p21n",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p21n.svg",
+		"desc": "Snow"
+	},
+	{
 		"name": "p22j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p22j.svg",
 		"desc": "Snow"
