@@ -69,7 +69,7 @@
 import { defineComponent, h } from "vue";
 import { SanityBlocks } from "sanity-blocks-vue-component";
 import sanityClient from "@sanity/client";
-import { sanityReplaceReferences } from "@/plugins/sanity-client";
+import { sanityReplaceReferences } from "@/plugins/SanityReferenceWalker";
 import imageUrlBuilder from "@sanity/image-url";
 
 const client = sanityClient({

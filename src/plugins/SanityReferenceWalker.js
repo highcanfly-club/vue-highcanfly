@@ -1,18 +1,5 @@
-import sanityClient from "@sanity/client";
 import { AsyncWalkBuilder } from 'walkjs';
 
-// usage:
-//const data = await sanityClient.fetch(`your query`);
-//await replaceReferences(data, sanityClient)
-/**
- * This function will mutate reference-objects:
- * The keys of a reference-object will be deleted and the keys of the reference-
- * document will be added.
- * eg:
- * { _type: 'reference', _ref: 'abc' }
- * becomes:
- * { _type: 'document', _id: 'abc', ...allOtherDocumentProps }
- */
  async function sanityReplaceReferences( //eslint-disable-line
   input,
   client,
@@ -51,9 +38,3 @@ import { AsyncWalkBuilder } from 'walkjs';
 
 
 export {sanityReplaceReferences};
-export default sanityClient({
-  projectId: 'kh6phz18', // find this at manage.sanity.io or in your sanity.json
-  dataset: "production", // this is from those question during 'sanity init'
-  useCdn: true,
-  apiVersion: "2021-03-25"
-});
