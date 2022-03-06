@@ -22,11 +22,11 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "~6.0.0",
     "@headlessui/vue": "^1.5.0",
-    "@heroicons/vue": "^1.0.5",
+    "@heroicons/vue": "^1.0.6",
     "@popperjs/core": "2.11.2",
-    "@sanity/client": "^3.1.0",
+    "@sanity/client": "^3.2.0",
     "@sanity/image-url": "^1.0.1",
-    "@tailwindcss/forms": "^0.4.0",
+    "@tailwindcss/forms": "^0.5.0",
     "@vue/compiler-sfc": "^3.2.31",
     "CFDTrackJoiner": "file:./CFDTrackJoiner",
     "chart.js": "^3.7.1",
@@ -36,11 +36,11 @@
     "qrcode.vue": "^3.3.3",
     "sanity-blocks-vue-component": "^1.0.1",
     "vue": "^3.2.31",
-    "vue-router": "^4.0.12",
-    "vue3-openlayers": "^0.1.61",
+    "vue-router": "^4.0.13",
+    "vue3-openlayers": "^0.1.63",
     "walkjs": "^3.2.4",
     "crypto-js": "^4.1.1",
-    "element-plus":"~2.0.3"
+    "element-plus":"~2.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -54,7 +54,7 @@
     "gitlog": "^4.0.4",
     "postcss": "^8.4.7",
     "tailwindcss": "^3.0.23",
-    "webpack": "~5.69.1",
+    "webpack": "~5.70.0",
     "wrangler": "0.0.16",
     "node-fetch": "~2.6.7"
   },
