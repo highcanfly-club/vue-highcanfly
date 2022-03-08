@@ -38,7 +38,6 @@ import {
   AisSearchBox,
   AisHits,
 } from "vue-instantsearch/vue3/es";
-import { createPopper } from "@popperjs/core";
 
 export default {
   name: "AlgoliaSearch",
@@ -83,22 +82,11 @@ export default {
     };
     return {
       searchClient: searchClient,
-      dropdownPopoverShow: false,
     };
   },
   methods: {
     transformAlgoliaHits(items) {
       return items;
-    },
-    toggleDropdown: function () {
-      if (this.dropdownPopoverShow) {
-        this.dropdownPopoverShow = false;
-      } else {
-        this.dropdownPopoverShow = true;
-        createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
-          placement: "bottom-start",
-        });
-      }
     },
   },
   components: {
@@ -109,5 +97,3 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
