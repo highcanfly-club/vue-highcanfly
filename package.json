@@ -40,7 +40,8 @@
     "vue3-openlayers": "^0.1.63",
     "walkjs": "^3.2.4",
     "crypto-js": "^4.1.1",
-    "element-plus":"~2.0.4"
+    "element-plus":"~2.0.4",
+    "vue-instantsearch": "~4.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
