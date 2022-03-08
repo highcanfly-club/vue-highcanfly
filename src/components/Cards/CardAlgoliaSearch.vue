@@ -1,7 +1,7 @@
 <template>
   <div class="rounded-lg bg-slate-100 shadow-xl p-8">
     <ais-instant-search
-      index-name="highcanfly-development-index"
+      :index-name="indexName"
       :search-client="searchClient"
     >
       <ais-search-box placeholder="rechercher dans nos publications…" :class-names="{'ais-SearchBox':'relative', 'ais-SearchBox-input': 'w-full mr-1 rounded ', 'ais-SearchBox-submit':'hidden','ais-SearchBox-reset':'hidden absolute right-8 inset-y-0'}">
@@ -47,6 +47,7 @@ export default {
   props: {
     applicationId: String,
     searchKey: String,
+    indexName: String,
     filter: {
       type: [String],
       default: "",

@@ -549,6 +549,7 @@
             :searchKey="algoliaSearchKey"
             filter="type:post"
             baseUrl="/sanity-blog"
+            :indexName="`highcanfly-${sanityDataset}-index`"
           />
         </div>
       </section>
@@ -570,6 +571,7 @@ import { inject, reactive } from "vue";
 
 const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
 const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
+const sanityDataset = process.env.VUE_APP_SANITY_DATASET;
 
 export default {
   description:
@@ -634,7 +636,8 @@ export default {
       errors,
       loadMap,
       algoliaSearchKey,
-      algoliaApplicationId
+      algoliaApplicationId,
+      sanityDataset
     };
   },
   components: {
