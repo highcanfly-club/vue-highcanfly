@@ -147,6 +147,8 @@
               >Copyright © High Can Fly {{ copyright_text }}</a
             ><br /><a class="whitespace-nowrap text-slate-500 hover:text-slate-800" href="https://sanity.io"
               >Données structurées propulsées gracieusement par Sanity.io</a
+            ><br /><a class="whitespace-nowrap text-slate-500 hover:text-slate-800" href="https://www.algolia.com/"
+              >Moteur de recherche offert par <i class="fa-brands fa-algolia"></i> Algolia</a
             >
           </div>
         </div>

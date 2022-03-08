@@ -1,6 +1,11 @@
 <template>
   <div>
-    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200" buttoncolor="bg-white text-slate-700 active:bg-slate-50"/>
+    <navbar-default
+      color="text-white"
+      colorhover="text-slate-200"
+      iconscolor="text-slate-200"
+      buttoncolor="bg-white text-slate-700 active:bg-slate-50"
+    />
     <main>
       <div
         class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75"
@@ -300,7 +305,6 @@
           </div>
         </div>
       </section>
-
       <section class="pt-20 pb-48">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap justify-center text-center mb-24">
@@ -527,7 +531,10 @@
             <div class="px-2 py-2 w-full rounded-lg bg-white shadow-lg">
               <div>
                 <lazy-observer @on-change="onChangeMap">
-                  <olMapsitesDePratiqueComponent v-if="loadMap" mapClass="h-screen-1/2" />
+                  <olMapsitesDePratiqueComponent
+                    v-if="loadMap"
+                    mapClass="h-screen-1/2"
+                  />
                 </lazy-observer>
               </div>
             </div>
@@ -535,6 +542,17 @@
         </div>
       </section>
       <emailForm />
+      <section class="pt-10 pb-20">
+        <div class="container mx-auto px-4">
+          <card-algolia-search
+            :applicationId="algoliaApplicationId"
+            :searchKey="algoliaSearchKey"
+            filter="type:post"
+            baseUrl="/sanity-blog"
+            :indexName="`highcanfly-${sanityDataset}-index`"
+          />
+        </div>
+      </section>
     </main>
     <footer-component />
   </div>
@@ -542,13 +560,18 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg"; 
-import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp"; 
-import { defineAsyncComponent } from 'vue';
+import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg";
+import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp";
+import { defineAsyncComponent } from "vue";
 import MiniSanityBlog from "@/components/Utilities/ComponentMinSanityBlog.vue";
+import CardAlgoliaSearch from "@/components/Cards/CardAlgoliaSearch.vue";
 import emailForm from "@/components/Forms/EmailForm.vue";
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import { inject, reactive } from "vue";
+
+const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
+const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
+const sanityDataset = process.env.VUE_APP_SANITY_DATASET;
 
 export default {
   description:
@@ -611,15 +634,21 @@ export default {
     return {
       state,
       errors,
-      loadMap
+      loadMap,
+      algoliaSearchKey,
+      algoliaApplicationId,
+      sanityDataset
     };
   },
   components: {
     NavbarDefault,
     FooterComponent,
-    olMapsitesDePratiqueComponent: defineAsyncComponent( () => import("@/components/Maps/OLMapSitesDePratique.vue") ),
+    olMapsitesDePratiqueComponent: defineAsyncComponent(() =>
+      import("@/components/Maps/OLMapSitesDePratique.vue")
+    ),
     emailForm,
     MiniSanityBlog,
+    CardAlgoliaSearch,
     LazyObserver,
   },
 };

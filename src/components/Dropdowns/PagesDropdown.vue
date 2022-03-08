@@ -72,12 +72,24 @@
       <li>
         <pages-dropdown-meteo />
       </li>
+      <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
+      <mini-card-algolia-search
+        :applicationId="algoliaApplicationId"
+        :searchKey="algoliaSearchKey"
+        filter="type:post"
+        baseUrl="/sanity-blog"
+        :indexName="`highcanfly-${sanityDataset}-index`"
+      />
     </div>
   </div>
 </template>
 <script>
 import { createPopper } from "@popperjs/core";
 import PagesDropdownMeteo from "@/components/Dropdowns/PagesDropdownMeteo.vue";
+import MiniCardAlgoliaSearch from "@/components/Cards/MiniCardAlgoliaSearch.vue";
+const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
+const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
+const sanityDataset = process.env.VUE_APP_SANITY_DATASET;
 
 export default {
   props: {
@@ -93,6 +105,9 @@ export default {
   data() {
     return {
       dropdownPopoverShow: false,
+      algoliaSearchKey,
+      algoliaApplicationId,
+      sanityDataset,
     };
   },
   methods: {
@@ -110,6 +125,7 @@ export default {
   },
   components: {
     PagesDropdownMeteo,
+    MiniCardAlgoliaSearch,
   },
 };
 </script>

@@ -16,6 +16,14 @@ Vous êtes un pilote autonome, en progression ou débutant; partagez notre passi
 Utilisation du code source : le code de notre site est diffusé sous licence MIT avec une clause d'attribution. C'est à dire que si vous réutilisez du code vous devez en citer l'auteur… L'auteur c'est moi !
 Par contre l'ensemble des images est diffusé sous licence CC-EY-SA<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Ce travail est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licence Creative Commons Attribution -  Partage dans les Mêmes Conditions 4.0 International</a>.
 
+### Développement  
+
+Pour cloner le dépôt il est nécessaire de cloner tous les dépôts imbriqués:  
+```bash 
+git clone --recurse-submodules -j8 https://github.com/eltorio/vue-highcanfly.git  
+git fetch --recurse-submodules 
+```
+
 ### Pages actives directement
 
 - [/src/views/ViewLanding.vue](https://www.highcanfly.club/)
