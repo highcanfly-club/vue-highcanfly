@@ -53,6 +53,9 @@ fs.writeFile('./sanity-conf.json',
   }
 );
 
+process.env.VUE_APP_ALGOLIA_SEARCH_KEY = process.env.ALGOLIA_SEARCH_KEY;
+process.env.VUE_APP_ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID;
+
 module.exports = {
   runtimeCompiler: true,
   configureWebpack: {

@@ -545,8 +545,8 @@
       <section class="pt-10 pb-20">
         <div class="container mx-auto px-4">
           <card-algolia-search
-            applicationId="__ALGOLIA_ID__"
-            searchKey="__ALGOLIA_KEY__"
+            :applicationId="algoliaApplicationId"
+            :searchKey="algoliaSearchKey"
             filter="type:post"
             baseUrl="/sanity-blog"
           />
@@ -567,6 +567,9 @@ import CardAlgoliaSearch from "@/components/Cards/CardAlgoliaSearch.vue";
 import emailForm from "@/components/Forms/EmailForm.vue";
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import { inject, reactive } from "vue";
+
+const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
+const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
 
 export default {
   description:
@@ -630,6 +633,8 @@ export default {
       state,
       errors,
       loadMap,
+      algoliaSearchKey,
+      algoliaApplicationId
     };
   },
   components: {
