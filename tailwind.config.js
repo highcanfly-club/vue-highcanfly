@@ -9,6 +9,7 @@ module.exports = {
     "./src/**/*.vue",
     "./src/*.vue",
   ],
+  safelist: (process.env.SANITY_DATASET === 'production') ? [] : [{ pattern: /.*/ }],
   theme: {
 
     extend: {
@@ -167,6 +168,7 @@ module.exports = {
   ],
   plugins: [
     require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
     plugin(function ({ addComponents, theme }) {
       const screens = theme("screens", {});
       addComponents([

@@ -26,7 +26,6 @@
     "@popperjs/core": "2.11.2",
     "@sanity/client": "^3.2.0",
     "@sanity/image-url": "^1.0.1",
-    "@tailwindcss/forms": "^0.5.0",
     "@vue/compiler-sfc": "^3.2.31",
     "CFDTrackJoiner": "file:./CFDTrackJoiner",
     "chart.js": "^3.7.1",
@@ -55,6 +54,8 @@
     "gitlog": "^4.0.4",
     "postcss": "^8.4.7",
     "tailwindcss": "^3.0.23",
+    "@tailwindcss/typography":"^0.5.2",
+    "@tailwindcss/forms": "^0.5.0",
     "webpack": "~5.70.0",
     "wrangler": "0.0.16",
     "node-fetch": "~2.6.7"
