@@ -58,7 +58,7 @@
             <SanityBlocks :blocks="blocks" :serializers="postSerializers" />
           </div>
           <div class="text-right text-sm text-slate-400 pt-10">
-            <router-link :to="`/sanity-blog/${post.slug.current}`">
+            <router-link v-if="post.slug" :to="`/sanity-blog/${post.slug.current}`">
               # {{ post.title }}
             </router-link>
           </div>
@@ -91,7 +91,7 @@ const query = `*[slug.current == $slug] {
   publishedAt,
   title,
   slug,
-  body, 
+  body,
  "image": mainImage{
   asset->{
   _id,
@@ -113,43 +113,56 @@ const postSerializers = {
     }),
   },
   marks: {
-    mark: (props,input) => { //eslint-disable-line
-      return h("mark",input[0]);
-      },
-      
+    mark: (props, input) => {
+      //eslint-disable-line
+      return h("mark", input[0]);
+    },
   },
 };
 
 export default {
   name: "SinglePost",
   components: { SanityBlocks },
-  props: ["slug", "nbPosts", "indexPosts"],
+  error: null,
+  props: {
+    slug: String,
+    lazy: {
+      type: Boolean,
+      default: false,
+    },
+    nbPosts: Number,
+    indexPosts: Number,
+  },
   data() {
     return {
       loading: true,
       post: [],
       blocks: [],
       postSerializers,
+      error: this.error,
     };
   },
   setup() {},
-  created() {
+  mounted() {
     let slug = this.slug != undefined ? this.slug : this.$route.params.slug;
-    this.fetchData(slug);
+    this.loading = true;
+    if (!this.$props.lazy) {
+      this.fetchData(slug);
+    }
   },
   methods: {
     imageUrlFor(source) {
       return imageBuilder.image(source);
     },
     fetchData(slug) {
+      if (this.$props.lazy)
+        console.log(`lazy loading /sanity-blog/${slug}`)
       let _this = this;
       this.error = this.post = null;
-      this.loading = true;
 
       client.fetch(query, { slug: slug }).then(
         (post) => {
           let _post = post;
-          this.loading = true;
           sanityReplaceReferences(_post, client).then(() => {
             _this.loading = false;
             _this.post = _post;
