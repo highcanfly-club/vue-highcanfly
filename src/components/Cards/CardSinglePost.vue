@@ -45,7 +45,7 @@
               </div>
             </div>
           </div>
-          <div class="text-center mt-2" v-if="post">
+          <div class="text-justify prose-sm prose-a:text-blue-600 hover:prose-a:text-blue-500 md:prose-base lg:prose-base" v-if="post">
             <h3
               class="text-xl font-bold uppercase leading-normal mb-2 text-slate-700 mb-2"
             >
