@@ -58,7 +58,10 @@
             <SanityBlocks :blocks="blocks" :serializers="postSerializers" />
           </div>
           <div class="text-right text-sm text-slate-400 pt-10">
-            <router-link v-if="post.slug" :to="`/sanity-blog/${post.slug.current}`">
+            <router-link
+              v-if="post.slug"
+              :to="`/sanity-blog/${post.slug.current}`"
+            >
               # {{ post.title }}
             </router-link>
           </div>
@@ -113,9 +116,14 @@ const postSerializers = {
     }),
   },
   marks: {
-    mark: (props, input) => {
-      //eslint-disable-line
-      return h("mark", input[0]);
+    mark: (props, children) => {
+      //eslint-disable-line no-unused-vars
+      return h("mark", children[0]);
+    },
+  },
+  styles: {
+    blockquote: (props,children) => {//eslint-disable-line no-unused-vars
+      return h("blockquote", {}, children.slots.default()[0].children);
     },
   },
 };
@@ -155,8 +163,7 @@ export default {
       return imageBuilder.image(source);
     },
     fetchData(slug) {
-      if (this.$props.lazy)
-        console.log(`lazy loading /sanity-blog/${slug}`)
+      if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
       let _this = this;
       this.error = this.post = null;
 
