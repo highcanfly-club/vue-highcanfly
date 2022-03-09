@@ -9,6 +9,7 @@ module.exports = {
     "./src/**/*.vue",
     "./src/*.vue",
   ],
+  safelist: (process.env.SANITY_DATASET === 'production') ? [] : [{ pattern: /.*/ }],
   theme: {
 
     extend: {
