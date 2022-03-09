@@ -55,7 +55,7 @@
               {{ post.title }}
               <!--index={{indexPosts}} total={{nbPosts}}-->
             </h3>
-            <SanityBlocks :blocks="blocks" :serializers="imageSerializer" />
+            <SanityBlocks :blocks="blocks" :serializers="postSerializers" />
           </div>
           <div class="text-right text-sm text-slate-400 pt-10">
             <router-link :to="`/sanity-blog/${post.slug.current}`">
@@ -103,7 +103,7 @@ const query = `*[slug.current == $slug] {
 }[0]
 `;
 
-const imageSerializer = {
+const postSerializers = {
   types: {
     image: defineComponent({
       props: ["asset"],
@@ -129,7 +129,7 @@ export default {
       loading: true,
       post: [],
       blocks: [],
-      imageSerializer,
+      postSerializers,
     };
   },
   setup() {},
