@@ -45,7 +45,10 @@
               </div>
             </div>
           </div>
-          <div class="text-justify prose-sm prose-a:text-blue-600 hover:prose-a:text-blue-500 md:prose-base lg:prose-base" v-if="post">
+          <div
+            class="text-justify prose-sm prose-a:text-blue-600 hover:prose-a:text-blue-500 md:prose-base lg:prose-base"
+            v-if="post"
+          >
             <h3
               class="text-xl font-bold uppercase leading-normal mb-2 text-slate-700 mb-2"
             >
@@ -108,6 +111,12 @@ const imageSerializer = {
         return () => h("img", { src: props.asset.url, class: "inline" });
       },
     }),
+  },
+  marks: {
+    mark: (props,input) => { //eslint-disable-line
+      return h("mark",input[0]);
+      },
+      
   },
 };
 
