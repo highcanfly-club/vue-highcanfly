@@ -152,7 +152,7 @@ export default {
   },
   setup() {},
   mounted() {
-    let slug = this.slug != undefined ? this.slug : this.$route.params.slug;
+    let slug = this.slug !== undefined ? this.slug : this.$route.params.slug;
     this.loading = true;
     if (!this.$props.lazy) {
       this.fetchData(slug);
