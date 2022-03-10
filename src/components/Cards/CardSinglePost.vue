@@ -45,17 +45,23 @@
               </div>
             </div>
           </div>
-          <div class="text-justify prose-sm prose-a:text-blue-600 hover:prose-a:text-blue-500 md:prose-base lg:prose-base" v-if="post">
+          <div
+            class="text-justify prose-sm prose-a:text-blue-600 hover:prose-a:text-blue-500 md:prose-base lg:prose-base"
+            v-if="post"
+          >
             <h3
               class="text-xl font-bold uppercase leading-normal mb-2 text-slate-700 mb-2"
             >
               {{ post.title }}
               <!--index={{indexPosts}} total={{nbPosts}}-->
             </h3>
-            <SanityBlocks :blocks="blocks" :serializers="imageSerializer" />
+            <SanityBlocks :blocks="blocks" :serializers="postSerializers" />
           </div>
           <div class="text-right text-sm text-slate-400 pt-10">
-            <router-link :to="`/sanity-blog/${post.slug.current}`">
+            <router-link
+              v-if="post.slug"
+              :to="`/sanity-blog/${post.slug.current}`"
+            >
               # {{ post.title }}
             </router-link>
           </div>
@@ -88,7 +94,7 @@ const query = `*[slug.current == $slug] {
   publishedAt,
   title,
   slug,
-  body, 
+  body,
  "image": mainImage{
   asset->{
   _id,
@@ -100,7 +106,7 @@ const query = `*[slug.current == $slug] {
 }[0]
 `;
 
-const imageSerializer = {
+const postSerializers = {
   types: {
     image: defineComponent({
       props: ["asset"],
@@ -109,38 +115,61 @@ const imageSerializer = {
       },
     }),
   },
+  marks: {
+    mark: (props, children) => {
+      //eslint-disable-line no-unused-vars
+      return h("mark", children[0]);
+    },
+  },
+  styles: {
+    blockquote: (props,children) => {//eslint-disable-line no-unused-vars
+      return h("blockquote", {}, children.slots.default()[0].children);
+    },
+  },
 };
 
 export default {
   name: "SinglePost",
   components: { SanityBlocks },
-  props: ["slug", "nbPosts", "indexPosts"],
+  error: null,
+  props: {
+    slug: String,
+    lazy: {
+      type: Boolean,
+      default: false,
+    },
+    nbPosts: Number,
+    indexPosts: Number,
+  },
   data() {
     return {
       loading: true,
       post: [],
       blocks: [],
-      imageSerializer,
+      postSerializers,
+      error: this.error,
     };
   },
   setup() {},
-  created() {
+  mounted() {
     let slug = this.slug != undefined ? this.slug : this.$route.params.slug;
-    this.fetchData(slug);
+    this.loading = true;
+    if (!this.$props.lazy) {
+      this.fetchData(slug);
+    }
   },
   methods: {
     imageUrlFor(source) {
       return imageBuilder.image(source);
     },
     fetchData(slug) {
+      if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
       let _this = this;
       this.error = this.post = null;
-      this.loading = true;
 
       client.fetch(query, { slug: slug }).then(
         (post) => {
           let _post = post;
-          this.loading = true;
           sanityReplaceReferences(_post, client).then(() => {
             _this.loading = false;
             _this.post = _post;

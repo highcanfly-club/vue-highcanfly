@@ -29,7 +29,7 @@ const query = `*[_type == "post"]{
   publishedAt,
   title,
   slug
-}[0...10]| order(publishedAt desc)`;
+}| order(publishedAt desc)[0...10]`;
 
 export default {
   // name: "Home",

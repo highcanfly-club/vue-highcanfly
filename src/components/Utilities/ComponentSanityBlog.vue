@@ -1,36 +1,26 @@
 <template>
   <div class="">
     <loading-spinner v-if="loading" />
-    <div v-if="error" class="error">
-      {{ error }}
-    </div>
-    <!--
-      <div class="container">
-        <div v-for="post in posts" class="post-item" :key="post._id">
-          <router-link :to="`/sanity-blog-test/${post.slug.current}`">
-            <h2>{{ post.title }}</h2>
-          </router-link>
-          <SanityBlocks v-if="post.excerpt" :blocks="post.excerpt"/>
-          <hr />
-        </div>
-      </div>
-      -->
     <div>
       <div v-for="(post, index) in posts" :key="post._id">
-        <CardSinglePost
-          :slug="post.slug.current"
-          :nbPosts="posts.length"
-          :indexPosts="index"
-        />
+    <lazy-observer :id="index" @on-change="onlazyBlog">
+          <CardSinglePost
+            ref="card_single_post"
+            :lazy="true"
+            :slug="post.slug.current"
+            :nbPosts="posts.length"
+            :indexPosts="index"
+          />
+     </lazy-observer>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { SanityBlocks } from "sanity-blocks-vue-component";
 import CardSinglePost from "@/components/Cards/CardSinglePost.vue";
 import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
+import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 
 import sanityClient from "@sanity/client";
 
@@ -40,10 +30,9 @@ const query = `*[_type == "post"]{
   title,
   slug,
   excerpt
-}[0...50]| order(publishedAt desc)`;
+}| order(publishedAt desc)[0...50]`;
 
 export default {
-  // name: "Home",
   data() {
     return {
       loading: true,
@@ -55,11 +44,18 @@ export default {
     this.fetchData();
   },
   components: {
-    SanityBlocks, // eslint-disable-line
     CardSinglePost,
     LoadingSpinner,
+    LazyObserver,
   },
   methods: {
+    onlazyBlog(entry, unobserve, id) {
+      if (entry.isIntersecting && this.$refs.card_single_post[id] !== undefined) {
+        unobserve();
+        this.posts[id].loaded = true;
+        this.$refs.card_single_post[id].fetchData(this.posts[id].slug.current);
+      }
+    },
     fetchData() {
       this.error = this.post = null;
       this.loading = true;
@@ -75,6 +71,7 @@ export default {
           (posts) => {
             this.loading = false;
             this.posts = posts;
+            this.posts.forEach(post => {post.loaded = false;})
           },
           (error) => {
             this.error = error;
