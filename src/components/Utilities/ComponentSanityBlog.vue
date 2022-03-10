@@ -30,7 +30,7 @@ const query = `*[_type == "post"]{
   title,
   slug,
   excerpt
-}[0...50]| order(publishedAt desc)`;
+}| order(publishedAt desc)[0...50]`;
 
 export default {
   data() {
