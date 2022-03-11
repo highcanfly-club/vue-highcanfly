@@ -77,6 +77,7 @@ import { SanityBlocks } from "sanity-blocks-vue-component";
 import sanityClient from "@sanity/client";
 import { sanityReplaceReferences } from "@/plugins/SanityReferenceWalker";
 import imageUrlBuilder from "@sanity/image-url";
+import GalleryCard from "@/components/Cards/GalleryCard.vue";
 
 const client = sanityClient({
   projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
@@ -114,6 +115,7 @@ const postSerializers = {
         return () => h("img", { src: props.asset.url, class: "inline" });
       },
     }),
+    gallery: GalleryCard,
   },
   marks: {
     mark: (props, children) => {
