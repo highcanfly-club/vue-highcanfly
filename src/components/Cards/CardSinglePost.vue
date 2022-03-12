@@ -14,7 +14,14 @@
                 <img
                   class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 max-w-150-px"
                   v-if="post.image"
-                  :src="imageUrlFor(post.image).auto('format').width(150).height(150).fit('crop')"
+                  :src="
+                    imageUrlFor(post.image)
+                      .auto('format')
+                      .width(150)
+                      .height(150)
+                      .fit('crop')
+                  "
+                  @click="lightBox(post.image, $event)"
                 />
               </div>
             </div>
@@ -78,8 +85,8 @@ import sanityClient from "@sanity/client";
 import { sanityReplaceReferences } from "@/plugins/SanityReferenceWalker";
 import imageUrlBuilder from "@sanity/image-url";
 import SanityGallerySerializer from "@/components/Utilities/SanityGallerySerializer.vue";
-import SanityLazyImgSerializer from '@/components/Utilities/SanityLazyImgSerializer.vue';
-
+import SanityLazyImgSerializer from "@/components/Utilities/SanityLazyImgSerializer.vue";
+import * as basiclightbox from "basiclightbox";
 const client = sanityClient({
   projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
   dataset: process.env.VUE_APP_SANITY_DATASET,
@@ -120,7 +127,8 @@ const postSerializers = {
     },
   },
   styles: {
-    blockquote: (props,children) => {//eslint-disable-line no-unused-vars
+    blockquote: (props, children) => {
+      //eslint-disable-line no-unused-vars
       return h("blockquote", {}, children.slots.default()[0].children);
     },
   },
@@ -157,6 +165,12 @@ export default {
     }
   },
   methods: {
+    lightBox: (image) => {
+      let url = imageBuilder.image(image).auto("format").toString();
+      basiclightbox
+        .create(`<img src="${url}" />`)
+        .show(() => console.log(`lightbox ${image.url} now visible`));
+    },
     imageUrlFor(source) {
       return imageBuilder.image(source);
     },
