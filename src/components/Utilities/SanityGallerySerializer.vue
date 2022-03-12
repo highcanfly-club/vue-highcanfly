@@ -14,7 +14,7 @@
           class="slide"
           :class="`slide--${index}`"
         >
-          <img :src="image.asset.url" @click="lightBox" />
+          <img :src="imageUrlFor(image).auto('format').width(1200).fit('crop').toString()" @click="lightBox(image,$event)" />
         </div>
       </vue-agile>
       <vue-agile
@@ -30,7 +30,7 @@
           @click="$refs.thumbnails.goTo(index)"
         >
           <img
-            :src="image.asset.url"
+            :src="imageUrlFor(image).width(200).height(200).fit('crop').auto('format').toString()"
             class="sm:aspect-square sm:object-cover sm:mx-auto"
           />
         </div>
@@ -55,10 +55,12 @@
         v-for="image in images"
         :key="image._key"
       >
-        <img
-          :src="image.asset.url"
-          @click="lightBox"
+        <lazy-img
           class="aspect-square object-cover mx-auto"
+          :src="imageUrlFor(image).auto('format').width(400).height(400).fit('crop').toString()"
+          :src-placeholder="imageUrlFor(image).auto('format').width(400).height(400).fit('crop').quality(5).toString()"
+          @click="lightBox(image,$event)"
+          @load="lazyImgLoad(image.asset.url, $event)"
         />
       </div>
       <!-- /GalleryGrid -->
@@ -66,7 +68,9 @@
     <div v-if="display === 'stacked'" class="flex-col">
       <!-- GalleryStacked -->
       <div v-for="image in images" :key="image._key">
-        <img :src="image.asset.url" class="mx-auto" @click="lightBox" />
+        <lazy-img :src="imageUrlFor(image).auto('format').toString()" class="mx-auto" @click="lightBox(image,$event)" 
+        :src-placeholder="imageUrlFor(image).auto('format').quality(5).toString()"
+        @load="lazyImgLoad(image.asset.url, $event)"/>
       </div>
       <!-- /GalleryStacked -->
     </div>
@@ -74,7 +78,7 @@
       <!-- GalleryTilesJustified -->
       <div
         ref="gallery"
-        class="mb-0"
+        class="-mb-8"
         v-for="row in splittedImages"
         :key="row.id"
       >
@@ -98,11 +102,13 @@
                 100 / img.asset.metadata.dimensions.aspectRatio + '%',
             }"
           >
-            <img
+            <lazy-img
               ref="gallery-row-image"
               class="absolute block left-0 top-O w-full h-full"
-              :src="img.asset.url"
-              @click="lightBox"
+              :src="imageUrlFor(img).width(Math.round(1200 * img.asset.metadata.dimensions.aspectRatio /row.sumAspectRatio)).auto('format').toString()"
+              :src-placeholder="imageUrlFor(img).width(Math.round(1200 * img.asset.metadata.dimensions.aspectRatio /row.sumAspectRatio)).auto('format').quality(5).toString()"
+              @load="lazyImgLoad(img.asset.url, $event)"
+              @click="lightBox(img,$event)"
             />
           </div>
         </div>
@@ -114,7 +120,19 @@
 <script>
 import { VueAgile } from "vue-agile";
 import * as basiclightbox from "basiclightbox";
+import LazyImg from "@/components/Utilities/LazyImg.vue";
+import sanityClient from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
 
+const client = sanityClient({
+  projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
+  dataset: process.env.VUE_APP_SANITY_DATASET,
+  token: process.env.VUE_APP_SANITY_READ_TOKEN,
+  useCdn: true,
+  apiVersion: process.env.VUE_APP_SANITY_VERSION,
+});
+
+const imageBuilder = imageUrlBuilder(client);
 let zoom = true;
 
 const carouselOptions = {
@@ -215,14 +233,22 @@ export default {
   },
   components: {
     VueAgile,
+    LazyImg,
   },
   methods: {
-    lightBox: (event) => {
+    imageUrlFor(source) {
+      return imageBuilder.image(source);
+    },
+    lazyImgLoad: (url) => {
+      console.log(`image ${url} lazy loaded`);
+    },
+    lightBox: (image) => {
       if (zoom) {
+        let url = imageBuilder.image(image).auto('format').toString();
         basiclightbox
-          .create(`<img src="${event.srcElement.src}" />`)
+          .create(`<img src="${url}" />`)
           .show(() =>
-            console.log(`lightbox ${event.srcElement.src} now visible`)
+            console.log(`lightbox ${image.asset.url} now visible`)
           );
       }
     },

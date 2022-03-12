@@ -72,12 +72,13 @@
 </template>
 
 <script>
-import { defineComponent, h } from "vue";
+import { h } from "vue";
 import { SanityBlocks } from "sanity-blocks-vue-component";
 import sanityClient from "@sanity/client";
 import { sanityReplaceReferences } from "@/plugins/SanityReferenceWalker";
 import imageUrlBuilder from "@sanity/image-url";
-import GalleryCard from "@/components/Cards/GalleryCard.vue";
+import SanityGallerySerializer from "@/components/Utilities/SanityGallerySerializer.vue";
+import SanityLazyImgSerializer from '@/components/Utilities/SanityLazyImgSerializer.vue';
 
 const client = sanityClient({
   projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
@@ -109,13 +110,8 @@ const query = `*[slug.current == $slug] {
 
 const postSerializers = {
   types: {
-    image: defineComponent({
-      props: ["asset"],
-      setup(props) {
-        return () => h("img", { src: props.asset.url, class: "inline" });
-      },
-    }),
-    gallery: GalleryCard,
+    image: SanityLazyImgSerializer,
+    gallery: SanityGallerySerializer,
   },
   marks: {
     mark: (props, children) => {
