@@ -86,6 +86,8 @@ import { sanityReplaceReferences } from "@/plugins/SanityReferenceWalker";
 import imageUrlBuilder from "@sanity/image-url";
 import SanityGallerySerializer from "@/components/Utilities/SanityGallerySerializer.vue";
 import SanityLazyImgSerializer from "@/components/Utilities/SanityLazyImgSerializer.vue";
+import SanityBlockquoteSerializer from "@/components/Utilities/SanityBlockquoteSerializer.vue";
+
 import * as basiclightbox from "basiclightbox";
 const client = sanityClient({
   projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
@@ -127,10 +129,7 @@ const postSerializers = {
     },
   },
   styles: {
-    blockquote: (props, children) => {
-      //eslint-disable-line no-unused-vars
-      return h("blockquote", {}, children.slots.default()[0].children);
-    },
+    blockquote: SanityBlockquoteSerializer,
   },
 };
 
