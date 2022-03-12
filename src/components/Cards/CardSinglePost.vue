@@ -14,7 +14,7 @@
                 <img
                   class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 max-w-150-px"
                   v-if="post.image"
-                  :src="imageUrlFor(post.image).width(480)"
+                  :src="imageUrlFor(post.image).auto('format').width(150).height(150).fit('crop')"
                 />
               </div>
             </div>
