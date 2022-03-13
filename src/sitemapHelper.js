@@ -57,7 +57,7 @@ let getSlugList = function (posts) {
   return ret;
 };
 
-const query = `*[_type == "post"]{
+const query = `*[_type == "post" && !(_id in path('drafts.**'))]{
   slug,_updatedAt
 }| order(slug asc)`;
 
