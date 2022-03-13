@@ -124,8 +124,16 @@ const postSerializers = {
   },
   marks: {
     mark: (props, children) => {
-      //eslint-disable-line no-unused-vars
       return h("mark", children[0]);
+    },
+    underlined: (props, children) => {
+      return h("span", { class: "underline" }, children[0]);
+    },
+    barred: (props, children) => {
+      return h("span", { class: "line-through" }, children[0]);
+    },
+    overlined: (props, children) => {
+      return h("span", { class: "overline" }, children[0]);
     },
   },
   styles: {

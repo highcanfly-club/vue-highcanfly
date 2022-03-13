@@ -3,6 +3,7 @@
     ref="gallery-row-image"
     class=""
     :src="imageUrlFor(asset).auto('format').width(1200).toString()"
+    :alt="asset.altText"
     :src-placeholder="imageUrlFor(asset).auto('format').width(1200).quality(5).toString()"
     @load="lazyImgLoad(asset.url, $event)"
     @click="lightBox(asset, $event)"

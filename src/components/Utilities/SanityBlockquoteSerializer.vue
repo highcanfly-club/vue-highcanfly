@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "BasicCard",
+  name: "BlockquoteCard",
   data() {
     let blockquote = "";
     this.$slots.default().forEach((element) => {
@@ -33,6 +33,9 @@ export default {
           break;
         case "mark":
           blockquote += `<mark>${element.children}</mark>`;
+          break;
+        case "span":
+          blockquote += `<span class='${element.props.class}'>${element.children}</span>`;
           break;
         default:
           blockquote += element.children;
