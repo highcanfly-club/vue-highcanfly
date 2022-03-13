@@ -24,7 +24,7 @@ import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
 
 import sanityClient from "@sanity/client";
 
-const query = `*[_type == "post"]{
+const query = `*[_type == "post" && !(_id in path('drafts.**'))]{
   _id,
   publishedAt,
   title,
