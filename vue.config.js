@@ -32,6 +32,17 @@ fs.writeFile('./commit.json',
 );
 var path = require('path');
 
+const auth0Conf = {
+  "domain": process.env.AUTH0_DOMAIN,
+  "clientId": process.env.AUTH0_CLIENT_ID
+};
+fs.writeFile('./auth0-conf.json',
+  JSON.stringify(auth0Conf),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
+
 const sanityApiVersion = "2021-10-21";
 const sanityConf = {
   projectId: process.env.SANITY_PROJECT_ID, // find this at manage.sanity.io or in your sanity.json
