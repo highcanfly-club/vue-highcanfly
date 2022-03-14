@@ -22,12 +22,10 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap text-center lg:text-left">
         <div class="w-full lg:w-6/12 px-4">
-        <address class="not-italic text-sm mt-0 mb-2 text-slate-600">
-          <h4 class="text-3xl font-semibold">High Can Fly</h4>
+          <address class="not-italic text-sm mt-0 mb-2 text-slate-600">
+            <h4 class="text-3xl font-semibold">High Can Fly</h4>
             119 rue Marceau Martin
-            <br />59128 Flers-en-Escrebieux
-            <br />Nord
-            <br />Hauts-de-France
+            <br />59128 Flers-en-Escrebieux <br />Nord <br />Hauts-de-France
           </address>
           <div class="mt-6 lg:mb-0 mb-6">
             <button
@@ -54,8 +52,29 @@
           </div>
         </div>
         <div class="w-full lg:w-6/12 px-4">
-          <div class="flex flex-wrap items-top mb-6">
-            <div class="w-full lg:w-4/12 px-4 ml-auto">
+          <div class="flex flex-wrap items-top justify-end">
+            <div
+              class="w-full lg:w-4/12 px-4"
+              v-if="$auth0.isAuthenticated.value"
+            >
+              <span
+                class="block uppercase text-slate-500 text-xs font-semibold mb-2"
+                >Administration</span
+              >
+              <ul class="list-unstyled">
+                <li>
+                  <a
+                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-xs"
+                    href="/login"
+                    >Logout</a
+                  >
+                </li>
+                <li>
+                  <span class="text-xs">{{ $auth0.user.value.name }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="w-full lg:w-4/12 px-4">
               <span
                 class="block uppercase text-slate-500 text-sm font-semibold mb-2"
                 >Liens utiles</span
@@ -119,13 +138,18 @@
                   >
                 </li>
                 <li>
-                  <span class="flex flex-nowrap align-center justify-center lg:justify-start">
-                  <img class="h-4 w-4" src="@/assets/img/logo_high_can_fly.svg"/>
-                  <a
-                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                    href="https://cfdmv.highcanfly.club"
-                    >Trackjoiner</a
+                  <span
+                    class="flex flex-nowrap align-center justify-center lg:justify-start"
                   >
+                    <img
+                      class="h-4 w-4"
+                      src="@/assets/img/logo_high_can_fly.svg"
+                    />
+                    <a
+                      class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
+                      href="https://cfdmv.highcanfly.club"
+                      >Trackjoiner</a
+                    >
                   </span>
                 </li>
               </ul>
@@ -141,14 +165,19 @@
           <div class="text-sm text-slate-500 font-semibold py-1">
             <a
               @mouseover="copyright_text = 'build: ' + commit_date"
-              @mouseleave="copyright_text='2018-'+ new Date().getFullYear()"
+              @mouseleave="copyright_text = '2018-' + new Date().getFullYear()"
               href="https://www.highcanfly.club?ref=vn-footer"
               class="whitespace-nowrap text-slate-500 hover:text-slate-800"
               >Copyright © High Can Fly {{ copyright_text }}</a
-            ><br /><a class="whitespace-nowrap text-slate-500 hover:text-slate-800" href="https://sanity.io"
+            ><br /><a
+              class="whitespace-nowrap text-slate-500 hover:text-slate-800"
+              href="https://sanity.io"
               >Données structurées propulsées gracieusement par Sanity.io</a
-            ><br /><a class="whitespace-nowrap text-slate-500 hover:text-slate-800" href="https://www.algolia.com/"
-              >Moteur de recherche offert par <i class="fa-brands fa-algolia"></i> Algolia</a
+            ><br /><a
+              class="whitespace-nowrap text-slate-500 hover:text-slate-800"
+              href="https://www.algolia.com/"
+              >Moteur de recherche offert par
+              <i class="fa-brands fa-algolia"></i> Algolia</a
             >
           </div>
         </div>
@@ -165,14 +194,14 @@ import VueScrollUp from "@/plugins/vue-scroll-up";
 export default {
   data() {
     return {
-      copyright_text: '2018-'+ new Date().getFullYear(),
+      copyright_text: "2018-" + new Date().getFullYear(),
       commit_date: new Intl.DateTimeFormat("fr-FR", {
-                          year: "2-digit",
-                          month: "short",
-                          day: "2-digit",
-                          hour: "numeric",
-                          minute: "numeric",
-                        }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT)),
+        year: "2-digit",
+        month: "short",
+        day: "2-digit",
+        hour: "numeric",
+        minute: "numeric",
+      }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT)),
       date: new Date().getFullYear(),
     };
   },

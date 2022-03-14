@@ -3,7 +3,7 @@
     <loading-spinner v-if="loading" />
     <div>
       <div v-for="(post, index) in posts" :key="post._id">
-    <lazy-observer :id="index" @on-change="onlazyBlog">
+        <lazy-observer :id="index" @on-change="onlazyBlog">
           <CardSinglePost
             ref="card_single_post"
             :lazy="true"
@@ -11,7 +11,7 @@
             :nbPosts="posts.length"
             :indexPosts="index"
           />
-     </lazy-observer>
+        </lazy-observer>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@ import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 
 import sanityClient from "@sanity/client";
 
-const query = `*[_type == "post"  && !(_id in path('drafts.**'))]{
+const query = `*[_type == "post"]{
   _id,
   publishedAt,
   title,
@@ -50,7 +50,10 @@ export default {
   },
   methods: {
     onlazyBlog(entry, unobserve, id) {
-      if (entry.isIntersecting && this.$refs.card_single_post[id] !== undefined) {
+      if (
+        entry.isIntersecting &&
+        this.$refs.card_single_post[id] !== undefined
+      ) {
         unobserve();
         this.posts[id].loaded = true;
         this.$refs.card_single_post[id].fetchData(this.posts[id].slug.current);
@@ -59,19 +62,26 @@ export default {
     fetchData() {
       this.error = this.post = null;
       this.loading = true;
-      sanityClient({
+      const sanityConf = {
         projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
         dataset: process.env.VUE_APP_SANITY_DATASET,
-        token: process.env.VUE_APP_SANITY_READ_TOKEN,
         useCdn: true,
         apiVersion: process.env.VUE_APP_SANITY_VERSION,
-      })
+      };
+      if (this.$auth0.isAuthenticated.value) {
+        sanityConf.token =
+          this.$auth0.user.value["https://www.highcanfly.club/sanity_token"];
+        //sanityConf.useCdn = false;
+      }
+      sanityClient(sanityConf)
         .fetch(query)
         .then(
           (posts) => {
             this.loading = false;
             this.posts = posts;
-            this.posts.forEach(post => {post.loaded = false;})
+            this.posts.forEach((post) => {
+              post.loaded = false;
+            });
           },
           (error) => {
             this.error = error;
