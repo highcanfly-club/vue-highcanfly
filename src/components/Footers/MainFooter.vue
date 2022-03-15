@@ -63,10 +63,10 @@
               >
               <ul class="list-unstyled">
                 <li>
-                  <a
+                  <router-link
                     class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-xs"
-                    href="/login"
-                    >Logout</a
+                    to="/login"
+                    >Logout</router-link
                   >
                 </li>
                 <li>
