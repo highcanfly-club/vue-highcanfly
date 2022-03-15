@@ -23,6 +23,7 @@
 import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
 
 import sanityClient from "@sanity/client";
+import { useAuth0 } from "@/plugins/auth0";
 
 const query = `*[_type == "post"]{
   _id,
@@ -41,7 +42,8 @@ export default {
     };
   },
   created() {
-    this.fetchData();
+    const { initializationCompleted } = useAuth0();
+    initializationCompleted().then(()=>{this.fetchData()})
   },
   components: {
     LoadingSpinner,

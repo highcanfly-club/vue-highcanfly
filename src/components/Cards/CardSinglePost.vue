@@ -87,17 +87,16 @@ import imageUrlBuilder from "@sanity/image-url";
 import SanityGallerySerializer from "@/components/Utilities/SanityGallerySerializer.vue";
 import SanityLazyImgSerializer from "@/components/Utilities/SanityLazyImgSerializer.vue";
 import SanityBlockquoteSerializer from "@/components/Utilities/SanityBlockquoteSerializer.vue";
-
+import { useAuth0 } from "@/plugins/auth0";
 import * as basiclightbox from "basiclightbox";
-const client = sanityClient({
+const sanityConf = {
   projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
   dataset: process.env.VUE_APP_SANITY_DATASET,
-  token: process.env.VUE_APP_SANITY_READ_TOKEN,
   useCdn: true,
   apiVersion: process.env.VUE_APP_SANITY_VERSION,
-});
+};
 
-const imageBuilder = imageUrlBuilder(client);
+const imageBuilder = imageUrlBuilder(sanityClient(sanityConf));
 
 const query = `*[slug.current == $slug] {
   _id,
@@ -182,10 +181,21 @@ export default {
       return imageBuilder.image(source);
     },
     fetchData(slug) {
+      const { initializationCompleted } = useAuth0();
+      initializationCompleted().then(() => {
+        if (this.$auth0.isAuthenticated.value) {
+          sanityConf.token =
+            this.$auth0.user.value["https://www.highcanfly.club/sanity_token"];
+          // sanityConf.useCdn = false;
+        }
+        this._fetchData(slug);
+      });
+    },
+    _fetchData(slug) {
       if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
       let _this = this;
       this.error = this.post = null;
-
+      const client = sanityClient(sanityConf);
       client.fetch(query, { slug: slug }).then(
         (post) => {
           let _post = post;
