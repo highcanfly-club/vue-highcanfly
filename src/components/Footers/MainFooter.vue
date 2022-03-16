@@ -70,7 +70,7 @@
                   >
                 </li>
                 <li>
-                  <span class="text-xs">{{ $auth0.user.value.name }}</span>
+                  <span class="text-xs">{{ $auth0.user.value !== undefined ? $auth0.user.value.name : ''}}</span>
                 </li>
               </ul>
             </div>

@@ -24,6 +24,7 @@ import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
 
 import sanityClient from "@sanity/client";
 import { useAuth0 } from "@/plugins/auth0";
+import {sanityConf} from "@/plugins/auth0/sanityStore"
 
 const query = `*[_type == "post"]{
   _id,
@@ -42,8 +43,17 @@ export default {
     };
   },
   created() {
-    const { initializationCompleted } = useAuth0();
-    initializationCompleted().then(()=>{this.fetchData()})
+    const { initializationCompleted,user,isAuthenticated } = useAuth0();
+    initializationCompleted().then(()=>{
+      if (isAuthenticated.value)
+      {
+        sanityConf.token = user.value["https://www.highcanfly.club/sanity_token"];
+      }else
+      {
+        sanityConf.token = undefined;
+      }
+      this.fetchData();
+      })
   },
   components: {
     LoadingSpinner,
@@ -52,16 +62,6 @@ export default {
     fetchData() {
       this.error = this.post = null;
       this.loading = true;
-      const sanityConf = {
-        projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
-        dataset: process.env.VUE_APP_SANITY_DATASET,
-        useCdn: true,
-        apiVersion: process.env.VUE_APP_SANITY_VERSION,
-      };
-      if (this.$auth0.isAuthenticated.value){
-        sanityConf.token = this.$auth0.user.value["https://www.highcanfly.club/sanity_token"];
-       // sanityConf.useCdn = false;
-      }
       sanityClient(sanityConf)
         .fetch(query)
         .then(

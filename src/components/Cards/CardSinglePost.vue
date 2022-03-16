@@ -89,14 +89,9 @@ import SanityLazyImgSerializer from "@/components/Utilities/SanityLazyImgSeriali
 import SanityBlockquoteSerializer from "@/components/Utilities/SanityBlockquoteSerializer.vue";
 import { useAuth0 } from "@/plugins/auth0";
 import * as basiclightbox from "basiclightbox";
-const sanityConf = {
-  projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
-  dataset: process.env.VUE_APP_SANITY_DATASET,
-  useCdn: true,
-  apiVersion: process.env.VUE_APP_SANITY_VERSION,
-};
+import {sanityConf} from "@/plugins/auth0/sanityStore"
 
-const imageBuilder = imageUrlBuilder(sanityClient(sanityConf));
+let imageBuilder = imageUrlBuilder(sanityClient(sanityConf));
 
 const query = `*[slug.current == $slug] {
   _id,
@@ -162,6 +157,19 @@ export default {
       error: this.error,
     };
   },
+  created(){
+    const { initializationCompleted,user,isAuthenticated } = useAuth0();
+    initializationCompleted().then(()=>{
+      if (isAuthenticated.value)
+      {
+        sanityConf.token = user.value["https://www.highcanfly.club/sanity_token"];
+        imageBuilder = imageUrlBuilder(sanityClient(sanityConf));
+      }else
+      {
+        sanityConf.token = undefined;
+      }
+      })
+  },
   setup() {},
   mounted() {
     let slug = this.slug !== undefined ? this.slug : this.$route.params.slug;
@@ -178,20 +186,9 @@ export default {
         .show(() => console.log(`lightbox ${image.url} now visible`));
     },
     imageUrlFor(source) {
-      return imageBuilder.image(source);
+    return imageBuilder.image(source);
     },
     fetchData(slug) {
-      const { initializationCompleted } = useAuth0();
-      initializationCompleted().then(() => {
-        if (this.$auth0.isAuthenticated.value) {
-          sanityConf.token =
-            this.$auth0.user.value["https://www.highcanfly.club/sanity_token"];
-          // sanityConf.useCdn = false;
-        }
-        this._fetchData(slug);
-      });
-    },
-    _fetchData(slug) {
       if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
       let _this = this;
       this.error = this.post = null;
