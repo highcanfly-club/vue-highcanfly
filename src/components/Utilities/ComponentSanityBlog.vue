@@ -23,7 +23,7 @@ import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import { useAuth0 } from "@/plugins/auth0";
 import sanityClient from "@sanity/client";
-import {sanityConf} from "@/plugins/auth0/sanityStore"
+import { sanityConf } from "@/plugins/auth0/sanityStore";
 
 const query = `*[_type == "post"]{
   _id,
@@ -42,17 +42,14 @@ export default {
     };
   },
   created() {
-    const { initializationCompleted,user,isAuthenticated } = useAuth0();
-    initializationCompleted().then(()=>{
-      if (isAuthenticated.value)
-      {
-        sanityConf.token = user.value["https://www.highcanfly.club/sanity_token"];
-      }else
-      {
-        sanityConf.token = undefined;
+    const { initializationCompleted, user, isAuthenticated } = useAuth0();
+    initializationCompleted().then(() => {
+      if (isAuthenticated.value) {
+        sanityConf.token =
+          user.value["https://www.highcanfly.club/sanity_token"].toString();
       }
       this.fetchData();
-      })
+    });
   },
   components: {
     CardSinglePost,
