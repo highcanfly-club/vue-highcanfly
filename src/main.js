@@ -67,6 +67,11 @@ const routes = [
     component: () => import('@/views/ViewMeteo.vue'),
   },
   {
+    path: "/login",
+    name: "login",
+    component: () => import('@/views/ViewLogin.vue'),
+  },
+  {
     path: "/meteo/:slug",
     component: () => import('@/views/ViewMeteo.vue'),
   }
@@ -95,6 +100,10 @@ import 'element-plus/dist/index.css';
 import Highcanfly from "@/plugins/highcanfly";
 // routes
 
+//AuthO
+import { initAuth0 } from "@/plugins/auth0";
+const auth0conf = require("../auth0-conf.json");
+
 
 
 const router = createRouter({
@@ -105,7 +114,14 @@ const router = createRouter({
 const app = createApp(App);
 window.app = app;
 app.use(router);
-
+app.config.globalProperties.$auth0 = initAuth0({
+  client_id: auth0conf.clientId,
+  domain: auth0conf.domain,
+  scope: 'openid email profile user_metadata app_metadata picture',
+  onRedirectCallback:`${window.location.origin}/login`,
+  redirectUri: `${window.location.origin}/`,
+  
+});
 app.use(Highcanfly);
 app.mixin(metaMixin);
 

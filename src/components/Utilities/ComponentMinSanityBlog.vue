@@ -23,8 +23,10 @@
 import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
 
 import sanityClient from "@sanity/client";
+import { useAuth0 } from "@/plugins/auth0";
+import { sanityConf } from "@/plugins/auth0/sanityStore";
 
-const query = `*[_type == "post" && !(_id in path('drafts.**'))]{
+const query = `*[_type == "post" ]{
   _id,
   publishedAt,
   title,
@@ -41,7 +43,15 @@ export default {
     };
   },
   created() {
-    this.fetchData();
+    const { initializationCompleted, user, isAuthenticated } = useAuth0();
+    initializationCompleted().then(() => {
+      if (isAuthenticated.value) {
+      sanityConf.token = user.value["https://www.highcanfly.club/sanity_token"].toString();
+      } else {
+        sanityConf.token = undefined;
+      }
+      this.fetchData();
+    });
   },
   components: {
     LoadingSpinner,
@@ -50,13 +60,7 @@ export default {
     fetchData() {
       this.error = this.post = null;
       this.loading = true;
-      sanityClient({
-        projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
-        dataset: process.env.VUE_APP_SANITY_DATASET,
-        token: process.env.VUE_APP_SANITY_READ_TOKEN,
-        useCdn: true,
-        apiVersion: process.env.VUE_APP_SANITY_VERSION,
-      })
+      sanityClient(sanityConf)
         .fetch(query)
         .then(
           (posts) => {

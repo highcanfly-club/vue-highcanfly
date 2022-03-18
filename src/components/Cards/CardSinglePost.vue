@@ -87,17 +87,11 @@ import imageUrlBuilder from "@sanity/image-url";
 import SanityGallerySerializer from "@/components/Utilities/SanityGallerySerializer.vue";
 import SanityLazyImgSerializer from "@/components/Utilities/SanityLazyImgSerializer.vue";
 import SanityBlockquoteSerializer from "@/components/Utilities/SanityBlockquoteSerializer.vue";
-
+import { useAuth0 } from "@/plugins/auth0";
 import * as basiclightbox from "basiclightbox";
-const client = sanityClient({
-  projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
-  dataset: process.env.VUE_APP_SANITY_DATASET,
-  token: process.env.VUE_APP_SANITY_READ_TOKEN,
-  useCdn: true,
-  apiVersion: process.env.VUE_APP_SANITY_VERSION,
-});
+import { sanityConf } from "@/plugins/auth0/sanityStore";
 
-const imageBuilder = imageUrlBuilder(client);
+let imageBuilder = imageUrlBuilder(sanityClient(sanityConf));
 
 const query = `*[slug.current == $slug] {
   _id,
@@ -182,23 +176,31 @@ export default {
       return imageBuilder.image(source);
     },
     fetchData(slug) {
-      if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
-      let _this = this;
-      this.error = this.post = null;
-
-      client.fetch(query, { slug: slug }).then(
-        (post) => {
-          let _post = post;
-          sanityReplaceReferences(_post, client).then(() => {
-            _this.loading = false;
-            _this.post = _post;
-            _this.blocks = _post.body;
-          });
-        },
-        (error) => {
-          this.error = error;
+      const { initializationCompleted, user, isAuthenticated } = useAuth0();
+      initializationCompleted().then(() => {
+        if (isAuthenticated.value) {
+          Object.assign(imageBuilder, sanityClient(sanityConf));
+          sanityConf.token =
+            user.value["https://www.highcanfly.club/sanity_token"].toString();
         }
-      );
+        if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
+        let _this = this;
+        this.error = this.post = null;
+        const client = sanityClient(sanityConf);
+        client.fetch(query, { slug: slug}).then(
+          (post) => {
+            let _post = post;
+            sanityReplaceReferences(_post, client).then(() => {
+              _this.loading = false;
+              _this.post = _post;
+              _this.blocks = _post.body;
+            });
+          },
+          (error) => {
+            this.error = error;
+          }
+        );
+      });
     },
   },
 };
