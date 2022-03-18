@@ -119,7 +119,7 @@ app.config.globalProperties.$auth0 = initAuth0({
   domain: auth0conf.domain,
   scope: 'openid email profile user_metadata app_metadata picture',
   onRedirectCallback:`${window.location.origin}/login`,
-  redirectUri: `${window.location.origin}/login`,
+  redirectUri: `${window.location.origin}/`,
   
 });
 app.use(Highcanfly);

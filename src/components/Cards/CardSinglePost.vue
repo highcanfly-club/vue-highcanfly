@@ -187,7 +187,7 @@ export default {
         let _this = this;
         this.error = this.post = null;
         const client = sanityClient(sanityConf);
-        client.fetch(query, { slug: slug }).then(
+        client.fetch(query, { slug: slug}).then(
           (post) => {
             let _post = post;
             sanityReplaceReferences(_post, client).then(() => {

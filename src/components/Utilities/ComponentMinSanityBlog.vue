@@ -26,7 +26,7 @@ import sanityClient from "@sanity/client";
 import { useAuth0 } from "@/plugins/auth0";
 import { sanityConf } from "@/plugins/auth0/sanityStore";
 
-const query = `*[_type == "post"]{
+const query = `*[_type == "post" ]{
   _id,
   publishedAt,
   title,
@@ -46,9 +46,10 @@ export default {
     const { initializationCompleted, user, isAuthenticated } = useAuth0();
     initializationCompleted().then(() => {
       if (isAuthenticated.value) {
-
       sanityConf.token = user.value["https://www.highcanfly.club/sanity_token"].toString();
-      } 
+      } else {
+        sanityConf.token = undefined;
+      }
       this.fetchData();
     });
   },

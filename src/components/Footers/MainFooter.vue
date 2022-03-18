@@ -63,14 +63,19 @@
               >
               <ul class="list-unstyled">
                 <li>
-                  <router-link
+                  <span
                     class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-xs"
                     to="/login"
-                    >Logout</router-link
+                    @click="logout"
+                    >Logout</span
                   >
                 </li>
                 <li>
-                  <span class="text-xs">{{ $auth0.user.value !== undefined ? $auth0.user.value.name : ''}}</span>
+                  <span class="text-xs">{{
+                    $auth0.user.value !== undefined
+                      ? $auth0.user.value.name
+                      : ""
+                  }}</span>
                 </li>
               </ul>
             </div>
@@ -191,6 +196,9 @@
 </template>
 <script>
 import VueScrollUp from "@/plugins/vue-scroll-up";
+import { useAuth0 } from "@/plugins/auth0";
+import { sanityConf } from '@/plugins/auth0/sanityStore';
+
 export default {
   data() {
     return {
@@ -207,6 +215,15 @@ export default {
   },
   components: {
     VueScrollUp,
+  },
+  methods: {
+    logout: () => {
+      sanityConf.token = undefined;
+      const { initializationCompleted, logout } = useAuth0();
+      initializationCompleted().then(() => {
+        logout({ returnTo: window.location.origin });
+      });
+    },
   },
 };
 </script>
