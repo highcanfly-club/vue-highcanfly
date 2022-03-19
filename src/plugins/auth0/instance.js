@@ -131,6 +131,7 @@ export function initAuth0({
         state.token = undefined;
         state.user = undefined;
         sanityConf.token = undefined;
+        sanityConf.useCdn = true;
         return;
     };
     const onInitializationCompleted = (callback) => {

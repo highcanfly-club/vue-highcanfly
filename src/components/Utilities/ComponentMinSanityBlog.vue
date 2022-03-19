@@ -47,8 +47,10 @@ export default {
     initializationCompleted().then(() => {
       if (isAuthenticated.value) {
       sanityConf.token = user.value["https://www.highcanfly.club/sanity_token"].toString();
+      sanityConf.useCdn = false;
       } else {
         sanityConf.token = undefined;
+        sanityConf.useCdn = true;
       }
       this.fetchData();
     });
