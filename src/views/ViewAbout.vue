@@ -275,8 +275,10 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset from "@/assets/img/mountain.jpg";
-import backgroundImageAssetWebp from "@/assets/img/mountain.webp";
+import backgroundImageAsset1x from "@/assets/img/mountain-1x.jpg";
+import backgroundImageAsset2x from "@/assets/img/mountain.jpg";
+import backgroundImageAssetWebp1x from "@/assets/img/mountain-1x.webp";
+import backgroundImageAssetWebp2x from "@/assets/img/mountain.webp";
 import { inject, reactive } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 
@@ -290,8 +292,12 @@ export default {
       backgroundImageURL: "",
     });
     inject("getJpgOrWebpIfSupported")(
-      backgroundImageAsset,
-      backgroundImageAssetWebp,
+      window.innerWidth < 1024
+        ? backgroundImageAsset1x
+        : backgroundImageAsset2x,
+      window.innerWidth < 1024
+        ? backgroundImageAssetWebp1x
+        : backgroundImageAssetWebp2x,
       "lossy"
     ).then((file) => {
       console.log("Webp support: " + file);

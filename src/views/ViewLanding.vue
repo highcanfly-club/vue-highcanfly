@@ -89,7 +89,10 @@
               >
                 <div class="px-6 py-6 flex-auto">
                   <div class="px-4 py-4 flex-auto">
-                    <img src="@/assets/img/logo_high_can_fly.svg" alt="logo High Can Fly Parapente"/>
+                    <img
+                      src="@/assets/img/logo_high_can_fly.svg"
+                      alt="logo High Can Fly Parapente"
+                    />
                   </div>
                 </div>
               </div>
@@ -560,8 +563,10 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg";
-import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp";
+import backgroundImageAsset1x from "@/assets/img/highcanfly-101-1x.jpg";
+import backgroundImageAsset2x from "@/assets/img/highcanfly-101.jpg";
+import backgroundImageAssetWebp1x from "@/assets/img/highcanfly-101-1x.webp";
+import backgroundImageAssetWebp2x from "@/assets/img/highcanfly-101.webp";
 import { defineAsyncComponent } from "vue";
 import MiniSanityBlog from "@/components/Utilities/ComponentMinSanityBlog.vue";
 import CardAlgoliaSearch from "@/components/Cards/CardAlgoliaSearch.vue";
@@ -624,8 +629,12 @@ export default {
       backgroundImageURL: "",
     });
     inject("getJpgOrWebpIfSupported")(
-      backgroundImageAsset,
-      backgroundImageAssetWebp,
+      window.innerWidth < 1024
+        ? backgroundImageAsset1x
+        : backgroundImageAsset2x,
+      window.innerWidth < 1024
+        ? backgroundImageAssetWebp1x
+        : backgroundImageAssetWebp2x,
       "lossy"
     ).then((file) => {
       console.log("Webp support: " + file);
@@ -637,7 +646,7 @@ export default {
       loadMap,
       algoliaSearchKey,
       algoliaApplicationId,
-      sanityDataset
+      sanityDataset,
     };
   },
   components: {

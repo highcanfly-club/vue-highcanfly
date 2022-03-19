@@ -44,8 +44,10 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset from "@/assets/img/blancnezhugues-101.jpg";
-import backgroundImageAssetWebp from "@/assets/img/blancnezhugues-101.webp";
+import backgroundImageAsset1x from "@/assets/img/blancnezhugues-101-1x.jpg";
+import backgroundImageAsset2x from "@/assets/img/blancnezhugues-101.jpg";
+import backgroundImageAssetWebp1x from "@/assets/img/blancnezhugues-101-1x.webp";
+import backgroundImageAssetWebp2x from "@/assets/img/blancnezhugues-101.webp";
 
 
 import { inject, reactive } from 'vue';
@@ -59,7 +61,18 @@ export default {
     const state = reactive({//eslint-disable-line
       backgroundImageURL: '',
     });
-    inject('getJpgOrWebpIfSupported')(backgroundImageAsset, backgroundImageAssetWebp, 'lossy').then(file => { console.log('Webp support: ' + file); state.backgroundImageURL = file });
+        inject("getJpgOrWebpIfSupported")(
+      window.innerWidth < 1024
+        ? backgroundImageAsset1x
+        : backgroundImageAsset2x,
+      window.innerWidth < 1024
+        ? backgroundImageAssetWebp1x
+        : backgroundImageAssetWebp2x,
+      "lossy"
+    ).then((file) => {
+      console.log("Webp support: " + file);
+      state.backgroundImageURL = file;
+    });
     return {
       state,
     };

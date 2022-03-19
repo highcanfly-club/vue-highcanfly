@@ -1,11 +1,18 @@
 <template>
   <div>
-    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200" buttoncolor="bg-white text-slate-700 active:bg-slate-50"/>
+    <navbar-default
+      color="text-white"
+      colorhover="text-slate-200"
+      iconscolor="text-slate-200"
+      buttoncolor="bg-white text-slate-700 active:bg-slate-50"
+    />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{ backgroundImage: 'url(' + state.backgroundImageURL + ')' }"
+          v-bind:style="{
+            backgroundImage: 'url(' + state.backgroundImageURL + ')',
+          }"
         >
           <span
             id="blackOverlay"
@@ -48,20 +55,27 @@
               <div class="mt-10 py-10 border-t border-slate-200 text-center">
                 <div class="flex flex-wrap justify-center">
                   <div class="w-full lg:w-9/12 px-4">
-                    <p class="text-sm leading-normal mt-0 mb-2 text-slate-400 font-bold uppercase">www.highcanfly.club<br />
-                      Association High Can Fly<br /></p>
+                    <p
+                      class="text-sm leading-normal mt-0 mb-2 text-slate-400 font-bold uppercase"
+                    >
+                      www.highcanfly.club<br />
+                      Association High Can Fly<br />
+                    </p>
                     <p class="mb-4 text-lg leading-relaxed text-slate-700">
-                      
                       <br />
                       <br />
-                      <b>Le but de cette politique de confidentialité et de cette licence</b> <br />
+                      <b
+                        >Le but de cette politique de confidentialité et de
+                        cette licence</b
+                      >
+                      <br />
                       <br />
                       Le but de cette politique de confidentialité est
                       d'informer les utilisateurs de notre site des données
                       personnelles que nous recueillerons ainsi que les
                       informations suivantes, le cas échéant.<br />
-                      Le but de cette licence est de définir comment peut
-                      être utilisé notre site et les données qu'il contient.
+                      Le but de cette licence est de définir comment peut être
+                      utilisé notre site et les données qu'il contient.
                       <br />
                       <br />
                       Les données personnelles que nous recueillerons<br />
@@ -212,28 +226,55 @@
                       <br />
                       <b>License</b>
                       <br />
-                      Dans un souci de transparence nous diffusons l'intégralité du code source de ce site 
-                      web. Attention Open Source ne signifie pas Domaine Publique.<br />
-                      Le code de notre site est diffusé sous <a class="font-bold" href="https://opensource.org/licenses/MIT">licence MIT</a> avec une clause d'attribution.<br />
-                      C'est à dire que si vous réutilisez du code vous devez en citer l'auteur… L'auteur c'est moi : Ronan Le Meillat !<br />
-                      Par contre l'ensemble des images est diffusé sous licence <a class="font-bold" href="https://creativecommons.org/licenses/by-sa/2.0/fr/">CC-EY-SA Licence Creative Commons</a>.<br /> 
-                      Ce travail est mis à disposition selon les termes de la Licence Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International.
+                      Dans un souci de transparence nous diffusons l'intégralité
+                      du code source de ce site web. Attention Open Source ne
+                      signifie pas Domaine Publique.<br />
+                      Le code de notre site est diffusé sous
+                      <a
+                        class="font-bold"
+                        href="https://opensource.org/licenses/MIT"
+                        >licence MIT</a
+                      >
+                      avec une clause d'attribution.<br />
+                      C'est à dire que si vous réutilisez du code vous devez en
+                      citer l'auteur… L'auteur c'est moi : Ronan Le Meillat !<br />
+                      Par contre l'ensemble des images est diffusé sous licence
+                      <a
+                        class="font-bold"
+                        href="https://creativecommons.org/licenses/by-sa/2.0/fr/"
+                        >CC-EY-SA Licence Creative Commons</a
+                      >.<br />
+                      Ce travail est mis à disposition selon les termes de la
+                      Licence Creative Commons Attribution - Partage dans les
+                      Mêmes Conditions 4.0 International.
                       <br />
                       <b>Contact</b>
                       <br />
                       Si vous avez des questions à nous poser, n’hésitez pas à
                       communiquer avec nous en utilisant ce qui suit :<br />
                       parapente@highcanfly.club<br />
-                      119 rue Marceau Martin, 5
-                      9129 Flers-en-Escrebieux<br />
+                      119 rue Marceau Martin, 5 9129 Flers-en-Escrebieux<br />
                       <br />
                       <br />
                       <b>Licence de produits tiers</b>
                       <br />
-                      Ce site web a été construit avec l'aide des frameworks <a href="">Vuejs</a> (licence <a href="https://opensource.org/licenses/MIT">MIT</a>), <a href="https://tailwindcss.com">Tailwind css</a> (licence <a href="https://opensource.org/licenses/MIT">MIT</a>) et avec les composants <a href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus">Vue Note</a> (licence <a href="https://opensource.org/licenses/MIT">MIT</a>)
+                      Ce site web a été construit avec l'aide des frameworks
+                      <a href="">Vuejs</a> (licence
+                      <a href="https://opensource.org/licenses/MIT">MIT</a>),
+                      <a href="https://tailwindcss.com">Tailwind css</a>
+                      (licence
+                      <a href="https://opensource.org/licenses/MIT">MIT</a>) et
+                      avec les composants
+                      <a
+                        href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus"
+                        >Vue Note</a
+                      >
+                      (licence
+                      <a href="https://opensource.org/licenses/MIT">MIT</a>)
                       <br />
                       <br />
-                      Date d’entrée en vigueur : le 1<sup>er</sup> janvier 2022<br />
+                      Date d’entrée en vigueur : le 1<sup>er</sup> janvier
+                      2022<br />
                       <br />
                       © 2022, High Can Fly<br />
                     </p>
@@ -251,20 +292,35 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset from "@/assets/img/blancnezhugues-101.jpg";
-import backgroundImageAssetWebp from "@/assets/img/blancnezhugues-101.webp";
-import { inject, reactive} from 'vue' ;
+import backgroundImageAsset1x from "@/assets/img/blancnezhugues-101-1x.jpg";
+import backgroundImageAsset2x from "@/assets/img/blancnezhugues-101.jpg";
+import backgroundImageAssetWebp1x from "@/assets/img/blancnezhugues-101-1x.webp";
+import backgroundImageAssetWebp2x from "@/assets/img/blancnezhugues-101.webp";
+import { inject, reactive } from "vue";
 //import team2 from "@/assets/img/team-2-800x800.jpg";
 
 export default {
   title: "High Can Fly | Club de parapente | Politique de confidentialité",
-  description: "Club de parapente dans le Nord FFVL n°29070. Notre politique de confidentialité, notre licence et comment nous gérons vos données…",
-  canonical: (new URL(window.location)),
+  description:
+    "Club de parapente dans le Nord FFVL n°29070. Notre politique de confidentialité, notre licence et comment nous gérons vos données…",
+  canonical: new URL(window.location),
   data() {
-    const state = reactive({//eslint-disable-line
-                            backgroundImageURL: '',
-                          });
-    inject('getJpgOrWebpIfSupported')(backgroundImageAsset,backgroundImageAssetWebp,'lossy').then( file => {console.log('Webp support: ' + file);state.backgroundImageURL = file});
+    const state = reactive({
+      //eslint-disable-line
+      backgroundImageURL: "",
+    });
+    inject("getJpgOrWebpIfSupported")(
+      window.innerWidth < 1024
+        ? backgroundImageAsset1x
+        : backgroundImageAsset2x,
+      window.innerWidth < 1024
+        ? backgroundImageAssetWebp1x
+        : backgroundImageAssetWebp2x,
+      "lossy"
+    ).then((file) => {
+      console.log("Webp support: " + file);
+      state.backgroundImageURL = file;
+    });
     return {
       state,
     };
