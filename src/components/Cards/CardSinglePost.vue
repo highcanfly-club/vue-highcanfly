@@ -182,12 +182,16 @@ export default {
           Object.assign(imageBuilder, sanityClient(sanityConf));
           sanityConf.token =
             user.value["https://www.highcanfly.club/sanity_token"].toString();
+          sanityConf.useCdn = false;
+        } else {
+          sanityConf.token = undefined;
+          sanityConf.useCdn = true;
         }
         if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
         let _this = this;
         this.error = this.post = null;
         const client = sanityClient(sanityConf);
-        client.fetch(query, { slug: slug}).then(
+        client.fetch(query, { slug: slug }).then(
           (post) => {
             let _post = post;
             sanityReplaceReferences(_post, client).then(() => {
