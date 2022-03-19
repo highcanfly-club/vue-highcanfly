@@ -128,17 +128,23 @@
               >
                 <picture>
                   <source
-                    srcset="@/assets/img/highcanfly-103.webp"
+                    srcset="
+                      @/assets/img/highcanfly-103-1x.webp 375w,
+                      @/assets/img/highcanfly-103.webp    750w
+                    "
                     type="image/webp"
                   />
                   <source
-                    srcset="@/assets/img/highcanfly-103.jpg"
+                    srcset="
+                      @/assets/img/highcanfly-103-1x.jpg 375w,
+                      @/assets/img/highcanfly-103.jpg    750w
+                    "
                     type="image/jpeg"
                   />
                   <img
                     class="w-full align-middle rounded-t-lg"
                     src="@/assets/img/highcanfly-103.jpg"
-                    alt="..."
+                    alt="En route vers le Plancert."
                   />
                 </picture>
                 <blockquote class="relative p-8 mb-4">
@@ -291,15 +297,21 @@
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
               <picture>
                 <source
-                  srcset="@/assets/img/highcanfly-104.webp"
+                  srcset="
+                    @/assets/img/highcanfly-104-1x.webp 334w,
+                    @/assets/img/highcanfly-104.webp    667w
+                  "
                   type="image/webp"
                 />
                 <source
-                  srcset="@/assets/img/highcanfly-104.jpg"
+                  srcset="
+                    @/assets/img/highcanfly-104-1x.jpg 334w,
+                    @/assets/img/highcanfly-104.jpg    667w
+                  "
                   type="image/jpeg"
                 />
                 <img
-                  alt="..."
+                  alt="Décollage d'Helbroner"
                   class="max-w-full rounded-lg shadow-lg"
                   src="@/assets/img/highcanfly-104.jpg"
                 />
@@ -325,15 +337,21 @@
               <div class="px-6">
                 <picture>
                   <source
-                    srcset="@/assets/img/highcanfly-106.webp"
+                    srcset="
+                      @/assets/img/highcanfly-106-1x.webp  500w,
+                      @/assets/img/highcanfly-106.webp    1000w
+                    "
                     type="image/webp"
                   />
                   <source
-                    srcset="@/assets/img/highcanfly-106.jpg"
+                    srcset="
+                      @/assets/img/highcanfly-106-1x.jpg  500w,
+                      @/assets/img/highcanfly-106.jpg    1000w
+                    "
                     type="image/jpeg"
                   />
                   <img
-                    alt="..."
+                    alt="Décollage depuis la Forclaz"
                     src="@/assets/img/highcanfly-106.jpg"
                     class="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
@@ -361,11 +379,17 @@
               <div class="px-6">
                 <picture>
                   <source
-                    srcset="@/assets/img/highcanfly-105.webp"
+                    srcset="
+                      @/assets/img/highcanfly-105-1x.webp  500w,
+                      @/assets/img/highcanfly-105.webp    1000w
+                    "
                     type="image/webp"
                   />
                   <source
-                    srcset="@/assets/img/highcanfly-105.jpg"
+                    srcset="
+                      @/assets/img/highcanfly-105-1x.jpg  500w,
+                      @/assets/img/highcanfly-105.jpg    1000w
+                    "
                     type="image/jpeg"
                   />
                   <img
@@ -402,15 +426,21 @@
               <div class="px-6">
                 <picture>
                   <source
-                    srcset="@/assets/img/capucine.webp"
+                    srcset="
+                      @/assets/img/capucine-1x.webp 400w,
+                      @/assets/img/capucine.webp    800w
+                    "
                     type="image/webp"
                   />
                   <source
-                    srcset="@/assets/img/capucine.jpg"
+                    srcset="
+                      @/assets/img/capucine-1x.jpg 400w,
+                      @/assets/img/capucine.jpg    800w
+                    "
                     type="image/jpeg"
                   />
                   <img
-                    alt="..."
+                    alt="Capucine en compétition"
                     src="@/assets/img/capucine.jpg"
                     class="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
@@ -445,15 +475,21 @@
               <div class="px-6">
                 <picture>
                   <source
-                    srcset="@/assets/img/highcanfly-107.webp"
+                    srcset="
+                      @/assets/img/highcanfly-107-1x.webp  500w,
+                      @/assets/img/highcanfly-107.webp    1000w
+                    "
                     type="image/webp"
                   />
                   <source
-                    srcset="@/assets/img/highcanfly-107.jpg"
+                    srcset="
+                      @/assets/img/highcanfly-107-1x.jpg  500w,
+                      @/assets/img/highcanfly-107.jpg    1000w
+                    "
                     type="image/jpeg"
                   />
                   <img
-                    alt="..."
+                    alt="Audrey à Samoëns"
                     src="@/assets/img/highcanfly-107.jpg"
                     class="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
