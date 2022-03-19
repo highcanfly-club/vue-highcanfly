@@ -28,3 +28,4 @@ wrangler-serve
 commit.json
 package-lock.json
 sanity-conf.json
+auth0-conf.json

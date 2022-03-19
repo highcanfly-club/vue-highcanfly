@@ -14,16 +14,9 @@ import * as basiclightbox from "basiclightbox";
 import LazyImg from "@/components/Utilities/LazyImg.vue";
 import sanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+import {sanityConf} from "@/plugins/auth0/sanityStore"
 
-const client = sanityClient({
-  projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
-  dataset: process.env.VUE_APP_SANITY_DATASET,
-  token: process.env.VUE_APP_SANITY_READ_TOKEN,
-  useCdn: true,
-  apiVersion: process.env.VUE_APP_SANITY_VERSION,
-});
-
-const imageBuilder = imageUrlBuilder(client);
+const imageBuilder = imageUrlBuilder(sanityClient(sanityConf));
 
 export default {
   props: {

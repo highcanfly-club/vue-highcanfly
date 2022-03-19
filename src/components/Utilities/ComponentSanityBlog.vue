@@ -3,7 +3,7 @@
     <loading-spinner v-if="loading" />
     <div>
       <div v-for="(post, index) in posts" :key="post._id">
-    <lazy-observer :id="index" @on-change="onlazyBlog">
+        <lazy-observer :id="index" @on-change="onlazyBlog">
           <CardSinglePost
             ref="card_single_post"
             :lazy="true"
@@ -11,7 +11,7 @@
             :nbPosts="posts.length"
             :indexPosts="index"
           />
-     </lazy-observer>
+        </lazy-observer>
       </div>
     </div>
   </div>
@@ -21,10 +21,11 @@
 import CardSinglePost from "@/components/Cards/CardSinglePost.vue";
 import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
-
+import { useAuth0 } from "@/plugins/auth0";
 import sanityClient from "@sanity/client";
+import { sanityConf } from "@/plugins/auth0/sanityStore";
 
-const query = `*[_type == "post"  && !(_id in path('drafts.**'))]{
+const query = `*[_type == "post"]{
   _id,
   publishedAt,
   title,
@@ -41,7 +42,18 @@ export default {
     };
   },
   created() {
-    this.fetchData();
+    const { initializationCompleted, user, isAuthenticated } = useAuth0();
+    initializationCompleted().then(() => {
+      if (isAuthenticated.value) {
+        sanityConf.token =
+          user.value["https://www.highcanfly.club/sanity_token"].toString();
+        sanityConf.useCdn = false;
+      } else {
+        sanityConf.token = undefined;
+        sanityConf.useCdn = true;
+      }
+      this.fetchData();
+    });
   },
   components: {
     CardSinglePost,
@@ -50,7 +62,10 @@ export default {
   },
   methods: {
     onlazyBlog(entry, unobserve, id) {
-      if (entry.isIntersecting && this.$refs.card_single_post[id] !== undefined) {
+      if (
+        entry.isIntersecting &&
+        this.$refs.card_single_post[id] !== undefined
+      ) {
         unobserve();
         this.posts[id].loaded = true;
         this.$refs.card_single_post[id].fetchData(this.posts[id].slug.current);
@@ -59,19 +74,15 @@ export default {
     fetchData() {
       this.error = this.post = null;
       this.loading = true;
-      sanityClient({
-        projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
-        dataset: process.env.VUE_APP_SANITY_DATASET,
-        token: process.env.VUE_APP_SANITY_READ_TOKEN,
-        useCdn: true,
-        apiVersion: process.env.VUE_APP_SANITY_VERSION,
-      })
+      sanityClient(sanityConf)
         .fetch(query)
         .then(
           (posts) => {
             this.loading = false;
             this.posts = posts;
-            this.posts.forEach(post => {post.loaded = false;})
+            this.posts.forEach((post) => {
+              post.loaded = false;
+            });
           },
           (error) => {
             this.error = error;
