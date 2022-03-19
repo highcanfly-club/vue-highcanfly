@@ -149,6 +149,7 @@
                     <img
                       class="h-4 w-4"
                       src="@/assets/img/logo_high_can_fly.svg"
+                      alt="logo High Can Fly parapente"
                     />
                     <a
                       class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
@@ -190,7 +191,7 @@
     </div>
 
     <VueScrollUp tag="div" :scroll-duration="1000" :scroll-y="250">
-      <img style="position: absolute" src="@/assets/img/arrow-top.svg" />
+      <img style="position: absolute" src="@/assets/img/arrow-top.svg" alt="remonter"/>
     </VueScrollUp>
   </footer>
 </template>

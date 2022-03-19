@@ -65,7 +65,7 @@
                 >
                   <div class="relative">
                     <img
-                      alt="..."
+                      alt="logo High Can Fly Parapente"
                       :src="logo"
                       class="
                         shadow-xl

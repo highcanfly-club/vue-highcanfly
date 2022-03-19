@@ -89,7 +89,7 @@
               >
                 <div class="px-6 py-6 flex-auto">
                   <div class="px-4 py-4 flex-auto">
-                    <img src="@/assets/img/logo_high_can_fly.svg" />
+                    <img src="@/assets/img/logo_high_can_fly.svg" alt="logo High Can Fly Parapente"/>
                   </div>
                 </div>
               </div>
