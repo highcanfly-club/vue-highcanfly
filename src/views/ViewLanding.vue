@@ -89,7 +89,10 @@
               >
                 <div class="px-6 py-6 flex-auto">
                   <div class="px-4 py-4 flex-auto">
-                    <img src="@/assets/img/logo_high_can_fly.svg" alt="logo High Can Fly Parapente"/>
+                    <img
+                      src="@/assets/img/logo_high_can_fly.svg"
+                      alt="logo High Can Fly Parapente"
+                    />
                   </div>
                 </div>
               </div>
@@ -125,17 +128,23 @@
               >
                 <picture>
                   <source
-                    srcset="@/assets/img/highcanfly-103.webp"
+                    srcset="
+                      @/assets/img/highcanfly-103-1x.webp 375w,
+                      @/assets/img/highcanfly-103.webp    750w
+                    "
                     type="image/webp"
                   />
                   <source
-                    srcset="@/assets/img/highcanfly-103.jpg"
+                    srcset="
+                      @/assets/img/highcanfly-103-1x.jpg 375w,
+                      @/assets/img/highcanfly-103.jpg    750w
+                    "
                     type="image/jpeg"
                   />
                   <img
                     class="w-full align-middle rounded-t-lg"
                     src="@/assets/img/highcanfly-103.jpg"
-                    alt="..."
+                    alt="En route vers le Plancert."
                   />
                 </picture>
                 <blockquote class="relative p-8 mb-4">
@@ -288,15 +297,21 @@
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
               <picture>
                 <source
-                  srcset="@/assets/img/highcanfly-104.webp"
+                  srcset="
+                    @/assets/img/highcanfly-104-1x.webp 334w,
+                    @/assets/img/highcanfly-104.webp    667w
+                  "
                   type="image/webp"
                 />
                 <source
-                  srcset="@/assets/img/highcanfly-104.jpg"
+                  srcset="
+                    @/assets/img/highcanfly-104-1x.jpg 334w,
+                    @/assets/img/highcanfly-104.jpg    667w
+                  "
                   type="image/jpeg"
                 />
                 <img
-                  alt="..."
+                  alt="Décollage d'Helbroner"
                   class="max-w-full rounded-lg shadow-lg"
                   src="@/assets/img/highcanfly-104.jpg"
                 />
@@ -322,15 +337,21 @@
               <div class="px-6">
                 <picture>
                   <source
-                    srcset="@/assets/img/highcanfly-106.webp"
+                    srcset="
+                      @/assets/img/highcanfly-106-1x.webp  500w,
+                      @/assets/img/highcanfly-106.webp    1000w
+                    "
                     type="image/webp"
                   />
                   <source
-                    srcset="@/assets/img/highcanfly-106.jpg"
+                    srcset="
+                      @/assets/img/highcanfly-106-1x.jpg  500w,
+                      @/assets/img/highcanfly-106.jpg    1000w
+                    "
                     type="image/jpeg"
                   />
                   <img
-                    alt="..."
+                    alt="Décollage depuis la Forclaz"
                     src="@/assets/img/highcanfly-106.jpg"
                     class="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
@@ -358,11 +379,17 @@
               <div class="px-6">
                 <picture>
                   <source
-                    srcset="@/assets/img/highcanfly-105.webp"
+                    srcset="
+                      @/assets/img/highcanfly-105-1x.webp  500w,
+                      @/assets/img/highcanfly-105.webp    1000w
+                    "
                     type="image/webp"
                   />
                   <source
-                    srcset="@/assets/img/highcanfly-105.jpg"
+                    srcset="
+                      @/assets/img/highcanfly-105-1x.jpg  500w,
+                      @/assets/img/highcanfly-105.jpg    1000w
+                    "
                     type="image/jpeg"
                   />
                   <img
@@ -399,15 +426,21 @@
               <div class="px-6">
                 <picture>
                   <source
-                    srcset="@/assets/img/capucine.webp"
+                    srcset="
+                      @/assets/img/capucine-1x.webp 400w,
+                      @/assets/img/capucine.webp    800w
+                    "
                     type="image/webp"
                   />
                   <source
-                    srcset="@/assets/img/capucine.jpg"
+                    srcset="
+                      @/assets/img/capucine-1x.jpg 400w,
+                      @/assets/img/capucine.jpg    800w
+                    "
                     type="image/jpeg"
                   />
                   <img
-                    alt="..."
+                    alt="Capucine en compétition"
                     src="@/assets/img/capucine.jpg"
                     class="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
@@ -442,15 +475,21 @@
               <div class="px-6">
                 <picture>
                   <source
-                    srcset="@/assets/img/highcanfly-107.webp"
+                    srcset="
+                      @/assets/img/highcanfly-107-1x.webp  500w,
+                      @/assets/img/highcanfly-107.webp    1000w
+                    "
                     type="image/webp"
                   />
                   <source
-                    srcset="@/assets/img/highcanfly-107.jpg"
+                    srcset="
+                      @/assets/img/highcanfly-107-1x.jpg  500w,
+                      @/assets/img/highcanfly-107.jpg    1000w
+                    "
                     type="image/jpeg"
                   />
                   <img
-                    alt="..."
+                    alt="Audrey à Samoëns"
                     src="@/assets/img/highcanfly-107.jpg"
                     class="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
@@ -560,8 +599,10 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset from "@/assets/img/highcanfly-101.jpg";
-import backgroundImageAssetWebp from "@/assets/img/highcanfly-101.webp";
+import backgroundImageAsset1x from "@/assets/img/highcanfly-101-1x.jpg";
+import backgroundImageAsset2x from "@/assets/img/highcanfly-101.jpg";
+import backgroundImageAssetWebp1x from "@/assets/img/highcanfly-101-1x.webp";
+import backgroundImageAssetWebp2x from "@/assets/img/highcanfly-101.webp";
 import { defineAsyncComponent } from "vue";
 import MiniSanityBlog from "@/components/Utilities/ComponentMinSanityBlog.vue";
 import CardAlgoliaSearch from "@/components/Cards/CardAlgoliaSearch.vue";
@@ -624,8 +665,12 @@ export default {
       backgroundImageURL: "",
     });
     inject("getJpgOrWebpIfSupported")(
-      backgroundImageAsset,
-      backgroundImageAssetWebp,
+      window.innerWidth < 1024
+        ? backgroundImageAsset1x
+        : backgroundImageAsset2x,
+      window.innerWidth < 1024
+        ? backgroundImageAssetWebp1x
+        : backgroundImageAssetWebp2x,
       "lossy"
     ).then((file) => {
       console.log("Webp support: " + file);
@@ -637,7 +682,7 @@ export default {
       loadMap,
       algoliaSearchKey,
       algoliaApplicationId,
-      sanityDataset
+      sanityDataset,
     };
   },
   components: {

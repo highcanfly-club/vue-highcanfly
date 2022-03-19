@@ -52,8 +52,10 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset from "@/assets/img/blancnezhugues-101.jpg";
-import backgroundImageAssetWebp from "@/assets/img/blancnezhugues-101.webp";
+import backgroundImageAsset1x from "@/assets/img/blancnezhugues-101-1x.jpg";
+import backgroundImageAsset2x from "@/assets/img/blancnezhugues-101.jpg";
+import backgroundImageAssetWebp1x from "@/assets/img/blancnezhugues-101-1x.webp";
+import backgroundImageAssetWebp2x from "@/assets/img/blancnezhugues-101.webp";
 import CardSinglePost from "@/components/Cards/CardSinglePost.vue";
 
 import { inject, reactive } from "vue";
@@ -70,8 +72,12 @@ export default {
       backgroundImageURL: "",
     });
     inject("getJpgOrWebpIfSupported")(
-      backgroundImageAsset,
-      backgroundImageAssetWebp,
+      window.innerWidth < 1024
+        ? backgroundImageAsset1x
+        : backgroundImageAsset2x,
+      window.innerWidth < 1024
+        ? backgroundImageAssetWebp1x
+        : backgroundImageAssetWebp2x,
       "lossy"
     ).then((file) => {
       console.log("Webp support: " + file);

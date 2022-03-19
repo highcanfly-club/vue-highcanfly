@@ -44,10 +44,16 @@ let uuidv4 = function () {
   );
 };
 
+export const getWebKitImageSet = (imageAsset1x,imageAssetWebp1x,imageAsset2x, imageAssetWebp2x,minSize) => {
+  const srcSet = {low: `-webkit-image-set(url('${imageAssetWebp1x}') type('image/webp'),url('${imageAsset1x}')type('image/jpeg'))`,
+  high: `-webkit-image-set(url('${imageAssetWebp2x}') type('image/webp'),url('${imageAsset2x}')type('image/jpeg'))`};
+  return window.innerWidth < minSize ? srcSet.low : srcSet.high;
+};
 export default {
   install: (app, options) => { //eslint-disable-line
     app.provide('isWebpCompatible', isWebpCompatible);
     app.provide('getJpgOrWebpIfSupported', getJpgOrWebpIfSupported);
     app.provide('uuidv4', uuidv4);
+    app.provide('getWebKitImageSet',getWebKitImageSet);
   },
 };
