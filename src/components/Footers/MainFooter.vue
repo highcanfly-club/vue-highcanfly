@@ -64,7 +64,7 @@
               <ul class="list-unstyled">
                 <li>
                   <span
-                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-xs"
+                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-xs cursor-pointer"
                     to="/login"
                     @click="logout"
                     >Logout</span
