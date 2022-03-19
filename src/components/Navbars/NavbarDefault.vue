@@ -14,7 +14,7 @@
           to="/"
         >
           High Can Fly
-          <img src="@/assets/img/logo_high_can_fly.svg" />
+          <img src="@/assets/img/logo_high_can_fly.svg" alt="logo High Can Fly Parapente"/>
         </router-link>
         <button
           :class="color"

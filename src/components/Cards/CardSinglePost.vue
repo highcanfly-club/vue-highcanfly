@@ -21,6 +21,7 @@
                       .height(150)
                       .fit('crop')
                   "
+                  :alt="post.image.asset.altText"
                   @click="lightBox(post.image, $event)"
                 />
               </div>
