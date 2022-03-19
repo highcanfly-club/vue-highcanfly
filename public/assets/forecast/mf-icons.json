@@ -2,231 +2,369 @@
 	{
 		"name": "null",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/null.svg",
-		"desc": "null"
+		"desc": {
+			"en": "null",
+			"fr": "null"
+		}
 	},
 	{
 		"name": "p12bisj",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p12bisj.svg",
-		"desc": "Few showers"
+		"desc": {
+			"en": "Few showers",
+			"fr": "Rares averses"
+		}
 	},
 	{
 		"name": "p12bisn",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p12bisn.svg",
-		"desc": "Few showers"
+		"desc": {
+			"en": "Few showers",
+			"fr": "Rares averses"
+		}
 	},
 	{
 		"name": "p12j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p12j.svg",
-		"desc": "Scattered rain"
+		"desc": {
+			"en": "Scattered rain",
+			"fr": "Pluies éparses"
+		}
 	},
 	{
 		"name": "p12n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p12n.svg",
-		"desc": "Scattered rain"
+		"desc": {
+			"en": "Scattered rain",
+			"fr": "Pluies éparses"
+		}
 	},
 	{
 		"name": "p13bisj",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p13bisj.svg",
-		"desc": "Few showers"
+		"desc": {
+			"en": "Few showers",
+			"fr": "Rares averses"
+		}
 	},
 	{
 		"name": "p13bisn",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p13bisn.svg",
-		"desc": "Few showers"
+		"desc": {
+			"en": "Few showers",
+			"fr": "Rares averses"
+		}
 	},
 	{
 		"name": "p13j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p13j.svg",
-		"desc": "Scattered rain"
+		"desc": {
+			"en": "Scattered rain",
+			"fr": "Pluies éparses"
+		}
 	},
 	{
 		"name": "p13n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p13n.svg",
-		"desc": "Scattered rain"
+		"desc": {
+			"en": "Scattered rain",
+			"fr": "Pluies éparses"
+		}
 	},
 	{
 		"name": "p14bisj",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p14bisj.svg",
-		"desc": "Showers"
+		"desc": {
+			"en": "Showers",
+			"fr": "Averses"
+		}
 	},
 	{
 		"name": "p14bisn",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p14bisn.svg",
-		"desc": "Showers"
+		"desc": {
+			"en": "Showers",
+			"fr": "Averses"
+		}
 	},
 	{
 		"name": "p14j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p14j.svg",
-		"desc": "Rain"
+		"desc": {
+			"en": "Rain",
+			"fr": "Pluie"
+		}
 	},
 	{
 		"name": "p14n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p14n.svg",
-		"desc": "Rain"
+		"desc": {
+			"en": "Rain",
+			"fr": "Pluie"
+		}
 	},
 	{
 		"name": "p15j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p15j.svg",
-		"desc": "Heavy rain"
+		"desc": {
+			"en": "Heavy rain",
+			"fr": "Pluie forte"
+		}
 	},
 	{
 		"name": "p15n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p15n.svg",
-		"desc": "Heavy rain"
+		"desc": {
+			"en": "Heavy rain",
+			"fr": "Pluie forte"
+		}
 	},
 	{
 		"name": "p16bisj",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p16bisj.svg",
-		"desc": "Thundershowers"
+		"desc": {
+			"en": "Thundershowers"
+		}
 	},
 	{
 		"name": "p16bisn",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p16bisn.svg",
-		"desc": "Thundershowers"
+		"desc": {
+			"en": "Thundershowers"
+		}
 	},
 	{
 		"name": "p16n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p16n.svg",
-		"desc": "Stormy rain"
+		"desc": {
+			"en": "Stormy rain"
+		}
 	},
 	{
 		"name": "p17j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p17j.svg",
-		"desc": "Few snowflake"
+		"desc": {
+			"en": "Few snowflake",
+			"fr": "Quelques flocons"
+		}
 	},
 	{
 		"name": "p17n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p17n.svg",
-		"desc": "Few snowflake"
+		"desc": {
+			"en": "Few snowflake",
+			"fr": "Quelques flocons"
+		}
 	},
 	{
 		"name": "p18j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p18j.svg",
-		"desc": "Few snowflake"
+		"desc": {
+			"en": "Few snowflake",
+			"fr": "Quelques flocons"
+		}
 	},
 	{
 		"name": "p18n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p18n.svg",
-		"desc": "Few snowflake"
+		"desc": {
+			"en": "Few snowflake",
+			"fr": "Quelques flocons"
+		}
+	},
+	{
+		"name": "p19j",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p19j.svg",
+		"desc": {
+			"fr": "Pluie et neige",
+			"en": "Rain and snow"
+		}
 	},
 	{
 		"name": "p1j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p1j.svg",
-		"desc": "Sunny"
+		"desc": {
+			"en": "Sunny",
+			"fr": "Ensoleillé"
+		}
 	},
 	{
 		"name": "p1n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p1n.svg",
-		"desc": "Clear night"
+		"desc": {
+			"en": "Clear night",
+			"fr": "Nuit claire"
+		}
 	},
 	{
 		"name": "p20j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p20j.svg",
-		"desc": "Rain and snow"
+		"desc": {
+			"fr": "Pluie et neige",
+			"en": "Rain and snow"
+		}
 	},
 	{
 		"name": "p21bisj",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p21bisj.svg",
-		"desc": "Snow showers"
+		"desc": {
+			"en": "Snow showers"
+		}
 	},
 	{
 		"name": "p21bisn",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p21bisn.svg",
-		"desc": "Snow showers"
+		"desc": {
+			"en": "Snow showers"
+		}
 	},
 	{
 		"name": "p21j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p21j.svg",
-		"desc": "Snow"
+		"desc": {
+			"en": "Snow",
+			"fr": "Neige"
+		}
 	},
 	{
 		"name": "p21n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p21n.svg",
-		"desc": "Snow"
+		"desc": {
+			"en": "Snow",
+			"fr": "Neige"
+		}
 	},
 	{
 		"name": "p22j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p22j.svg",
-		"desc": "Snow"
+		"desc": {
+			"en": "Snow",
+			"fr": "Neige"
+		}
 	},
 	{
 		"name": "p22n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p22n.svg",
-		"desc": "Snow"
+		"desc": {
+			"en": "Snow",
+			"fr": "Neige"
+		}
 	},
 	{
 		"name": "p23j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p23j.svg",
-		"desc": "Heavy snow"
+		"desc": {
+			"en": "Heavy snow"
+		}
 	},
 	{
 		"name": "p23n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p23n.svg",
-		"desc": "Heavy snow"
+		"desc": {
+			"en": "Heavy snow"
+		}
 	},
 	{
 		"name": "p25j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p25j.svg",
-		"desc": "Risk of hail"
+		"desc": {
+			"en": "Risk of hail"
+		}
 	},
 	{
 		"name": "p2j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p2j.svg",
-		"desc": "Cloudy"
+		"desc": {
+			"en": "Cloudy",
+			"fr": "Eclaircies"
+		}
 	},
 	{
 		"name": "p2n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p2n.svg",
-		"desc": "Cloudy"
+		"desc": {
+			"en": "Cloudy",
+			"fr": "Eclaircies"
+		}
 	},
 	{
 		"name": "p3j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p3j.svg",
-		"desc": "Very cloudy"
+		"desc": {
+			"en": "Very cloudy",
+			"fr": "Très nuageux"
+		}
 	},
 	{
 		"name": "p3n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p3n.svg",
-		"desc": "Very cloudy"
+		"desc": {
+			"en": "Very cloudy",
+			"fr": "Très nuageux"
+		}
 	},
 	{
 		"name": "p4j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p4j.svg",
-		"desc": "Hazy sky"
+		"desc": {
+			"en": "Hazy sky",
+			"fr": "Ciel voilé"
+		}
 	},
 	{
 		"name": "p4n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p4n.svg",
-		"desc": "Hazy sky"
+		"desc": {
+			"en": "Hazy sky",
+			"fr": "Ciel voilé"
+		}
 	},
 	{
 		"name": "p5j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p5j.svg",
-		"desc": "Mist"
+		"desc": {
+			"en": "Mist",
+			"fr": "Brume"
+		}
 	},
 	{
 		"name": "p5n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p5n.svg",
-		"desc": "Mist"
+		"desc": {
+			"en": "Mist",
+			"fr": "Brume"
+		}
 	},
 	{
 		"name": "p6j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p6j.svg",
-		"desc": "Mist"
+		"desc": {
+			"en": "Mist",
+			"fr": "Brume"
+		}
 	},
 	{
 		"name": "p6n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p6n.svg",
-		"desc": "Mist"
+		"desc": {
+			"en": "Mist",
+			"fr": "Brume"
+		}
 	},
 	{
 		"name": "p9j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p9j.svg",
-		"desc": "Drizzle"
+		"desc": {
+			"en": "Drizzle",
+			"fr": "Bruine"
+		}
 	},
 	{
 		"name": "p9n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p9n.svg",
-		"desc": "Drizzle"
+		"desc": {
+			"en": "Drizzle",
+			"fr": "Bruine"
+		}
 	}
 ]

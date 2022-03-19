@@ -1,7 +1,7 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
 const METEO_FRANCE_STORE = './public/assets/forecast/';
-
+const LANG = "fr";
 const getMeteoFranceIconsArray = function (
   places = [
     { lat: 44.661432, lon: -1.176416, name: 'Arcachon' },
@@ -27,7 +27,7 @@ const getMeteoFranceIconsArray = function (
 
   const promised = [];
   places.forEach((place) => {
-    let query = `${METEO_FRANCE_WEBSERVICE}?token=${API_TOKEN}&lat=${place.lat}&lon=${place.lon}&lang=en`;
+    let query = `${METEO_FRANCE_WEBSERVICE}?token=${API_TOKEN}&lat=${place.lat}&lon=${place.lon}&lang=${LANG}`;
     console.log(query);
     let promise = fetch(query).then((response) => response.json());
     promised.push(promise);
@@ -63,11 +63,13 @@ const getMeteoFranceIconsArray = function (
       uniq_icons.forEach((icon) => {
         const name = icon.split(" ")[0];
         const desc = icon.slice(name.length + 1);
-        iconsMF.push({
+        const obj = {
           name: name,
           url: `${METEO_FRANCE_ICONS_BASE}/${name}.svg`,
-          desc: desc
-        });
+          desc: {},
+        };
+        obj.desc[LANG] = desc;
+        iconsMF.push(obj);
         resolve(iconsMF);
       });
     });
@@ -77,7 +79,17 @@ const getMeteoFranceIconsArray = function (
 getMeteoFranceIconsArray().then(icons => {
   const curIcons = require(`${METEO_FRANCE_STORE}mf-icons.json`);
   console.log(`There was ${curIcons.length} in mf-icons.json`);
-  let newIcons = icons.concat(curIcons);
+  icons.forEach(item =>{
+      let i = curIcons.findIndex((element)=>{
+        return element.name === item.name;
+      })
+if (i>0){      let itemLang = Object.keys(item.desc)[0];
+      if (curIcons[i].desc[itemLang] === undefined)
+      {
+        Object.assign(curIcons[i].desc,item.desc);
+      }}
+  });
+  let newIcons = curIcons.concat(icons);
   newIcons = newIcons.filter((value, index, self) =>
     index === self.findIndex((t) => (
       t.name === value.name
