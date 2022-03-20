@@ -8,17 +8,22 @@ const getMeteoFranceIconsArray = function (
         { lat: 44.661432, lon: -1.176416, name: 'Arcachon' },
         { lat: 45.879449, lon: 6.888846, name: 'Aiguille du midi' },
         { lat: 48.385469, lon: -4.491038, name: 'Brest' },
+        { lat: 48.03721, lon: -4.851893, name: 'Ile de Sein' },
         { lat: 50.416924, lon: 2.513619, name: 'la Comté' },
         { lat: 50.679484, lon: 1.567162, name: 'Équihen-plage' },
         { lat: 50.43358, lon: 2.585847, name: 'Parc d\'Ohlain' },
         { lat: 50.401719, lon: 2.92927, name: 'Parc des Îles' },
         { lat: 42.697679, lon: 9.449846, name: 'Bastia' },
         { lat: 48.54973, lon: 7.752666, name: 'Ostwald' },
+        { lat: 42.843161, lon: -0.438193, name: 'Pic du Midi d\'Ossau' },
         { lat: 14.637992, lon: -61.095531, name: 'Saint-Joseph (Martinique)' },
         { lat: -20.93398, lon: 55.595733, name: 'Saint-André (La Réunion)' },
         { lat: 46.803303, lon: -56.174957, name: 'Saint-Pierre (Collectivité de Saint-Pierre-et-Miquelon)' },
         { lat: -22.264542, lon: 166.447897, name: 'Nouméa (Nouvelle-Calédonie)' },
-        { lat: -12.782469, lon: 45.228132, name: 'Pamandzi (Mayotte)' }
+        { lat: -12.782469, lon: 45.228132, name: 'Pamandzi (Mayotte)' },
+        { lat: 5.158269, lon: -52.642795, name: 'Kourou' },
+        { lat: -49.349008, lon: 70.379773, name: "Port-aux-Français (Îles Kerguelen)" },
+        { lat: -22.366341, lon: 40.338066, name: 'Île Europa' }
     ]
 ) {
     const API_TOKEN = "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
@@ -36,6 +41,7 @@ const getMeteoFranceIconsArray = function (
     return new Promise(function (resolve, reject) { //eslint-disable-line
         Promise.all(promised).then((values) => {
             const iconset = new Set();
+            let nbIcons = 0;
             let iconsetSize = iconset.size;
             values.forEach((value) => {
                 console.log(
@@ -45,8 +51,10 @@ const getMeteoFranceIconsArray = function (
                     iconset.add(`${prob.weather.icon} ${prob.weather.desc}`);
                 });
                 console.log(`Added ${iconset.size - iconsetSize} icon names`);
+                nbIcons += iconset.size - iconsetSize;
                 iconsetSize = iconset.size;
             });
+            console.log(`Retrieved ${nbIcons} icons from MF`);
             const icons = Array.from(iconset);
             icons.sort(function (a, b) {
                 if (a < b) {
