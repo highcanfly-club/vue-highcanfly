@@ -254,14 +254,16 @@
 		"name": "p23j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p23j.svg",
 		"desc": {
-			"en": "Heavy snow"
+			"en": "Heavy snow",
+			"fr": "Neige forte"
 		}
 	},
 	{
 		"name": "p23n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p23n.svg",
 		"desc": {
-			"en": "Heavy snow"
+			"en": "Heavy snow",
+			"fr": "Neige forte"
 		}
 	},
 	{

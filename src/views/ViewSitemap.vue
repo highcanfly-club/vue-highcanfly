@@ -104,12 +104,14 @@ export default {
       console.log("Webp support: " + file);
       state.backgroundImageURL = file;
     });
+    return {
+      state,
+      routesReactive,
+    };
   },
   created() {
-    this.fetchData();
   },
   methods: {
-    fetchData() {},
   },
   components: {
     NavbarDefault,
