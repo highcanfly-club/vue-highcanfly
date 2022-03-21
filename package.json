@@ -61,7 +61,7 @@
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23",
     "webpack": "~5.70.0",
-    "wrangler": "0.0.19"
+    "wrangler": "0.0.22"
   },
   "eslintConfig": {
     "root": true,
