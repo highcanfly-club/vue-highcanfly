@@ -1,3 +1,8 @@
+import { Cloudinary } from "@cloudinary/url-gen";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+const cloudinaryConf = require("@/cloudinary-conf.json");
+const cloudinary = new Cloudinary(cloudinaryConf);
+
 let kTestImages = {
   lossy: "UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA",//+"e",
   lossless: "UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==",
@@ -35,7 +40,7 @@ let getJpgOrWebpIfSupported = function (jpgImg, webpImg, feature = 'lossy') {
   return getOptimizedFileAsPromise;
 }
 
-let uuidv4 = function () {
+export const uuidv4 = () => {
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
     (
       c ^
@@ -44,6 +49,20 @@ let uuidv4 = function () {
   );
 };
 
+export const getCloudinaryImg = (img, width, height) => {
+  let _img = cloudinary.image(img);
+  if (width !== undefined || height !== undefined) {
+    let _fill = fill();
+    if (width !== undefined) {
+      _fill = _fill.width(width);
+    }
+    if (height !== undefined) {
+      _fill = _fill.height(height);
+    }
+    _img.resize(_fill);
+  }
+  return _img;
+}
 export const getWebKitImageSet = (imageAsset1x,imageAssetWebp1x,imageAsset2x, imageAssetWebp2x,minSize) => {
   const srcSet = {low: `-webkit-image-set(url('${imageAssetWebp1x}') type('image/webp'),url('${imageAsset1x}')type('image/jpeg'))`,
   high: `-webkit-image-set(url('${imageAssetWebp2x}') type('image/webp'),url('${imageAsset2x}')type('image/jpeg'))`};
