@@ -1,4 +1,5 @@
 import { Cloudinary } from "@cloudinary/url-gen";
+import {quality} from "@cloudinary/url-gen/actions/delivery";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 const cloudinaryConf = require("@/cloudinary-conf.json");
 const cloudinary = new Cloudinary(cloudinaryConf);
@@ -61,7 +62,7 @@ export const getCloudinaryImg = (img, width, height) => {
     }
     _img.resize(_fill);
   }
-  return _img;
+  return _img.delivery(quality('auto'));
 }
 export const getWebKitImageSet = (imageAsset1x,imageAssetWebp1x,imageAsset2x, imageAssetWebp2x,minSize) => {
   const srcSet = {low: `-webkit-image-set(url('${imageAssetWebp1x}') type('image/webp'),url('${imageAsset1x}')type('image/jpeg'))`,
