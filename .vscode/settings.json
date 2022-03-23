@@ -1,0 +1,5 @@
+{
+	"terminal.integrated.env.osx": {
+		"PROJECT_ROOT":"${workspaceFolder} "
+	}
+}
