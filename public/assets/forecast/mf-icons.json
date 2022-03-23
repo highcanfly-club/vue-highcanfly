@@ -134,6 +134,13 @@
 		}
 	},
 	{
+		"name": "p16j",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p16j.svg",
+		"desc": {
+			"en": "Stormy rain"
+		}
+	},
+	{
 		"name": "p16n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p16n.svg",
 		"desc": {
@@ -181,6 +188,14 @@
 		}
 	},
 	{
+		"name": "p19n",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p19n.svg",
+		"desc": {
+			"fr": "Pluie et neige",
+			"en": "Rain and snow"
+		}
+	},
+	{
 		"name": "p1j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p1j.svg",
 		"desc": {
@@ -205,17 +220,27 @@
 		}
 	},
 	{
+		"name": "p20n",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p20n.svg",
+		"desc": {
+			"fr": "Pluie et neige",
+			"en": "Rain and snow"
+		}
+	},
+	{
 		"name": "p21bisj",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p21bisj.svg",
 		"desc": {
-			"en": "Snow showers"
+			"en": "Snow showers",
+			"fr": "Averses de neige"
 		}
 	},
 	{
 		"name": "p21bisn",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p21bisn.svg",
 		"desc": {
-			"en": "Snow showers"
+			"en": "Snow showers",
+			"fr": "Averses de neige"
 		}
 	},
 	{
@@ -267,8 +292,25 @@
 		}
 	},
 	{
+		"name": "p24j",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p24j.svg",
+		"desc": {}
+	},
+	{
+		"name": "p24n",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p24n.svg",
+		"desc": {}
+	},
+	{
 		"name": "p25j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p25j.svg",
+		"desc": {
+			"en": "Risk of hail"
+		}
+	},
+	{
+		"name": "p25n",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p25n.svg",
 		"desc": {
 			"en": "Risk of hail"
 		}

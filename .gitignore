@@ -13,7 +13,7 @@ yarn-error.log*
 
 # Editor directories and files
 .idea
-.vscode
+.vscode/launch.json
 *.suo
 *.ntvs*
 *.njsproj
@@ -29,3 +29,4 @@ commit.json
 package-lock.json
 sanity-conf.json
 auth0-conf.json
+_sensitive_datas/_sensitive_datas.tar.xz
