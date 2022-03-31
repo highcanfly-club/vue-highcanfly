@@ -260,6 +260,22 @@
 		}
 	},
 	{
+		"name": "p22bisj",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p22bisj.svg",
+		"desc": {
+			"fr": "Averses de neige",
+			"en": "Snow showers"
+		}
+	},
+	{
+		"name": "p22bisn",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p22bisn.svg",
+		"desc": {
+			"fr": "Averses de neige",
+			"en": "Snow showers"
+		}
+	},
+	{
 		"name": "p22j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p22j.svg",
 		"desc": {
@@ -294,17 +310,24 @@
 	{
 		"name": "p24j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p24j.svg",
-		"desc": {}
+		"desc": {
+			"fr": "Risque de grêle",
+			"en": "Risk of hail"
+		}
 	},
 	{
 		"name": "p24n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p24n.svg",
-		"desc": {}
+		"desc": {
+			"fr": "Risque de grêle",
+			"en": "Risk of hail"
+		}
 	},
 	{
 		"name": "p25j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p25j.svg",
 		"desc": {
+			"fr": "Risque de grêle",
 			"en": "Risk of hail"
 		}
 	},
@@ -312,6 +335,7 @@
 		"name": "p25n",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p25n.svg",
 		"desc": {
+			"fr": "Risque de grêle",
 			"en": "Risk of hail"
 		}
 	},
