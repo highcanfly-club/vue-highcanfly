@@ -123,14 +123,16 @@
 		"name": "p16bisj",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p16bisj.svg",
 		"desc": {
-			"en": "Thundershowers"
+			"en": "Thundershowers",
+			"fr": "Averses orageuses"
 		}
 	},
 	{
 		"name": "p16bisn",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p16bisn.svg",
 		"desc": {
-			"en": "Thundershowers"
+			"en": "Thundershowers",
+			"fr": "Averses orageuses"
 		}
 	},
 	{
