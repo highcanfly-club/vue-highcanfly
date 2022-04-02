@@ -342,6 +342,22 @@
 		}
 	},
 	{
+		"name": "p26j",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p26j.svg",
+		"desc": {
+			"fr": "Risque d'orages",
+			"en": "Risk of storms"
+		}
+	},
+	{
+		"name": "p26n",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p26n.svg",
+		"desc": {
+			"fr": "Risque d'orages",
+			"en": "Risk of storms"
+		}
+	},
+	{
 		"name": "p2j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p2j.svg",
 		"desc": {

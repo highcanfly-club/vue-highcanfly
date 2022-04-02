@@ -114,9 +114,9 @@ export async function onRequestPost(context) {
   let hCaptchaResponse = await hCaptchaVerified.json();
   let hCaptchaSucess = hCaptchaResponse.success;
 
-  let sendGridApi = { "statusText": "ERROR", "error-codes": "ERROR API" };
+  let sendMailJetApi = { "statusText": "ERROR", "error-codes": "ERROR API" };
   if (hCaptchaSucess) {
-    sendGridApi = await sendEmail({
+    sendMailJetApi = await sendEmail({
       api_key: MAILJET_API_KEY,
       api_pwd: MAILJET_API_PWD,
       dest: MAILJET_TO,
@@ -126,9 +126,9 @@ export async function onRequestPost(context) {
       redirect: getRedirectURL(context)
     });
   }
-  console.log('NAME: ' + name + ' EMAIL: ' + email + ' MESAGE: ' + message + ' Sitekey: ' + hCaptchaSitekey + ' hCaptchaStatus: ' + hCaptchaSucess + ' API: ' + sendGridApi.statusText);
+  console.log('NAME: ' + name + ' EMAIL: ' + email + ' MESAGE: ' + message + ' Sitekey: ' + hCaptchaSitekey + ' hCaptchaStatus: ' + hCaptchaSucess + ' API: ' + sendMailJetApi.statusText);
   response_code.hCaptchaResponse = hCaptchaSucess;
-  response_code.mailjetResponse = sendGridApi.statusText;
+  response_code.mailjetResponse = sendMailJetApi.statusText;
   return new Response(JSON.stringify(response_code,null,2), {
     headers: {
       "content-type": "application/json;charset=UTF-8"
