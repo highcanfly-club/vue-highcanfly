@@ -95,7 +95,7 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
     allowedFilesRegex: /^fa-/, // RegExp to only target specific fonts by their names
     skippedFilesRegex: null, // RegExp to skip specific fonts by their names
     textRegex: /\.(js|css|html|vue)$/,  // RegExp for searching text reference
-    webpackCompilationHook: 'thisCompilation', // Webpack compilation hook (for example PurgeCss webpack plugin use 'compilation' )
+    webpackCompilationHook: 'compilation', // Webpack compilation hook (for example PurgeCss webpack plugin use 'compilation' )
   });
   webpackPlugins.push(fontMinPlugin);
 }
