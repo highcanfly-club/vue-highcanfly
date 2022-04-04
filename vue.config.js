@@ -65,9 +65,45 @@ fs.writeFile('./sanity-conf.json',
 process.env.VUE_APP_ALGOLIA_SEARCH_KEY = process.env.ALGOLIA_SEARCH_KEY;
 process.env.VUE_APP_ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID;
 
+const webpackPlugins = [];
+
+if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
+  const PurgecssPlugin = require('purgecss-webpack-plugin');
+  const glob = require('glob-all')
+  const PATHS = {
+    src: path.join(__dirname, 'src')
+  }
+
+  const purgeCssPlugin = new PurgecssPlugin({
+    paths: glob.sync(
+      [
+        path.join(__dirname, './public/*.html'),
+        path.join(__dirname, './src/**/*.vue'),
+        path.join(__dirname, './src/**/*.js')
+      ]),
+    safelist: [/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/],
+    fontFace: true
+  })
+  webpackPlugins.push(purgeCssPlugin);
+}
+
+if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
+  const FontMinPlugin = require('fontmin-webpack');
+  const fontMinPlugin = new FontMinPlugin({
+    autodetect: true,
+    glyphs: [],
+    allowedFilesRegex: /^fa-/, // RegExp to only target specific fonts by their names
+    skippedFilesRegex: null, // RegExp to skip specific fonts by their names
+    textRegex: /\.(js|css|html|vue)$/,  // RegExp for searching text reference
+    webpackCompilationHook: 'compilation', // Webpack compilation hook (for example PurgeCss webpack plugin use 'compilation' )
+  });
+  webpackPlugins.push(fontMinPlugin);
+}
+
 module.exports = {
   runtimeCompiler: true,
   configureWebpack: {
+    plugins: webpackPlugins,
     devtool: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'source-map' : false) : 'source-map',
     mode: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'development' : 'production') : 'development',
     resolve: {
