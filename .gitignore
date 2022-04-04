@@ -24,6 +24,7 @@ commit.sh
 yarn.lock
 package-json.lock
 launch-serve
+launch-dist
 wrangler-serve
 commit.json
 package-lock.json

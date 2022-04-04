@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.20.1",
+    "@cloudinary/url-gen": "^1.7.0",
     "@fortawesome/fontawesome-free": "~6.1.1",
     "@headlessui/vue": "^1.5.0",
     "@heroicons/vue": "^1.0.6",
@@ -28,8 +29,8 @@
     "@sanity/client": "^3.2.2",
     "@sanity/image-url": "^1.0.1",
     "@vue/compiler-sfc": "^3.2.31",
-    "CFDTrackJoiner": "file:./CFDTrackJoiner",
     "basiclightbox": "^5.0.4",
+    "CFDTrackJoiner": "file:./CFDTrackJoiner",
     "chart.js": "^3.7.1",
     "core-js": "^3.21.1",
     "crypto-js": "^4.1.1",
@@ -43,8 +44,7 @@
     "vue-instantsearch": "~4.3.3",
     "vue-router": "^4.0.14",
     "vue3-openlayers": "^0.1.63",
-    "walkjs": "^3.2.4",
-    "@cloudinary/url-gen":"^1.7.0"
+    "walkjs": "^3.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
@@ -57,9 +57,12 @@
     "autoprefixer": "^10.4.4",
     "eslint": "^8.11.0",
     "eslint-plugin-vue": "^8.5.0",
+    "fontmin-webpack": "file:fontmin-webpack",
     "gitlog": "^4.0.4",
+    "glob-all": "^3.3.0",
     "node-fetch": "^3.2.3",
     "postcss": "^8.4.12",
+    "purgecss-webpack-plugin": "^4.1.3",
     "tailwindcss": "^3.0.23",
     "webpack": "~5.70.0",
     "wrangler": "0.0.24"
