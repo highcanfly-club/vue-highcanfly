@@ -4,6 +4,8 @@
 
 @tailwind utilities;
 
+@import "@fortawesome/fontawesome-free/css/all.css";
+
 .vue-scroll-up {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.658);

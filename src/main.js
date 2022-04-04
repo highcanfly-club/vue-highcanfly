@@ -79,7 +79,6 @@ const routes = [
 
 // styles
 import "@/assets/styles/index.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 
 // mouting point for the whole app
 
