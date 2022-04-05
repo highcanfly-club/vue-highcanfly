@@ -81,7 +81,7 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
         path.join(__dirname, './src/**/*.vue'),
         path.join(__dirname, './src/**/*.js')
       ]),
-    safelist: [/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/],
+      safelist: [/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/,/^el-/,/^is-/,/popper/],
     fontFace: true
   })
   webpackPlugins.push(purgeCssPlugin);
