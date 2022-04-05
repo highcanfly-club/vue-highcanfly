@@ -106,7 +106,7 @@
             </td>
             <td class="place-items-center">
               <el-popover
-                class="break-normal"
+                class="break-normal bg-white"
                 placement="top-start"
                 title="Tendance"
                 :width="200"
@@ -124,7 +124,7 @@
             </td>
             <td class="place-items-center">
               <el-popover
-                class="break-normal"
+                class="break-normal bg-white"
                 placement="top-start"
                 title="Vent admissible"
                 :width="200"
