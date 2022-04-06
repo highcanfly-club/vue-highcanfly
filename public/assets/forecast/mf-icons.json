@@ -438,6 +438,22 @@
 		}
 	},
 	{
+		"name": "p6bisj",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p6bisj.svg",
+		"desc": {
+			"en": "Fog patches",
+			"fr": "Bancs de Brouillard"
+		}
+	},
+	{
+		"name": "p6bisn",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p6bisn.svg",
+		"desc": {
+			"en": "Fog patches",
+			"fr": "Bancs de Brouillard"
+		}
+	},
+	{
 		"name": "p6j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p6j.svg",
 		"desc": {
@@ -451,6 +467,22 @@
 		"desc": {
 			"en": "Mist",
 			"fr": "Brume"
+		}
+	},
+	{
+		"name": "p7j",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p7j.svg",
+		"desc": {
+			"en": "Fog",
+			"fr": "Brouillard"
+		}
+	},
+	{
+		"name": "p7n",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p7n.svg",
+		"desc": {
+			"en": "Fog",
+			"fr": "Brouillard"
 		}
 	},
 	{
