@@ -8,12 +8,9 @@
       >Navigation</a
     >
     <div
+      class="absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
       ref="popoverDropdownRef"
-      class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-      v-bind:class="{
-        hidden: !dropdownPopoverShow,
-        block: dropdownPopoverShow,
-      }"
+      v-if="dropdownPopoverShow"
     >
       <span
         class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-slate-400"
@@ -118,7 +115,7 @@ export default {
       } else {
         this.dropdownPopoverShow = true;
         createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
-          placement: "bottom-start",
+          placement: "bot"+"tom-start",
         });
       }
     },

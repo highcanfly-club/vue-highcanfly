@@ -81,7 +81,7 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
         path.join(__dirname, './src/**/*.vue'),
         path.join(__dirname, './src/**/*.js')
       ]),
-      safelist: [/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/,/^el-/,/^is-/,/popper/],
+    safelist: [/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/,/^el-/,/^is-/,/popper/],
     fontFace: true
   })
   webpackPlugins.push(purgeCssPlugin);
@@ -98,6 +98,20 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
     webpackCompilationHook: 'compilation', // Webpack compilation hook (for example PurgeCss webpack plugin use 'compilation' )
   });
   webpackPlugins.push(fontMinPlugin);
+}
+
+if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
+  const MangleCssClassPlugin = require('mangle-css-class-webpack-plugin');
+  const myManglePlugin = new MangleCssClassPlugin({
+    //be carrefull to not mangle javascript code ie: tailwindcss 'static' is a javascript reserved word !
+    classNameRegExp: '\\b([-]*left|[-]*top|[-]*right|[-]*bottom)-[p0-9]+|\\b(bg|[-]*p[xylrbt]*|[-]*m[xylrbt]*|w|[-]*z|h|justify|overflow|border|max-h|min-h|max-w|min-w|flex|text|font|prose|inline|line|rounded|from|to|via|contrast|brightness|leading|items|place|align|backdrop|shadow|duration|whitespace|self|cursor|transition|outline)-[a-z0-9_-]+\\b|\\brelative\\b|\\bshadow\\b|\\bflex\\b|\\brounded\\b|\\bborder\\b|\\bunderline\\b', //\\babsolute\\b|\\fixed\\b| fixed and absolute cannot be mangle with PopperJS because PopperJS us 'absolute' and 'fixed' as strategy name
+    log: true,
+    reserveClassName: ['fa', 'fas', 'far', 'p', 'm', 'z', 'el', 'pt', 'pb', 'px', 'py', 'pl', 'pr', 'mt', 'mb', 'mx', 'my', 'ml', 'mr', 'to'],
+    ignorePrefixRegExp: '(.*tns.*|light[bB]ox|popover|el-|popper|is-|top-start|top-end|bottom-start|bottom-end|left-start|left-end|right-start|right-end)',
+    fileMatchRegExp: '.+\.js.*$|.+\.html.*$|.+\.vue.*$',
+    fileExlusionRegExp: '.+\.json.*$|.+\.geojson.*$',
+  });
+  webpackPlugins.push(myManglePlugin);
 }
 
 module.exports = {

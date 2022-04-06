@@ -1,6 +1,9 @@
-[submodule "CFDTrackJoiner"]
-	path = CFDTrackJoiner
-	url = git@github.com:eltorio/CFDTrackJoiner.git
 [submodule "fontmin-webpack"]
 	path = fontmin-webpack
 	url = git@github.com:eltorio/fontmin-webpack.git
+[submodule "mangle-css-class-webpack-plugin"]
+	path = mangle-css-class-webpack-plugin
+	url = git@github.com:eltorio/mangle-css-class-webpack-plugin.git
+[submodule "CFDTrackJoiner"]
+	path = CFDTrackJoiner
+	url = git@github.com:eltorio/cfdtrackjoiner.git

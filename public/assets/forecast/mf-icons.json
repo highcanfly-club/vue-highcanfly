@@ -406,6 +406,22 @@
 		}
 	},
 	{
+		"name": "p5bisj",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p5bisj.svg",
+		"desc": {
+			"en": "Fog patches",
+			"fr": "Bancs de Brouillard"
+		}
+	},
+	{
+		"name": "p5bisn",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p5bisn.svg",
+		"desc": {
+			"en": "Fog patches",
+			"fr": "Bancs de Brouillard"
+		}
+	},
+	{
 		"name": "p5j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p5j.svg",
 		"desc": {
