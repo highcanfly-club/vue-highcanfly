@@ -101,8 +101,49 @@
             <td class="align-baseline text-center hidden md:inline-flex">
               {{ detail.humidity }}%
             </td>
-            <td class="align-baseline text-center">
+            <td class="align-baseline text-center relative">
               {{ Math.round(detail.sea_level) }}
+              <div
+                v-if="index==4"
+                class="bg-white min-w-[150px] border-1 rounded shadow el-popper is-light el-popover el-popover--plain w-[200px] absolute m-0 inset-0"
+                role="tooltip"
+                aria-hidden="false"
+                OLDstyle="
+                  z-index: 2737;
+                  width: 200px;
+                  position: absolute;
+                  inset: auto auto 0px 0px;
+                  margin: 0px;
+                  transform: translate3d(440px, -213px, 0px);
+                "
+                data-popper-placement="top-start"
+              >
+                <div class="el-popover__title" role="title">Tendance</div>
+                <span>{{getWeather(detail.weather).desc}}</span>
+                <span
+                  class="el-popper__arrow"
+                  data-popper-arrow=""
+                  style="
+                    position: absolute;
+                    left: 0px;
+                    transform: translate3d(64.5px, 0px, 0px);
+                  "
+                ></span
+                ><span
+                  id="el-id-7498-19"
+                  role="tooltip"
+                  style="
+                    position: absolute;
+                    border: 0px;
+                    padding: 0px;
+                    overflow: hidden;
+                    clip: rect(0px, 0px, 0px, 0px);
+                    white-space: nowrap;
+                    overflow-wrap: normal;
+                  "
+                  ></span
+                >
+              </div>
             </td>
             <td class="place-items-center">
               <el-popover
@@ -110,11 +151,11 @@
                 placement="top-start"
                 title="Tendance"
                 :width="200"
-                trigger="hover"
+                trigger="click"
                 :content="getWeather(detail.weather).desc"
               >
                 <template #reference>
-                  <img
+                  <lazy-img
                     class="mx-auto w-8 h-8"
                     :src="getWeather(detail.weather).url"
                     :alt="getWeather(detail.weather).desc"
@@ -134,7 +175,13 @@
                 <template #reference>
                   <svg
                     :style="getWindImg(detail.wind.direction).style"
-                    class="mx-auto w-7 h-7 fill-transparent stroke-red-400 stroke-2"
+                    class="
+                      mx-auto
+                      w-7
+                      h-7
+                      fill-transparent
+                      stroke-red-400 stroke-2
+                    "
                     :class="
                       isDaylight(
                         forecast.daily_forecast,
@@ -175,6 +222,7 @@
 <script>
 import { reactive } from "vue";
 import { ElPopover } from "element-plus";
+import LazyImg from "@/components/Utilities/LazyImg.vue";
 const icons_base = "/assets/forecast/";
 // const icons_base =  "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/";
 const API_TOKEN = "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
@@ -215,6 +263,7 @@ export default {
   },
   components: {
     ElPopover,
+    LazyImg,
   },
   methods: {
     isFlyable(
