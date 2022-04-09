@@ -1,12 +1,17 @@
 <template>
   <div>
-    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200" buttoncolor="bg-white text-slate-700 active:bg-slate-50"/>
+    <navbar-default
+      color="text-white"
+      colorhover="text-slate-200"
+      iconscolor="text-slate-200"
+      buttoncolor="bg-white text-slate-700 active:bg-slate-50"
+    />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
           v-bind:style="{
-            backgroundImage: 'url(' + state.backgroundImageURL + ')',
+            backgroundImage: 'url(' + reactiveBackground + ')',
           }"
         >
           <span
@@ -15,7 +20,17 @@
           ></span>
         </div>
         <div
-          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+          class="
+            top-auto
+            bottom-0
+            left-0
+            right-0
+            w-full
+            absolute
+            pointer-events-none
+            overflow-hidden
+            h-70-px
+          "
           style="transform: translateZ(0)"
         >
           <svg
@@ -37,7 +52,21 @@
       <section class="relative py-16 bg-slate-200">
         <div class="container mx-auto px-4">
           <div
-            class="relative text-slate-600 bg-pistachio-400 min-h-screen-1/3 flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
+            class="
+              relative
+              text-slate-600
+              bg-pistachio-400
+              min-h-screen-1/3
+              flex flex-col
+              min-w-0
+              break-words
+              bg-white
+              w-full
+              mb-6
+              shadow-xl
+              rounded-lg
+              -mt-64
+            "
           >
             <div class="px-6 py-6">
               <ul id="array-rendering">
@@ -62,15 +91,10 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import { inject, reactive } from "vue";
-import backgroundImageAsset1x from "@/assets/img/highcanfly-102-1x.jpg";
-import backgroundImageAsset2x from "@/assets/img/highcanfly-102.jpg";
-import backgroundImageAssetWebp1x from "@/assets/img/highcanfly-102-1x.webp";
-import backgroundImageAssetWebp2x from "@/assets/img/highcanfly-102.webp";
-import {
-  getResponsePaths,
-} from "@/sitemapHelper.js";
-
+import { ref, reactive} from "vue";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+const backgroundImage = "static-web-highcanfly/highcanfly-102";
+import { getResponsePaths } from "@/sitemapHelper.js";
 
 let getDownloadSitemapXMLHREF = function (text) {
   //eslint-disable-line
@@ -80,38 +104,44 @@ let getDownloadSitemapXMLHREF = function (text) {
 };
 export default {
   title: "High Can Fly | Club de parapente du Nord | Plan du site",
+  reactiveBackground: ref(""),
+  resizeId: 0,
+  previousWindowSize: 0,
   data() {
-    const routesReactive = reactive({ pathList:[], xml: "", hrefdata: "" });
+    const routesReactive = reactive({ pathList: [], xml: "", hrefdata: "" });
     const canonical = new URL(window.location).origin;
     getResponsePaths(canonical).then((sol) => {
       routesReactive.xml = sol.xml;
       routesReactive.hrefdata = getDownloadSitemapXMLHREF(routesReactive.xml);
       routesReactive.pathList = sol.paths;
     });
-
-    const state = reactive({
-      backgroundImageURL: "",
-    });
-    inject("getJpgOrWebpIfSupported")(
-      window.innerWidth < 1024
-        ? backgroundImageAsset1x
-        : backgroundImageAsset2x,
-      window.innerWidth < 1024
-        ? backgroundImageAssetWebp1x
-        : backgroundImageAssetWebp2x,
-      "lossy"
-    ).then((file) => {
-      console.log("Webp support: " + file);
-      state.backgroundImageURL = file;
-    });
     return {
-      state,
+      reactiveBackground: this.reactiveBackground,
       routesReactive,
     };
   },
   created() {
+    window.addEventListener("resize", this.handleResize);
+    this.previousWindowSize = window.innerWidth;
+    this.reactiveBackground = getCloudinaryResponsiveBackground(backgroundImage)
+      .format("auto")
+      .toURL();
   },
   methods: {
+    handleResize: function () {
+      clearTimeout(this.resizeId);
+      this.resizeId = setTimeout(() => {
+        if (window.innerWidth > this.previousWindowSize) {
+          this.previousWindowSize = window.innerWidth;
+          let newUrl = getCloudinaryResponsiveBackground(backgroundImage)
+            .format("auto")
+            .toURL();
+          if (newUrl != this.reactiveBackground) {
+            this.reactiveBackground = newUrl;
+          }
+        }
+      }, 500);
+    },
   },
   components: {
     NavbarDefault,

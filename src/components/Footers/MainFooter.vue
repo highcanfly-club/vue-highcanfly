@@ -1,7 +1,18 @@
 <template>
   <footer class="relative bg-slate-200 pt-8 pb-6">
     <div
-      class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
+      class="
+        bottom-auto
+        top-0
+        left-0
+        right-0
+        w-full
+        absolute
+        pointer-events-none
+        overflow-hidden
+        -mt-20
+        h-20
+      "
       style="transform: translateZ(0)"
     >
       <svg
@@ -29,21 +40,63 @@
           </address>
           <div class="mt-6 lg:mb-0 mb-6">
             <button
-              class="bg-white text-sky-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+              class="
+                bg-white
+                text-sky-400
+                shadow-lg
+                font-normal
+                h-10
+                w-10
+                items-center
+                justify-center
+                align-center
+                rounded-full
+                outline-none
+                focus:outline-none
+                mr-2
+              "
               type="button"
               onclick="location.href='https://twitter.com/HighCanFlyClub'"
             >
               <i class="fab fa-twitter"></i>
             </button>
             <button
-              class="bg-white text-sky-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+              class="
+                bg-white
+                text-sky-600
+                shadow-lg
+                font-normal
+                h-10
+                w-10
+                items-center
+                justify-center
+                align-center
+                rounded-full
+                outline-none
+                focus:outline-none
+                mr-2
+              "
               type="button"
               onclick="location.href='https://www.instagram.com/highcanfly_parapente/'"
             >
               <i class="fab fa-instagram-square"></i>
             </button>
             <button
-              class="bg-white text-slate-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+              class="
+                bg-white
+                text-slate-800
+                shadow-lg
+                font-normal
+                h-10
+                w-10
+                items-center
+                justify-center
+                align-center
+                rounded-full
+                outline-none
+                focus:outline-none
+                mr-2
+              "
               type="button"
               onclick="location.href='https://github.com/eltorio/vue-highcanfly/tree/highcanfly'"
             >
@@ -58,13 +111,27 @@
               v-if="$auth0.isAuthenticated.value"
             >
               <span
-                class="block uppercase text-slate-500 text-xs font-semibold mb-2"
+                class="
+                  block
+                  uppercase
+                  text-slate-500 text-xs
+                  font-semibold
+                  mb-2
+                "
                 >Administration</span
               >
               <ul class="list-unstyled">
                 <li>
                   <span
-                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-xs cursor-pointer"
+                    class="
+                      text-slate-600
+                      hover:text-slate-800
+                      font-semibold
+                      block
+                      pb-2
+                      text-xs
+                      cursor-pointer
+                    "
                     to="/login"
                     @click="logout"
                     >Logout</span
@@ -81,70 +148,136 @@
             </div>
             <div class="w-full lg:w-4/12 px-4">
               <span
-                class="block uppercase text-slate-500 text-sm font-semibold mb-2"
+                class="
+                  block
+                  uppercase
+                  text-slate-500 text-sm
+                  font-semibold
+                  mb-2
+                "
                 >Liens utiles</span
               >
               <ul class="list-unstyled">
                 <li>
                   <router-link
                     to="/about"
-                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
+                    class="
+                      text-slate-600
+                      hover:text-slate-800
+                      font-semibold
+                      block
+                      pb-2
+                      text-sm
+                    "
                     >À propos</router-link
                   >
                 </li>
                 <li>
                   <router-link
                     to="/blog"
-                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
+                    class="
+                      text-slate-600
+                      hover:text-slate-800
+                      font-semibold
+                      block
+                      pb-2
+                      text-sm
+                    "
                     >Blog</router-link
                   >
                 </li>
                 <li>
-                  <a
-                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                    href="/site-map"
-                    >Plan du site</a
+                  <router-link
+                    class="
+                      text-slate-600
+                      hover:text-slate-800
+                      font-semibold
+                      block
+                      pb-2
+                      text-sm
+                    "
+                    to="/site-map"
+                    >Plan du site</router-link
                   >
                 </li>
                 <li>
-                  <a
-                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                    href="/policy?ref=vn-footer"
-                    >Politique de confidentialité</a
+                  <router-link
+                    class="
+                      text-slate-600
+                      hover:text-slate-800
+                      font-semibold
+                      block
+                      pb-2
+                      text-sm
+                    "
+                    to="/policy"
+                    >Politique de confidentialité</router-link
                   >
                 </li>
               </ul>
             </div>
             <div class="w-full lg:w-4/12 px-4">
               <span
-                class="block uppercase text-slate-500 text-sm font-semibold mb-2"
+                class="
+                  block
+                  uppercase
+                  text-slate-500 text-sm
+                  font-semibold
+                  mb-2
+                "
                 >Autres sites</span
               >
               <ul class="list-unstyled">
                 <li>
                   <a
-                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
+                    class="
+                      text-slate-600
+                      hover:text-slate-800
+                      font-semibold
+                      block
+                      pb-2
+                      text-sm
+                    "
                     href="https://cdvl59.cf"
                     >Comité Départemental de Vol Libre du Nord</a
                   >
                 </li>
                 <li>
                   <a
-                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                    href="https://federation.ffvl.fr/structure/14172?ref=vn-footer"
+                    class="
+                      text-slate-600
+                      hover:text-slate-800
+                      font-semibold
+                      block
+                      pb-2
+                      text-sm
+                    "
+                    href="https://federation.ffvl.fr/structure/14172?ref=highcanfly-footer"
                     >HighCanFly - FFVL</a
                   >
                 </li>
                 <li>
-                  <a
-                    class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                    href="https://www.highcanfly.club/contact?ref=vn-footer"
-                    >Contactez-nous</a
+                  <router-link
+                    class="
+                      text-slate-600
+                      hover:text-slate-800
+                      font-semibold
+                      block
+                      pb-2
+                      text-sm
+                    "
+                    to="/contact"
+                    >Contactez-nous</router-link
                   >
                 </li>
                 <li>
                   <span
-                    class="flex flex-nowrap align-center justify-center lg:justify-start"
+                    class="
+                      flex flex-nowrap
+                      align-center
+                      justify-center
+                      lg:justify-start
+                    "
                   >
                     <img
                       class="h-4 w-4"
@@ -152,7 +285,14 @@
                       alt="logo High Can Fly parapente"
                     />
                     <a
-                      class="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
+                      class="
+                        text-slate-600
+                        hover:text-slate-800
+                        font-semibold
+                        block
+                        pb-2
+                        text-sm
+                      "
                       href="https://cfdmv.highcanfly.club"
                       >Trackjoiner</a
                     >
@@ -191,14 +331,18 @@
     </div>
 
     <VueScrollUp tag="div" :scroll-duration="1000" :scroll-y="250">
-      <img style="position: absolute" src="@/assets/img/arrow-top.svg" alt="remonter"/>
+      <img
+        style="position: absolute"
+        src="@/assets/img/arrow-top.svg"
+        alt="remonter"
+      />
     </VueScrollUp>
   </footer>
 </template>
 <script>
 import VueScrollUp from "@/plugins/vue-scroll-up";
 import { useAuth0 } from "@/plugins/auth0";
-import { sanityConf } from '@/plugins/auth0/sanityStore';
+import { sanityConf } from "@/plugins/auth0/sanityStore";
 
 export default {
   data() {

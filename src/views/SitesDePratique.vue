@@ -11,7 +11,7 @@
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
           v-bind:style="{
-            backgroundImage: 'url(' + state.backgroundImageURL + ')',
+            backgroundImage: 'url(' + reactiveBackground + ')',
           }"
         >
           <span
@@ -20,7 +20,17 @@
           ></span>
         </div>
         <div
-          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+          class="
+            top-auto
+            bottom-0
+            left-0
+            right-0
+            w-full
+            absolute
+            pointer-events-none
+            overflow-hidden
+            h-70-px
+          "
           style="transform: translateZ(0)"
         >
           <svg
@@ -42,7 +52,18 @@
       <section class="relative py-16 bg-slate-200">
         <div class="container mx-auto px-4">
           <div
-            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
+            class="
+              relative
+              flex flex-col
+              min-w-0
+              break-words
+              bg-white
+              w-full
+              mb-6
+              shadow-xl
+              rounded-lg
+              -mt-64
+            "
           >
             <div class="px-3 py-3">
               <ol-mapsites-de-pratique mapClass="h-screen-1/2" />
@@ -57,43 +78,51 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset1x from "@/assets/img/blancnezhugues-101-1x.jpg";
-import backgroundImageAsset2x from "@/assets/img/blancnezhugues-101.jpg";
-import backgroundImageAssetWebp1x from "@/assets/img/blancnezhugues-101-1x.webp";
-import backgroundImageAssetWebp2x from "@/assets/img/blancnezhugues-101.webp";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
 import olMapsitesDePratique from "@/components/Maps/OLMapSitesDePratique.vue";
-import { inject, reactive } from "vue";
+import { ref } from "vue";
 
 export default {
   title: "High Can Fly | Club de parapente du Nord | Nos sites de pratique",
   descritpion:
     "Les parapentistes volents. Les quelques endroits où vous nous trouverez dans les Hauts-de-France…",
   canonical: new URL(window.location),
+  reactiveBackground: ref(""),
+  resizeId: 0,
+  previousWindowSize: 0,
   data() {
-    const state = reactive({
-      //eslint-disable-line
-      backgroundImageURL: "",
-    });
-    inject("getJpgOrWebpIfSupported")(
-      window.innerWidth < 1024
-        ? backgroundImageAsset1x
-        : backgroundImageAsset2x,
-      window.innerWidth < 1024
-        ? backgroundImageAssetWebp1x
-        : backgroundImageAssetWebp2x,
-      "lossy"
-    ).then((file) => {
-      console.log("Webp support: " + file);
-      state.backgroundImageURL = file;
-    });
     return {
-      state,
+      reactiveBackground: this.reactiveBackground,
     };
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.previousWindowSize = window.innerWidth;
+    this.reactiveBackground = getCloudinaryResponsiveBackground(backgroundImage)
+      .format("auto")
+      .toURL();
   },
   components: {
     NavbarDefault,
     MainFooter,
     olMapsitesDePratique,
+  },
+  methods: {
+    handleResize: function () {
+      clearTimeout(this.resizeId);
+      this.resizeId = setTimeout(() => {
+        if (window.innerWidth > this.previousWindowSize) {
+          this.previousWindowSize = window.innerWidth;
+          let newUrl = getCloudinaryResponsiveBackground(backgroundImage)
+            .format("auto")
+            .toURL();
+          if (newUrl != this.reactiveBackground) {
+            this.reactiveBackground = newUrl;
+          }
+        }
+      }, 500);
+    },
   },
 };
 </script>

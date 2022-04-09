@@ -1,12 +1,17 @@
 <template>
   <div>
-    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200" buttoncolor="bg-white text-slate-700 active:bg-slate-50"/>
+    <navbar-default
+      color="text-white"
+      colorhover="text-slate-200"
+      iconscolor="text-slate-200"
+      buttoncolor="bg-white text-slate-700 active:bg-slate-50"
+    />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
           v-bind:style="{
-            backgroundImage: 'url(' + state.backgroundImageURL + ')',
+            backgroundImage: 'url(' + reactiveBackground + ')',
           }"
         >
           <span
@@ -44,7 +49,7 @@
           </svg>
         </div>
       </section>
-<card-single-post :slug="slug"/>
+      <card-single-post :slug="slug" />
     </main>
     <footer-component />
   </div>
@@ -52,46 +57,53 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset1x from "@/assets/img/blancnezhugues-101-1x.jpg";
-import backgroundImageAsset2x from "@/assets/img/blancnezhugues-101.jpg";
-import backgroundImageAssetWebp1x from "@/assets/img/blancnezhugues-101-1x.webp";
-import backgroundImageAssetWebp2x from "@/assets/img/blancnezhugues-101.webp";
 import CardSinglePost from "@/components/Cards/CardSinglePost.vue";
-
-import { inject, reactive } from "vue";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
+import { ref } from "vue";
 
 export default {
   description:
     "Club de parapente dans le Nord FFVL n°29070. Voici la dernière nouvelle !",
   title: "High Can Fly | Club de parapente du Nord | News",
-  canonical: (new URL(window.location)),
+  canonical: new URL(window.location),
+  reactiveBackground: ref(""),
+  resizeId: 0,
+  previousWindowSize: 0,
   data() {
     const slug = this.$route.params.slug;
-    const state = reactive({
-      //eslint-disable-line
-      backgroundImageURL: "",
-    });
-    inject("getJpgOrWebpIfSupported")(
-      window.innerWidth < 1024
-        ? backgroundImageAsset1x
-        : backgroundImageAsset2x,
-      window.innerWidth < 1024
-        ? backgroundImageAssetWebp1x
-        : backgroundImageAssetWebp2x,
-      "lossy"
-    ).then((file) => {
-      console.log("Webp support: " + file);
-      state.backgroundImageURL = file;
-    });
     return {
-      state,
+      reactiveBackground: this.reactiveBackground,
       slug,
     };
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.previousWindowSize = window.innerWidth;
+    this.reactiveBackground = getCloudinaryResponsiveBackground(backgroundImage)
+      .format("auto")
+      .toURL();
   },
   components: {
     NavbarDefault,
     FooterComponent,
     CardSinglePost,
+  },
+  methods: {
+    handleResize: function () {
+      clearTimeout(this.resizeId);
+      this.resizeId = setTimeout(() => {
+        if (window.innerWidth > this.previousWindowSize) {
+          this.previousWindowSize = window.innerWidth;
+          let newUrl = getCloudinaryResponsiveBackground(backgroundImage)
+            .format("auto")
+            .toURL();
+          if (newUrl != this.reactiveBackground) {
+            this.reactiveBackground = newUrl;
+          }
+        }
+      }, 500);
+    },
   },
 };
 </script>
