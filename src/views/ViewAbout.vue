@@ -232,16 +232,16 @@
                 </div>
               </div>
             </div>
-            <div class="text-right">
-              <span class="text-sm text-slate-400 mr-2"
+            <div class=" ">
+              <span class="flex flex-wrap w-full text-right text-sm text-slate-400 justify-end pr-2"
                 >Site hébergé gracieusement par
                 <a href="https://www.cloudflare.com"
                   ><i style="color: #e7873b" class="fab fa-cloudflare"></i>
                   Cloudflare™</a
-                >,
-                <a href="https://www.sanity.io">
+                >,&nbsp;
+                <a class="flex flex-nowrap" href="https://www.sanity.io">
                   <svg
-                    class="inline align-text-bottom max-h-4"
+                    class="w-4 h-4"
                     viewBox="0 0 28 28"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -260,9 +260,9 @@
                       fill="#F9B1AB"
                     ></path>
                   </svg>
-                  Sanity.io</a
+                  &nbsp;Sanity.io</a
                 >
-                et propulsé par
+                &nbsp;et propulsé par&nbsp;
                 <a href="https://v3.vuejs.org/"
                   ><i style="color: #64b587" class="fab fa-vuejs"></i> Vue.js
                   {{ app.version }}</a
