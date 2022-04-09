@@ -1,11 +1,16 @@
 <template>
   <div>
-    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200" buttoncolor="bg-white text-slate-700 active:bg-slate-50"/>
+    <navbar-default
+      color="text-white"
+      colorhover="text-slate-200"
+      iconscolor="text-slate-200"
+      buttoncolor="bg-white text-slate-700 active:bg-slate-50"
+    />
     <main class="profile-page">
       <section class="relative block h-500-px">
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{ backgroundImage: 'url(' + state.backgroundImageURL + ')' }"
+          v-bind:style="{ backgroundImage: 'url(' + reactiveBackground + ')' }"
         >
           <span
             id="blackOverlay"
@@ -275,43 +280,51 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset1x from "@/assets/img/mountain-1x.jpg";
-import backgroundImageAsset2x from "@/assets/img/mountain.jpg";
-import backgroundImageAssetWebp1x from "@/assets/img/mountain-1x.webp";
-import backgroundImageAssetWebp2x from "@/assets/img/mountain.webp";
-import { inject, reactive } from "vue";
+import { ref } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+const backgroundImage = "static-web-highcanfly/mountain";
 
 export default {
   title: "High Can Fly | Club de parapente du Nord | À propos",
   description: "Club de parapente dans le Nord FFVL n°29070. À propos de nous…",
-  canonical: (new URL(window.location)),
+  canonical: new URL(window.location),
+  reactiveBackground: ref(""),
+  resizeId: 0,
+  previousWindowSize: 0,
   data() {
-    const state = reactive({
-      //eslint-disable-line
-      backgroundImageURL: "",
-    });
-    inject("getJpgOrWebpIfSupported")(
-      window.innerWidth < 1024
-        ? backgroundImageAsset1x
-        : backgroundImageAsset2x,
-      window.innerWidth < 1024
-        ? backgroundImageAssetWebp1x
-        : backgroundImageAssetWebp2x,
-      "lossy"
-    ).then((file) => {
-      console.log("Webp support: " + file);
-      state.backgroundImageURL = file;
-    });
     return {
-      state,
       logo,
       app, //eslint-disable-line
+      reactiveBackground: this.reactiveBackground,
     };
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.previousWindowSize = window.innerWidth;
+    this.reactiveBackground = getCloudinaryResponsiveBackground(backgroundImage)
+      .format("auto")
+      .toURL();
   },
   components: {
     NavbarDefault,
     MainFooter,
+  },
+  methods: {
+    handleResize: function () {
+      clearTimeout(this.resizeId);
+      this.resizeId = setTimeout(() => {
+        if (window.innerWidth > this.previousWindowSize) {
+          this.previousWindowSize = window.innerWidth;
+          let newUrl = getCloudinaryResponsiveBackground(backgroundImage)
+            .format("auto")
+            .toURL();
+          if (newUrl != this.reactiveBackground) {
+            this.reactiveBackground = newUrl;
+          }
+        }
+      }, 500);
+    },
   },
 };
 </script>

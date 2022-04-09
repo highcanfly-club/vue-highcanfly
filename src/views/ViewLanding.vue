@@ -8,13 +8,22 @@
     />
     <main>
       <div
-        class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75"
+        class="
+          relative
+          pt-16
+          pb-32
+          flex
+          content-center
+          items-center
+          justify-center
+          min-h-screen-75
+        "
       >
         <div
           id="bg-div"
           class="absolute top-0 w-full h-full bg-center bg-cover"
           v-bind:style="{
-            backgroundImage: 'url(' + state.backgroundImageURL + ')',
+            backgroundImage: 'url(' + reactiveBackground + ')',
           }"
         >
           <span
@@ -40,7 +49,17 @@
           </div>
         </div>
         <div
-          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+          class="
+            top-auto
+            bottom-0
+            left-0
+            right-0
+            w-full
+            absolute
+            pointer-events-none
+            overflow-hidden
+            h-70-px
+          "
           style="transform: translateZ(0)"
         >
           <svg
@@ -65,11 +84,34 @@
           <div class="flex flex-wrap">
             <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+                class="
+                  relative
+                  flex flex-col
+                  min-w-0
+                  break-words
+                  bg-white
+                  w-full
+                  mb-8
+                  shadow-lg
+                  rounded-lg
+                "
               >
                 <div class="px-4 py-5 flex-auto">
                   <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
+                    class="
+                      text-white
+                      p-3
+                      text-center
+                      inline-flex
+                      items-center
+                      justify-center
+                      w-12
+                      h-12
+                      mb-5
+                      shadow-lg
+                      rounded-full
+                      bg-red-400
+                    "
                   >
                     <i class="fas fa-award"></i>
                   </div>
@@ -85,7 +127,17 @@
 
             <div class="w-full md:w-4/12 px-6 text-center">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+                class="
+                  relative
+                  flex flex-col
+                  min-w-0
+                  break-words
+                  bg-white
+                  w-full
+                  mb-8
+                  shadow-lg
+                  rounded-lg
+                "
               >
                 <div class="px-6 py-6 flex-auto">
                   <div class="px-4 py-4 flex-auto">
@@ -100,11 +152,34 @@
 
             <div class="pt-6 w-full md:w-4/12 px-4 text-center">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+                class="
+                  relative
+                  flex flex-col
+                  min-w-0
+                  break-words
+                  bg-white
+                  w-full
+                  mb-8
+                  shadow-lg
+                  rounded-lg
+                "
               >
                 <div class="px-4 py-5 flex flex-col items-center">
                   <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400"
+                    class="
+                      text-white
+                      p-3
+                      text-center
+                      inline-flex
+                      items-center
+                      justify-center
+                      w-12
+                      h-12
+                      mb-5
+                      shadow-lg
+                      rounded-full
+                      bg-emerald-400
+                    "
                   >
                     <i class="fas fa-newspaper"></i>
                   </div>
@@ -124,29 +199,38 @@
           <div class="flex flex-wrap items-center mt-16">
             <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-emerald-500"
+                class="
+                  relative
+                  flex flex-col
+                  min-w-0
+                  break-words
+                  bg-white
+                  w-full
+                  mb-6
+                  shadow-lg
+                  rounded-lg
+                  bg-emerald-500
+                "
               >
-                <picture>
-                  <source
-                    srcset="
-                      @/assets/img/highcanfly-103-1x.webp 375w,
-                      @/assets/img/highcanfly-103.webp    750w
-                    "
-                    type="image/webp"
-                  />
-                  <source
-                    srcset="
-                      @/assets/img/highcanfly-103-1x.jpg 375w,
-                      @/assets/img/highcanfly-103.jpg    750w
-                    "
-                    type="image/jpeg"
-                  />
-                  <img
-                    class="w-full align-middle rounded-t-lg"
-                    src="@/assets/img/highcanfly-103.jpg"
-                    alt="En route vers le Plancert."
-                  />
-                </picture>
+                <lazy-img
+                  :src="
+                    getCloudinaryImg(
+                      'static-web-highcanfly/highcanfly-103',
+                      width < 768
+                        ? Math.ceil((width - 80) / 100) * 100
+                        : Math.ceil((width * 0.25) / 100) * 100
+                    ).toURL()
+                  "
+                  @click="
+                    lightBox(
+                      getCloudinaryImg(
+                        'static-web-highcanfly/highcanfly-103'
+                      ).toURL()
+                    )
+                  "
+                  alt="En route vers le Plancert."
+                  class="w-full align-middle rounded-t-lg"
+                />
                 <blockquote class="relative p-8 mb-4">
                   <svg
                     preserveAspectRatio="none"
@@ -178,7 +262,20 @@
             </div>
             <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
               <div
-                class="text-slate-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
+                class="
+                  text-slate-500
+                  p-3
+                  text-center
+                  inline-flex
+                  items-center
+                  justify-center
+                  w-16
+                  h-16
+                  mb-6
+                  shadow-lg
+                  rounded-full
+                  bg-white
+                "
               >
                 <i class="fas fa-user-friends text-xl"></i>
               </div>
@@ -186,7 +283,14 @@
                 Partageons nos expériences
               </h3>
               <p
-                class="text-lg font-light leading-relaxed mt-4 mb-4 text-slate-600"
+                class="
+                  text-lg
+                  font-light
+                  leading-relaxed
+                  mt-4
+                  mb-4
+                  text-slate-600
+                "
               >
                 Le parapente fait partie de ces activités, comme l'alpinisme,
                 qui créent des émotions fortes. Elles permettent de développer
@@ -194,7 +298,14 @@
                 l'activité avec nous.
               </p>
               <p
-                class="text-lg font-light leading-relaxed mt-0 mb-4 text-slate-600"
+                class="
+                  text-lg
+                  font-light
+                  leading-relaxed
+                  mt-0
+                  mb-4
+                  text-slate-600
+                "
               >
                 Une sortie Hike and Fly laisse souvent de nombreux souvenirs de
                 conversations pendant la montée,de partage d'émotions à la vue
@@ -207,7 +318,18 @@
 
       <section class="relative py-20">
         <div
-          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
+          class="
+            bottom-auto
+            top-0
+            left-0
+            right-0
+            w-full
+            absolute
+            pointer-events-none
+            overflow-hidden
+            -mt-20
+            h-20
+          "
           style="transform: translateZ(0)"
         >
           <svg
@@ -231,7 +353,20 @@
             <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
               <div class="md:pr-12">
                 <div
-                  class="text-emerald-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-emerald-300"
+                  class="
+                    text-emerald-600
+                    p-3
+                    text-center
+                    inline-flex
+                    items-center
+                    justify-center
+                    w-16
+                    h-16
+                    mb-6
+                    shadow-lg
+                    rounded-full
+                    bg-emerald-300
+                  "
                 >
                   <i class="fas fa-rocket text-xl"></i>
                 </div>
@@ -247,7 +382,18 @@
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 mr-3"
+                          class="
+                            text-xs
+                            font-semibold
+                            inline-block
+                            py-1
+                            px-2
+                            uppercase
+                            rounded-full
+                            text-emerald-600
+                            bg-emerald-200
+                            mr-3
+                          "
                         >
                           <i class="fas fa-fingerprint"></i>
                         </span>
@@ -263,7 +409,18 @@
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 mr-3"
+                          class="
+                            text-xs
+                            font-semibold
+                            inline-block
+                            py-1
+                            px-2
+                            uppercase
+                            rounded-full
+                            text-emerald-600
+                            bg-emerald-200
+                            mr-3
+                          "
                         >
                           <i class="fab fa-html5"></i>
                         </span>
@@ -279,7 +436,18 @@
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-emerald-600 bg-emerald-200 mr-3"
+                          class="
+                            text-xs
+                            font-semibold
+                            inline-block
+                            py-1
+                            px-2
+                            uppercase
+                            rounded-full
+                            text-emerald-600
+                            bg-emerald-200
+                            mr-3
+                          "
                         >
                           <i class="far fa-paper-plane"></i>
                         </span>
@@ -295,27 +463,25 @@
               </div>
             </div>
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-              <picture>
-                <source
-                  srcset="
-                    @/assets/img/highcanfly-104-1x.webp 334w,
-                    @/assets/img/highcanfly-104.webp    667w
-                  "
-                  type="image/webp"
-                />
-                <source
-                  srcset="
-                    @/assets/img/highcanfly-104-1x.jpg 334w,
-                    @/assets/img/highcanfly-104.jpg    667w
-                  "
-                  type="image/jpeg"
-                />
-                <img
-                  alt="Décollage d'Helbroner"
-                  class="max-w-full rounded-lg shadow-lg"
-                  src="@/assets/img/highcanfly-104.jpg"
-                />
-              </picture>
+              <lazy-img
+                :src="
+                  getCloudinaryImg(
+                    'static-web-highcanfly/highcanfly-104',
+                    width < 768
+                      ? Math.ceil((width - 80) / 100) * 100
+                      : Math.ceil((width * 0.25) / 100) * 100
+                  ).toURL()
+                "
+                @click="
+                  lightBox(
+                    getCloudinaryImg(
+                      'static-web-highcanfly/highcanfly-104'
+                    ).toURL()
+                  )
+                "
+                alt="Décollage d'Helbroner"
+                class="w-full align-middle rounded-lg"
+              />
             </div>
           </div>
         </div>
@@ -335,27 +501,23 @@
           <div class="flex flex-wrap">
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <picture>
-                  <source
-                    srcset="
-                      @/assets/img/highcanfly-106-1x.webp  500w,
-                      @/assets/img/highcanfly-106.webp    1000w
-                    "
-                    type="image/webp"
-                  />
-                  <source
-                    srcset="
-                      @/assets/img/highcanfly-106-1x.jpg  500w,
-                      @/assets/img/highcanfly-106.jpg    1000w
-                    "
-                    type="image/jpeg"
-                  />
-                  <img
-                    alt="Décollage depuis la Forclaz"
-                    src="@/assets/img/highcanfly-106.jpg"
-                    class="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
-                </picture>
+                <lazy-img
+                  :src="
+                    getCloudinaryImg(
+                      'static-web-highcanfly/highcanfly-106',
+                      120,
+                      120
+                    ).toURL()
+                  "
+                  @click="
+                    lightBox(
+                      getCloudinaryImg(
+                        'static-web-highcanfly/highcanfly-106'
+                      ).toURL()
+                    )
+                  "
+                  class="shadow-lg rounded-full mx-auto max-w-120-px"
+                />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">R…</h5>
                   <p
@@ -365,7 +527,17 @@
                   </p>
                   <div class="mt-6">
                     <button
-                      class="bg-slate-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-slate-700
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                       onclick="location.href='https://www.instagram.com/klerviaudreyronanbriac/'"
                     >
@@ -377,27 +549,24 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <picture>
-                  <source
-                    srcset="
-                      @/assets/img/highcanfly-105-1x.webp  500w,
-                      @/assets/img/highcanfly-105.webp    1000w
-                    "
-                    type="image/webp"
-                  />
-                  <source
-                    srcset="
-                      @/assets/img/highcanfly-105-1x.jpg  500w,
-                      @/assets/img/highcanfly-105.jpg    1000w
-                    "
-                    type="image/jpeg"
-                  />
-                  <img
-                    alt="..."
-                    src="@/assets/img/highcanfly-105.jpg"
-                    class="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
-                </picture>
+                <lazy-img
+                  :src="
+                    getCloudinaryImg(
+                      'static-web-highcanfly/highcanfly-105',
+                      120,
+                      120
+                    ).toURL()
+                  "
+                  @click="
+                    lightBox(
+                      getCloudinaryImg(
+                        'static-web-highcanfly/highcanfly-105'
+                      ).toURL()
+                    )
+                  "
+                  alt="Notre moniteur professionel"
+                  class="shadow-lg rounded-full mx-auto max-w-120-px"
+                />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">H…</h5>
                   <p
@@ -407,13 +576,33 @@
                   </p>
                   <div class="mt-6">
                     <button
-                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-red-600
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-google"></i>
                     </button>
                     <button
-                      class="bg-sky-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-sky-600
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-facebook-f"></i>
@@ -424,27 +613,22 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <picture>
-                  <source
-                    srcset="
-                      @/assets/img/capucine-1x.webp 400w,
-                      @/assets/img/capucine.webp    800w
-                    "
-                    type="image/webp"
-                  />
-                  <source
-                    srcset="
-                      @/assets/img/capucine-1x.jpg 400w,
-                      @/assets/img/capucine.jpg    800w
-                    "
-                    type="image/jpeg"
-                  />
-                  <img
-                    alt="Capucine en compétition"
-                    src="@/assets/img/capucine.jpg"
-                    class="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
-                </picture>
+                <lazy-img
+                  :src="
+                    getCloudinaryImg(
+                      'static-web-highcanfly/capucine',
+                      120,
+                      120
+                    ).toURL()
+                  "
+                  @click="
+                    lightBox(
+                      getCloudinaryImg('static-web-highcanfly/capucine').toURL()
+                    )
+                  "
+                  alt="Capucine en compétition"
+                  class="shadow-lg rounded-full mx-auto max-w-120-px"
+                />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">C…</h5>
                   <p
@@ -454,14 +638,34 @@
                   </p>
                   <div class="mt-6">
                     <button
-                      class="bg-indigo-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-indigo-500
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                       onclick="location.href='https://www.instagram.com/capucine_dlt/'"
                     >
                       <i class="fab fa-instagram"></i>
                     </button>
                     <button
-                      class="bg-sky-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-sky-400
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                       onclick="location.href='https://twitter.com/piitchy38'"
                     >
@@ -473,27 +677,24 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <picture>
-                  <source
-                    srcset="
-                      @/assets/img/highcanfly-107-1x.webp  500w,
-                      @/assets/img/highcanfly-107.webp    1000w
-                    "
-                    type="image/webp"
-                  />
-                  <source
-                    srcset="
-                      @/assets/img/highcanfly-107-1x.jpg  500w,
-                      @/assets/img/highcanfly-107.jpg    1000w
-                    "
-                    type="image/jpeg"
-                  />
-                  <img
-                    alt="Audrey à Samoëns"
-                    src="@/assets/img/highcanfly-107.jpg"
-                    class="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
-                </picture>
+                <lazy-img
+                  :src="
+                    getCloudinaryImg(
+                      'static-web-highcanfly/highcanfly-107',
+                      120,
+                      120
+                    ).toURL()
+                  "
+                  @click="
+                    lightBox(
+                      getCloudinaryImg(
+                        'static-web-highcanfly/highcanfly-107'
+                      ).toURL()
+                    )
+                  "
+                  alt="Audrey à Samoëns"
+                  class="shadow-lg rounded-full mx-auto max-w-120-px"
+                />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">A…</h5>
                   <p
@@ -503,25 +704,65 @@
                   </p>
                   <div class="mt-6">
                     <button
-                      class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-pink-500
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-dribbble"></i>
                     </button>
                     <button
-                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-red-600
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-google"></i>
                     </button>
                     <button
-                      class="bg-sky-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-sky-400
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-twitter"></i>
                     </button>
                     <button
-                      class="bg-slate-700 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      class="
+                        bg-slate-700
+                        text-white
+                        w-8
+                        h-8
+                        rounded-full
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                      "
                       type="button"
                     >
                       <i class="fab fa-instagram"></i>
@@ -536,7 +777,18 @@
 
       <section class="pb-20 relative block bg-slate-800">
         <div
-          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
+          class="
+            bottom-auto
+            top-0
+            left-0
+            right-0
+            w-full
+            absolute
+            pointer-events-none
+            overflow-hidden
+            -mt-20
+            h-20
+          "
           style="transform: translateZ(0)"
         >
           <svg
@@ -599,20 +851,21 @@
 <script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
-import backgroundImageAsset1x from "@/assets/img/highcanfly-101-1x.jpg";
-import backgroundImageAsset2x from "@/assets/img/highcanfly-101.jpg";
-import backgroundImageAssetWebp1x from "@/assets/img/highcanfly-101-1x.webp";
-import backgroundImageAssetWebp2x from "@/assets/img/highcanfly-101.webp";
 import { defineAsyncComponent } from "vue";
 import MiniSanityBlog from "@/components/Utilities/ComponentMinSanityBlog.vue";
 import CardAlgoliaSearch from "@/components/Cards/CardAlgoliaSearch.vue";
 import emailForm from "@/components/Forms/EmailForm.vue";
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
-import { inject, reactive } from "vue";
+import { getCloudinaryImg } from "@/plugins/highcanfly.js";
+import LazyImg from "@/components/Utilities/LazyImg.vue";
+import * as basiclightbox from "basiclightbox";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+import {ref} from "vue";
 
 const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
 const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
 const sanityDataset = process.env.VUE_APP_SANITY_DATASET;
+const backgroundImage = "static-web-highcanfly/highcanfly-101";
 
 export default {
   description:
@@ -620,6 +873,9 @@ export default {
   title: "High Can Fly | Club de parapente du Nord",
   canonical: new URL(window.location),
   loadMap: false,
+  reactiveBackground: ref(""),
+  resizeId: 0,
+  previousWindowSize: 0,
   methods: {
     checkForm: function (e) {
       if (this.name && this.email && this.message) {
@@ -646,6 +902,34 @@ export default {
         console.log("Loading map lazily");
       }
     },
+    lightBox: (url) => {
+      if (url !== undefined) {
+        basiclightbox
+          .create(`<img src="${url}" />`)
+          .show(() => console.log(`lightbox ${url} now visible`));
+      }
+    },
+    handleResize: function () {
+      clearTimeout(this.resizeId);
+      this.resizeId = setTimeout(() => {
+        if (window.innerWidth > this.previousWindowSize) {
+          this.previousWindowSize = window.innerWidth;
+          let newUrl = getCloudinaryResponsiveBackground(backgroundImage)
+            .format("auto")
+            .toURL();
+          if (newUrl != this.reactiveBackground) {
+            this.reactiveBackground = newUrl;
+          }
+        }
+      }, 500);
+    },
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.previousWindowSize = window.innerWidth;
+    this.reactiveBackground = getCloudinaryResponsiveBackground(backgroundImage)
+      .format("auto")
+      .toURL();
   },
   data() {
     console.log(
@@ -660,29 +944,16 @@ export default {
     );
     const loadMap = this.loadMap;
     const errors = [];
-    const state = reactive({
-      //eslint-disable-line
-      backgroundImageURL: "",
-    });
-    inject("getJpgOrWebpIfSupported")(
-      window.innerWidth < 1024
-        ? backgroundImageAsset1x
-        : backgroundImageAsset2x,
-      window.innerWidth < 1024
-        ? backgroundImageAssetWebp1x
-        : backgroundImageAssetWebp2x,
-      "lossy"
-    ).then((file) => {
-      console.log("Webp support: " + file);
-      state.backgroundImageURL = file;
-    });
+
     return {
-      state,
       errors,
       loadMap,
       algoliaSearchKey,
       algoliaApplicationId,
       sanityDataset,
+      getCloudinaryImg,
+      width: window.innerWidth,
+      reactiveBackground: this.reactiveBackground,
     };
   },
   components: {
@@ -695,6 +966,7 @@ export default {
     MiniSanityBlog,
     CardAlgoliaSearch,
     LazyObserver,
+    LazyImg,
   },
 };
 </script>

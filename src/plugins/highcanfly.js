@@ -50,7 +50,7 @@ export const uuidv4 = () => {
   );
 };
 
-export const getCloudinaryImg = (img, width, height) => {
+const getCloudinaryImg = (img, width, height) => {
   let _img = cloudinary.image(img);
   if (width !== undefined || height !== undefined) {
     let _fill = fill();
@@ -62,8 +62,15 @@ export const getCloudinaryImg = (img, width, height) => {
     }
     _img.resize(_fill);
   }
-  return _img.delivery(quality('auto'));
+  return _img.delivery(quality("auto")).format('auto');
 }
+
+const getCloudinaryResponsiveBackground = (img) => {
+  return getCloudinaryImg(img,(Math.ceil(window.innerWidth/200)*200));
+}
+
+export { getCloudinaryImg,getCloudinaryResponsiveBackground }; 
+
 export const getWebKitImageSet = (imageAsset1x,imageAssetWebp1x,imageAsset2x, imageAssetWebp2x,minSize) => {
   const srcSet = {low: `-webkit-image-set(url('${imageAssetWebp1x}') type('image/webp'),url('${imageAsset1x}')type('image/jpeg'))`,
   high: `-webkit-image-set(url('${imageAssetWebp2x}') type('image/webp'),url('${imageAsset2x}')type('image/jpeg'))`};
