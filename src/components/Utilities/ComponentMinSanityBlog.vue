@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
 
 import sanityClient from "@sanity/client";
@@ -46,7 +46,7 @@ export default {
     console.log('created');
     const { initializationCompleted, user, isAuthenticated } = useAuth0();
     initializationCompleted().then(() => {
-      console.lof('initializationCompleted()');
+      console.log('initializationCompleted()');
       if (isAuthenticated.value) {
       sanityConf.token = user.value["https://www.highcanfly.club/sanity_token"].toString();
       sanityConf.useCdn = false;
