@@ -45,7 +45,6 @@ export default {
   created() {
     const { initializationCompleted, user, isAuthenticated } = useAuth0();
     initializationCompleted().then(() => {
-      console.log('initializationCompleted()');
       if (isAuthenticated.value) {
       sanityConf.token = user.value["https://www.highcanfly.club/sanity_token"].toString();
       sanityConf.useCdn = false;
@@ -61,14 +60,12 @@ export default {
   },
   methods: {
     fetchData() {
-      console.log('fetchData');
       this.error = this.post = null;
       this.loading = true;
       sanityClient(sanityConf)
         .fetch(query)
         .then(
           (posts) => {
-            console.log('sanityClient(sanityConf)');
             this.loading = false;
             this.posts = posts;
           },
