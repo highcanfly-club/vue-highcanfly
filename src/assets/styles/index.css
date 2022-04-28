@@ -4,7 +4,7 @@
 
 @tailwind utilities;
 
-@import "@fortawesome/fontawesome-free/css/all.css";
+@import "@/assets/fontawesome/styles/fontawesome.css";
 
 .vue-scroll-up {
   align-items: center;
