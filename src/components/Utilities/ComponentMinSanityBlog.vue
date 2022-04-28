@@ -43,7 +43,6 @@ export default {
     };
   },
   created() {
-    console.log('created');
     const { initializationCompleted, user, isAuthenticated } = useAuth0();
     initializationCompleted().then(() => {
       console.log('initializationCompleted()');
