@@ -309,12 +309,12 @@
       >
         <div class="w-full px-4 mx-auto text-center">
           <div class="text-sm text-slate-500 font-semibold py-1">
-            <a
+            <router-link
               @mouseover="copyright_text = 'build: ' + commit_date"
               @mouseleave="copyright_text = '2018-' + new Date().getFullYear()"
-              href="https://www.highcanfly.club?ref=vn-footer"
+              to="/"
               class="whitespace-nowrap text-slate-500 hover:text-slate-800"
-              >Copyright © High Can Fly {{ copyright_text }}</a
+              >Copyright © High Can Fly {{ copyright_text }}</router-link
             ><br /><a
               class="whitespace-nowrap text-slate-500 hover:text-slate-800"
               href="https://sanity.io"
