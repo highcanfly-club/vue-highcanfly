@@ -115,7 +115,8 @@ window.app = app;
 app.use(router);
 app.config.globalProperties.$auth0 = initAuth0({
   onRedirectCallback:`${window.location.origin}/login`,
-  redirectUri: `${window.location.origin}/`,
+  redirectUri: `${window.location.origin}/login`,
+  ...auth0conf,
 });
 app.use(Highcanfly);
 app.mixin(metaMixin);
