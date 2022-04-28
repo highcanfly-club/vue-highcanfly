@@ -121,8 +121,6 @@ import { GetTokenSilentlyVerboseResponse } from "@auth0/auth0-spa-js";
 import { verifyToken } from "./TokenHelper";
 import * as jose from "jose";
 import * as jwks from "../../../jwks.json";
-const x509cert = `-----BEGIN CERTIFICATE-----\n${jwks.keys[0].x5c}\n-----END CERTIFICATE-----`;
-const algorithm = "RS256";
 
 export default defineComponent<{
   name: string;
@@ -173,7 +171,9 @@ export default defineComponent<{
     },
     // Log the user out
     logout() {
-      (this.$auth0 as Auth0Instance).logout();
+      (this.$auth0 as Auth0Instance).logout({
+        localOnly: true,
+      });
     },
     getToken() {
       (this.$auth0 as Auth0Instance)

@@ -108,7 +108,7 @@
           <div class="flex flex-wrap items-top justify-end">
             <div
               class="w-full lg:w-4/12 px-4"
-              v-if="$auth0.isAuthenticated.value"
+              v-if="$auth0.user.value"
             >
               <span
                 class="
@@ -362,13 +362,11 @@ export default {
     VueScrollUp,
   },
   methods: {
-    logout: () => {
-      sanityConf.token = undefined;
-      const { initializationCompleted, logout } = useAuth0();
-      initializationCompleted().then(() => {
-        logout({ returnTo: window.location.origin });
-      });
-    },
+    logout(){
+      this.$auth0.logout({
+        localOnly: true,
+      })
+    }
   },
 };
 </script>

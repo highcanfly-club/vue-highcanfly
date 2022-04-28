@@ -4,65 +4,192 @@
       :class="`${color} hover:${colorhover} px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`"
       ref="btnDropdownRef"
       v-on:click="toggleDropdown($event)"
-      >Navigation</button
     >
+      Navigation
+    </button>
     <div
-      class="absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+      class="
+        absolute
+        bg-white
+        text-base
+        z-50
+        float-left
+        py-2
+        list-none
+        text-left
+        rounded
+        shadow-lg
+        min-w-48
+      "
       ref="popoverDropdownRef"
       v-if="dropdownPopoverShow"
     >
       <span
-        class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-slate-400"
+        class="
+          text-sm
+          pt-2
+          pb-0
+          px-4
+          font-bold
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-400
+        "
         >Club</span
       >
       <router-link
         to="/landing"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-700
+        "
         >Accueil</router-link
       >
       <router-link
         to="/blog"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-700
+        "
         >Blog</router-link
       >
       <router-link
         to="/about"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-700
+        "
         >À propos</router-link
       >
       <router-link
         to="/policy"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-700
+        "
         >Politique de confidentialité</router-link
       >
       <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
       <span
-        class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-slate-400"
+        class="
+          text-sm
+          pt-2
+          pb-0
+          px-4
+          font-bold
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-400
+        "
         >Cartes</span
       >
       <router-link
         to="/map-sites-de-pratique"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-700
+        "
         >Nos sites de pratiques</router-link
       >
       <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
       <span
-        class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-slate-400"
+        class="
+          text-sm
+          pt-2
+          pb-0
+          px-4
+          font-bold
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-400
+        "
         >Utilitaires</span
       >
       <router-link
         to="/trackjoiner"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-700
+        "
         >Assemblez vos traces</router-link
       >
       <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
       <span
-        class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-slate-400"
+        class="
+          text-sm
+          pt-2
+          pb-0
+          px-4
+          font-bold
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-400
+        "
         >Météo</span
       >
       <router-link
         to="/meteo"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-700
+        "
         >Météo sur nos sites</router-link
       >
       <li>
@@ -76,6 +203,76 @@
         baseUrl="/sanity-blog"
         :indexName="`highcanfly-${sanityDataset}-index`"
       />
+      <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
+      <span
+        class="
+          text-sm
+          pt-2
+          pb-0
+          px-4
+          font-bold
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-400
+        "
+        >Administration</span
+      >
+      <button
+        @click="$auth0.loginWithRedirect()"
+        v-if="!$auth0.user.value"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-700 text-left
+        "
+      >
+        Connexion
+      </button>
+      <button
+        @click="
+          $auth0.logout({
+            localOnly: true,
+          })
+        "
+        v-if="$auth0.user.value"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-700 text-left
+        "
+      >
+        Déconnexion
+      </button>
+      <router-link
+        v-if="$auth0.user.value"
+        to="/login"
+        class="
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-slate-700
+        "
+        >Authentification</router-link
+      >
     </div>
   </div>
 </template>
@@ -88,6 +285,7 @@ const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
 const sanityDataset = process.env.VUE_APP_SANITY_DATASET;
 
 export default {
+  location: window.location.origin,
   props: {
     color: {
       type: String,
@@ -104,6 +302,7 @@ export default {
       algoliaSearchKey,
       algoliaApplicationId,
       sanityDataset,
+      location: this.location,
     };
   },
   methods: {
@@ -114,7 +313,7 @@ export default {
       } else {
         this.dropdownPopoverShow = true;
         createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
-          placement: "bot"+"tom-start",
+          placement: "bot" + "tom-start",
         });
       }
     },
