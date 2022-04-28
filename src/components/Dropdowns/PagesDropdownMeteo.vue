@@ -1,15 +1,14 @@
 <template>
   <div @mouseleave="toggleDropdown($event)">
-    <a
-      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
-      href="#meteo"
+    <button
+      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700 text-left"
       ref="btnDropdownMeteoRef"
       v-on:click="toggleDropdown($event)"
       ><i
         style="transform: rotate(90deg)"
         class="fa-solid fa-arrow-down-short-wide"
       ></i>
-      Météo d'ailleurs</a
+      Météo d'ailleurs</button
     >
     <div
       ref="popoverDropdownMeteoRef"
