@@ -323,7 +323,7 @@
               class="whitespace-nowrap text-slate-500 hover:text-slate-800"
               href="https://www.algolia.com/"
               >Moteur de recherche offert par
-              <i class="fa-brands fa-algolia"></i> Algolia</a
+              <i class="fab fa-algolia"></i> Algolia</a
             >
           </div>
         </div>
