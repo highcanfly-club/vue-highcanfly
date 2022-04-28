@@ -114,12 +114,8 @@ const app = createApp(App);
 window.app = app;
 app.use(router);
 app.config.globalProperties.$auth0 = initAuth0({
-  client_id: auth0conf.clientId,
-  domain: auth0conf.domain,
-  scope: 'openid email profile user_metadata app_metadata picture',
   onRedirectCallback:`${window.location.origin}/login`,
   redirectUri: `${window.location.origin}/`,
-  
 });
 app.use(Highcanfly);
 app.mixin(metaMixin);
