@@ -209,7 +209,6 @@
                   mb-6
                   shadow-lg
                   rounded-lg
-                  bg-emerald-500
                 "
               >
                 <lazy-img

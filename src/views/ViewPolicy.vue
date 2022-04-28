@@ -74,7 +74,6 @@
                     leading-normal
                     mb-2
                     text-slate-700
-                    mb-2
                   "
                 >
                   POLITIQUE DE CONFIDENTIALITÉ ET LICENCE
