@@ -1,11 +1,10 @@
 <template>
   <div @mouseleave="toggleDropdown($event)">
-    <a
+    <button
       :class="`${color} hover:${colorhover} px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`"
-      href="#pablo"
       ref="btnDropdownRef"
       v-on:click="toggleDropdown($event)"
-      >Navigation</a
+      >Navigation</button
     >
     <div
       class="absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
