@@ -100,6 +100,7 @@ export function initAuth0<AppStateType>({
   redirectUri = window.location.origin,
   ...options
 }: Auth0InitConfig<AppStateType>) {
+
   if (_instance) {
     return _instance;
   }

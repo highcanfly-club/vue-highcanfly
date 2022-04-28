@@ -37,6 +37,7 @@
     "element-plus": "~2.1.11",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.9",
+    "jose": "^4.8.0",
     "qrcode.vue": "^3.3.3",
     "sanity-blocks-vue-component": "^1.0.1",
     "vue": "^3.2.33",
