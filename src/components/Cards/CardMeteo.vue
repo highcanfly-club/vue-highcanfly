@@ -184,7 +184,7 @@ let ephemerideClicked = -1;
 let weatherDetailClicked = -1;
 let windDetailClicked = -1;
 
-const places = require("@/places.json");
+import places from "@/places.json";
 export default {
   forecast: reactive({}),
   props: {

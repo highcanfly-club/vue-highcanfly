@@ -76,9 +76,6 @@ export default {
       default: 'w-[400px]'
     }
   },
-  created(){
-
-  },
   setup() {
     app.use(OpenLayersMap); //eslint-disable-line 
     const center = ref([706897.62, 7033567.10])

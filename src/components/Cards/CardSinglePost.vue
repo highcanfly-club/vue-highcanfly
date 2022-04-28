@@ -58,7 +58,7 @@
             v-if="post"
           >
             <h3
-              class="text-xl font-bold uppercase leading-normal mb-2 text-slate-700 mb-2"
+              class="text-xl font-bold uppercase leading-normal text-slate-700 mb-2"
             >
               {{ post.title }}
               <!--index={{indexPosts}} total={{nbPosts}}-->
@@ -158,7 +158,6 @@ export default {
       error: this.error,
     };
   },
-  setup() {},
   mounted() {
     let slug = this.slug !== undefined ? this.slug : this.$route.params.slug;
     this.loading = true;
@@ -189,16 +188,15 @@ export default {
           sanityConf.useCdn = true;
         }
         if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
-        let _this = this;
         this.error = this.post = null;
         const client = sanityClient(sanityConf);
         client.fetch(query, { slug: slug }).then(
           (post) => {
             let _post = post;
             sanityReplaceReferences(_post, client).then(() => {
-              _this.loading = false;
-              _this.post = _post;
-              _this.blocks = _post.body;
+              this.loading = false;
+              this.post = _post;
+              this.blocks = _post.body;
             });
           },
           (error) => {

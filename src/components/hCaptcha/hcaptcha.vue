@@ -78,9 +78,6 @@ export default {
     unmounted() {
         this.teardown();
     },
-    destroyed() {
-        this.teardown();
-    },
     methods: {
         teardown() {
             if (this.widgetId) {

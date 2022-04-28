@@ -13,16 +13,16 @@
           <template v-slot="{ items }">
             <ul>
               <li v-for="item in items" :key="item.objectID">
-                <a
-                  :href="`${baseUrl}/${item.slug}`"
+                <router-link
+                  :to="`${baseUrl}/${item.slug}`"
                   class="text-apple-500"
-                  >{{ item.title }}</a
+                  >{{ item.title }}</router-link
                 >
-                <a
-                  :href="`${baseUrl}/${item.slug}`"
+                <router-link
+                  :to="`${baseUrl}/${item.slug}`"
                 >
                   <p class="p-2 text-justify text-xs" v-html="item._highlightResult.body.value" />
-                </a>
+                </router-link>
               </li>
             </ul>
           </template>

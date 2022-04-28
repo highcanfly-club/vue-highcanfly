@@ -64,7 +64,7 @@
             <input
               type="text"
               placeholder="Search"
-              class="border-0 px-3 py-2 h-12 border border-solid border-slate-500 placeholder-slate-300 text-slate-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
+              class="border-0 px-3 py-2 h-12 border-solid border-slate-500 placeholder-slate-300 text-slate-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
             />
           </div>
         </form>

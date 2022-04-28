@@ -50,7 +50,7 @@ export default {
     }, options);
     this.observe();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (this.LazyObserver) {
       this.unobserve();
       this.LazyObserver = null;

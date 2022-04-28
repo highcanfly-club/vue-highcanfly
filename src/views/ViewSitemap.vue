@@ -60,7 +60,6 @@
               flex flex-col
               min-w-0
               break-words
-              bg-white
               w-full
               mb-6
               shadow-xl
@@ -72,7 +71,7 @@
               <ul id="array-rendering">
                 <li v-for="item in routesReactive.pathList" :key="item.id">
                   <i class="fas fa-link mr-2 text-slate-400"></i>
-                  <a :href="item.path">{{ item.path }}</a>
+                  <router-link :to="item.path">{{ item.path }}</router-link>
                 </li>
               </ul>
 

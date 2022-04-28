@@ -108,7 +108,7 @@
           <div class="flex flex-wrap items-top justify-end">
             <div
               class="w-full lg:w-4/12 px-4"
-              v-if="$auth0.isAuthenticated.value"
+              v-if="$auth0.user.value"
             >
               <span
                 class="
@@ -309,12 +309,12 @@
       >
         <div class="w-full px-4 mx-auto text-center">
           <div class="text-sm text-slate-500 font-semibold py-1">
-            <a
+            <router-link
               @mouseover="copyright_text = 'build: ' + commit_date"
               @mouseleave="copyright_text = '2018-' + new Date().getFullYear()"
-              href="https://www.highcanfly.club?ref=vn-footer"
+              to="/"
               class="whitespace-nowrap text-slate-500 hover:text-slate-800"
-              >Copyright © High Can Fly {{ copyright_text }}</a
+              >Copyright © High Can Fly {{ copyright_text }}</router-link
             ><br /><a
               class="whitespace-nowrap text-slate-500 hover:text-slate-800"
               href="https://sanity.io"
@@ -323,7 +323,7 @@
               class="whitespace-nowrap text-slate-500 hover:text-slate-800"
               href="https://www.algolia.com/"
               >Moteur de recherche offert par
-              <i class="fa-brands fa-algolia"></i> Algolia</a
+              <i class="fab fa-algolia"></i> Algolia</a
             >
           </div>
         </div>
@@ -362,13 +362,11 @@ export default {
     VueScrollUp,
   },
   methods: {
-    logout: () => {
-      sanityConf.token = undefined;
-      const { initializationCompleted, logout } = useAuth0();
-      initializationCompleted().then(() => {
-        logout({ returnTo: window.location.origin });
-      });
-    },
+    logout(){
+      this.$auth0.logout({
+        localOnly: true,
+      })
+    }
   },
 };
 </script>

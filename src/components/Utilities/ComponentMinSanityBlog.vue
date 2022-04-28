@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
 
 import sanityClient from "@sanity/client";

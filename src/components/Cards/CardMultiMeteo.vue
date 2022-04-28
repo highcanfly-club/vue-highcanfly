@@ -9,7 +9,7 @@
         class="m-4 w-full sm:w-[38rem] h-[50rem] sm:min-w-[38rem] overflow-y-auto"
       >
         <div
-          class="shadow-lg shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
+          class="shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
         >
           <lazy-observer :id="index" @on-change="onlazyMeteo">
             <card-meteo
@@ -28,7 +28,7 @@
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import CardMeteo from "@/components/Cards/CardMeteo.vue";
 import { ref } from "vue";
-const places = require("@/places.json");
+import places from "@/places.json";
 
 export default {
   slug: ref(''),

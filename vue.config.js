@@ -32,9 +32,14 @@ fs.writeFile('./commit.json',
 );
 var path = require('path');
 
+/*generate auth0-conf.json*/
 const auth0Conf = {
   "domain": process.env.AUTH0_DOMAIN,
-  "clientId": process.env.AUTH0_CLIENT_ID
+  "client_id": process.env.AUTH0_CLIENT_ID,
+  "scope": 'openid email profile user_metadata app_metadata picture',
+  "useRefreshTokens": true,
+  "cacheLocation": "localstorage",
+  "audience": "https://highcanfly.api"
 };
 fs.writeFile('./auth0-conf.json',
   JSON.stringify(auth0Conf),
@@ -42,6 +47,46 @@ fs.writeFile('./auth0-conf.json',
     if (err) return console.log(err);
   }
 );
+
+function listDir(dir) {
+  fs.readdir(dir, (err, files) => {
+      files.forEach(file => {
+          console.log(file);
+      });
+  });
+}
+
+async function getJwks() {
+  console.log(`retrieve https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`)
+  const https = require('https')
+  const url = `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`;
+  return new Promise((resolve, reject) => {
+      https.get(url, res => {
+          let data = '';
+          res.on('data', chunk => {
+              data += chunk;
+          });
+          res.on('end', () => {
+              data = JSON.parse(data);
+              data.domain = process.env.AUTH0_DOMAIN;
+              resolve(data);
+          })
+      }).on('error', err => {
+          console.log(err.message);
+          reject(err);
+      })
+  });
+}
+
+(async () => {
+  const jwks = await getJwks();
+  fs.writeFile('./jwks.json',
+  JSON.stringify(jwks),
+  'utf8', function (err) {
+      listDir('.');
+      if (err) return console.log(err);
+  });
+})();
 
 const sanityApiVersion = "2021-10-21";
 const sanityConf = {
@@ -94,7 +139,7 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
     glyphs: [],
     allowedFilesRegex: /^fa[srltdb]*-/, // RegExp to only target specific fonts by their names
     skippedFilesRegex: null, // RegExp to skip specific fonts by their names
-    textRegex: /\.(js|css|html|vue)$/,  // RegExp for searching text reference
+    textRegex: /\.(ts|js|css|html|vue)$/,  // RegExp for searching text reference
     webpackCompilationHook: 'compilation', // Webpack compilation hook (for example PurgeCss webpack plugin use 'compilation' )
   });
   webpackPlugins.push(fontMinPlugin);
@@ -104,17 +149,24 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
   const MangleCssClassPlugin = require('mangle-css-class-webpack-plugin');
   const myManglePlugin = new MangleCssClassPlugin({
     //be carrefull to not mangle javascript code ie: tailwindcss 'static' is a javascript reserved word !
-    classNameRegExp: '\\b([-]*left|[-]*top|[-]*right|[-]*bottom)-[p0-9]+|\\b(bg|[-]*p[xylrbt]*|[-]*m[xylrbt]*|w|[-]*z|h|justify|overflow|border|max-h|min-h|max-w|min-w|flex|text|font|prose|inline|line|rounded|from|to|via|contrast|brightness|leading|items|place|align|backdrop|shadow|duration|whitespace|self|cursor|transition|outline)-[a-z0-9_-]+\\b|\\brelative\\b|\\bshadow\\b|\\bflex\\b|\\brounded\\b|\\bborder\\b|\\bunderline\\b', //\\babsolute\\b|\\fixed\\b| fixed and absolute cannot be mangle with PopperJS because PopperJS us 'absolute' and 'fixed' as strategy name
+    //classNameRegExp: '\\b([-]*left|[-]*top|[-]*right|[-]*bottom)-[p0-9]+|\\b(bg|[-]*p[xylrbt]*|[-]*m[xylrbt]*|w|[-]*z|h|justify|overflow|border|max-h|min-h|max-w|min-w|flex|text|font|prose|inline|line|rounded|from|to|via|contrast|brightness|leading|items|place|align|backdrop|shadow|duration|whitespace|self|cursor|transition|outline)-[a-z0-9_-]+\\b|\\brelative\\b|\\bshadow\\b|\\bflex\\b|\\brounded\\b|\\bborder\\b|\\bunderline\\b', //\\babsolute\\b|\\fixed\\b| fixed and absolute cannot be mangle with PopperJS because PopperJS us 'absolute' and 'fixed' as strategy name
     log: true,
-    reserveClassName: ['fa', 'fas', 'far', 'p', 'm', 'z', 'el', 'pt', 'pb', 'px', 'py', 'pl', 'pr', 'mt', 'mb', 'mx', 'my', 'ml', 'mr', 'to'],
+    reserveClassName: ['fa', 'fas', 'far','fab','fad', 'p', 'm', 'z', 'el', 'pt', 'pb', 'px', 'py', 'pl', 'pr', 'mt', 'mb', 'mx', 'my', 'ml', 'mr', 'to'],
+    classNameRegExp: '(bg|[-]*p[xylrbt]*|[-]*m[xylrbt]*|[-]*left|[-]*top|[-]*right|[-]*bottom|w|[-]*z|h|fa|fas|far|fab|fad|justify|overflow|border|max|flex|text|font|inline|rounded|from|to|via|contrast|brightness|leading|items|backdrop|shadow|duration|whitespace|self|cursor|transition|outline)-[a-z0-9_-]+|shadow|flex|rounded|border',
     ignorePrefixRegExp: '(.*tns.*|light[bB]ox|popover|el-|popper|is-|top-start|top-end|bottom-start|bottom-end|left-start|left-end|right-start|right-end)',
-    fileMatchRegExp: '.+\.js.*$|.+\.html.*$|.+\.vue.*$',
+    fileMatchRegExp: '.+\.js.*$|.+\.js.*$|.+\.html.*$|.+\.vue.*$',
     fileExlusionRegExp: '.+\.json.*$|.+\.geojson.*$',
   });
   webpackPlugins.push(myManglePlugin);
 }
 
 module.exports = {
+  pages:{
+    index:{
+      entry:'src/main.js'
+    }
+  },
+  transpileDependencies: true,
   runtimeCompiler: true,
   configureWebpack: {
     plugins: webpackPlugins,
