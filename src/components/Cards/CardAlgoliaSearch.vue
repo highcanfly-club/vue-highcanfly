@@ -12,17 +12,17 @@
           <ul>
             <li v-for="item in items" :key="item.objectID">
               <h3 class="text-3xl font-semibold">
-                <a
-                  :href="`${baseUrl}/${item.slug}`"
-                  >{{ item.title }}</a
+                <router-link
+                  :to="`${baseUrl}/${item.slug}`"
+                  >{{ item.title }}</router-link
                 >
               </h3>
               <div class="text-lg text-slate-500 indent-8">
-                <a
-                  :href="`${baseUrl}/${item.slug}`"
+                <router-link
+                  :to="`${baseUrl}/${item.slug}`"
                 >
                   <p v-html="item._highlightResult.body.value" />
-                </a>
+                </router-link>
               </div>
             </li>
           </ul>
