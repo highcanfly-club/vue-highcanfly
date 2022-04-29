@@ -10,8 +10,8 @@ export const LIST_ALL_SHORT_URL = "list:all_short_url";
 
 /**
  * @param token JWT token as string
- * @param issuer Auth0 domain
- * @param now number of seconds from 01/01/1970
+ * @param issuer Auth0 domain. Optional, if not provided use jwks.domains
+ * @param now Optional number of seconds from 01/01/1970 (Cloudflare Workers must get Date.now() in onPost/Get function otherwise 0 is returnes)
  * @returns false if token is invalid or a valid JWTVerifyResult
  */
 export const verifyToken = (
@@ -48,9 +48,10 @@ export const verifyToken = (
 
 export enum oAuthTokenType { access_token = "access_token", id_token = "id_token"}
 /**
- * 
+ * Verify a token async, tokenType is 'access_token'|'id_token'
+ * issuer is those in jwks.json
  * @param promisedTokens Promise wich is returning an object containing {id_token:string; access_token:string} | GetTokenSilentlyVerboseResponse
- * @param now number of seconds from 01/01/1970
+ * @param now Optional number of seconds from 01/01/1970 (Cloudflare Workers must get Date.now() in onPost/Get function otherwise 0 is returnes)
  * @returns a promise containing a jose.JWTVerifyResult if valid or null
  */
 export const verifyTokenAsync = (promisedTokens: Promise<GetTokenSilentlyVerboseResponse>, tokenType: oAuthTokenType, now?: number): Promise<jose.JWTVerifyResult> => {

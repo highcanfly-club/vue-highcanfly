@@ -138,7 +138,7 @@
       v-if="sanity_token"
       class="text-slate-700 pt-8 pb-8 text-normal font-mono break-all text-justify"
     >
-      sanity_token : {{sanity_token}}
+      sanity_token : <span class="text-xs">{{sanity_token}}</span>
     </p>
   </div>
 </template>
@@ -151,13 +151,11 @@ import { defineComponent, ref } from "vue";
 import { Auth0Instance } from "./instance";
 import { GetTokenSilentlyVerboseResponse } from "@auth0/auth0-spa-js";
 import {
-  verifyToken,
   getCustomClaim,
   verifyTokenAsync,
   oAuthTokenType,
 } from "./TokenHelper";
 import * as jose from "jose";
-import * as jwks from "../../../jwks.json";
 
 export default defineComponent<{
   name: string;
