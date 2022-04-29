@@ -1,4 +1,5 @@
 import * as jose from "jose";
+import { GetTokenSilentlyVerboseResponse } from "@auth0/auth0-spa-js";
 
 import * as jwks from "../../../jwks.json";
 const x509cert = `-----BEGIN CERTIFICATE-----\n${jwks.keys[0].x5c}\n-----END CERTIFICATE-----`;
@@ -6,6 +7,7 @@ const algorithm = "RS256";
 
 export const ADD_SHORT_URL = "add:any_short_url";
 export const LIST_ALL_SHORT_URL = "list:all_short_url";
+
 /**
  * @param token JWT token as string
  * @param issuer Auth0 domain
@@ -14,9 +16,11 @@ export const LIST_ALL_SHORT_URL = "list:all_short_url";
  */
 export const verifyToken = (
   token: string,
-  issuer: string,
-  now: number
+  issuer?: string,
+  now?: number
 ): Promise<boolean | jose.JWTVerifyResult> => {
+  issuer = issuer === undefined ? jwks.domain : issuer;
+  now = now === undefined ? Date.now() / 1000 : now;
   return new Promise((resolve) => {
     jose.importX509(x509cert, algorithm).then((pubkey) => {
       jose
@@ -42,6 +46,49 @@ export const verifyToken = (
   });
 };
 
+export enum oAuthTokenType { access_token = "access_token", id_token = "id_token"}
+/**
+ * 
+ * @param promisedTokens Promise wich is returning an object containing {id_token:string; access_token:string} | GetTokenSilentlyVerboseResponse
+ * @param now number of seconds from 01/01/1970
+ * @returns a promise containing a jose.JWTVerifyResult if valid or null
+ */
+export const verifyTokenAsync = (promisedTokens: Promise<GetTokenSilentlyVerboseResponse>, tokenType: oAuthTokenType, now?: number): Promise<jose.JWTVerifyResult> => {
+  now = now === undefined ? Date.now() / 1000 : now;
+  return new Promise((resolve, reject) => {
+    promisedTokens.then((tokens: GetTokenSilentlyVerboseResponse) => {
+      verifyToken(tokens[tokenType], jwks.domain, now).then((jwt: boolean | jose.JWTVerifyResult) => {
+        if (typeof jwt !== 'boolean') {
+          resolve(jwt as jose.JWTVerifyResult);
+        } else {
+          reject(null);
+        }
+      });
+    })
+  });
+};
+
+/**
+ * 
+ * @param claim string of the custom_claim ex: 'ip'
+ * @param promisedTokens Promise wich is returning an object containing {id_token:string; access_token:string} | GetTokenSilentlyVerboseResponse
+ * @param now number of seconds from 01/01/1970
+ * @returns the claim : any
+ */
+export const getCustomClaim = (claim: string, promisedTokens: Promise<GetTokenSilentlyVerboseResponse>, now?: number) => {
+  return new Promise((resolve, reject) => {
+    promisedTokens.then((tokens: GetTokenSilentlyVerboseResponse) => {
+      verifyToken(tokens.access_token, jwks.domain, now).then((jwt: boolean | jose.JWTVerifyResult) => {
+        if (typeof jwt !== 'boolean') {
+          resolve((jwt as jose.JWTVerifyResult).payload[`${jwks.namespace}/${claim}`]);
+        } else {
+          reject(null);
+        }
+      });
+    });
+  });
+}
+
 /**
  * @param authorizationHeader value part of the 'Authorization: Bearer edkOsdd…' header ex: 'Bearer edkOsdd…'
  * @returns null if it fails or the parsed token
@@ -59,16 +106,16 @@ export const parseTokenFromAuthorizationHeader = (
   return null;
 };
 
-export const checkToken = (promisedToken:Promise<{id_token:string, access_token:string}>):void => {
+export const checkToken = (promisedTokens: Promise<GetTokenSilentlyVerboseResponse>): void => {
   Promise.all([
     jose.importX509(x509cert, algorithm),
-    promisedToken,
+    promisedTokens,
   ]).then((values) => {
     //const pubkey = values[0];
     const token = values[1];
-    const access_token:string = token.access_token;
+    const access_token: string = token.access_token;
     //const id_token:string = token.id_token;
-    return verifyToken(access_token,jwks.domain,Date.now()/1000)
+    return verifyToken(access_token, jwks.domain, Date.now() / 1000)
   });
 }
 
