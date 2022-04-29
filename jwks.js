@@ -22,6 +22,7 @@ async function getJwks() {
             res.on('end', () => {
                 data = JSON.parse(data);
                 data.domain = process.env.AUTH0_DOMAIN;
+                data.namespace = process.env.AUTH0_CUSTOM_NAMESPACE;
                 resolve(data);
             })
         }).on('error', err => {
