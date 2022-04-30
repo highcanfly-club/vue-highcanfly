@@ -1,6 +1,2 @@
-export const sanityConf = {
-    projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
-    dataset: process.env.VUE_APP_SANITY_DATASET,
-    useCdn: true,
-    apiVersion: process.env.VUE_APP_SANITY_VERSION,
-  };
+import * as sanityConfDist from "@/config/sanity-conf.json";
+export const sanityConf = { ...sanityConfDist };
