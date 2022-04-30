@@ -261,11 +261,13 @@
                   </svg>
                   &nbsp;Sanity.io</a
                 >
-                &nbsp;et propulsé par&nbsp;
+                &nbsp;, propulsé par&nbsp;
                 <a href="https://v3.vuejs.org/"
-                  ><i style="color: #64b587" class="fab fa-vuejs"></i> Vue.js
+                  ><span class="items-baseline"><i style="color: #64b587" class="fab fa-vuejs"></i></span> Vue.js
                   {{ app.version }}</a
-                ></span
+                >
+                &nbsp;et&nbsp;<span class="items-baseline"><i style="color: #64A051" class="fa-brands fa-node-js"></i></span>&nbsp;NodeJS&nbsp;{{nodeVersion}}
+                </span
               >
             </div>
           </div>
@@ -282,6 +284,8 @@ import MainFooter from "@/components/Footers/MainFooter.vue";
 import { ref } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+//eslint-disable-next-line @typescript-eslint/no-var-requires
+const nodeVersion = require('@/config/node-version.json');
 const backgroundImage = "static-web-highcanfly/mountain";
 
 export default {
@@ -296,6 +300,7 @@ export default {
       logo,
       app, //eslint-disable-line
       reactiveBackground: this.reactiveBackground,
+      nodeVersion: nodeVersion.version,
     };
   },
   created() {

@@ -85,6 +85,15 @@ fs.writeFile('./src/config/cloudinary-conf.json',
   }
 );
 
+/*generate node-vesion.json*/
+const nodeVersion = {version:process.version};
+fs.writeFile('./src/config/node-version.json',
+  JSON.stringify(nodeVersion),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
+
 process.env.VUE_APP_ALGOLIA_SEARCH_KEY = process.env.ALGOLIA_SEARCH_KEY;
 process.env.VUE_APP_ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID;
 
