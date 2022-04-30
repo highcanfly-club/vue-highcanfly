@@ -24,7 +24,7 @@ const commit = {
 
 process.env.VUE_APP_GIT_LAST_COMMIT = new Date(commits[0].authorDate);
 process.env.VUE_APP_GIT_TRACKJOINER_LAST_COMMIT = new Date(commits_trackjoiner[0].authorDate);
-fs.writeFile('./commit.json',
+fs.writeFile('./src/config/commit.json',
   JSON.stringify(commit),
   'utf8', function (err) {
     if (err) return console.log(err);
@@ -41,15 +41,18 @@ const auth0Conf = {
   "cacheLocation": "localstorage",
   "audience": "https://highcanfly.api"
 };
-fs.writeFile('./auth0-conf.json',
+fs.writeFile('./src/config/auth0-conf.json',
   JSON.stringify(auth0Conf),
   'utf8', function (err) {
     if (err) return console.log(err);
   }
 );
 
+/*generate jwks.json */
+/* might be already done with node jwks.js */
 const loadJwks = require('./jwks.js');
 
+/*generate sanity-conf.json*/
 const sanityApiVersion = "2021-10-21";
 const sanityConf = {
   projectId: process.env.SANITY_PROJECT_ID, // find this at manage.sanity.io or in your sanity.json
@@ -62,8 +65,21 @@ process.env.VUE_APP_SANITY_PROJECT_ID = process.env.SANITY_PROJECT_ID;
 process.env.VUE_APP_SANITY_DATASET = process.env.SANITY_DATASET;
 process.env.VUE_APP_SANITY_VERSION = sanityApiVersion; //why cannot be read from env ???
 
-fs.writeFile('./sanity-conf.json',
+fs.writeFile('./src/config/sanity-conf.json',
   JSON.stringify(sanityConf),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
+
+/*generate cloudinary-conf.json*/
+const cloudinaryConf = {
+  "cloud": {
+      "cloudName": process.env.CLOUDINARY_CLOUD_NAME
+  }
+};
+fs.writeFile('./src/config/cloudinary-conf.json',
+  JSON.stringify(cloudinaryConf),
   'utf8', function (err) {
     if (err) return console.log(err);
   }

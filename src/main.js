@@ -101,7 +101,7 @@ import Highcanfly from "@/plugins/highcanfly";
 
 //AuthO
 import { initAuth0 } from "@/plugins/auth0";
-const auth0conf = require("../auth0-conf.json");
+const auth0conf = require("@/config/auth0-conf.json");
 
 
 

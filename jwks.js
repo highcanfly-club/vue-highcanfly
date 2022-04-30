@@ -34,7 +34,7 @@ async function getJwks() {
 
 (async () => {
     const jwks = await getJwks();
-    fs.writeFile('./jwks.json',
+    fs.writeFile('./src/config/jwks.json',
     JSON.stringify(jwks),
     'utf8', function (err) {
         listDir('.');

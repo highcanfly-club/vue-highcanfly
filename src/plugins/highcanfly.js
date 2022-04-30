@@ -1,7 +1,7 @@
 import { Cloudinary } from "@cloudinary/url-gen";
 import {quality} from "@cloudinary/url-gen/actions/delivery";
 import { fill } from "@cloudinary/url-gen/actions/resize";
-const cloudinaryConf = require("@/cloudinary-conf.json");
+const cloudinaryConf = require("@/config/cloudinary-conf.json");
 const cloudinary = new Cloudinary(cloudinaryConf);
 
 let kTestImages = {

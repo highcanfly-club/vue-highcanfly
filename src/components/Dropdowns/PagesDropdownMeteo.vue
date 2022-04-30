@@ -42,7 +42,7 @@
 </template>
 <script>
 import { createPopper } from "@popperjs/core";
-import places from "@/places.json";
+import places from "@/config/places.json";
 export default {
   props: {
     color: {
