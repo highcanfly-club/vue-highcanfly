@@ -133,7 +133,7 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
   webpackPlugins.push(fontMinPlugin);
 }
 
-if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
+if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1') && (process.env.__MANGLING__ === '1')) {
   const MangleCssClassPlugin = require('mangle-css-class-webpack-plugin');
   const myManglePlugin = new MangleCssClassPlugin({
     //be carrefull to not mangle javascript code ie: tailwindcss 'static' is a javascript reserved word !
