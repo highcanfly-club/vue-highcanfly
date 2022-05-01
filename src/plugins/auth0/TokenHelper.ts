@@ -5,8 +5,12 @@ import * as jwks from "@/config/jwks.json";
 const x509cert = `-----BEGIN CERTIFICATE-----\n${jwks.keys[0].x5c}\n-----END CERTIFICATE-----`;
 const algorithm = "RS256";
 
-export const ADD_SHORT_URL = "add:any_short_url";
-export const LIST_ALL_SHORT_URL = "list:all_short_url";
+export enum HIGHCANFLY_PERMISSION {
+  development = "blog:publisher:development",
+  development_preview = "blog:publisher:development:preview",
+  production = "blog:publisher:production",
+  production_preview = "blog:publisher:production:preview",
+}
 
 /**
  * @param token JWT token as string
@@ -46,7 +50,10 @@ export const verifyToken = (
   });
 };
 
-export enum oAuthTokenType { access_token = "access_token", id_token = "id_token"}
+export enum oAuthTokenType {
+  access_token = "access_token",
+  id_token = "id_token",
+}
 /**
  * Verify a token async, tokenType is 'access_token'|'id_token'
  * issuer is those in jwks.json
@@ -54,41 +61,57 @@ export enum oAuthTokenType { access_token = "access_token", id_token = "id_token
  * @param now Optional number of seconds from 01/01/1970 (Cloudflare Workers must get Date.now() in onPost/Get function otherwise 0 is returnes)
  * @returns a promise containing a jose.JWTVerifyResult if valid or null
  */
-export const verifyTokenAsync = (promisedTokens: Promise<GetTokenSilentlyVerboseResponse>, tokenType: oAuthTokenType, now?: number): Promise<jose.JWTVerifyResult> => {
+export const verifyTokenAsync = (
+  promisedTokens: Promise<GetTokenSilentlyVerboseResponse>,
+  tokenType: oAuthTokenType,
+  now?: number
+): Promise<jose.JWTVerifyResult> => {
   now = now === undefined ? Date.now() / 1000 : now;
   return new Promise((resolve, reject) => {
     promisedTokens.then((tokens: GetTokenSilentlyVerboseResponse) => {
-      verifyToken(tokens[tokenType], jwks.domain, now).then((jwt: boolean | jose.JWTVerifyResult) => {
-        if (typeof jwt !== 'boolean') {
-          resolve(jwt as jose.JWTVerifyResult);
-        } else {
-          reject(null);
+      verifyToken(tokens[tokenType], jwks.domain, now).then(
+        (jwt: boolean | jose.JWTVerifyResult) => {
+          if (typeof jwt !== "boolean") {
+            resolve(jwt as jose.JWTVerifyResult);
+          } else {
+            reject(null);
+          }
         }
-      });
-    })
+      );
+    });
   });
 };
 
 /**
- * 
+ *
  * @param claim string of the custom_claim ex: 'ip'
  * @param promisedTokens Promise wich is returning an object containing {id_token:string; access_token:string} | GetTokenSilentlyVerboseResponse
  * @param now number of seconds from 01/01/1970
  * @returns the claim : any
  */
-export const getCustomClaim = (claim: string, promisedTokens: Promise<GetTokenSilentlyVerboseResponse>, now?: number) => {
+export const getCustomClaim = (
+  claim: string,
+  promisedTokens: Promise<GetTokenSilentlyVerboseResponse>,
+  now?: number
+) => {
   return new Promise((resolve, reject) => {
     promisedTokens.then((tokens: GetTokenSilentlyVerboseResponse) => {
-      verifyToken(tokens.access_token, jwks.domain, now).then((jwt: boolean | jose.JWTVerifyResult) => {
-        if (typeof jwt !== 'boolean') {
-          resolve((jwt as jose.JWTVerifyResult).payload[`${jwks.namespace}/${claim}`]);
-        } else {
-          reject(null);
+      verifyToken(tokens.access_token, jwks.domain, now).then(
+        (jwt: boolean | jose.JWTVerifyResult) => {
+          if (typeof jwt !== "boolean") {
+            resolve(
+              (jwt as jose.JWTVerifyResult).payload[
+                `${jwks.namespace}/${claim}`
+              ]
+            );
+          } else {
+            reject(null);
+          }
         }
-      });
+      );
     });
   });
-}
+};
 
 /**
  * @param authorizationHeader value part of the 'Authorization: Bearer edkOsdd…' header ex: 'Bearer edkOsdd…'
@@ -107,19 +130,33 @@ export const parseTokenFromAuthorizationHeader = (
   return null;
 };
 
-export const checkToken = (promisedTokens: Promise<GetTokenSilentlyVerboseResponse>): void => {
-  Promise.all([
-    jose.importX509(x509cert, algorithm),
-    promisedTokens,
-  ]).then((values) => {
-    //const pubkey = values[0];
-    const token = values[1];
-    const access_token: string = token.access_token;
-    //const id_token:string = token.id_token;
-    return verifyToken(access_token, jwks.domain, Date.now() / 1000)
-  });
-}
+export const checkToken = (
+  promisedTokens: Promise<GetTokenSilentlyVerboseResponse>
+): void => {
+  Promise.all([jose.importX509(x509cert, algorithm), promisedTokens]).then(
+    (values) => {
+      //const pubkey = values[0];
+      const token = values[1];
+      const access_token: string = token.access_token;
+      //const id_token:string = token.id_token;
+      return verifyToken(access_token, jwks.domain, Date.now() / 1000);
+    }
+  );
+};
 
+const permissionIsPresent = (
+  permissions: string[],
+  requiredPermissions: string[]
+): boolean => {
+  let isAllowed = true;
+  requiredPermissions.forEach((requiredPermission) => {
+    const permissionPosition: number = permissions.indexOf(requiredPermission);
+    permissionPosition >= 0 && isAllowed
+      ? (isAllowed = true)
+      : (isAllowed = false);
+  });
+  return isAllowed;
+};
 /**
  * @param token JWT token as string
  * @param issuer Auth0 domain
@@ -144,22 +181,56 @@ export const isAllowed = (
     verifyToken(token, issuer, now).then(
       (jwt: boolean | jose.JWTVerifyResult) => {
         if (typeof jwt != "boolean") {
-          let isAllowed = true;
           if (jwt.payload.permissions !== undefined) {
             const permissions: string[] = jwt.payload.permissions as string[];
-            requiredPermissions.forEach((requiredPermission) => {
-              const permissionPosition: number =
-                permissions.indexOf(requiredPermission);
-              permissionPosition >= 0 && isAllowed
-                ? (isAllowed = true)
-                : (isAllowed = false);
-            });
-            resolve(isAllowed);
+            resolve(permissionIsPresent(permissions, requiredPermissions));
           }
         } else {
           resolve(jwt);
         }
       }
     );
+  });
+};
+
+/**
+ * Verify if a permission is present in the access token
+ * issuer is those in jwks.json
+ * @param promisedTokens Promise wich is returning an object containing {id_token:string; access_token:string} | GetTokenSilentlyVerboseResponse
+ * @param permission single permission or array of need permissions
+ * @param issuer Auth0 domain. Optional, if not provided use jwks.domains
+ * @param now Optional number of seconds from 01/01/1970 (Cloudflare Workers must get Date.now() in onPost/Get function otherwise 0 is returnes)
+ * @returns a promise containing true if all the permissions are present or false
+ */
+export const isAllowedAsync = (
+  promisedTokens: Promise<GetTokenSilentlyVerboseResponse>,
+  permission: string | string[],
+  issuer?: string,
+  now?: number
+): Promise<boolean> => {
+  issuer = issuer === undefined ? jwks.domain : issuer;
+  now = now === undefined ? Date.now() / 1000 : now;
+  let requiredPermissions: string[] = [];
+  if (typeof permission === "string") {
+    //permission is a string not a string array
+    requiredPermissions.push(permission);
+  } else {
+    requiredPermissions = permission;
+  }
+  return new Promise((resolve, reject) => {
+    if (promisedTokens) {
+      verifyTokenAsync(promisedTokens, oAuthTokenType.access_token, now).then(
+        (jwt) => {
+          if (jwt.payload.permissions !== undefined) {
+            const permissions: string[] = jwt.payload.permissions as string[];
+            resolve(permissionIsPresent(permissions, requiredPermissions));
+          } else {
+            reject(false);
+          }
+        }
+      );
+    } else {
+      reject("promisedTokens is null");
+    }
   });
 };

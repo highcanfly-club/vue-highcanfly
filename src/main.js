@@ -48,7 +48,7 @@ const routes = [
   {
     path: "/map-sites-de-pratique",
     component: () => import("@/views/SitesDePratique.vue"),
-    name:"Sites de pratique",
+    name: "Sites de pratique",
   },
   {
     path: "/",
@@ -56,7 +56,7 @@ const routes = [
     name: 'index',
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
-  { path: "/site-map", component: () => import("@/views/ViewSitemap.vue")},
+  { path: "/site-map", component: () => import("@/views/ViewSitemap.vue") },
   {
     path: "/sanity-blog/:slug",
     component: () => import("@/views/SinglePost.vue"),
@@ -103,7 +103,7 @@ import Highcanfly from "@/plugins/highcanfly";
 import { initAuth0 } from "@/plugins/auth0";
 const auth0conf = require("@/config/auth0-conf.json");
 
-
+import { sanityConf } from "@/plugins/auth0/sanityStore";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -114,10 +114,14 @@ const app = createApp(App);
 window.app = app;
 app.use(router);
 app.config.globalProperties.$auth0 = initAuth0({
-  onRedirectCallback:`${window.location.origin}/login`,
+  onRedirectCallback: `${window.location.origin}/login`,
   redirectUri: `${window.location.origin}/login`,
   ...auth0conf,
 });
+app.config.globalProperties.$sanityConf = sanityConf;
+app.config.globalProperties.$sanityConf.preview = app.config.globalProperties.$sanityConf.preview === undefined ? false : app.config.globalProperties.$sanityConf.preview;
+
+
 app.use(Highcanfly);
 app.mixin(metaMixin);
 

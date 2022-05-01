@@ -219,60 +219,7 @@
         "
         >Administration</span
       >
-      <button
-        @click="$auth0.loginWithRedirect()"
-        v-if="!$auth0.user.value"
-        class="
-          text-sm
-          py-2
-          px-4
-          font-normal
-          block
-          w-full
-          whitespace-nowrap
-          bg-transparent
-          text-slate-700 text-left
-        "
-      >
-        Connexion
-      </button>
-      <button
-        @click="
-          $auth0.logout({
-            localOnly: true,
-          })
-        "
-        v-if="$auth0.user.value"
-        class="
-          text-sm
-          py-2
-          px-4
-          font-normal
-          block
-          w-full
-          whitespace-nowrap
-          bg-transparent
-          text-slate-700 text-left
-        "
-      >
-        Déconnexion
-      </button>
-      <router-link
-        v-if="$auth0.user.value"
-        to="/login"
-        class="
-          text-sm
-          py-2
-          px-4
-          font-normal
-          block
-          w-full
-          whitespace-nowrap
-          bg-transparent
-          text-slate-700
-        "
-        >Authentification</router-link
-      >
+      <administration-dropdown />
     </div>
   </div>
 </template>
@@ -280,6 +227,8 @@
 import { createPopper } from "@popperjs/core";
 import PagesDropdownMeteo from "@/components/Dropdowns/PagesDropdownMeteo.vue";
 import MiniCardAlgoliaSearch from "@/components/Cards/MiniCardAlgoliaSearch.vue";
+import AdministrationDropdown from "@/components/Dropdowns/AdministrationDropdown.vue";
+
 const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
 const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
 const sanityDataset = process.env.VUE_APP_SANITY_DATASET;
@@ -321,6 +270,7 @@ export default {
   components: {
     PagesDropdownMeteo,
     MiniCardAlgoliaSearch,
+    AdministrationDropdown,
   },
 };
 </script>

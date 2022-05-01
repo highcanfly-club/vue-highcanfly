@@ -341,6 +341,9 @@
 </template>
 <script>
 import VueScrollUp from "@/plugins/vue-scroll-up";
+import {
+  resetSanityConfToDefaults,
+} from "@/plugins/auth0/sanityStore";
 
 export default {
   data() {
@@ -360,11 +363,13 @@ export default {
     VueScrollUp,
   },
   methods: {
-    logout(){
+    logout() {
+      resetSanityConfToDefaults(); //reset to default
       this.$auth0.logout({
         localOnly: true,
-      })
-    }
+      });
+      console.log(this.$sanityConf);
+    },
   },
 };
 </script>
