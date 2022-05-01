@@ -64,6 +64,8 @@
     id="preview"
     @change="togglePreview"
     :checked="preview"
+    color="bg-slate-300"
+    checkedColor="bg-pistachio-600"
     >Prévisualisation</slider-check
   >
   <slider-check
@@ -81,6 +83,8 @@
     @change="toggleDevelopment"
     id="hasDevelopmentDataset"
     :checked="developmentMode"
+    color="bg-slate-300"
+    checkedColor="bg-pistachio-600"
     >Dataset: development</slider-check
   >
 </template>
