@@ -1,0 +1,40 @@
+<template>
+<div class="flex  w-full">
+  
+  <label 
+    :for="id"
+    class="flex items-center cursor-pointer"
+  >
+    <!-- toggle -->
+    <div class="relative">
+      <!-- input -->
+      <input :id="id" type="checkbox" class="sr-only peer" :checked="checked"/>
+      <!-- line -->
+      <div :class="`w-10 h-4 bg-slate-400 rounded-full shadow-inner`"></div>
+      <!-- dot -->
+      <div :class="`peer-checked:translate-x-full peer-checked:bg-slate-600 absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition`"></div>
+    </div>
+    <!-- label -->
+    <div class="ml-3">
+      <slot />
+    </div>
+  </label>
+  
+</div>
+</template>
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+    checked: {
+        type: Boolean,
+        required: true,
+    }
+  },
+});
+</script>

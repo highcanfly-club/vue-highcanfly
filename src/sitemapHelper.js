@@ -63,7 +63,7 @@ const query = `*[_type == "post" && !(_id in path('drafts.**'))]{
 
 const getSanityClient = function(){
     if (isWorkingAtWorker()){
-      const client = require('../sanity-conf.json');
+      const client = require('@/config/sanity-conf.json');
         return sanityClient(client);
     }else{
         return sanityClient({

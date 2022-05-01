@@ -1,6 +1,6 @@
 //ToDo extract automatically from router
-const commit = require('../commit.json');
-const places = require('./places.json');
+const commit = require('@/config/commit.json');
+const places = require('@/config/places.json');
 
 const getRoutes = function(now = Date.now()){
     const getRandomISODateNearLastHour = function (now) {//workaroud for Cloudflare always return 0

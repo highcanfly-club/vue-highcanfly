@@ -28,7 +28,7 @@
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import CardMeteo from "@/components/Cards/CardMeteo.vue";
 import { ref } from "vue";
-import places from "@/places.json";
+import places from "@/config/places.json";
 
 export default {
   slug: ref(''),

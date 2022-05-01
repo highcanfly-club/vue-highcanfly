@@ -22,6 +22,7 @@ async function getJwks() {
             res.on('end', () => {
                 data = JSON.parse(data);
                 data.domain = process.env.AUTH0_DOMAIN;
+                data.namespace = process.env.AUTH0_CUSTOM_NAMESPACE;
                 resolve(data);
             })
         }).on('error', err => {
@@ -33,7 +34,7 @@ async function getJwks() {
 
 (async () => {
     const jwks = await getJwks();
-    fs.writeFile('./jwks.json',
+    fs.writeFile('./src/config/jwks.json',
     JSON.stringify(jwks),
     'utf8', function (err) {
         listDir('.');

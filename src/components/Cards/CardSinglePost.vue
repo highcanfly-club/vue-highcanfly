@@ -88,11 +88,9 @@ import imageUrlBuilder from "@sanity/image-url";
 import SanityGallerySerializer from "@/components/Utilities/SanityGallerySerializer.vue";
 import SanityLazyImgSerializer from "@/components/Utilities/SanityLazyImgSerializer.vue";
 import SanityBlockquoteSerializer from "@/components/Utilities/SanityBlockquoteSerializer.vue";
-import { useAuth0 } from "@/plugins/auth0";
 import * as basiclightbox from "basiclightbox";
-import { sanityConf } from "@/plugins/auth0/sanityStore";
 
-let imageBuilder = imageUrlBuilder(sanityClient(sanityConf));
+let imageBuilder = imageUrlBuilder(sanityClient(window.app.config.globalProperties.$sanityConf));
 
 const query = `*[slug.current == $slug] {
   _id,
@@ -176,20 +174,9 @@ export default {
       return imageBuilder.image(source);
     },
     fetchData(slug) {
-      const { initializationCompleted, user, isAuthenticated } = useAuth0();
-      initializationCompleted().then(() => {
-        if (isAuthenticated.value) {
-          Object.assign(imageBuilder, sanityClient(sanityConf));
-          sanityConf.token =
-            user.value["https://www.highcanfly.club/sanity_token"].toString();
-          sanityConf.useCdn = false;
-        } else {
-          sanityConf.token = undefined;
-          sanityConf.useCdn = true;
-        }
         if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
         this.error = this.post = null;
-        const client = sanityClient(sanityConf);
+        const client = sanityClient(this.$sanityConf);
         client.fetch(query, { slug: slug }).then(
           (post) => {
             let _post = post;
@@ -203,7 +190,7 @@ export default {
             this.error = error;
           }
         );
-      });
+
     },
   },
 };

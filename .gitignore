@@ -32,3 +32,6 @@ sanity-conf.json
 auth0-conf.json
 _sensitive_datas/_sensitive_datas.tar.xz
 jwks.json
+cloudinary-conf.json
+.vscode/settings.json
+src/config/node-version.json
