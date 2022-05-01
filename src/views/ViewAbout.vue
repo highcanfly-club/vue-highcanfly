@@ -231,8 +231,15 @@
                 </div>
               </div>
             </div>
-            <div class=" ">
-              <span class="flex flex-wrap w-full text-right text-sm text-slate-400 justify-end pr-2"
+            <div class="">
+              <span
+                class="
+                  flex flex-wrap
+                  w-full
+                  text-right text-sm text-slate-400
+                  justify-end
+                  pr-2
+                "
                 >Site hébergé gracieusement par
                 <a href="https://www.cloudflare.com"
                   ><i style="color: #e7873b" class="fab fa-cloudflare"></i>
@@ -263,12 +270,17 @@
                 >
                 &nbsp;, propulsé par&nbsp;
                 <a href="https://v3.vuejs.org/"
-                  ><span class="items-baseline"><i style="color: #64b587" class="fab fa-vuejs"></i></span> Vue.js
-                  {{ app.version }}</a
+                  ><span class="items-baseline"
+                    ><i style="color: #64b587" class="fab fa-vuejs"></i
+                  ></span>
+                  Vue.js {{ app.version }}</a
                 >
-                &nbsp;et&nbsp;<span class="items-baseline"><i style="color: #64A051" class="fa-brands fa-node-js"></i></span>&nbsp;NodeJS&nbsp;{{nodeVersion}}
-                </span
-              >
+                &nbsp;et&nbsp;<a href="https://vuejs.org/"
+                  ><span class="items-baseline"
+                    ><i style="color: #64a051" class="fab fa-node-js"></i></span
+                  >&nbsp;NodeJS&nbsp;{{ nodeVersion }}
+                </a>
+              </span>
             </div>
           </div>
         </div>
@@ -285,7 +297,7 @@ import { ref } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
 //eslint-disable-next-line @typescript-eslint/no-var-requires
-const nodeVersion = require('@/config/node-version.json');
+const nodeVersion = require("@/config/node-version.json");
 const backgroundImage = "static-web-highcanfly/mountain";
 
 export default {
