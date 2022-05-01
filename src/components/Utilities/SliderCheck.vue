@@ -60,7 +60,7 @@ export default defineComponent({
   },
   data() {
     return {
-      dotColor: `peer-checked:${this.$props.checkedColor}`
+      dotColor: this.checkedColor
     };
   }
 });
