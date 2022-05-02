@@ -126,3 +126,7 @@ app.use(Highcanfly);
 app.mixin(metaMixin);
 
 const vm = app.mount("#app"); //eslint-disable-line
+
+//worst workaround for gpx-parser
+//TODO replace gpx-parser with a dependency not using xml2js
+window.process = {version: "0"};
