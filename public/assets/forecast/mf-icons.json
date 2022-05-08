@@ -502,6 +502,14 @@
 		}
 	},
 	{
+		"name": "p8j",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p8j.svg",
+		"desc": {
+			"en": "Freezing fog",
+			"fr": "Brouillard givrant"
+		}
+	},
+	{
 		"name": "p9j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p9j.svg",
 		"desc": {
