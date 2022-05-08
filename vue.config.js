@@ -172,11 +172,11 @@ module.exports = {
     mode: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'development' : 'production') : 'development',
     resolve: {
       fallback: {
-        "fs": false,
-        "http": require.resolve("stream-http"),
-        "https": require.resolve("https-browserify"),
-        "timers": require.resolve("timers-browserify"),
-        "stream": require.resolve("stream-browserify")
+        // "fs": false,
+        // "http": require.resolve("stream-http"),
+        // "https": require.resolve("https-browserify"),
+        // "timers": require.resolve("timers-browserify"),
+        // "stream": require.resolve("stream-browserify")
       }
     }
   },
