@@ -8,6 +8,12 @@ module.exports = {
     "./src/*.js",
     "./src/**/*.vue",
     "./src/*.vue",
+    "./CFDTrackJoiner/src/**/*.html",
+    "./CFDTrackJoiner/src/*.html",
+    "./CFDTrackJoiner/src/**/*.js",
+    "./CFDTrackJoiner/src/*.js",
+    "./CFDTrackJoiner/src/**/*.vue",
+    "./CFDTrackJoiner/src/*.vue",
   ],
   safelist: (process.env.SANITY_DATASET === 'production') ? [] : [{ pattern: /.*/ }],
   theme: {

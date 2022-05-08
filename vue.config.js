@@ -118,7 +118,11 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
         path.join(__dirname, './public/*.html'),
         path.join(__dirname, './src/**/*.vue'),
         path.join(__dirname, './src/**/*.js'),
-        path.join(__dirname, './src/**/*.ts')
+        path.join(__dirname, './src/**/*.ts'),
+        path.join(__dirname, './CFDTrackJoiner/public/*.html'),
+        path.join(__dirname, './CFDTrackJoiner/src/**/*.vue'),
+        path.join(__dirname, './CFDTrackJoiner/src/**/*.js'),
+        path.join(__dirname, './CFDTrackJoiner/src/**/*.ts')
       ]),
     safelist: [/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/,/^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/,/^el-/,/^is-/,/popper/],
     fontFace: true
@@ -168,11 +172,11 @@ module.exports = {
     mode: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'development' : 'production') : 'development',
     resolve: {
       fallback: {
-        "fs": false,
-        "http": require.resolve("stream-http"),
-        "https": require.resolve("https-browserify"),
-        "timers": require.resolve("timers-browserify"),
-        "stream": require.resolve("stream-browserify")
+        // "fs": false,
+        // "http": require.resolve("stream-http"),
+        // "https": require.resolve("https-browserify"),
+        // "timers": require.resolve("timers-browserify"),
+        // "stream": require.resolve("stream-browserify")
       }
     }
   },
