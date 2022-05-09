@@ -34,7 +34,7 @@
     "chart.js": "^3.7.1",
     "core-js": "^3.22.4",
     "crypto-js": "^4.1.1",
-    "element-plus": "~2.1.11",
+    "element-plus": "~2.2.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.9",
     "jose": "^4.8.1",
