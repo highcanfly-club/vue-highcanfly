@@ -123,24 +123,26 @@ export default defineComponent({
     };
   },
   mounted() {
-    isAllowedAsync(
-      (this.$auth0 as Auth0Instance).getTokenSilentlyVerbose(),
-      HIGHCANFLY_PERMISSION.development_preview
-    ).then((value) => {
-      this.hasDevelopmentPreview = ref(value);
-    });
-    isAllowedAsync(
-      (this.$auth0 as Auth0Instance).getTokenSilentlyVerbose(),
-      HIGHCANFLY_PERMISSION.production_preview
-    ).then((value) => {
-      this.hasProductionPreview = ref(value);
-    });
-    isAllowedAsync(
-      (this.$auth0 as Auth0Instance).getTokenSilentlyVerbose(),
-      HIGHCANFLY_PERMISSION.development
-    ).then((value) => {
-      this.hasDevelopmentDataset = ref(value);
-    });
+    if ((this.$auth0 as Auth0Instance).user.value !== undefined) {
+      isAllowedAsync(
+        (this.$auth0 as Auth0Instance).getTokenSilentlyVerbose(),
+        HIGHCANFLY_PERMISSION.development_preview
+      ).then((value) => {
+        this.hasDevelopmentPreview = ref(value);
+      });
+      isAllowedAsync(
+        (this.$auth0 as Auth0Instance).getTokenSilentlyVerbose(),
+        HIGHCANFLY_PERMISSION.production_preview
+      ).then((value) => {
+        this.hasProductionPreview = ref(value);
+      });
+      isAllowedAsync(
+        (this.$auth0 as Auth0Instance).getTokenSilentlyVerbose(),
+        HIGHCANFLY_PERMISSION.development
+      ).then((value) => {
+        this.hasDevelopmentDataset = ref(value);
+      });
+    }
   },
   methods: {
     logout() {
