@@ -25,11 +25,11 @@
       >
       <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
       <router-link
-        v-for="place in places"
-        :key="place.slug"
-        :to="`/meteo/${place.slug}`"
+        v-for="place in places.features"
+        :key="place"
+        :to="`/meteo/${place.properties.slug}`"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
-        >{{ place.name }}</router-link
+        >{{ place.properties.name }}</router-link
       >
       <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
       <router-link
@@ -42,7 +42,8 @@
 </template>
 <script>
 import { createPopper } from "@popperjs/core";
-import places from "@/config/places.json";
+import places from "@/config/places.geojson";
+import {ref} from "vue";
 export default {
   props: {
     color: {
@@ -55,8 +56,9 @@ export default {
     },
   },
   data() {
+    console.log(this.places);
     return {
-      places,
+      places: ref(places),
       dropdownMeteoPopoverShow: false,
     };
   },

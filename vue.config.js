@@ -22,6 +22,9 @@ const commit = {
   cfdtrackjoiner: (new Date(commits_trackjoiner[0].authorDate)).toISOString(),
 };
 
+//copy src/config/places.geoson to srv/config/places.json because page worker does not support .geojson extension
+fs.copyFile('./src/config/places.geojson', './src/config/places.json', ()=>{console.log('geojson copied')});
+
 process.env.VUE_APP_GIT_LAST_COMMIT = new Date(commits[0].authorDate);
 process.env.VUE_APP_GIT_TRACKJOINER_LAST_COMMIT = new Date(commits_trackjoiner[0].authorDate);
 fs.writeFile('./src/config/commit.json',
@@ -171,6 +174,7 @@ module.exports = {
     devtool: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'source-map' : false) : 'source-map',
     mode: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'development' : 'production') : 'development',
     resolve: {
+      extensions:['.geojson'],
       fallback: {
         // "fs": false,
         // "http": require.resolve("stream-http"),
@@ -178,6 +182,15 @@ module.exports = {
         // "timers": require.resolve("timers-browserify"),
         // "stream": require.resolve("stream-browserify")
       }
+    },
+    module: {
+      rules: [
+        {
+          test: /\.geojson$/,
+          loader: 'json-loader' //external loader
+          //type: 'json' //use internal loader
+        }
+      ]
     }
   },
   chainWebpack(config) {

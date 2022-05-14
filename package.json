@@ -63,6 +63,7 @@
     "fontmin-webpack": "file:fontmin-webpack",
     "gitlog": "^4.0.4",
     "glob-all": "^3.3.0",
+    "json-loader": "^0.5.7",
     "mangle-css-class-webpack-plugin": "file:mangle-css-class-webpack-plugin",
     "node-fetch": "^3.2.4",
     "postcss": "^8.4.13",

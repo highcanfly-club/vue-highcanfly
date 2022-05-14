@@ -1,6 +1,6 @@
 //ToDo extract automatically from router
 const commit = require('@/config/commit.json');
-const places = require('@/config/places.json');
+import places from "@/config/places.json";
 
 const getRoutes = function(now = Date.now()){
     const getRandomISODateNearLastHour = function (now) {//workaroud for Cloudflare always return 0
@@ -65,9 +65,9 @@ const getRoutes = function(now = Date.now()){
             _updatedAt: commit.vue_highcanfly
         },
     ];
-    places.forEach(place => {
-        if (place.slug !== undefined) {
-            routes.push({ path: `/meteo/${place.slug}`, name: `Météo à ${place.name}`, _updatedAt: getRandomISODateNearLastHour(now) });
+    places.features.forEach(place => {
+        if (place.properties.slug !== undefined) {
+            routes.push({ path: `/meteo/${place.properties.slug}`, name: `Météo à ${place.properties.name}`, _updatedAt: getRandomISODateNearLastHour(now) });
         }
     });
     return routes;

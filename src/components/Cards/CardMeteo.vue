@@ -5,10 +5,10 @@
         <tr>
           <td colspan="11" class="text-center">
             {{
-              place.name.localeCompare(
+              place.properties.name.localeCompare(
                 forecast !== undefined ? forecast.position.name : null
               ) != 0
-                ? `${place.name} - `
+                ? `${place.properties.name} - `
                 : ""
             }}{{
               forecast !== undefined ? forecast.position.name : "chargement"
@@ -47,7 +47,7 @@
           <tr
             :class="
               isDaylight(forecast.daily_forecast, new Date(detail.dt * 1000)) &&
-              isFlyable(detail, place.fly)
+              isFlyable(detail, place.properties.fly)
                 ? 'bg-green-50'
                 : null
             "
@@ -128,7 +128,7 @@
             >
               <pop-over-simple
                 v-if="windDetailClicked == index"
-                :text="getWindAdequate(place.fly)"
+                :text="getWindAdequate(place.properties.fly)"
                 title="Vent admissible"
                 :left="false"
                 ref="windPop"
@@ -141,7 +141,7 @@
                     forecast.daily_forecast,
                     new Date(detail.dt * 1000)
                   )
-                    ? isFlyable(detail, place.fly)
+                    ? isFlyable(detail, place.properties.fly)
                       ? 'stroke-green-400'
                       : 'stroke-red-400'
                     : 'stroke-slate-300'
@@ -184,7 +184,7 @@ let ephemerideClicked = -1;
 let weatherDetailClicked = -1;
 let windDetailClicked = -1;
 
-import places from "@/config/places.json";
+import places from "@/config/places.geojson";
 export default {
   forecast: reactive({}),
   props: {
@@ -316,7 +316,7 @@ export default {
       return sun;
     },
     getWeatherAtPlace(place = this.place) {
-      let src = `https://webservice.meteofrance.com/forecast?token=${API_TOKEN}&lat=${place.lat}&lon=${place.lon}&lang=${this.lang}`;
+      let src = `https://webservice.meteofrance.com/forecast?token=${API_TOKEN}&lat=${place.geometry.coordinates[1]}&lon=${place.geometry.coordinates[0]}&lang=${this.lang}`;
       console.log(`Retrieve forecasts from ${src}`);
       fetch(src).then((result) => {
         result.json().then((forecast) => {
