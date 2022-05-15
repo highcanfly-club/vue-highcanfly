@@ -1,9 +1,9 @@
 export interface ForecastCollection {
     position: Position;
     updated_on: number;
-    daily_forecast?: (DailyForecast)[] | null;
-    forecast?: (Forecast)[] | null;
-    probability_forecast?: (ProbabilityForecast)[] | null;
+    daily_forecast?: (DailyForecast)[];
+    forecast?: (Forecast)[];
+    probability_forecast?: (ProbabilityForecast)[];
   }
   export interface Position {
     lat: number;
@@ -22,21 +22,21 @@ export interface ForecastCollection {
     T: Temp;
     humidity: Humidity;
     precipitation: Precipitation;
-    uv?: number | null;
-    weather12H?: Weather12HOrWeather | null;
+    uv?: number;
+    weather12H?: Weather12HOrWeather;
     sun: Sun;
   }
   export interface Temp {
     min: number;
-    max?: number | null;
+    max?: number;
     sea?: null;
   }
   export interface Humidity {
-    min?: number | null;
+    min?: number;
     max: number;
   }
   export interface Precipitation {
-    "24h"?: number | null;
+    "24h"?: number;
   }
   export interface Weather12HOrWeather {
     icon: string;
@@ -70,9 +70,9 @@ export interface ForecastCollection {
     icon: string;
   }
   export interface RainOrSnow {
-    "1h"?: number | null;
-    "3h"?: number | null;
-    "6h"?: number | null;
+    "1h"?: number;
+    "3h"?: number;
+    "6h"?: number;
   }
   export interface Weather12HOrWeatherLong {
     icon: string;
@@ -85,7 +85,7 @@ export interface ForecastCollection {
     freezing: number;
   }
   export interface RainOrSnowLong {
-    "3h"?: number | null;
-    "6h"?: number | null;
+    "3h"?: number;
+    "6h"?: number;
   }
   
