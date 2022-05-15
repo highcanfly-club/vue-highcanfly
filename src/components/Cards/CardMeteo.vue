@@ -136,7 +136,7 @@ import { reactive, ref, defineComponent } from "vue";
 import type { PropType } from 'vue';
 import LazyImg from "@/components/Utilities/LazyImg.vue";
 import PopOverSimple from "@/components/Utilities/PopOverSimple.vue";
-import type {GeoJSON} from '@/types/GeoJSON';
+import type GeoJSON from '@/types/GeoJSON';
 import type {ForecastCollection,Forecast,DailyForecast,Weather12HOrWeather,Weather12HOrWeatherLong,RainOrSnow} from '@/types/ForecastCollection';
 
 const icons_base = "/assets/forecast/";
