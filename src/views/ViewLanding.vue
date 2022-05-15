@@ -1,14 +1,9 @@
 <template>
   <div>
-    <navbar-default
-      color="text-white"
-      colorhover="text-slate-200"
-      iconscolor="text-slate-200"
-      buttoncolor="bg-white text-slate-700 active:bg-slate-50"
-    />
+    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200"
+      buttoncolor="bg-white text-slate-700 active:bg-slate-50" />
     <main>
-      <div
-        class="
+      <div class="
           relative
           pt-16
           pb-32
@@ -17,19 +12,11 @@
           items-center
           justify-center
           min-h-screen-75
-        "
-      >
-        <div
-          id="bg-div"
-          class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{
-            backgroundImage: 'url(' + reactiveBackground + ')',
-          }"
-        >
-          <span
-            id="blackOverlay"
-            class="w-full h-full absolute opacity-30 bg-black"
-          ></span>
+        ">
+        <div id="bg-div" class="absolute top-0 w-full h-full bg-center bg-cover" v-bind:style="{
+          backgroundImage: 'url(' + reactiveBackground + ')',
+        }">
+          <span id="blackOverlay" class="w-full h-full absolute opacity-30 bg-black"></span>
         </div>
         <div class="container relative mx-auto">
           <div class="items-center flex flex-wrap">
@@ -48,8 +35,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="
+        <div class="
             top-auto
             bottom-0
             left-0
@@ -59,22 +45,10 @@
             pointer-events-none
             overflow-hidden
             h-70-px
-          "
-          style="transform: translateZ(0)"
-        >
-          <svg
-            class="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              class="text-slate-200 fill-current"
-              points="2560 0 2560 100 0 100"
-            />
+          " style="transform: translateZ(0)">
+          <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+            version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+            <polygon class="text-slate-200 fill-current" points="2560 0 2560 100 0 100" />
           </svg>
         </div>
       </div>
@@ -83,8 +57,7 @@
         <div class="container mx-auto px-6">
           <div class="flex flex-wrap">
             <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-              <div
-                class="
+              <div class="
                   relative
                   flex flex-col
                   min-w-0
@@ -94,11 +67,9 @@
                   mb-8
                   shadow-lg
                   rounded-lg
-                "
-              >
+                ">
                 <div class="px-4 py-5 flex-auto">
-                  <div
-                    class="
+                  <div class="
                       text-white
                       p-3
                       text-center
@@ -111,8 +82,7 @@
                       shadow-lg
                       rounded-full
                       bg-red-400
-                    "
-                  >
+                    ">
                     <i class="fas fa-award"></i>
                   </div>
                   <h6 class="text-xl font-semibold">Club de parapente</h6>
@@ -126,8 +96,7 @@
             </div>
 
             <div class="w-full md:w-4/12 px-6 text-center">
-              <div
-                class="
+              <div class="
                   relative
                   flex flex-col
                   min-w-0
@@ -137,22 +106,17 @@
                   mb-8
                   shadow-lg
                   rounded-lg
-                "
-              >
+                ">
                 <div class="px-6 py-6 flex-auto">
                   <div class="px-4 py-4 flex-auto">
-                    <img
-                      src="@/assets/img/logo_high_can_fly.svg"
-                      alt="logo High Can Fly Parapente"
-                    />
+                    <img src="@/assets/img/logo_high_can_fly.svg" alt="logo High Can Fly Parapente" />
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="pt-6 w-full md:w-4/12 px-4 text-center">
-              <div
-                class="
+              <div class="
                   relative
                   flex flex-col
                   min-w-0
@@ -162,11 +126,9 @@
                   mb-8
                   shadow-lg
                   rounded-lg
-                "
-              >
+                ">
                 <div class="px-4 py-5 flex flex-col items-center">
-                  <div
-                    class="
+                  <div class="
                       text-white
                       p-3
                       text-center
@@ -179,8 +141,7 @@
                       shadow-lg
                       rounded-full
                       bg-emerald-400
-                    "
-                  >
+                    ">
                     <i class="fas fa-newspaper"></i>
                   </div>
                   <div class="text-center">
@@ -198,49 +159,35 @@
 
           <div class="flex flex-wrap items-center mt-16">
             <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-              <div
-                class="
+              <div class="
                   relative
                   flex flex-col
                   min-w-0
                   break-words
-                  bg-white
+                  bg-emerald-500
                   w-full
                   mb-6
                   shadow-lg
                   rounded-lg
-                "
-              >
-                <lazy-img
-                  :src="
-                    getCloudinaryImg(
-                      'static-web-highcanfly/highcanfly-103',
-                      width < 768
-                        ? Math.ceil((width - 80) / 100) * 100
-                        : Math.ceil((width * 0.25) / 100) * 100
-                    ).toURL()
-                  "
-                  @click="
-                    lightBox(
-                      getCloudinaryImg(
-                        'static-web-highcanfly/highcanfly-103'
-                      ).toURL()
-                    )
-                  "
-                  alt="En route vers le Plancert."
-                  class="w-full align-middle rounded-t-lg"
-                />
+                ">
+                <lazy-img :src="
+                  getCloudinaryImg(
+                    'static-web-highcanfly/highcanfly-103',
+                    width < 768
+                      ? Math.ceil((width - 80) / 100) * 100
+                      : Math.ceil((width * 0.25) / 100) * 100
+                  ).toURL()
+                " @click="
+  lightBox(
+    getCloudinaryImg(
+      'static-web-highcanfly/highcanfly-103'
+    ).toURL()
+  )
+" alt="En route vers le Plancert." class="w-full align-middle rounded-t-lg" />
                 <blockquote class="relative p-8 mb-4">
-                  <svg
-                    preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 583 95"
-                    class="absolute left-0 w-full block h-95-px -top-94-px"
-                  >
-                    <polygon
-                      points="-30,95 583,95 583,65"
-                      class="text-emerald-500 fill-current"
-                    />
+                  <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95"
+                    class="absolute left-0 w-full block h-95-px -top-94-px">
+                    <polygon points="-30,95 583,95 583,65" class="text-emerald-500 fill-current" />
                   </svg>
                   <h4 class="text-xl font-bold text-white">
                     Coupe française de marche et vol
@@ -250,18 +197,14 @@
                     Participez avec nous au challenge des club à la CFDMV. En
                     tant que membres pensez à déclarer vos vols.
                     <br />
-                    <a
-                      class="font-bold"
-                      href="https://parapente.ffvl.fr/cfdmv/liste/2021/club/14172"
-                      >Les vols du club</a
-                    >
+                    <a class="font-bold" href="https://parapente.ffvl.fr/cfdmv/liste/2021/club/14172">Les vols du
+                      club</a>
                   </p>
                 </blockquote>
               </div>
             </div>
             <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
-              <div
-                class="
+              <div class="
                   text-slate-500
                   p-3
                   text-center
@@ -274,38 +217,33 @@
                   shadow-lg
                   rounded-full
                   bg-white
-                "
-              >
+                ">
                 <i class="fas fa-user-friends text-xl"></i>
               </div>
               <h3 class="text-3xl mb-2 font-semibold leading-normal">
                 Partageons nos expériences
               </h3>
-              <p
-                class="
+              <p class="
                   text-lg
                   font-light
                   leading-relaxed
                   mt-4
                   mb-4
                   text-slate-600
-                "
-              >
+                ">
                 Le parapente fait partie de ces activités, comme l'alpinisme,
                 qui créent des émotions fortes. Elles permettent de développer
                 rapidement des liens forts avec les gens qui partagnet
                 l'activité avec nous.
               </p>
-              <p
-                class="
+              <p class="
                   text-lg
                   font-light
                   leading-relaxed
                   mt-0
                   mb-4
                   text-slate-600
-                "
-              >
+                ">
                 Une sortie Hike and Fly laisse souvent de nombreux souvenirs de
                 conversations pendant la montée,de partage d'émotions à la vue
                 des paysages… et de vols fabuleux.
@@ -316,8 +254,7 @@
       </section>
 
       <section class="relative py-20">
-        <div
-          class="
+        <div class="
             bottom-auto
             top-0
             left-0
@@ -328,22 +265,10 @@
             overflow-hidden
             -mt-20
             h-20
-          "
-          style="transform: translateZ(0)"
-        >
-          <svg
-            class="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              class="text-white fill-current"
-              points="2560 0 2560 100 0 100"
-            />
+          " style="transform: translateZ(0)">
+          <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+            version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+            <polygon class="text-white fill-current" points="2560 0 2560 100 0 100" />
           </svg>
         </div>
 
@@ -351,8 +276,7 @@
           <div class="items-center flex flex-wrap">
             <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
               <div class="md:pr-12">
-                <div
-                  class="
+                <div class="
                     text-emerald-600
                     p-3
                     text-center
@@ -365,8 +289,7 @@
                     shadow-lg
                     rounded-full
                     bg-emerald-300
-                  "
-                >
+                  ">
                   <i class="fas fa-rocket text-xl"></i>
                 </div>
                 <h3 class="text-3xl font-semibold">
@@ -380,8 +303,7 @@
                   <li class="py-2">
                     <div class="flex items-center">
                       <div>
-                        <span
-                          class="
+                        <span class="
                             text-xs
                             font-semibold
                             inline-block
@@ -392,8 +314,7 @@
                             text-emerald-600
                             bg-emerald-200
                             mr-3
-                          "
-                        >
+                          ">
                           <i class="fas fa-fingerprint"></i>
                         </span>
                       </div>
@@ -407,8 +328,7 @@
                   <li class="py-2">
                     <div class="flex items-center">
                       <div>
-                        <span
-                          class="
+                        <span class="
                             text-xs
                             font-semibold
                             inline-block
@@ -419,8 +339,7 @@
                             text-emerald-600
                             bg-emerald-200
                             mr-3
-                          "
-                        >
+                          ">
                           <i class="fab fa-html5"></i>
                         </span>
                       </div>
@@ -434,8 +353,7 @@
                   <li class="py-2">
                     <div class="flex items-center">
                       <div>
-                        <span
-                          class="
+                        <span class="
                             text-xs
                             font-semibold
                             inline-block
@@ -446,8 +364,7 @@
                             text-emerald-600
                             bg-emerald-200
                             mr-3
-                          "
-                        >
+                          ">
                           <i class="far fa-paper-plane"></i>
                         </span>
                       </div>
@@ -462,25 +379,20 @@
               </div>
             </div>
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-              <lazy-img
-                :src="
-                  getCloudinaryImg(
-                    'static-web-highcanfly/highcanfly-104',
-                    width < 768
-                      ? Math.ceil((width - 80) / 100) * 100
-                      : Math.ceil((width * 0.25) / 100) * 100
-                  ).toURL()
-                "
-                @click="
-                  lightBox(
-                    getCloudinaryImg(
-                      'static-web-highcanfly/highcanfly-104'
-                    ).toURL()
-                  )
-                "
-                alt="Décollage d'Helbroner"
-                class="w-full align-middle rounded-lg"
-              />
+              <lazy-img :src="
+                getCloudinaryImg(
+                  'static-web-highcanfly/highcanfly-104',
+                  width < 768
+                    ? Math.ceil((width - 80) / 100) * 100
+                    : Math.ceil((width * 0.25) / 100) * 100
+                ).toURL()
+              " @click="
+  lightBox(
+    getCloudinaryImg(
+      'static-web-highcanfly/highcanfly-104'
+    ).toURL()
+  )
+" alt="Décollage d'Helbroner" class="w-full align-middle rounded-lg" />
             </div>
           </div>
         </div>
@@ -500,33 +412,26 @@
           <div class="flex flex-wrap">
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <lazy-img
-                  :src="
-                    getCloudinaryImg(
-                      'static-web-highcanfly/highcanfly-106',
-                      120,
-                      120
-                    ).toURL()
-                  "
-                  @click="
-                    lightBox(
-                      getCloudinaryImg(
-                        'static-web-highcanfly/highcanfly-106'
-                      ).toURL()
-                    )
-                  "
-                  class="shadow-lg rounded-full mx-auto max-w-120-px"
-                />
+                <lazy-img :src="
+                  getCloudinaryImg(
+                    'static-web-highcanfly/highcanfly-106',
+                    120,
+                    120
+                  ).toURL()
+                " @click="
+  lightBox(
+    getCloudinaryImg(
+      'static-web-highcanfly/highcanfly-106'
+    ).toURL()
+  )
+" class="shadow-lg rounded-full mx-auto max-w-120-px" />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">R…</h5>
-                  <p
-                    class="mt-1 text-sm text-slate-400 uppercase font-semibold"
-                  >
+                  <p class="mt-1 text-sm text-slate-400 uppercase font-semibold">
                     Animateur fédéral
                   </p>
                   <div class="mt-6">
-                    <button
-                      class="
+                    <button class="
                         bg-slate-700
                         text-white
                         w-8
@@ -536,10 +441,7 @@
                         focus:outline-none
                         mr-1
                         mb-1
-                      "
-                      type="button"
-                      onclick="location.href='https://www.instagram.com/klerviaudreyronanbriac/'"
-                    >
+                      " type="button" onclick="location.href='https://www.instagram.com/klerviaudreyronanbriac/'">
                       <i class="fab fa-instagram"></i>
                     </button>
                   </div>
@@ -548,34 +450,26 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <lazy-img
-                  :src="
-                    getCloudinaryImg(
-                      'static-web-highcanfly/highcanfly-105',
-                      120,
-                      120
-                    ).toURL()
-                  "
-                  @click="
-                    lightBox(
-                      getCloudinaryImg(
-                        'static-web-highcanfly/highcanfly-105'
-                      ).toURL()
-                    )
-                  "
-                  alt="Notre moniteur professionel"
-                  class="shadow-lg rounded-full mx-auto max-w-120-px"
-                />
+                <lazy-img :src="
+                  getCloudinaryImg(
+                    'static-web-highcanfly/highcanfly-105',
+                    120,
+                    120
+                  ).toURL()
+                " @click="
+  lightBox(
+    getCloudinaryImg(
+      'static-web-highcanfly/highcanfly-105'
+    ).toURL()
+  )
+" alt="Notre moniteur professionel" class="shadow-lg rounded-full mx-auto max-w-120-px" />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">H…</h5>
-                  <p
-                    class="mt-1 text-sm text-slate-400 uppercase font-semibold"
-                  >
+                  <p class="mt-1 text-sm text-slate-400 uppercase font-semibold">
                     Moniteur professionnel
                   </p>
                   <div class="mt-6">
-                    <button
-                      class="
+                    <button class="
                         bg-red-600
                         text-white
                         w-8
@@ -585,13 +479,10 @@
                         focus:outline-none
                         mr-1
                         mb-1
-                      "
-                      type="button"
-                    >
+                      " type="button">
                       <i class="fab fa-google"></i>
                     </button>
-                    <button
-                      class="
+                    <button class="
                         bg-sky-600
                         text-white
                         w-8
@@ -601,9 +492,7 @@
                         focus:outline-none
                         mr-1
                         mb-1
-                      "
-                      type="button"
-                    >
+                      " type="button">
                       <i class="fab fa-facebook-f"></i>
                     </button>
                   </div>
@@ -612,32 +501,24 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <lazy-img
-                  :src="
-                    getCloudinaryImg(
-                      'static-web-highcanfly/capucine',
-                      120,
-                      120
-                    ).toURL()
-                  "
-                  @click="
-                    lightBox(
-                      getCloudinaryImg('static-web-highcanfly/capucine').toURL()
-                    )
-                  "
-                  alt="Capucine en compétition"
-                  class="shadow-lg rounded-full mx-auto max-w-120-px"
-                />
+                <lazy-img :src="
+                  getCloudinaryImg(
+                    'static-web-highcanfly/capucine',
+                    120,
+                    120
+                  ).toURL()
+                " @click="
+  lightBox(
+    getCloudinaryImg('static-web-highcanfly/capucine').toURL()
+  )
+" alt="Capucine en compétition" class="shadow-lg rounded-full mx-auto max-w-120-px" />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">C…</h5>
-                  <p
-                    class="mt-1 text-sm text-slate-400 uppercase font-semibold"
-                  >
+                  <p class="mt-1 text-sm text-slate-400 uppercase font-semibold">
                     Compétitrice de haut niveau
                   </p>
                   <div class="mt-6">
-                    <button
-                      class="
+                    <button class="
                         bg-indigo-500
                         text-white
                         w-8
@@ -647,14 +528,10 @@
                         focus:outline-none
                         mr-1
                         mb-1
-                      "
-                      type="button"
-                      onclick="location.href='https://www.instagram.com/capucine_dlt/'"
-                    >
+                      " type="button" onclick="location.href='https://www.instagram.com/capucine_dlt/'">
                       <i class="fab fa-instagram"></i>
                     </button>
-                    <button
-                      class="
+                    <button class="
                         bg-sky-400
                         text-white
                         w-8
@@ -664,10 +541,7 @@
                         focus:outline-none
                         mr-1
                         mb-1
-                      "
-                      type="button"
-                      onclick="location.href='https://twitter.com/piitchy38'"
-                    >
+                      " type="button" onclick="location.href='https://twitter.com/piitchy38'">
                       <i class="fab fa-twitter"></i>
                     </button>
                   </div>
@@ -676,34 +550,26 @@
             </div>
             <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <lazy-img
-                  :src="
-                    getCloudinaryImg(
-                      'static-web-highcanfly/highcanfly-107',
-                      120,
-                      120
-                    ).toURL()
-                  "
-                  @click="
-                    lightBox(
-                      getCloudinaryImg(
-                        'static-web-highcanfly/highcanfly-107'
-                      ).toURL()
-                    )
-                  "
-                  alt="Audrey à Samoëns"
-                  class="shadow-lg rounded-full mx-auto max-w-120-px"
-                />
+                <lazy-img :src="
+                  getCloudinaryImg(
+                    'static-web-highcanfly/highcanfly-107',
+                    120,
+                    120
+                  ).toURL()
+                " @click="
+  lightBox(
+    getCloudinaryImg(
+      'static-web-highcanfly/highcanfly-107'
+    ).toURL()
+  )
+" alt="Audrey à Samoëns" class="shadow-lg rounded-full mx-auto max-w-120-px" />
                 <div class="pt-6 text-center">
                   <h5 class="text-xl font-bold">A…</h5>
-                  <p
-                    class="mt-1 text-sm text-slate-400 uppercase font-semibold"
-                  >
+                  <p class="mt-1 text-sm text-slate-400 uppercase font-semibold">
                     Notre secrétaire et trésorière
                   </p>
                   <div class="mt-6">
-                    <button
-                      class="
+                    <button class="
                         bg-pink-500
                         text-white
                         w-8
@@ -713,13 +579,10 @@
                         focus:outline-none
                         mr-1
                         mb-1
-                      "
-                      type="button"
-                    >
+                      " type="button">
                       <i class="fab fa-dribbble"></i>
                     </button>
-                    <button
-                      class="
+                    <button class="
                         bg-red-600
                         text-white
                         w-8
@@ -729,13 +592,10 @@
                         focus:outline-none
                         mr-1
                         mb-1
-                      "
-                      type="button"
-                    >
+                      " type="button">
                       <i class="fab fa-google"></i>
                     </button>
-                    <button
-                      class="
+                    <button class="
                         bg-sky-400
                         text-white
                         w-8
@@ -745,13 +605,10 @@
                         focus:outline-none
                         mr-1
                         mb-1
-                      "
-                      type="button"
-                    >
+                      " type="button">
                       <i class="fab fa-twitter"></i>
                     </button>
-                    <button
-                      class="
+                    <button class="
                         bg-slate-700
                         text-white
                         w-8
@@ -761,9 +618,7 @@
                         focus:outline-none
                         mr-1
                         mb-1
-                      "
-                      type="button"
-                    >
+                      " type="button">
                       <i class="fab fa-instagram"></i>
                     </button>
                   </div>
@@ -775,8 +630,7 @@
       </section>
 
       <section class="pb-20 relative block bg-slate-800">
-        <div
-          class="
+        <div class="
             bottom-auto
             top-0
             left-0
@@ -787,22 +641,10 @@
             overflow-hidden
             -mt-20
             h-20
-          "
-          style="transform: translateZ(0)"
-        >
-          <svg
-            class="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              class="text-slate-800 fill-current"
-              points="2560 0 2560 100 0 100"
-            />
+          " style="transform: translateZ(0)">
+          <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+            version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+            <polygon class="text-slate-800 fill-current" points="2560 0 2560 100 0 100" />
           </svg>
         </div>
 
@@ -821,10 +663,7 @@
             <div class="px-2 py-2 w-full rounded-lg bg-white shadow-lg">
               <div>
                 <lazy-observer @on-change="onChangeMap">
-                  <olMapsitesDePratiqueComponent
-                    v-if="loadMap"
-                    mapClass="h-screen-1/2"
-                  />
+                  <olMapsitesDePratiqueComponent v-if="loadMap" mapClass="h-screen-1/2" />
                 </lazy-observer>
               </div>
             </div>
@@ -834,13 +673,8 @@
       <emailForm />
       <section class="pt-10 pb-20">
         <div class="container mx-auto px-4">
-          <card-algolia-search
-            :applicationId="algoliaApplicationId"
-            :searchKey="algoliaSearchKey"
-            filter="type:post"
-            baseUrl="/sanity-blog"
-            :indexName="`highcanfly-${sanityDataset}-index`"
-          />
+          <card-algolia-search :applicationId="algoliaApplicationId" :searchKey="algoliaSearchKey" filter="type:post"
+            baseUrl="/sanity-blog" :indexName="`highcanfly-${sanityDataset}-index`" />
         </div>
       </section>
     </main>
@@ -859,7 +693,7 @@ import { getCloudinaryImg } from "@/plugins/highcanfly.js";
 import LazyImg from "@/components/Utilities/LazyImg.vue";
 import * as basiclightbox from "basiclightbox";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
-import {ref} from "vue";
+import { ref } from "vue";
 
 const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
 const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
@@ -933,13 +767,13 @@ export default {
   data() {
     console.log(
       "commit date: " +
-        new Intl.DateTimeFormat("fr-FR", {
-          year: "2-digit",
-          month: "short",
-          day: "2-digit",
-          hour: "numeric",
-          minute: "numeric",
-        }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT))
+      new Intl.DateTimeFormat("fr-FR", {
+        year: "2-digit",
+        month: "short",
+        day: "2-digit",
+        hour: "numeric",
+        minute: "numeric",
+      }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT))
     );
     const loadMap = this.loadMap;
     const errors = [];
