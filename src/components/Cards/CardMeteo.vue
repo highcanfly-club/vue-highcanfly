@@ -139,18 +139,17 @@ import PopOverSimple from "@/components/Utilities/PopOverSimple.vue";
 const icons_base = "/assets/forecast/";
 // const icons_base =  "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/";
 const API_TOKEN = "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
-let icons = new Set();
 let ephemerideClicked = -1;
 let weatherDetailClicked = -1;
 let windDetailClicked = -1;
 
-import type { Forecast, ForecastCollection, Weather12HOrWeather, Weather12HOrWeatherLong, DailyForecast } from '@/types/Forecast';
+import type { Forecast, ForecastCollection, Weather12HOrWeather, Weather12HOrWeatherLong, DailyForecast,RainOrSnow } from '@/types/Forecast';
 import _places from "@/config/places.json";
 import type GeoJSON from '@/types/GeoJSON';
 const places: GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection;
 
 export default defineComponent({
-  forecastCollection: reactive<Forecast>({} as Forecast),
+  forecastCollection: reactive<ForecastCollection>({} as ForecastCollection),
   props: {
     id: {
       type: Number,
@@ -179,7 +178,6 @@ export default defineComponent({
   data() {
     return {
       forecastCollection: this.forecastCollection as unknown as ForecastCollection,
-      icons,
       ephemerideClicked: ref(ephemerideClicked),
       windDetailClicked: ref(windDetailClicked),
       weatherDetailClicked: ref(weatherDetailClicked),
@@ -305,7 +303,7 @@ export default defineComponent({
         style: { transform: `rotate(${direction + 180}deg)` },
       };
     },
-    getRain(rain) {
+    getRain(rain:RainOrSnow) {
       let rainInterval = Object.keys(rain);
       return { interval: rainInterval[0], height: rain[rainInterval[0]] };
     },
