@@ -22,9 +22,6 @@ const commit = {
   cfdtrackjoiner: (new Date(commits_trackjoiner[0].authorDate)).toISOString(),
 };
 
-//copy src/config/places.geoson to srv/config/places.json because page worker does not support .geojson extension
-fs.copyFile('./src/config/places.geojson', './src/config/places.json', ()=>{console.log('geojson copied')});
-
 process.env.VUE_APP_GIT_LAST_COMMIT = new Date(commits[0].authorDate);
 process.env.VUE_APP_GIT_TRACKJOINER_LAST_COMMIT = new Date(commits_trackjoiner[0].authorDate);
 fs.writeFile('./src/config/commit.json',
@@ -59,6 +56,7 @@ fs.writeFile('./src/config/auth0-conf.json',
 
 /*generate jwks.json */
 /* might be already done with node jwks.js */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const loadJwks = require('./jwks.js');
 
 /*generate sanity-conf.json*/
@@ -111,9 +109,6 @@ const webpackPlugins = [];
 if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
   const PurgecssPlugin = require('purgecss-webpack-plugin');
   const glob = require('glob-all')
-  const PATHS = {
-    src: path.join(__dirname, 'src')
-  }
 
   const purgeCssPlugin = new PurgecssPlugin({
     paths: glob.sync(

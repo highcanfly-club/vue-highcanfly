@@ -15,7 +15,7 @@ export enum HIGHCANFLY_PERMISSION {
 /**
  * @param token JWT token as string
  * @param issuer Auth0 domain. Optional, if not provided use jwks.domains
- * @param now Optional number of seconds from 01/01/1970 (Cloudflare Workers must get Date.now() in onPost/Get function otherwise 0 is returnes)
+ * @param now Optional number of seconds from 01/01/1970 (Cloudflare Workers must get Date.now() in onPost/Get function otherwise 0 is returned)
  * @returns false if token is invalid or a valid JWTVerifyResult
  */
 export const verifyToken = (
@@ -24,7 +24,7 @@ export const verifyToken = (
   now?: number
 ): Promise<boolean | jose.JWTVerifyResult> => {
   issuer = issuer === undefined ? jwks.domain : issuer;
-  now = now === undefined ? Date.now() / 1000 : now;
+  const _now = now === undefined ? Date.now() / 1000 : now;
   return new Promise((resolve) => {
     jose.importX509(x509cert, algorithm).then((pubkey) => {
       jose
@@ -35,8 +35,8 @@ export const verifyToken = (
             jwt.payload.iat !== undefined &&
             jwt.payload.exp !== undefined &&
             `https://${issuer}/` == jwt.payload.iss &&
-            jwt.payload.iat < now &&
-            jwt.payload.exp > now
+            jwt.payload.iat < _now &&
+            jwt.payload.exp > _now
           ) {
             resolve(jwt);
           } else {
@@ -127,7 +127,7 @@ export const parseTokenFromAuthorizationHeader = (
     );
     return jwtToken;
   }
-  return null;
+  return "";
 };
 
 export const checkToken = (

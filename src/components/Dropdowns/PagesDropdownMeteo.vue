@@ -40,11 +40,11 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { createPopper } from "@popperjs/core";
-import places from "@/config/places.geojson";
-import {ref} from "vue";
-export default {
+import places from '@/config/places.json';
+import {ref, defineComponent} from "vue";
+export default defineComponent({
   props: {
     color: {
       type: String,
@@ -63,15 +63,15 @@ export default {
     };
   },
   methods: {
-    toggleDropdown: function (event) {
+    toggleDropdown: function (event:Event) {
       event.preventDefault();
       if (this.dropdownMeteoPopoverShow) {
         this.dropdownMeteoPopoverShow = false;
       } else {
         this.dropdownMeteoPopoverShow = true;
         createPopper(
-          this.$refs.btnDropdownMeteoRef,
-          this.$refs.popoverDropdownMeteoRef,
+          this.$refs.btnDropdownMeteoRef as HTMLElement,
+          this.$refs.popoverDropdownMeteoRef as HTMLElement,
           {
             placement: "left",
           }
@@ -79,5 +79,5 @@ export default {
       }
     },
   },
-};
+});
 </script>

@@ -111,11 +111,11 @@
       get sanity token
     </button>
         <p
-      v-if="access_token"
+      v-if="access_token_valid"
       class="text-slate-700 pt-8 text-normal font-mono break-all text-justify"
       @click="showAcessToken()"
     >
-      access_token (validité: {{access_token_payload !== undefined ? (new Date(access_token_payload.exp*1000)).toLocaleString('fr') : ""}}):<br />
+      access_token (validité: {{(access_token_payload !== undefined) && (access_token_payload.exp !== undefined) ? (new Date(access_token_payload.exp*1000)).toLocaleString('fr') : ""}}):<br />
       permissions
       <pre>
         {{access_token_payload !== undefined ? access_token_payload.permissions : ""}}
@@ -125,11 +125,11 @@
       }}</span>
     </p>
     <p
-      v-if="id_token"
+      v-if="id_token_valid"
       class="text-slate-700 pt-8 pb-8 text-normal font-mono break-all text-justify"
       @click="showIdToken()"
     >
-      id_token (validité: {{id_token_payload !== undefined ? (new Date(id_token_payload.exp*1000).toLocaleString('fr')) : ""}}):
+      id_token (validité: {{(id_token_payload !== undefined) && (id_token_payload.exp !== undefined) ? (new Date(id_token_payload.exp*1000).toLocaleString('fr')) : ""}}):
       <span class="text-xs" :class="show_id_token ? 'inline' : 'hidden'">{{
         id_token
       }}</span>
@@ -162,22 +162,33 @@ export default defineComponent<{
   error: string;
   error_description: string;
   access_token: string;
+  access_token_valid: boolean;
   access_token_payload: jose.JWTPayload;
   id_token: string;
+  id_token_valid: boolean;
   id_token_payload: jose.JWTPayload;
   show_access_token: boolean;
-  shown_id_token: boolean;
+  show_id_token: boolean;
   sanity_token: string;
+  login: ()=>void;
+  logout: ()=>void;
+  showAcessToken:()=>void;
+  getSanityToken:()=>void;
+  getToken:()=>void;
+  verifyToken:()=>void;
+  showIdToken:()=>void;
 }>({
   name: "AuthPage",
   error: "",
   error_description: "",
   access_token: "",
+  access_token_valid: false,
   access_token_payload: {},
   id_token: "",
+  id_token_valid:false,
   id_token_payload: {},
   show_access_token: false,
-  shown_id_token: false,
+  show_id_token: false,
   sanity_token: "",
   data() {
     const route = this.$route as unknown as LoginQuery;
@@ -187,15 +198,17 @@ export default defineComponent<{
       route.query.error !== undefined
     ) {
       this.error = route.query.error;
-      this.error_description = route.query.error_description;
+      this.error_description = route.query.error_description === undefined ? "" : route.query.error_description;
       console.log(route.query);
     }
     return {
       error: ref(this.error),
       error_description: ref(this.error_description),
       access_token: ref(this.access_token),
+      access_token_valid: ref(this.access_token_valid),
       access_token_payload: this.access_token_payload,
       id_token: ref(this.id_token),
+      id_token_valid: ref(this.id_token_valid),
       id_token_payload: this.id_token_payload,
       show_access_token: this.show_access_token,
       show_id_token: this.show_id_token,
@@ -205,28 +218,28 @@ export default defineComponent<{
   methods: {
     // Log the user in
     login():void {
-      (this.$auth0 as Auth0Instance).loginWithRedirect();
+       this.$auth0.loginWithRedirect();
     },
     // Log the user out
     logout():void {
-      (this.$auth0 as Auth0Instance).logout({
+       this.$auth0.logout({
         localOnly: true,
       });
     },
     showAcessToken():void {
-      if (!this.access_token.length) {
+      if ((this.access_token === undefined) || (this.access_token.length === 0)) {
         this.getToken();
       }
       this.show_access_token = true;
     },
     showIdToken():void {
-      if (!this.id_token.length) {
+      if ((this.id_token === undefined) || (this.id_token.length === 0)) {
         this.getToken();
       }
       this.show_id_token = true;
     },
     getToken():void {
-      (this.$auth0 as Auth0Instance)
+       this.$auth0
         .getTokenSilentlyVerbose()
         .then((tokens: GetTokenSilentlyVerboseResponse) => {
           this.access_token = tokens.access_token;
@@ -235,21 +248,21 @@ export default defineComponent<{
     },
     verifyToken():void {
       verifyTokenAsync(
-        (this.$auth0 as Auth0Instance).getTokenSilentlyVerbose(),
+        this.$auth0.getTokenSilentlyVerbose(),
         oAuthTokenType.access_token,
         Date.now() / 1000
       ).then((jwt) => {
-        this.access_token = jwt !== null;
+        this.access_token_valid = jwt !== null;
         console.log(jwt);
         this.access_token_payload = jwt.payload;
         console.log(this.access_token_payload);
       });
       verifyTokenAsync(
-        (this.$auth0 as Auth0Instance).getTokenSilentlyVerbose(),
+         this.$auth0.getTokenSilentlyVerbose(),
         oAuthTokenType.id_token,
         Date.now() / 1000
       ).then((jwt) => {
-        this.id_token = jwt !== null;
+        this.id_token_valid = jwt !== null;
         console.log(jwt);
         this.id_token_payload = jwt.payload;
         console.log(this.id_token_payload);
@@ -258,14 +271,14 @@ export default defineComponent<{
     getSanityToken() {
       getCustomClaim(
         "sanity_token",
-        (this.$auth0 as Auth0Instance).getTokenSilentlyVerbose(),
+         this.$auth0.getTokenSilentlyVerbose(),
         Date.now() / 1000
       ).then((claim) => {
         console.log(claim);
-        this.sanity_token = claim;
+        this.sanity_token = claim as string;
       });
       verifyTokenAsync(
-        (this.$auth0 as Auth0Instance).getTokenSilentlyVerbose(),
+         this.$auth0.getTokenSilentlyVerbose(),
         oAuthTokenType.access_token,
         Date.now() / 1000
       ).then((jwt) => {
