@@ -1,0 +1,6 @@
+{
+    "name": "forecast-collection",
+    "version": "1.0.0",
+    "description": "TypeScript typings Meteo France forecasts",
+    "types": "./index.d.ts"
+  }

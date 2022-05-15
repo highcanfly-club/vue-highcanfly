@@ -1,0 +1,6 @@
+{
+    "name": "geojson",
+    "version": "1.0.0",
+    "description": "TypeScript typings geojson flying places",
+    "types": "./index.d.ts"
+  }

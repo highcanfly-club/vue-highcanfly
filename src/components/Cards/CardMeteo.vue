@@ -5,7 +5,7 @@
         <tr>
           <td colspan="11" class="text-center">
             {{
-               ($props as any).place.properties.name.localeCompare(
+                ($props as any).place.properties.name.localeCompare(
                   forecastCollection !== undefined ? forecastCollection.position.name : null
                 ) != 0
                   ? `${($props as any).place.properties.name} - `
@@ -101,8 +101,9 @@
                 title="Tendance" :left="false" ref="weatherPop" />
             </td>
             <td class="place-items-center relative" @click="showWindDetail(index)">
-              <pop-over-simple v-if="windDetailClicked == index" :text="getWindAdequate(($props as any).place.properties.fly)"
-                title="Vent admissible" :left="false" ref="windPop" />
+              <pop-over-simple v-if="windDetailClicked == index"
+                :text="getWindAdequate(($props as any).place.properties.fly)" title="Vent admissible" :left="false"
+                ref="windPop" />
               <svg :style="getWindImg(detail.wind.direction).style"
                 class="mx-auto w-7 h-7 fill-transparent stroke-red-400 stroke-2" :class="
                   isDaylight(
@@ -143,9 +144,7 @@ let ephemerideClicked = -1;
 let weatherDetailClicked = -1;
 let windDetailClicked = -1;
 
-import type { Forecast, ForecastCollection, Weather12HOrWeather, Weather12HOrWeatherLong, DailyForecast,RainOrSnow } from '@/types/Forecast';
 import _places from "@/config/places.json";
-import type GeoJSON from '@/types/GeoJSON';
 const places: GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection;
 
 export default defineComponent({
@@ -169,7 +168,7 @@ export default defineComponent({
       type: String,
       default: "fr"
     },
-  } ,
+  },
   mounted() {
     if (!this.$props.lazy) {
       this.getWeatherAtPlace(this.place);
@@ -303,7 +302,7 @@ export default defineComponent({
         style: { transform: `rotate(${direction + 180}deg)` },
       };
     },
-    getRain(rain:RainOrSnow) {
+    getRain(rain: RainOrSnow) {
       let rainInterval = Object.keys(rain);
       return { interval: rainInterval[0], height: rain[rainInterval[0]] };
     },
