@@ -25,11 +25,11 @@
       >
       <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
       <router-link
-        v-for="place in places"
-        :key="place.slug"
-        :to="`/meteo/${place.slug}`"
+        v-for="place in places.features"
+        :key="place"
+        :to="`/meteo/${place.properties.slug}`"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
-        >{{ place.name }}</router-link
+        >{{ place.properties.name }}</router-link
       >
       <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
       <router-link
@@ -40,10 +40,14 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { createPopper } from "@popperjs/core";
-import places from "@/config/places.json";
-export default {
+import _places from '@/config/places.json';
+import {ref, defineComponent} from "vue";
+import type GeoJSON from '@/types/GeoJSON';
+const places:GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection;
+
+export default defineComponent({
   props: {
     color: {
       type: String,
@@ -55,21 +59,22 @@ export default {
     },
   },
   data() {
+    console.log(this.places);
     return {
-      places,
+      places: ref(places),
       dropdownMeteoPopoverShow: false,
     };
   },
   methods: {
-    toggleDropdown: function (event) {
+    toggleDropdown: function (event:Event) {
       event.preventDefault();
       if (this.dropdownMeteoPopoverShow) {
         this.dropdownMeteoPopoverShow = false;
       } else {
         this.dropdownMeteoPopoverShow = true;
         createPopper(
-          this.$refs.btnDropdownMeteoRef,
-          this.$refs.popoverDropdownMeteoRef,
+          this.$refs.btnDropdownMeteoRef as HTMLElement,
+          this.$refs.popoverDropdownMeteoRef as HTMLElement,
           {
             placement: "left",
           }
@@ -77,5 +82,5 @@ export default {
       }
     },
   },
-};
+});
 </script>

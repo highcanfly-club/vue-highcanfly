@@ -30,6 +30,12 @@ fs.writeFile('./src/config/commit.json',
     if (err) return console.log(err);
   }
 );
+fs.writeFile('./commit.json',
+  JSON.stringify(commit),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
 fs.writeFile('./CFDTrackJoiner/commit.json',
   JSON.stringify(commit),
   'utf8', function (err) {
@@ -56,6 +62,7 @@ fs.writeFile('./src/config/auth0-conf.json',
 
 /*generate jwks.json */
 /* might be already done with node jwks.js */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const loadJwks = require('./jwks.js');
 
 /*generate sanity-conf.json*/
@@ -108,9 +115,6 @@ const webpackPlugins = [];
 if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
   const PurgecssPlugin = require('purgecss-webpack-plugin');
   const glob = require('glob-all')
-  const PATHS = {
-    src: path.join(__dirname, 'src')
-  }
 
   const purgeCssPlugin = new PurgecssPlugin({
     paths: glob.sync(
@@ -171,6 +175,7 @@ module.exports = {
     devtool: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'source-map' : false) : 'source-map',
     mode: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'development' : 'production') : 'development',
     resolve: {
+      extensions:['.geojson'],
       fallback: {
         // "fs": false,
         // "http": require.resolve("stream-http"),
@@ -178,6 +183,15 @@ module.exports = {
         // "timers": require.resolve("timers-browserify"),
         // "stream": require.resolve("stream-browserify")
       }
+    },
+    module: {
+      rules: [
+        {
+          test: /\.geojson$/,
+          loader: 'json-loader' //external loader
+          //type: 'json' //use internal loader
+        }
+      ]
     }
   },
   chainWebpack(config) {

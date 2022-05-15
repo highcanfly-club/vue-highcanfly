@@ -4,8 +4,7 @@
       class="flex flex-wrap sm:flex-nowrap sm:flex-row overflow-x-auto items-center"
     >
       <div
-        v-for="(place, index) in places"
-        :key="place.name"
+        v-for="(place,index) in places" :key="place"
         class="m-4 w-full sm:w-[38rem] h-[50rem] sm:min-w-[38rem] overflow-y-auto"
       >
         <div
@@ -28,7 +27,7 @@
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import CardMeteo from "@/components/Cards/CardMeteo.vue";
 import { ref } from "vue";
-import places from "@/config/places.json";
+import places from "@/config/places.geojson";
 
 export default {
   slug: ref(''),
@@ -56,9 +55,9 @@ export default {
       let _places = slug
         ? this.getPlaceWithSlug(slug).length > 0
           ? this.getPlaceWithSlug(slug) || slug === "all"
-          : places
-        : places.filter((place) => {
-            return place.default === true;
+          : places.features
+        : places.features.filter((place) => {
+            return place.properties.default === true;
           });
       return _places;
     },
@@ -69,8 +68,8 @@ export default {
       }
     },
     getPlaceWithSlug(slug) {
-      return places.filter((place) => {
-        return place.slug === slug;
+      return places.features.filter((place) => {
+        return place.properties.slug === slug;
       });
     },
   },

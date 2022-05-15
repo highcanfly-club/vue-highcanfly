@@ -1,185 +1,260 @@
-[
-    {
-        "lat": 50.416924,
-        "lon": 2.513619,
-        "slug": "la-comte",
-        "name": "La Comté",
-        "default": true,
-        "fly": {
-            "sectors": [
-                [
-                    -1,
-                    15
-                ],
-                [
-                    270,
-                    360
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.513619,
+                    50.416924
                 ]
-            ],
-            "wind": [
-                0,
-                5.55
-            ]
-        }
-    },
-    {
-        "lat": 50.43358,
-        "lon": 2.585847,
-        "slug": "ohlain",
-        "name": "Parc d'Ohlain",
-        "default": true,
-        "fly": {
-            "sectors": [
-                [
-                    180,
-                    225
+            },
+            "properties": {
+                "slug": "la-comte",
+                "name": "La Comté",
+                "default": true,
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": -1,
+                            "max_angle": 15
+                        },
+                        {
+                            "min_angle": 270,
+                            "max_angle": 360
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5.55
+                    }
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.585847,
+                    50.43358
                 ]
-            ],
-            "wind": [
-                0,
-                5.55
-            ]
-        }
-    },
-    {
-        "lat": 50.679484,
-        "lon": 1.567162,
-        "slug": "equihen",
-        "name": "Équihen-Plage",
-        "default": true,
-        "fly": {
-            "sectors": [
-                [
-                    250,
-                    290
+            },
+            "properties": {
+                "slug": "ohlain",
+                "name": "Parc d'Ohlain",
+                "default": true,
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": 180,
+                            "max_angle": 225
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5.55
+                    }
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.567162,
+                    50.679484
                 ]
-            ],
-            "wind": [
-                0,
-                6.11
-            ]
-        }
-    },
-    {
-        "lat": 50.401719,
-        "lon": 2.92927,
-        "slug": "aquaterra",
-        "default": true,
-        "name": "Gonflage au Parc des Îles",
-        "fly": {
-            "sectors": [
-                [
-                    -1,
-                    361
+            },
+            "properties": {
+                "slug": "equihen",
+                "name": "Équihen-Plage",
+                "default": true,
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": 250,
+                            "max_angle": 290
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 6.11
+                    }
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.92927,
+                    50.401719
                 ]
-            ],
-            "wind": [
-                0,
-                4
-            ]
-        }
-    },
-    {
-        "lat": 50.443306,
-        "lon": 2.778216,
-        "slug": "11-19",
-        "name": "⚠ Terrils jumeaux ⚠",
-        "default": true,
-        "fly": {
-            "sectors": [
-                [
-                    -1,
-                    30
-                ],
-                [
-                    260,
-                    360
+            },
+            "properties": {
+                "slug": "aquaterra",
+                "default": true,
+                "name": "Gonflage au Parc des Îles",
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": -1,
+                            "max_angle": 361
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 4
+                    }
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.778216,
+                    50.443306
                 ]
-            ],
-            "wind": [
-                0,
-                1.666
-            ]
-        }
-    },
-    {
-        "lat": 45.949472,
-        "lon": 6.739542,
-        "name": "Plaine-Joux",
-        "slug": "plaine-joux",
-        "fly": {
-            "sectors": [
-                [
-                    150,
-                    200
+            },
+            "properties": {
+                "slug": "11-19",
+                "name": "⚠ Terrils jumeaux ⚠",
+                "default": true,
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": -1,
+                            "max_angle": 30
+                        },
+                        {
+                            "min_angle": 260,
+                            "max_angle": 360
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 1.666
+                    }
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.739542,
+                    45.949472
                 ]
-            ],
-            "wind": [
-                0,
-                5.55
-            ]
-        }
-    },
-    {
-        "lat": 45.937921,
-        "lon": 6.851649,
-        "name": "Planpraz",
-        "slug": "planpraz",
-        "fly": {
-            "sectors": [
-                [
-                    200,
-                    260
-                ],
-                [
-                    70,
-                    110
+            },
+            "properties": {
+                "name": "Plaine-Joux",
+                "slug": "plaine-joux",
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": 150,
+                            "max_angle": 200
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5.55
+                    }
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.851649,
+                    45.937921
                 ]
-            ],
-            "wind": [
-                0,
-                5.55
-            ]
-        }
-    },
-    {
-        "lat": 45.879449,
-        "lon": 6.888846,
-        "name": "Aiguille du midi",
-        "slug": "aiguille-du-midi",
-        "fly": {
-            "sectors": [
-                [
-                    300,
-                    340
-                ],
-                [
-                    100,
-                    166
+            },
+            "properties": {
+                "name": "Planpraz",
+                "slug": "planpraz",
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": 200,
+                            "max_angle": 260
+                        },
+                        {
+                            "min_angle": 70,
+                            "max_angle": 110
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5.55
+                    }
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.888846,
+                    45.879449
                 ]
-            ],
-            "wind": [
-                0,
-                2
-            ]
-        }
-    },
-    {
-        "lat": 45.878229,
-        "lon": 6.743386,
-        "name": "Tête de la Charme (1846m)",
-        "slug": "la-charme",
-        "fly": {
-            "sectors": [
-                [
-                    255,
-                    285
+            },
+            "properties": {
+                "name": "Aiguille du midi",
+                "slug": "aiguille-du-midi",
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": 300,
+                            "max_angle": 340
+                        },
+                        {
+                            "min_angle": 100,
+                            "max_angle": 166
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 2
+                    }
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.743386,
+                    45.878229
                 ]
-            ],
-            "wind": [
-                0,
-                5
-            ]
+            },
+            "properties": {
+                "name": "Tête de la Charme (1846m)",
+                "slug": "la-charme",
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": 255,
+                            "max_angle": 285
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5
+                    }
+                }
+            }
         }
-    }
-]
+    ]
+}
