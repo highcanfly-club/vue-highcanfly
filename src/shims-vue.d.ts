@@ -1,5 +1,12 @@
 import type { Auth0Instance } from "./plugins/auth0";
 
+export interface SanityConf {
+  projectId: string;
+  dataset: string;
+  apiVersion: string;
+  useCdn: boolean;
+}
+
 /* eslint-disable */
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
@@ -10,6 +17,7 @@ declare module '*.vue' {
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     $auth0: Auth0Instance;
+    $sanityConf: SanityConf;
   }
 }
 

@@ -42,8 +42,11 @@
 </template>
 <script lang="ts">
 import { createPopper } from "@popperjs/core";
-import places from '@/config/places.json';
+import _places from '@/config/places.json';
 import {ref, defineComponent} from "vue";
+import type GeoJSON from '@/types/GeoJSON';
+const places:GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection;
+
 export default defineComponent({
   props: {
     color: {

@@ -16,19 +16,19 @@
                 "default": true,
                 "fly": {
                     "sectors": [
-                        [
-                            -1,
-                            15
-                        ],
-                        [
-                            270,
-                            360
-                        ]
+                        {
+                            "min_angle": -1,
+                            "max_angle": 15
+                        },
+                        {
+                            "min_angle": 270,
+                            "max_angle": 360
+                        }
                     ],
-                    "wind": [
-                        0,
-                        5.55
-                    ]
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5.55
+                    }
                 }
             }
         },
@@ -47,15 +47,15 @@
                 "default": true,
                 "fly": {
                     "sectors": [
-                        [
-                            180,
-                            225
-                        ]
+                        {
+                            "min_angle": 180,
+                            "max_angle": 225
+                        }
                     ],
-                    "wind": [
-                        0,
-                        5.55
-                    ]
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5.55
+                    }
                 }
             }
         },
@@ -74,15 +74,15 @@
                 "default": true,
                 "fly": {
                     "sectors": [
-                        [
-                            250,
-                            290
-                        ]
+                        {
+                            "min_angle": 250,
+                            "max_angle": 290
+                        }
                     ],
-                    "wind": [
-                        0,
-                        6.11
-                    ]
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 6.11
+                    }
                 }
             }
         },
@@ -101,15 +101,15 @@
                 "name": "Gonflage au Parc des Îles",
                 "fly": {
                     "sectors": [
-                        [
-                            -1,
-                            361
-                        ]
+                        {
+                            "min_angle": -1,
+                            "max_angle": 361
+                        }
                     ],
-                    "wind": [
-                        0,
-                        4
-                    ]
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 4
+                    }
                 }
             }
         },
@@ -128,19 +128,19 @@
                 "default": true,
                 "fly": {
                     "sectors": [
-                        [
-                            -1,
-                            30
-                        ],
-                        [
-                            260,
-                            360
-                        ]
+                        {
+                            "min_angle": -1,
+                            "max_angle": 30
+                        },
+                        {
+                            "min_angle": 260,
+                            "max_angle": 360
+                        }
                     ],
-                    "wind": [
-                        0,
-                        1.666
-                    ]
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 1.666
+                    }
                 }
             }
         },
@@ -149,7 +149,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    6.739542,45.949472
+                    6.739542,
+                    45.949472
                 ]
             },
             "properties": {
@@ -157,15 +158,15 @@
                 "slug": "plaine-joux",
                 "fly": {
                     "sectors": [
-                        [
-                            150,
-                            200
-                        ]
+                        {
+                            "min_angle": 150,
+                            "max_angle": 200
+                        }
                     ],
-                    "wind": [
-                        0,
-                        5.55
-                    ]
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5.55
+                    }
                 }
             }
         },
@@ -174,7 +175,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    6.851649,45.937921
+                    6.851649,
+                    45.937921
                 ]
             },
             "properties": {
@@ -182,19 +184,19 @@
                 "slug": "planpraz",
                 "fly": {
                     "sectors": [
-                        [
-                            200,
-                            260
-                        ],
-                        [
-                            70,
-                            110
-                        ]
+                        {
+                            "min_angle": 200,
+                            "max_angle": 260
+                        },
+                        {
+                            "min_angle": 70,
+                            "max_angle": 110
+                        }
                     ],
-                    "wind": [
-                        0,
-                        5.55
-                    ]
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5.55
+                    }
                 }
             }
         },
@@ -203,7 +205,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    6.888846,45.879449
+                    6.888846,
+                    45.879449
                 ]
             },
             "properties": {
@@ -211,19 +214,19 @@
                 "slug": "aiguille-du-midi",
                 "fly": {
                     "sectors": [
-                        [
-                            300,
-                            340
-                        ],
-                        [
-                            100,
-                            166
-                        ]
+                        {
+                            "min_angle": 300,
+                            "max_angle": 340
+                        },
+                        {
+                            "min_angle": 100,
+                            "max_angle": 166
+                        }
                     ],
-                    "wind": [
-                        0,
-                        2
-                    ]
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 2
+                    }
                 }
             }
         },
@@ -232,7 +235,8 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    6.743386,45.878229
+                    6.743386,
+                    45.878229
                 ]
             },
             "properties": {
@@ -240,15 +244,15 @@
                 "slug": "la-charme",
                 "fly": {
                     "sectors": [
-                        [
-                            255,
-                            285
-                        ]
+                        {
+                            "min_angle": 255,
+                            "max_angle": 285
+                        }
                     ],
-                    "wind": [
-                        0,
-                        5
-                    ]
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5
+                    }
                 }
             }
         }

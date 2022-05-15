@@ -6,21 +6,21 @@
           <td colspan="11" class="text-center">
             {{
               place.properties.name.localeCompare(
-                forecast !== undefined ? forecast.position.name : null
+                forecastCollection !== undefined ? forecastCollection.position.name : null
               ) != 0
                 ? `${place.properties.name} - `
                 : ""
             }}{{
-              forecast !== undefined ? forecast.position.name : "chargement"
+              forecastCollection !== undefined ? forecastCollection.position.name : "chargement"
             }}
-            ({{ forecast !== undefined ? forecast.position.alti : "…" }}m)
+            ({{ forecastCollection !== undefined ? forecastCollection.position.alti : "…" }}m)
           </td>
         </tr>
         <tr>
           <td colspan="11" class="text-center">
             <a href="https://meteo.fr/" target="_blank" rel="noopener">
               Météo France AROME
-              {{ forecast !== undefined ? getDate(forecast.updated_on) : "…" }}
+              {{ forecastCollection !== undefined ? getDate(forecastCollection.updated_on) : "…" }}
             </a>
           </td>
         </tr>
@@ -41,12 +41,12 @@
           <th scope="col">dir.</th>
         </tr>
       </thead>
-      <tbody v-if="forecast">
+      <tbody v-if="forecastCollection">
         <!-- eslint-disable vue/no-v-for-template-key -->
-        <template v-for="(detail, index) in forecast.forecast" :key="detail.id">
+        <template v-for="(detail, index) in forecastCollection.forecast" :key="detail.id">
           <tr
             :class="
-              isDaylight(forecast.daily_forecast, new Date(detail.dt * 1000)) &&
+              isDaylight(forecastCollection.daily_forecast, new Date(detail.dt * 1000)) &&
               isFlyable(detail, place.properties.fly)
                 ? 'bg-green-50'
                 : null
@@ -60,7 +60,7 @@
                 v-if="index == ephemerideClicked"
                 :text="
                   getEphemeride(
-                    forecast.daily_forecast,
+                    forecastCollection.daily_forecast as any,
                     new Date(detail.dt * 1000)
                   )
                 "
@@ -71,7 +71,7 @@
 
               {{
                 index != 0
-                  ? getStartDay(detail.dt, forecast.forecast[index - 1].dt)
+                  ? getStartDay(detail.dt, forecastCollection.forecast[index - 1].dt)
                   : getStartDay(detail.dt, null)
               }}
             </td>
@@ -138,7 +138,7 @@
                 class="mx-auto w-7 h-7 fill-transparent stroke-red-400 stroke-2"
                 :class="
                   isDaylight(
-                    forecast.daily_forecast,
+                    forecastCollection.daily_forecast,
                     new Date(detail.dt * 1000)
                   )
                     ? isFlyable(detail, place.properties.fly)
@@ -171,8 +171,9 @@
   </div>
 </template>
 
-<script>
-import { reactive, ref } from "vue";
+<script lang="ts">
+import { reactive, ref, defineComponent } from "vue";
+import type { PropType } from 'vue';
 import LazyImg from "@/components/Utilities/LazyImg.vue";
 import PopOverSimple from "@/components/Utilities/PopOverSimple.vue";
 
@@ -184,9 +185,12 @@ let ephemerideClicked = -1;
 let weatherDetailClicked = -1;
 let windDetailClicked = -1;
 
-import places from "@/config/places.json";
-export default {
-  forecast: reactive({}),
+import type {Forecast,ForecastCollection,Weather12HOrWeather,Weather12HOrWeatherLong,DailyForecast} from '@/types/Forecast';
+import _places from "@/config/places.json";
+import type GeoJSON from '@/types/GeoJSON';
+const places:GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection;
+export default defineComponent({
+  forecastCollection: reactive<Forecast>(null),
   props: {
     id: {
       type: Number,
@@ -197,9 +201,9 @@ export default {
       default: false,
     },
     place: {
-      type: Object,
+      type: Object as PropType<GeoJSON.FlyingPlace>,
       default() {
-        return places[3];
+        return places.features[3];
       },
     },
     lang: {
@@ -214,7 +218,7 @@ export default {
   },
   data() {
     return {
-      forecast: this.forecast,
+      forecastCollection: this.forecastCollection as unknown as ForecastCollection,
       icons,
       ephemerideClicked: ref(ephemerideClicked),
       windDetailClicked: ref(windDetailClicked),
@@ -227,60 +231,60 @@ export default {
   },
   methods: {
     isFlyable(
-      forecast,
+      forecast:Forecast,
       flying = {
-        sectors: [[-1, 360]],
-        wind: [0, 6.11],
+        sectors: [{min_angle:-1, max_angle:360}],
+        wind: {min_speed:0, max_speed:6.11},
       }
     ) {
       let directionOK = false;
       flying.sectors.forEach((sector) => {
         if (
-          sector[0] <= forecast.wind.direction &&
-          forecast.wind.direction <= sector[1]
+          sector.min_angle <= forecast.wind.direction &&
+          forecast.wind.direction <= sector.max_angle
         ) {
           directionOK = true;
         }
       });
       return (
         directionOK &&
-        flying.wind[0] <= forecast.wind.speed &&
-        forecast.wind.speed <= flying.wind[1] &&
-        flying.wind[0] <= forecast.wind.gust &&
-        forecast.wind.gust <= flying.wind[1] &&
+        flying.wind.min_speed <= forecast.wind.speed &&
+        forecast.wind.speed <= flying.wind.max_speed &&
+        flying.wind.min_speed <= forecast.wind.gust &&
+        forecast.wind.gust <= flying.wind.max_speed &&
         this.getRain(forecast.rain).height == 0
       );
     },
-    isDaylight(daily_forecast, givendate) {
+    isDaylight(daily_forecast, givendate:Date) {
       const sun = this.getSunRiseAndSunSet(daily_forecast, givendate);
       return sun.sunrise < givendate && givendate < sun.sunset;
     },
-    getWindAdequate(flying) {
-      let speed = `v ≤ ${Math.round(flying.wind[1])} m/s `;
+    getWindAdequate(flying:GeoJSON.FlyingPlaceProperties["fly"]) {
+      let speed = `v ≤ ${Math.round(flying.wind.max_speed)} m/s `;
       let sectors = "orientation ";
       flying.sectors.forEach((sector, index) => {
-        sectors += `${index ? "et " : ""}de ${sector[0]}° à ${sector[1]}° `;
+        sectors += `${index ? "et " : ""}de ${sector.min_angle}° à ${sector.max_angle}° `;
       });
       return speed + sectors;
     },
-    showEphemeride(index) {
+    showEphemeride(index:number) {
       this.ephemerideClicked = this.ephemerideClicked == index ? -1 : index;
       this.windDetailClicked = -1;
       this.weatherDetailClicked = -1;
     },
-    showWeatherDetail(index) {
+    showWeatherDetail(index:number) {
       this.weatherDetailClicked =
         this.weatherDetailClicked == index ? -1 : index;
       this.windDetailClicked = -1;
       this.ephemerideClicked = -1;
     },
-    showWindDetail(index) {
+    showWindDetail(index:number) {
       this.windDetailClicked = this.windDetailClicked == index ? -1 : index;
       this.weatherDetailClicked = -1;
       this.weatherDetailClicked = -1;
     },
-    getEphemeride(daily_forecast, givendate) {
-      const sun = this.getSunRiseAndSunSet(daily_forecast, givendate);
+    getEphemeride(daily_forecasts:DailyForecast[], givendate:Date) {
+      const sun = this.getSunRiseAndSunSet(daily_forecasts, givendate);
       let sunrisetext = new Intl.DateTimeFormat(this.lang, {
         hour: "numeric",
         minute: "numeric",
@@ -300,9 +304,9 @@ export default {
           console.log(sun);
           console.log(this.isDaylight(daily_forecast, givendate));
           */
-    getSunRiseAndSunSet(daily_forecast, givendate) {
-      let sun = { sunrise: null, sunset: null };
-      daily_forecast.forEach((df) => {
+    getSunRiseAndSunSet(daily_forecasts:DailyForecast[], givendate:number) {
+      let sun = { sunrise: null as Date, sunset: null as Date };
+      daily_forecasts.forEach((df) => {
         if (
           Math.abs(df.dt * 1000 - givendate) < 24 * 3600 * 1000 &&
           df.dt * 1000 - givendate < 0
@@ -315,16 +319,16 @@ export default {
       });
       return sun;
     },
-    getWeatherAtPlace(place = this.place) {
+    getWeatherAtPlace(place:GeoJSON.FlyingPlace = this.place) {
       let src = `https://webservice.meteofrance.com/forecast?token=${API_TOKEN}&lat=${place.geometry.coordinates[1]}&lon=${place.geometry.coordinates[0]}&lang=${this.lang}`;
       console.log(`Retrieve forecasts from ${src}`);
       fetch(src).then((result) => {
-        result.json().then((forecast) => {
-          this.forecast = forecast;
+        result.json().then((forecastCollection:ForecastCollection) => {
+          this.forecastCollection = forecastCollection;
         });
       });
     },
-    getWeather(weather) {
+    getWeather(weather:Weather12HOrWeather|Weather12HOrWeatherLong) {
       let wt =
         weather === null
           ? { desc: null, icon: null, url: null }
@@ -335,7 +339,7 @@ export default {
             };
       return wt;
     },
-    getWindImg(direction) {
+    getWindImg(direction:number):{src:string;style:{transform: string}} {
       return {
         src: `${icons_base}wind.svg`,
         style: { transform: `rotate(${direction + 180}deg)` },
@@ -345,7 +349,7 @@ export default {
       let rainInterval = Object.keys(rain);
       return { interval: rainInterval[0], height: rain[rainInterval[0]] };
     },
-    getShortDate(dt) {
+    getShortDate(dt:number) {
       let ts = new Intl.DateTimeFormat(this.lang, {
         year: "numeric",
         month: "short",
@@ -353,7 +357,7 @@ export default {
       }).format(new Date(dt * 1000));
       return ts;
     },
-    getDate(dt) {
+    getDate(dt:number) {
       let ts = new Intl.DateTimeFormat(this.lang, {
         year: "numeric",
         month: "short",
@@ -363,17 +367,17 @@ export default {
       }).format(new Date(dt * 1000));
       return ts;
     },
-    getHour(dt) {
+    getHour(dt:number) {
       let ts = new Intl.DateTimeFormat(this.lang, {
         hour: "numeric",
       }).format(new Date(dt * 1000));
       return ts;
     },
-    getStartDay(dt, dt_prec = null) {
+    getStartDay(dt:number, dt_prec = 0) {
       let ts = "";
       if (
         new Date(dt_prec * 1000).getDay() != new Date(dt * 1000).getDay() ||
-        dt_prec == null
+        dt_prec == 0
       ) {
         ts = new Intl.DateTimeFormat(this.lang, {
           weekday: "long",
@@ -382,5 +386,5 @@ export default {
       return ts;
     },
   },
-};
+});
 </script>

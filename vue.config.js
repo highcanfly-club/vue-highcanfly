@@ -30,7 +30,7 @@ fs.writeFile('./src/config/commit.json',
     if (err) return console.log(err);
   }
 );
-fs.writeFile('./CFDTrackJoiner/commit.json',
+fs.writeFile('./commit.json',
   JSON.stringify(commit),
   'utf8', function (err) {
     if (err) return console.log(err);
