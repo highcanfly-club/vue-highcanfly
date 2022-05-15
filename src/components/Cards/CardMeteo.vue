@@ -46,7 +46,7 @@
         <template v-for="(detail, index) in forecastCollection.forecast" :key="detail.id">
           <tr :class="
             isDaylight(forecastCollection.daily_forecast, new Date(detail.dt * 1000)) &&
-              isFlyable(detail, place.properties.fly)
+              isFlyable(detail, ($props as any).place.properties.fly)
               ? 'bg-green-50'
               : null
           ">
