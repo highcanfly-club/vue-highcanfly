@@ -1,11 +1,11 @@
-interface ForecastCollection {
+export interface ForecastCollection {
     position: Position;
     updated_on: number;
     daily_forecast?: (DailyForecast)[];
     forecast?: (Forecast)[];
     probability_forecast?: (ProbabilityForecast)[];
   }
-  interface Position {
+  export interface Position {
     lat: number;
     lon: number;
     alti: number;
@@ -17,7 +17,7 @@ interface ForecastCollection {
     insee: string;
     bulletin_cote: number;
   }
-  interface DailyForecast {
+  export interface DailyForecast {
     dt: number;
     T: Temp;
     humidity: Humidity;
@@ -26,27 +26,27 @@ interface ForecastCollection {
     weather12H?: Weather12HOrWeather;
     sun: Sun;
   }
-  interface Temp {
+  export interface Temp {
     min: number;
     max?: number;
     sea?: null;
   }
-  interface Humidity {
+  export interface Humidity {
     min?: number;
     max: number;
   }
-  interface Precipitation {
+  export interface Precipitation {
     "24h"?: number;
   }
-  interface Weather12HOrWeather {
+  export interface Weather12HOrWeather {
     icon: string;
     desc: string;
   }
-  interface Sun {
+  export interface Sun {
     rise: number;
     set: number;
   }
-  interface Forecast {
+  export interface Forecast {
     dt: number;
     T: TempLong;
     humidity: number;
@@ -59,32 +59,32 @@ interface ForecastCollection {
     clouds: number;
     weather: Weather12HOrWeatherLong;
   }
-  interface TempLong {
+  export interface TempLong {
     value: number;
     windchill: number;
   }
-  interface Wind {
+  export interface Wind {
     speed: number;
     gust: number;
     direction: number;
     icon: string;
   }
-  interface RainOrSnow {
+  export interface RainOrSnow {
     "1h"?: number;
     "3h"?: number;
     "6h"?: number;
   }
-  interface Weather12HOrWeatherLong {
+  export interface Weather12HOrWeatherLong {
     icon: string;
     desc: string;
   }
-  interface ProbabilityForecast {
+  export interface ProbabilityForecast {
     dt: number;
     rain: RainOrSnowLong;
     snow: RainOrSnowLong;
     freezing: number;
   }
-  interface RainOrSnowLong {
+  export interface RainOrSnowLong {
     "3h"?: number;
     "6h"?: number;
   }

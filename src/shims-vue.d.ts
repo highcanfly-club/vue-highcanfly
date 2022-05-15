@@ -1,11 +1,5 @@
 import type { Auth0Instance } from "./plugins/auth0";
-
-export interface SanityConf {
-  projectId: string;
-  dataset: string;
-  apiVersion: string;
-  useCdn: boolean;
-}
+import type {SanityConf} from '@/plugins/auth0/sanityStore';
 
 /* eslint-disable */
 declare module '*.vue' {

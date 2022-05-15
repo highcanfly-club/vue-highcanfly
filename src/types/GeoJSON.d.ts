@@ -4,7 +4,7 @@
  *
  * See https://tools.ietf.org/html/rfc7946
  */
- declare namespace GeoJSON 
+ export namespace GeoJSON 
  {  /**
     * Inside this document, the term "geometry type" refers to seven case-sensitive strings: "Point", "MultiPoint",
     * "LineString", "MultiLineString", "Polygon", "MultiPolygon", and "GeometryCollection".
@@ -37,7 +37,7 @@
    /**
     * Properties inherit to all GeoJSON types
     */
-    interface GeometryBase extends Record {
+    export interface GeometryBase extends Record {
        /**
         * A GeoJSON object MAY have a member named "bbox" to include information on the coordinate range for its
         * Geometries, Features, or FeatureCollections. The value of the bbox member MUST be an array of length 2*n
@@ -58,7 +58,7 @@
 
    // geometry types
 
-    interface Point extends GeometryBase {
+    export interface Point extends GeometryBase {
        type: "Point";
        /**
         * For type "Point", the "coordinates" member is a single position.
@@ -66,7 +66,7 @@
        coordinates: Position;
    }
 
-    interface MultiPoint extends GeometryBase {
+    export interface MultiPoint extends GeometryBase {
        type: "MultiPoint";
        /**
         * For type "MultiPoint", the "coordinates" member is an array of positions.
@@ -74,7 +74,7 @@
        coordinates: Position[];
    }
 
-    interface LineString extends GeometryBase {
+    export interface LineString extends GeometryBase {
        type: "LineString";
        /**
         * For type "LineString", the "coordinates" member is an array of two or more positions.
@@ -82,7 +82,7 @@
        coordinates: { 0: Position, 1: Position } & Position[]
    }
 
-    interface MultiLineString extends GeometryBase {
+    export interface MultiLineString extends GeometryBase {
        type: "MultiLineString";
        /**
         *  For type "MultiLineString", the "coordinates" member is an array of LineString coordinate arrays.
@@ -101,7 +101,7 @@
     */
     type LinearRing = { 0: Position, 1: Position, 2: Position, 3: Position } & Position[];
 
-    interface Polygon extends GeometryBase {
+    export interface Polygon extends GeometryBase {
        type: "Polygon";
        /**
         * For type "Polygon", the "coordinates" member MUST be an array of linear ring coordinate arrays.
@@ -113,7 +113,7 @@
        coordinates: LinearRing[];
    }
 
-    interface MultiPolygon extends GeometryBase {
+    export interface MultiPolygon extends GeometryBase {
        type: "MultiPolygon";
        /**
         * For type "MultiPolygon", the "coordinates" member is an array of Polygon coordinate arrays.
@@ -121,7 +121,7 @@
        coordinates: Polygon["coordinates"][];
    }
 
-    interface GeometryCollection {
+    export interface GeometryCollection {
        /**
         * A GeoJSON object with type "GeometryCollection" is a Geometry object.
         */
@@ -135,7 +135,7 @@
 
    // GeoJSON types
 
-    interface Feature {
+    export interface Feature {
        /**
         * A Feature object has a "type" member with the value "Feature".
         */
@@ -157,7 +157,7 @@
        properties: Record | null;
    }
 
-    interface FeatureCollection {
+    export interface FeatureCollection {
        /**
         * A GeoJSON object with the type "FeatureCollection" is a FeatureCollection object.
         */
@@ -169,17 +169,17 @@
        features: Feature[];
    }
 
-    interface FlyingPlaceCollection extends FeatureCollection {
+    export interface FlyingPlaceCollection extends FeatureCollection {
        features: FlyingPlace[];
    }
 
-    interface FlyingPlace extends Feature
+    export interface FlyingPlace extends Feature
    {
        geometry: Point;
        properties: FlyingPlaceProperties;
    }
 
-    interface FlyingPlaceProperties extends Record
+    export interface FlyingPlaceProperties extends Record
    {
        slug: string;
        default?: boolean;
@@ -189,13 +189,13 @@
        };
    }
 
-    interface FlyingSector
+    export interface FlyingSector
    {
        min_angle: number;
        max_angle: number;
    }
 
-    interface FlyingWind
+    export interface FlyingWind
    {
        min_speed: number;
        max_speed: number;
