@@ -181,6 +181,7 @@
 
     export interface FlyingPlaceProperties extends Record
     {
+        name: string;
         slug: string;
         default?: boolean;
         fly:{
