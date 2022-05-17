@@ -50,12 +50,12 @@ export default defineComponent({
         L.geoJSON(places as unknown as GeoJsonObject, {
             onEachFeature: (feature, layer) => {
                 const _feature = feature as unknown as GeoJSON.FlyingPlace;
+                const constructPopupHTML = function(feat:GeoJSON.FlyingPlace):string{
+                    const meteoLink = `<a class="cursor-pointer" onclick="app.config.globalProperties.$router.push({ path: '/meteo/${_feature.properties.slug}', hash: '#top-nav' })" id="link-${_feature.properties.slug}">${_feature.properties.name}</a>`;
+                    return meteoLink;
+                };
                 if (_feature.properties && _feature.properties.name) {
-                    //const anode = h('a', { id: `link-${_feature.properties.slug}`, onclick:this.onClickMeteoLink }, _feature.properties.name);
-                    layer.bindPopup(`<a class="cursor-pointer" onclick="app.config.globalProperties.$router.push('/meteo/${_feature.properties.slug}#top-nav')" id="link-${_feature.properties.slug}">${_feature.properties.name}</a>`);
-                    // eslint-disable-next-line no-debugger
-                    // debugger;
-                    //document.getElementById(`link-${_feature.properties.slug}`).addEventListener('click',this.onClickMeteoLink);
+                    layer.bindPopup(constructPopupHTML(_feature));
                 }
             }
         }).addTo(map);
