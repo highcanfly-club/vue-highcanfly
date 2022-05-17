@@ -2,7 +2,7 @@
     <div id="map" class="w-full h-full" />
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, h } from 'vue'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import GeoJSON from "@/types/GeoJSON"
@@ -18,6 +18,7 @@ const places = _places as unknown as GeoJSON.FlyingPlaceCollection
 
 export default defineComponent({
     data() {
+        this.$router.push
         return {
             count: 1
         }
@@ -37,7 +38,7 @@ export default defineComponent({
     mounted() {
         const filteredPlaces = { type: "FeatureCollection" as typeof places.type, features: places.features.filter((place: GeoJSON.FlyingPlace) => { return place.properties.default }) }
         const box = this.getBBox(filteredPlaces);
-        const map:L.Map = L.map('map').fitBounds([[box.latMin, box.longMin], [box.latMax, box.longMax]]);
+        const map: L.Map = L.map('map').fitBounds([[box.latMin, box.longMin], [box.latMax, box.longMax]]);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
@@ -50,12 +51,19 @@ export default defineComponent({
             onEachFeature: (feature, layer) => {
                 const _feature = feature as unknown as GeoJSON.FlyingPlace;
                 if (_feature.properties && _feature.properties.name) {
-                    layer.bindPopup(`<a href="https://highcanfly.club/meteo/${_feature.properties.slug}">${_feature.properties.name}</a>`);
+                    //const anode = h('a', { id: `link-${_feature.properties.slug}`, onclick:this.onClickMeteoLink }, _feature.properties.name);
+                    layer.bindPopup(`<a class="cursor-pointer" onclick="app.config.globalProperties.$router.push('/meteo/${_feature.properties.slug}#top-nav')" id="link-${_feature.properties.slug}">${_feature.properties.name}</a>`);
+                    // eslint-disable-next-line no-debugger
+                    // debugger;
+                    //document.getElementById(`link-${_feature.properties.slug}`).addEventListener('click',this.onClickMeteoLink);
                 }
             }
         }).addTo(map);
     },
     methods: {
+        onClickMeteoLink(event: Event) {
+            console.log(event);
+        },
         /**
          * 
          * @param data A Collection of GeoJSON.FlyingPlace features

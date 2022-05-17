@@ -1,5 +1,6 @@
 import type { Auth0Instance } from "./plugins/auth0";
 import type {SanityConf} from '@/plugins/auth0/sanityStore';
+import type { RouteLocation, Router } from "vue-router";
 
 /* eslint-disable */
 declare module '*.vue' {
@@ -12,6 +13,8 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     $auth0: Auth0Instance;
     $sanityConf: SanityConf;
+    $route: RouteLocation;
+    $router: Router;
   }
 }
 
