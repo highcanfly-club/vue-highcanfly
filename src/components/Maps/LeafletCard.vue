@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import GeoJSON from "@/types/GeoJSON"
 import _places from '@/config/places.json'
+import mapboxConf from '@/config/mapbox-conf.json'
 import { GeoJsonObject } from 'geojson'
 /*
 Needs 
@@ -45,7 +46,7 @@ export default defineComponent({
             id: 'mapbox/streets-v11',
             tileSize: 512,
             zoomOffset: -1,
-            accessToken: 'pk.eyJ1IjoiaGlnaGNhbmZseSIsImEiOiJjbDM4cnh0NWgwMnNsM2lxbWZ5d2pnbXI2In0.q2kOjggnUDrx358edTvTug'
+            accessToken: mapboxConf.token
         }).addTo(map);
         L.geoJSON(places as unknown as GeoJsonObject, {
             onEachFeature: (feature, layer) => {
