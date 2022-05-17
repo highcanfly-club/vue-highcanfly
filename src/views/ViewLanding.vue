@@ -660,12 +660,12 @@
             </div>
           </div>
           <div class="flex flex-wrap mt-12 justify-center">
-            <div class="px-2 py-2 w-full rounded-lg bg-white shadow-lg">
-              <div>
+            <div class="w-full overflow-hidden rounded-lg bg-white shadow-lg">
                 <lazy-observer @on-change="onChangeMap">
-                  <olMapsitesDePratiqueComponent v-if="loadMap" mapClass="h-screen-1/2" />
+                  <div class="h-screen-1/2 w-full overflow-hidden">
+                    <mapsites-de-pratique class="rounded"/>
+                  </div>
                 </lazy-observer>
-              </div>
             </div>
           </div>
         </div>
@@ -792,8 +792,8 @@ export default {
   components: {
     NavbarDefault,
     FooterComponent,
-    olMapsitesDePratiqueComponent: defineAsyncComponent(() =>
-      import("@/components/Maps/OLMapSitesDePratique.vue")
+    MapsitesDePratique: defineAsyncComponent(() =>
+      import("@/components/Maps/LeafletCard.vue")
     ),
     emailForm,
     MiniSanityBlog,
