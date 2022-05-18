@@ -1,21 +1,22 @@
 import { Cloudinary } from "@cloudinary/url-gen";
 import {quality} from "@cloudinary/url-gen/actions/delivery";
 import { fill } from "@cloudinary/url-gen/actions/resize";
-const cloudinaryConf = require("@/config/cloudinary-conf.json");
+import cloudinaryConf from "@/config/cloudinary-conf.json";
+import type {Forecast,RainOrSnow} from '@/types/ForecastCollection';
 const cloudinary = new Cloudinary(cloudinaryConf);
 
-let kTestImages = {
+const kTestImages = {
   lossy: "UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA",//+"e",
   lossless: "UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==",
   alpha: "UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==",
   animation: "UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA"
 };
 
-let isWebpCompatible = function (feature = 'lossy') {
+const isWebpCompatible = function (feature = 'lossy') {
   let isWEBPCompatiblePromise = new Promise(function (resolve, reject) { //eslint-disable-line
-    var img = new Image();
+    const img = new Image();
     img.onload = function () {
-      var result = (img.width > 0) && (img.height > 0);
+      const result = (img.width > 0) && (img.height > 0);
       resolve(result);
     };
     img.onerror = function () {
@@ -26,11 +27,11 @@ let isWebpCompatible = function (feature = 'lossy') {
   return isWEBPCompatiblePromise;
 }
 
-let getJpgOrWebpIfSupported = function (jpgImg, webpImg, feature = 'lossy') {
+const getJpgOrWebpIfSupported = function (jpgImg, webpImg, feature = 'lossy') {
   let getOptimizedFileAsPromise = new Promise(function (resolve, reject) { //eslint-disable-line
-    var img = new Image();
+    const img = new Image();
     img.onload = function () {
-      var result = (img.width > 0) && (img.height > 0);
+      const result = (img.width > 0) && (img.height > 0);
       resolve(result ? webpImg : jpgImg);
     };
     img.onerror = function () {
@@ -42,16 +43,16 @@ let getJpgOrWebpIfSupported = function (jpgImg, webpImg, feature = 'lossy') {
 }
 
 export const uuidv4 = () => {
-  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+  return ((1e7).toString() + (-1e3).toString() + (-4e3).toString() + (-8e3).toString() + (-1e11).toString()).replace(/[018]/g, (c) =>
     (
-      c ^
-      (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+      Number(c) ^
+      (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (Number(c) / 4)))
     ).toString(16)
   );
 };
 
 const getCloudinaryImg = (img, width, height) => {
-  let _img = cloudinary.image(img);
+  const _img = cloudinary.image(img);
   if (width !== undefined || height !== undefined) {
     let _fill = fill();
     if (width !== undefined) {
@@ -66,9 +67,39 @@ const getCloudinaryImg = (img, width, height) => {
 }
 
 const getCloudinaryResponsiveBackground = (img) => {
-  return getCloudinaryImg(img,(Math.ceil(window.innerWidth/200)*200));
+  return getCloudinaryImg(img,(Math.ceil(window.innerWidth/200)*200),undefined);
 }
 
+export const weatherIsFlyable = (
+  forecast: Forecast,
+  flying = {
+    sectors: [{ min_angle: -1, max_angle: 360 }],
+    wind: { min_speed: 0, max_speed: 6.11 },
+  }
+) => {
+  let directionOK = false;
+  flying.sectors.forEach((sector) => {
+    if (
+      sector.min_angle <= forecast.wind.direction &&
+      forecast.wind.direction <= sector.max_angle
+    ) {
+      directionOK = true;
+    }
+  });
+  return (
+    directionOK &&
+    flying.wind.min_speed <= forecast.wind.speed &&
+    forecast.wind.speed <= flying.wind.max_speed &&
+    flying.wind.min_speed <= forecast.wind.gust &&
+    forecast.wind.gust <= flying.wind.max_speed &&
+    weatherGetRain(forecast.rain).height == 0
+  );
+}
+
+export const weatherGetRain = (rain: RainOrSnow) => {
+  const rainInterval = Object.keys(rain);
+  return { interval: rainInterval[0], height: rain[rainInterval[0]] };
+}
 export { getCloudinaryImg,getCloudinaryResponsiveBackground }; 
 
 export const getWebKitImageSet = (imageAsset1x,imageAssetWebp1x,imageAsset2x, imageAssetWebp2x,minSize) => {

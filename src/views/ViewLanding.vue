@@ -660,12 +660,12 @@
             </div>
           </div>
           <div class="flex flex-wrap mt-12 justify-center">
-            <div class="px-2 py-2 w-full rounded-lg bg-white shadow-lg">
-              <div>
+            <div class="w-full overflow-hidden rounded-lg bg-white shadow-lg">
                 <lazy-observer @on-change="onChangeMap">
-                  <olMapsitesDePratiqueComponent v-if="loadMap" mapClass="h-screen-1/2" />
+                  <div class="h-screen-1/2 w-full overflow-hidden">
+                    <mapsites-de-pratique class="rounded"/>
+                  </div>
                 </lazy-observer>
-              </div>
             </div>
           </div>
         </div>
@@ -689,10 +689,10 @@ import MiniSanityBlog from "@/components/Utilities/ComponentMinSanityBlog.vue";
 import CardAlgoliaSearch from "@/components/Cards/CardAlgoliaSearch.vue";
 import emailForm from "@/components/Forms/EmailForm.vue";
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
-import { getCloudinaryImg } from "@/plugins/highcanfly.js";
+import { getCloudinaryImg } from "@/plugins/highcanfly";
 import LazyImg from "@/components/Utilities/LazyImg.vue";
 import * as basiclightbox from "basiclightbox";
-import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 import { ref } from "vue";
 
 const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
@@ -792,8 +792,8 @@ export default {
   components: {
     NavbarDefault,
     FooterComponent,
-    olMapsitesDePratiqueComponent: defineAsyncComponent(() =>
-      import("@/components/Maps/OLMapSitesDePratique.vue")
+    MapsitesDePratique: defineAsyncComponent(() =>
+      import("@/components/Maps/LeafletCard.vue")
     ),
     emailForm,
     MiniSanityBlog,

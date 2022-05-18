@@ -74,7 +74,7 @@ import MainFooter from "@/components/Footers/MainFooter.vue";
 import CardMultiMeteo from "@/components/Cards/CardMultiMeteo.vue";
 
 import { ref } from "vue";
-import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/highcanfly-101";
 export default {
   slug: ref(""),

@@ -59,7 +59,7 @@ import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import { ref } from "vue";
 import SanityBlog from "@/components/Utilities/ComponentSanityBlog.vue";
-import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/mountain";
 
 export default {

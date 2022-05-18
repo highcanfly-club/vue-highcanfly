@@ -60,7 +60,7 @@ import MainFooter from "@/components/Footers/MainFooter.vue";
 import contactForm from "@/components/Forms/EmailForm.vue";
 
 import { ref } from "vue";
-import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
 
 export default {

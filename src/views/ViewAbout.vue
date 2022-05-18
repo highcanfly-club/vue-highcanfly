@@ -295,7 +295,7 @@ import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import { ref } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
-import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 //eslint-disable-next-line @typescript-eslint/no-var-requires
 const nodeVersion = require("@/config/node-version.json");
 const backgroundImage = "static-web-highcanfly/mountain";

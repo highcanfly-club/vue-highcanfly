@@ -181,8 +181,12 @@
 
     export interface FlyingPlaceProperties extends Record
     {
+        name: string;
         slug: string;
         default?: boolean;
+        idBalise?: number; /** balise number from http://balisemeteo.com/ */
+        idBaliseAlt?:number; /** in case of failure of idBalise, another balise around */
+        nameAlt?: string; /** the name of the alternative balise */
         fly:{
             sectors: FlyingSector[];
             wind: FlyingWind;

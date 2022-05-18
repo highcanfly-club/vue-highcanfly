@@ -36,3 +36,4 @@ cloudinary-conf.json
 .vscode/settings.json
 src/config/node-version.json
 src/config/places.json
+src/config/mapbox-conf.json

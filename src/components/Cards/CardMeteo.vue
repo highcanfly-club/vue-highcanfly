@@ -137,7 +137,8 @@ import type { PropType } from 'vue';
 import LazyImg from "@/components/Utilities/LazyImg.vue";
 import PopOverSimple from "@/components/Utilities/PopOverSimple.vue";
 import type GeoJSON from '@/types/GeoJSON';
-import type {ForecastCollection,Forecast,DailyForecast,Weather12HOrWeather,Weather12HOrWeatherLong,RainOrSnow} from '@/types/ForecastCollection';
+import type { ForecastCollection, Forecast, DailyForecast, Weather12HOrWeather, Weather12HOrWeatherLong, RainOrSnow } from '@/types/ForecastCollection';
+import { weatherIsFlyable, weatherGetRain } from '@/plugins/highcanfly'
 
 const icons_base = "/assets/forecast/";
 // const icons_base =  "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/";
@@ -196,23 +197,7 @@ export default defineComponent({
         wind: { min_speed: 0, max_speed: 6.11 },
       }
     ) {
-      let directionOK = false;
-      flying.sectors.forEach((sector) => {
-        if (
-          sector.min_angle <= forecast.wind.direction &&
-          forecast.wind.direction <= sector.max_angle
-        ) {
-          directionOK = true;
-        }
-      });
-      return (
-        directionOK &&
-        flying.wind.min_speed <= forecast.wind.speed &&
-        forecast.wind.speed <= flying.wind.max_speed &&
-        flying.wind.min_speed <= forecast.wind.gust &&
-        forecast.wind.gust <= flying.wind.max_speed &&
-        this.getRain(forecast.rain).height == 0
-      );
+      return weatherIsFlyable(forecast, flying);
     },
     isDaylight(daily_forecast, givendate: Date) {
       const sun = this.getSunRiseAndSunSet(daily_forecast, givendate);
@@ -305,8 +290,7 @@ export default defineComponent({
       };
     },
     getRain(rain: RainOrSnow) {
-      let rainInterval = Object.keys(rain);
-      return { interval: rainInterval[0], height: rain[rainInterval[0]] };
+      return weatherGetRain(rain);
     },
     getShortDate(dt: number) {
       let ts = new Intl.DateTimeFormat(this.lang, {

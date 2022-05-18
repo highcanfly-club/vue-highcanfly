@@ -58,7 +58,7 @@
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
 import CardSinglePost from "@/components/Cards/CardSinglePost.vue";
-import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
 import { ref } from "vue";
 

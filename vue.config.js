@@ -60,6 +60,16 @@ fs.writeFile('./src/config/auth0-conf.json',
   }
 );
 
+/*generate mapbox.json */
+const mapboxConf ={
+  "token": process.env.MAPBOX_TOKEN
+}
+fs.writeFile('./src/config/mapbox-conf.json',
+  JSON.stringify(mapboxConf),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
 /*generate jwks.json */
 /* might be already done with node jwks.js */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -88,7 +98,7 @@ fs.writeFile('./src/config/sanity-conf.json',
 /*generate cloudinary-conf.json*/
 const cloudinaryConf = {
   "cloud": {
-      "cloudName": process.env.CLOUDINARY_CLOUD_NAME
+    "cloudName": process.env.CLOUDINARY_CLOUD_NAME
   }
 };
 fs.writeFile('./src/config/cloudinary-conf.json',
@@ -99,7 +109,7 @@ fs.writeFile('./src/config/cloudinary-conf.json',
 );
 
 /*generate node-vesion.json*/
-const nodeVersion = {version:process.version};
+const nodeVersion = { version: process.version };
 fs.writeFile('./src/config/node-version.json',
   JSON.stringify(nodeVersion),
   'utf8', function (err) {
@@ -128,7 +138,7 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
         path.join(__dirname, './CFDTrackJoiner/src/**/*.js'),
         path.join(__dirname, './CFDTrackJoiner/src/**/*.ts')
       ]),
-    safelist: [/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/,/^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/,/^el-/,/^is-/,/popper/],
+    safelist: [/^leaflet/,/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
     fontFace: true
   })
   webpackPlugins.push(purgeCssPlugin);
@@ -153,7 +163,7 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1') && (proces
     //be carrefull to not mangle javascript code ie: tailwindcss 'static' is a javascript reserved word !
     //classNameRegExp: '\\b([-]*left|[-]*top|[-]*right|[-]*bottom)-[p0-9]+|\\b(bg|[-]*p[xylrbt]*|[-]*m[xylrbt]*|w|[-]*z|h|justify|overflow|border|max-h|min-h|max-w|min-w|flex|text|font|prose|inline|line|rounded|from|to|via|contrast|brightness|leading|items|place|align|backdrop|shadow|duration|whitespace|self|cursor|transition|outline)-[a-z0-9_-]+\\b|\\brelative\\b|\\bshadow\\b|\\bflex\\b|\\brounded\\b|\\bborder\\b|\\bunderline\\b', //\\babsolute\\b|\\fixed\\b| fixed and absolute cannot be mangle with PopperJS because PopperJS us 'absolute' and 'fixed' as strategy name
     log: true,
-    reserveClassName: ['fa', 'fas', 'far','fab','fad', 'h', 'p', 'm', 'w', 'z', 'el', 'pt', 'pb', 'px', 'py', 'pl', 'pr', 'mt', 'mb', 'mx', 'my', 'ml', 'mr', 'sr', 'to'],
+    reserveClassName: ['fa', 'fas', 'far', 'fab', 'fad', 'h', 'p', 'm', 'w', 'z', 'el', 'pt', 'pb', 'px', 'py', 'pl', 'pr', 'mt', 'mb', 'mx', 'my', 'ml', 'mr', 'sr', 'to'],
     classNameRegExp: '(bg|[-]*p[xylrbt]*|[-]*m[xylrbt]*|[-]*left|[-]*top|[-]*right|[-]*bottom|[-]*w|[-]*z|h|fa|fas|far|fab|fad|justify|overflow|border|max|flex|text|font|inline|rounded|from|sr|to|via|contrast|brightness|leading|items|backdrop|shadow|duration|whitespace|self|cursor|transition|translate|outline)-[a-z0-9_-]+|shadow|flex|rounded|border',
     ignorePrefixRegExp: '(.*tns.*|light[bB]ox|popover|el-|popper|is-|top-start|top-end|bottom-start|bottom-end|left-start|left-end|right-start|right-end)',
     fileMatchRegExp: '.+\.js.*$|.+\.ts.*$|.+\.html.*$|.+\.vue.*$',
@@ -163,9 +173,9 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1') && (proces
 }
 
 module.exports = {
-  pages:{
-    index:{
-      entry:'src/main.js'
+  pages: {
+    index: {
+      entry: 'src/main.js'
     }
   },
   transpileDependencies: true,
@@ -175,7 +185,7 @@ module.exports = {
     devtool: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'source-map' : false) : 'source-map',
     mode: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'development' : 'production') : 'development',
     resolve: {
-      extensions:['.geojson'],
+      extensions: ['.geojson'],
       fallback: {
         // "fs": false,
         // "http": require.resolve("stream-http"),
@@ -195,6 +205,6 @@ module.exports = {
     }
   },
   chainWebpack(config) {
-    config.resolve.alias.set('vue', path.resolve('./node_modules/vue')); 
+    config.resolve.alias.set('vue', path.resolve('./node_modules/vue'));
   }
 };

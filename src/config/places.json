@@ -14,6 +14,9 @@
                 "slug": "la-comte",
                 "name": "La Comté",
                 "default": true,
+                "idBalise": 166,
+                "idBaliseAlt": 5021,
+                "nameAlt": "Mont Saint Éloi",
                 "fly": {
                     "sectors": [
                         {
@@ -45,6 +48,9 @@
                 "slug": "ohlain",
                 "name": "Parc d'Ohlain",
                 "default": true,
+                "idBalise": 166,
+                "idBaliseAlt": 5021,
+                "nameAlt": "Mont Saint Éloi",
                 "fly": {
                     "sectors": [
                         {
@@ -72,6 +78,7 @@
                 "slug": "equihen",
                 "name": "Équihen-Plage",
                 "default": true,
+                "idBalise": 159,
                 "fly": {
                     "sectors": [
                         {
@@ -99,6 +106,8 @@
                 "slug": "aquaterra",
                 "default": true,
                 "name": "Gonflage au Parc des Îles",
+                "idBaliseAlt": 5021,
+                "nameAlt": "Mont Saint Éloi",
                 "fly": {
                     "sectors": [
                         {
@@ -126,6 +135,8 @@
                 "slug": "11-19",
                 "name": "⚠ Terrils jumeaux ⚠",
                 "default": true,
+                "idBaliseAlt": 5021,
+                "nameAlt": "Mont Saint Éloi",
                 "fly": {
                     "sectors": [
                         {
@@ -156,6 +167,8 @@
             "properties": {
                 "name": "Plaine-Joux",
                 "slug": "plaine-joux",
+                "idBaliseAlt": 2521,
+                "nameAlt": "Le Prarion",
                 "fly": {
                     "sectors": [
                         {
@@ -182,6 +195,9 @@
             "properties": {
                 "name": "Planpraz",
                 "slug": "planpraz",
+                "idBalise": 94,
+                "idBaliseAlt": 95,
+                "nameAlt": "Plan de l'aiguille",
                 "fly": {
                     "sectors": [
                         {
@@ -212,6 +228,8 @@
             "properties": {
                 "name": "Aiguille du midi",
                 "slug": "aiguille-du-midi",
+                "idBaliseAlt": 95,
+                "nameAlt": "Plan de l'aiguille",
                 "fly": {
                     "sectors": [
                         {
@@ -242,6 +260,8 @@
             "properties": {
                 "name": "Tête de la Charme (1846m)",
                 "slug": "la-charme",
+                "idBaliseAlt": 2521,
+                "nameAlt": "Le Prarion",
                 "fly": {
                     "sectors": [
                         {
