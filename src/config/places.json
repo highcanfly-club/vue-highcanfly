@@ -167,6 +167,8 @@
             "properties": {
                 "name": "Plaine-Joux",
                 "slug": "plaine-joux",
+                "idBaliseAlt": 2521,
+                "nameAlt": "Le Prarion",
                 "fly": {
                     "sectors": [
                         {
@@ -193,6 +195,9 @@
             "properties": {
                 "name": "Planpraz",
                 "slug": "planpraz",
+                "idBalise": 94,
+                "idBaliseAlt": 95,
+                "nameAlt": "Plan de l'aiguille",
                 "fly": {
                     "sectors": [
                         {
@@ -223,6 +228,8 @@
             "properties": {
                 "name": "Aiguille du midi",
                 "slug": "aiguille-du-midi",
+                "idBaliseAlt": 95,
+                "nameAlt": "Plan de l'aiguille",
                 "fly": {
                     "sectors": [
                         {
@@ -253,6 +260,8 @@
             "properties": {
                 "name": "Tête de la Charme (1846m)",
                 "slug": "la-charme",
+                "idBaliseAlt": 2521,
+                "nameAlt": "Le Prarion",
                 "fly": {
                     "sectors": [
                         {
