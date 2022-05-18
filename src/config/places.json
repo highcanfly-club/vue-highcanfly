@@ -14,6 +14,7 @@
                 "slug": "la-comte",
                 "name": "La Comté",
                 "default": true,
+                "idBalise": 166,
                 "fly": {
                     "sectors": [
                         {
@@ -72,6 +73,7 @@
                 "slug": "equihen",
                 "name": "Équihen-Plage",
                 "default": true,
+                "idBalise": 159,
                 "fly": {
                     "sectors": [
                         {

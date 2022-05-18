@@ -184,6 +184,7 @@
         name: string;
         slug: string;
         default?: boolean;
+        idBalise?: number,
         fly:{
             sectors: FlyingSector[];
             wind: FlyingWind;

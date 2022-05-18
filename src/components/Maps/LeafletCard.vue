@@ -2,13 +2,15 @@
     <div id="map" class="w-full h-full" />
 </template>
 <script lang="ts">
-import { defineComponent, h } from 'vue'
+import { defineComponent, createApp } from 'vue'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import GeoJSON from "@/types/GeoJSON"
 import _places from '@/config/places.json'
 import mapboxConf from '@/config/mapbox-conf.json'
 import { GeoJsonObject } from 'geojson'
+import BaliseFFVL from '@/components/Cards/BaliseFFVL.vue'
+import type { App } from 'vue'
 /*
 Needs 
 npm i -D --save geojson @types/leaflet
@@ -16,7 +18,8 @@ npm i --save leaflet
 */
 
 const places = _places as unknown as GeoJSON.FlyingPlaceCollection
-
+const balisesFFVL = [];
+window.balisesFFVL = balisesFFVL;
 export default defineComponent({
     data() {
         this.$router.push
@@ -39,7 +42,7 @@ export default defineComponent({
     mounted() {
         const filteredPlaces = { type: "FeatureCollection" as typeof places.type, features: places.features.filter((place: GeoJSON.FlyingPlace) => { return place.properties.default }) }
         const box = this.getBBox(filteredPlaces);
-        const map: L.Map = L.map('map').fitBounds([[box.latMin, box.longMin], [box.latMax, box.longMax]]);
+        const map: L.Map = L.map('map', { attributionControl: true }).fitBounds([[box.latMin, box.longMin], [box.latMax, box.longMax]]);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
@@ -51,12 +54,19 @@ export default defineComponent({
         L.geoJSON(places as unknown as GeoJsonObject, {
             onEachFeature: (feature, layer) => {
                 const _feature = feature as unknown as GeoJSON.FlyingPlace;
-                const constructPopupHTML = function(feat:GeoJSON.FlyingPlace):string{
-                    const meteoLink = `<a class="cursor-pointer" onclick="app.config.globalProperties.$router.push({ path: '/meteo/${_feature.properties.slug}', hash: '#top-nav' })" id="link-${_feature.properties.slug}">${_feature.properties.name}</a>`;
-                    return meteoLink;
-                };
                 if (_feature.properties && _feature.properties.name) {
-                    layer.bindPopup(constructPopupHTML(_feature));
+                    let baliseFFVL:App<Element> = null;
+                    layer.bindPopup(`<div id="link-${_feature.properties.slug}"></div>`)
+                        .on("popupopen", () => {
+                                console.log(`create BaliseFFVL component for ${_feature.properties.name}`)
+                                baliseFFVL = createApp(BaliseFFVL, { id: _feature.properties.idBalise, slug: _feature.properties.slug }) as App<Element>;
+                                baliseFFVL.mount(`#link-${_feature.properties.slug}`);
+                                balisesFFVL.push(baliseFFVL);
+                        })
+                        .on("popupclose", () => {
+                            console.log(`close BaliseFFVL component ${_feature.properties.name}`);
+                            baliseFFVL.unmount();
+                        })
                 }
             }
         }).addTo(map);
