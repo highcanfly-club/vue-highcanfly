@@ -6,7 +6,7 @@
 </template>
 <script>
 import LazyImg from "@/components/Utilities/LazyImg.vue";
-import {getCloudinaryImg} from '@/plugins/highcanfly.js';
+import {getCloudinaryImg} from '@/plugins/highcanfly';
 export default {
   props: {
     src: {

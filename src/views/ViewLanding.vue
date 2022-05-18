@@ -689,10 +689,10 @@ import MiniSanityBlog from "@/components/Utilities/ComponentMinSanityBlog.vue";
 import CardAlgoliaSearch from "@/components/Cards/CardAlgoliaSearch.vue";
 import emailForm from "@/components/Forms/EmailForm.vue";
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
-import { getCloudinaryImg } from "@/plugins/highcanfly.js";
+import { getCloudinaryImg } from "@/plugins/highcanfly";
 import LazyImg from "@/components/Utilities/LazyImg.vue";
 import * as basiclightbox from "basiclightbox";
-import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 import { ref } from "vue";
 
 const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;

@@ -65,7 +65,7 @@ import MainFooter from "@/components/Footers/MainFooter.vue";
 import CloudinaryLazyImg from "@/components/Utilities/CloudinaryLazyImg.vue";
 import { ref } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
-import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly.js";
+import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/mountain";
 
 export default {
