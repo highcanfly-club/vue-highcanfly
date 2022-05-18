@@ -1,8 +1,25 @@
 <template>
-    <span>W.I.P. Balise: {{id}} {{slug}}</span>
+    <span>{{baliseName}} Balise: {{ id }} {{ slug }}
+        {{ baliseData.vitesseVentMin }}/{{ baliseData.vitesseVentMoy }}/{{ baliseData.vitesseVentMax }}</span>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+import type { Balise } from '@/types/Balise';
+
+const baliseNull = {
+    idbalise: "",
+    date: "",
+    vitesseVentMoy: "",
+    vitesseVentMax: "",
+    vitesseVentMin: "",
+    directVentMoy: "",
+    directVentInst: "",
+    temperature: "",
+    hydrometrie: "",
+    pression: "",
+    luminosite: "",
+    LUM: "",
+} as Balise;
 
 export default defineComponent({
     props: {
@@ -10,10 +27,66 @@ export default defineComponent({
             type: Number,
             default: 0,
         },
+        idAlt: {
+            type: Number,
+            default: 0,
+        },
         slug: {
             type: String,
             default: "null",
         },
+        name: {
+            type: String,
+            default: "null",
+        },
+        nameAlt: {
+            type: String,
+            default: "null",
+        },
+    },
+    setup() {
+        const baliseData = ref(baliseNull);
+        const baliseName = ref("");
+        return {
+            baliseData,
+            baliseName,
+        }
+    },
+    mounted() {
+        this.getBaliseData(this.id);
+    },
+    methods: {
+        getFFVLOpendataUrl(idBalise: number) {
+            return `https://data.ffvl.fr/php/historique_relevesmeteo.php?idbalise=${idBalise}&heures=3`
+        },
+        getBaliseData() {
+            fetch(this.getFFVLOpendataUrl(this.id)).then(response => response.json() as Promise<Balise[]>)
+                .then(baliseData => {
+                    if (baliseData.length > 0) {
+                        this.baliseData = baliseData[0];
+                        this.baliseName = this.name;
+                    }
+                    else {
+                        if (this.idAlt !== 0 && this.idAlt !== undefined) {
+                            // second chance
+                            fetch(this.getFFVLOpendataUrl(this.idAlt)).then(response => response.json() as Promise<Balise[]>)
+                                .then(baliseData => {
+                                    if (baliseData.length > 0) {
+                                        this.baliseData = baliseData[0];
+                                        this.baliseName = this.nameAlt;
+                                    }
+                                    else {
+                                        this.baliseData = baliseNull;
+                                    }
+                                })
+
+                        } else {
+                            this.baliseData = baliseNull;
+                        }
+                    }
+                });
+        },
+
     }
 })
 </script>

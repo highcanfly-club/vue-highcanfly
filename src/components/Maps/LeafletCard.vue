@@ -18,8 +18,6 @@ npm i --save leaflet
 */
 
 const places = _places as unknown as GeoJSON.FlyingPlaceCollection
-const balisesFFVL = [];
-window.balisesFFVL = balisesFFVL;
 export default defineComponent({
     data() {
         this.$router.push
@@ -55,13 +53,18 @@ export default defineComponent({
             onEachFeature: (feature, layer) => {
                 const _feature = feature as unknown as GeoJSON.FlyingPlace;
                 if (_feature.properties && _feature.properties.name) {
-                    let baliseFFVL:App<Element> = null;
+                    let baliseFFVL: App<Element> = null;
                     layer.bindPopup(`<div id="link-${_feature.properties.slug}"></div>`)
                         .on("popupopen", () => {
-                                console.log(`create BaliseFFVL component for ${_feature.properties.name}`)
-                                baliseFFVL = createApp(BaliseFFVL, { id: _feature.properties.idBalise, slug: _feature.properties.slug }) as App<Element>;
-                                baliseFFVL.mount(`#link-${_feature.properties.slug}`);
-                                balisesFFVL.push(baliseFFVL);
+                            console.log(`create BaliseFFVL component for ${_feature.properties.name}`)
+                            baliseFFVL = createApp(BaliseFFVL, {
+                                id: _feature.properties.idBalise,
+                                name: _feature.properties.name,
+                                idAlt: _feature.properties.idBaliseAlt,
+                                nameAlt: _feature.properties.nameAlt,
+                                slug: _feature.properties.slug
+                            }) as App<Element>;
+                            baliseFFVL.mount(`#link-${_feature.properties.slug}`);
                         })
                         .on("popupclose", () => {
                             console.log(`close BaliseFFVL component ${_feature.properties.name}`);
