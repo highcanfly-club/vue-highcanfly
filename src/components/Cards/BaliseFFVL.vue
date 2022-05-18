@@ -1,10 +1,15 @@
 <template>
-    <span>{{baliseName}} Balise: {{ id }} {{ slug }}
-        {{ baliseData.vitesseVentMin }}/{{ baliseData.vitesseVentMoy }}/{{ baliseData.vitesseVentMax }}</span>
+    <div class="w-full"> 
+       <p>Vent à {{baliseName}}: {{ baliseData.vitesseVentMin }}min/{{ baliseData.vitesseVentMoy }}moy/{{ baliseData.vitesseVentMax }}max</p>
+       <span class="cursor-pointer text-blue-600" @click="routerPush">Météo à {{name}}</span>
+       </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import type { Balise } from '@/types/Balise';
+import { Router } from 'vue-router';
+
+const globalRouter = (window as any).app.config.globalProperties.$router as Router; //because it will run in a distinct App
 
 const baliseNull = {
     idbalise: "",
@@ -56,6 +61,9 @@ export default defineComponent({
         this.getBaliseData(this.id);
     },
     methods: {
+        routerPush(event:Event){
+             globalRouter.push({path:`/meteo/${this.slug}`,hash:"#top-nav"});
+        },
         getFFVLOpendataUrl(idBalise: number) {
             return `https://data.ffvl.fr/php/historique_relevesmeteo.php?idbalise=${idBalise}&heures=3`
         },

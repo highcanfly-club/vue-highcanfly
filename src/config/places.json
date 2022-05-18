@@ -48,6 +48,9 @@
                 "slug": "ohlain",
                 "name": "Parc d'Ohlain",
                 "default": true,
+                "idBalise": 166,
+                "idBaliseAlt": 5021,
+                "nameAlt": "Mont Saint Éloi",
                 "fly": {
                     "sectors": [
                         {
@@ -103,6 +106,8 @@
                 "slug": "aquaterra",
                 "default": true,
                 "name": "Gonflage au Parc des Îles",
+                "idBaliseAlt": 5021,
+                "nameAlt": "Mont Saint Éloi",
                 "fly": {
                     "sectors": [
                         {
@@ -130,6 +135,8 @@
                 "slug": "11-19",
                 "name": "⚠ Terrils jumeaux ⚠",
                 "default": true,
+                "idBaliseAlt": 5021,
+                "nameAlt": "Mont Saint Éloi",
                 "fly": {
                     "sectors": [
                         {

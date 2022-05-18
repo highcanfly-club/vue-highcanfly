@@ -54,7 +54,7 @@ export default defineComponent({
                 const _feature = feature as unknown as GeoJSON.FlyingPlace;
                 if (_feature.properties && _feature.properties.name) {
                     let baliseFFVL: App<Element> = null;
-                    layer.bindPopup(`<div id="link-${_feature.properties.slug}"></div>`)
+                    layer.bindPopup(`<div id="link-${_feature.properties.slug}"></div>`,{className:"w-48"})
                         .on("popupopen", () => {
                             console.log(`create BaliseFFVL component for ${_feature.properties.name}`)
                             baliseFFVL = createApp(BaliseFFVL, {
