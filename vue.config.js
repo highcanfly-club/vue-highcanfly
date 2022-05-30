@@ -138,7 +138,7 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
         path.join(__dirname, './CFDTrackJoiner/src/**/*.js'),
         path.join(__dirname, './CFDTrackJoiner/src/**/*.ts')
       ]),
-    safelist: [/^leaflet/,/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
+    safelist: [/^dp/,/^leaflet/,/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
     fontFace: true
   })
   webpackPlugins.push(purgeCssPlugin);

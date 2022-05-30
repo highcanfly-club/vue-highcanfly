@@ -374,6 +374,22 @@
 		}
 	},
 	{
+		"name": "p28j",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p28j.svg",
+		"desc": {
+			"en": "Storms",
+			"fr": "Orages"
+		}
+	},
+	{
+		"name": "p28n",
+		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p28n.svg",
+		"desc": {
+			"en": "Storms",
+			"fr": "Orages"
+		}
+	},
+	{
 		"name": "p2j",
 		"url": "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/p2j.svg",
 		"desc": {
