@@ -59,26 +59,25 @@
     <main-footer />
   </div>
 </template>
-<script>
+<script lang="ts">
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import CloudinaryLazyImg from "@/components/Utilities/CloudinaryLazyImg.vue";
-import { ref } from "vue";
+import { ref,defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/mountain";
 
-export default {
+export default defineComponent({
   title: "High Can Fly | Club de parapente du Nord | Test",
   description: "Club de parapente dans le Nord FFVL n°29070. À propos de nous…",
-  canonical: new URL(window.location),
+  canonical: new URL(window.location.href),
   reactiveBackground: ref(""),
   resizeId: 0,
   previousWindowSize: 0,
   data() {
     return {
       logo,
-      app, //eslint-disable-line
       reactiveBackground: this.reactiveBackground,
     };
   },
@@ -110,5 +109,5 @@ export default {
       }, 500);
     },
   },
-};
+});
 </script>
