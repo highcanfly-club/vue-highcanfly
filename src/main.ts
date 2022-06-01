@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import { createWebHistory, createRouter } from "vue-router";
+import { createWebHistory, createRouter, RouteRecordRaw } from "vue-router";
 
 const routes = [
   {
@@ -72,10 +72,15 @@ const routes = [
     component: () => import('@/views/ViewLogin.vue'),
   },
   {
+    path: "/3dtrack",
+    name: "3dtrack",
+    component: () => import('@/views/View3DTrack.vue'),
+  },
+  {
     path: "/meteo/:slug",
     component: () => import('@/views/ViewMeteo.vue'),
   }
-];
+] as RouteRecordRaw[];
 
 // styles
 import "@/assets/styles/index.css";
@@ -100,24 +105,28 @@ import Highcanfly from "@/plugins/highcanfly";
 // routes
 
 //AuthO
+import type {RedirectCallback} from "@/plugins/auth0";
 import { initAuth0 } from "@/plugins/auth0";
-const auth0conf = require("@/config/auth0-conf.json");
+import auth0conf from "@/config/auth0-conf.json";
 
 import { sanityConf } from "@/plugins/auth0/sanityStore";
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes: routes,
 });
 
 const app = createApp(App);
+
+const REDIRECT_CALLBACK: RedirectCallback = () => window.history.replaceState({}, document.title, `${window.location.origin}/login`);
+
 window.app = app;
 app.use(router);
 app.config.globalProperties.$auth0 = initAuth0({
-  onRedirectCallback: `${window.location.origin}/login`,
+  onRedirectCallback:  REDIRECT_CALLBACK,
   redirectUri: `${window.location.origin}/login`,
   ...auth0conf,
-});
+}as never); //never because cacheLocation:"localstorage" is type as string but as CacheLocation = "localstorage" | "memory" in Auth0SDK
 app.config.globalProperties.$sanityConf = sanityConf;
 app.config.globalProperties.$sanityConf.preview = app.config.globalProperties.$sanityConf.preview === undefined ? false : app.config.globalProperties.$sanityConf.preview;
 

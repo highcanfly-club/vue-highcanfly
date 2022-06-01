@@ -70,7 +70,7 @@ export interface Auth0Instance
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type RedirectCallback<T = any> = (appState?: T) => void;
+export type RedirectCallback<T = any> = (appState?: T) => void;
 
 interface Auth0InitConfig<AppStateType> extends Auth0ClientOptions {
   onRedirectCallback?: RedirectCallback<AppStateType>;

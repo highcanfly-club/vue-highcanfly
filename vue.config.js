@@ -184,7 +184,7 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1') && (proces
 module.exports = {
   pages: {
     index: {
-      entry: 'src/main.js'
+      entry: 'src/main.ts'
     }
   },
   transpileDependencies: true,
