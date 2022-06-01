@@ -181,6 +181,19 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1') && (proces
   webpackPlugins.push(myManglePlugin);
 }
 
+const cesiumSource = './node_modules/cesium/Source';
+const cesiumWorkers = '../Build/Cesium/Workers';
+
+const CopywebpackPlugin = require('copy-webpack-plugin');
+const myCopywebpackPlugin = new CopywebpackPlugin({ 
+  patterns: [
+      { from: path.join(cesiumSource, cesiumWorkers), to: 'cesium/Workers' },
+      { from: path.join(cesiumSource, 'Assets'), to: 'cesium/Assets' },
+      { from: path.join(cesiumSource, 'Widgets'), to: 'cesium/Widgets' }
+  ]
+})
+webpackPlugins.push(myCopywebpackPlugin);
+
 module.exports = {
   pages: {
     index: {
@@ -194,8 +207,14 @@ module.exports = {
     devtool: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'source-map' : false) : 'source-map',
     mode: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'development' : 'production') : 'development',
     resolve: {
+      alias: {
+        cesium_src: path.resolve(__dirname,cesiumSource),
+        cesium: path.resolve(__dirname,cesiumSource+'/Cesium.js'),
+      },
       extensions: ['.geojson'],
       fallback: {
+        "path": require.resolve("path-browserify")
+        //"path": false, // for cesium
         // "fs": false,
         // "http": require.resolve("stream-http"),
         // "https": require.resolve("https-browserify"),

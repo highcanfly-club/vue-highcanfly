@@ -22,6 +22,7 @@ declare module '@vue/runtime-core' {
 declare global {
   interface Window {
     app: App<Element>;
+    CESIUM_BASE_URL: string;
   }
 }
 
