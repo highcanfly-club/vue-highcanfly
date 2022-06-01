@@ -117,6 +117,15 @@ fs.writeFile('./src/config/node-version.json',
   }
 );
 
+/*generate cesiumConf.json*/
+const cesiumConf = { token: process.env.CESIUM_TOKEN };
+fs.writeFile('./src/config/cesium-conf.json',
+  JSON.stringify(cesiumConf),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
+
 process.env.VUE_APP_ALGOLIA_SEARCH_KEY = process.env.ALGOLIA_SEARCH_KEY;
 process.env.VUE_APP_ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID;
 
