@@ -98,7 +98,7 @@ export default defineComponent({
               const currentPoint = fixes[i] as Fix;
               if (currentPoint.point !== undefined) {
                 if ((currentPoint.ts - previousPoint.ts) > INTERVAL) { //one point each CESIUM_MIN_INTERVAL
-                  positions.push(Cesium.Cartesian3.fromDegrees(currentPoint.point.lon, currentPoint.point.lat, currentPoint.gpsAltitude));
+                  positions.push(Cesium.Cartesian3.fromDegrees(currentPoint.point.lon, currentPoint.point.lat, currentPoint.gpsAltitude + track.type === trackTypes.FLY ? 30 : 0));
                   previousPoint = currentPoint;
                 }
               }
