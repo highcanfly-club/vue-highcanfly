@@ -40,12 +40,14 @@ import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 import cesiumConf from "@/config/cesium-conf.json";
 import * as Cesium from "cesium";
-import { createDB, getDBFixesRowsAsPromise, trackTypes } from 'trackjoiner';
+import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from 'trackjoiner';
 import type { Fix } from 'trackjoiner';
 import Cartesian2 from "cesium/Source/Core/Cartesian2";
 import Cartesian3 from "cesium/Source/Core/Cartesian3";
 //import "cesium_src/Widgets/widgets.css";
 
+const CESIUM_MIN_FLY_INTERVAL = 1; //1ms
+const CESIUM_MIN_HIKE_INTERVAL = 10000; //10s
 const backgroundImage = "static-web-highcanfly/mountain";
 
 export default defineComponent({
@@ -65,77 +67,64 @@ export default defineComponent({
     }
   },
   mounted() {
+    window.CESIUM_BASE_URL = window.location.origin + '/cesium';
+    Cesium.Ion.defaultAccessToken = cesiumConf.token;
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+      geocoder: false,
+      infoBox: true,
+      timeline: false,
+      animation: false,
+      navigationHelpButton: true,
+      sceneModePicker: false,
+      terrainProvider: Cesium.createWorldTerrain(),
+      // imageryProvider: new Cesium.OpenStreetMapImageryProvider({
+      //   url: 'https://a.tile.openstreetmap.org/'
+      // }),
+      imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+        url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
+      })
+    });
+    const osmBuildings = viewer.scene.primitives.add(Cesium.createOsmBuildings());
     createDB();
-    getDBFixesRowsAsPromise().then((values) => {
-      window.CESIUM_BASE_URL = window.location.origin + '/cesium';
-      Cesium.Ion.defaultAccessToken = cesiumConf.token;
-      const viewer = new Cesium.Viewer('cesiumContainer', {
-        geocoder: false,
-        infoBox: true,
-        navigationHelpButton: true,
-        sceneModePicker: false,
-        terrainProvider: Cesium.createWorldTerrain(),
-        // imageryProvider: new Cesium.OpenStreetMapImageryProvider({
-        //   url: 'https://a.tile.openstreetmap.org/'
-        // }),
-        imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-          url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
-        })
-      });
-      const osmBuildings = viewer.scene.primitives.add(Cesium.createOsmBuildings());
-      this.fixes = values;
-
-      const positionProperty = new Cesium.SampledPositionProperty();
-      const start = Cesium.JulianDate.fromDate(values[0].dt)
-      const stop = Cesium.JulianDate.fromDate(values[values.length - 1].dt)
-      viewer.clock.startTime = start.clone();
-      viewer.clock.stopTime = stop.clone();
-      viewer.clock.currentTime = start.clone();
-      viewer.timeline.zoomTo(start, stop);
-      // Speed up the playback speed 50x.
-      viewer.clock.multiplier = 50;
-      // Start playing the scene.
-      viewer.clock.shouldAnimate = false;
-
-      // Create a point for each.
-      let previousPoint = { ts: 0 } as Fix;
-      for (let i = 0; i < values.length; i++) {
-        const currentPoint = values[i] as Fix;
-        if (currentPoint.point !== undefined) {
-          const time = Cesium.JulianDate.fromDate(values[i].dt);
-          let position = new Cesium.Cartesian3(0, 0, 0);
-          if (currentPoint.type === trackTypes.HIKE) {
-            //eslint-disable-next-line no-debugger
-            //debugger;
-            if ((currentPoint.ts - previousPoint.ts) > 10000) { //one point each 30s for hike
-              position = Cesium.Cartesian3.fromDegrees(currentPoint.point.lon, currentPoint.point.lat, 2);
-              viewer.entities.add({
-                description: `Marche: (${currentPoint.point.lon}, ${currentPoint.point.lat}, ${currentPoint.gpsAltitude})`,
-                position: position,
-                point: { pixelSize: 3, color: Cesium.Color.BLUE, heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND }
-              });
-              previousPoint = currentPoint;
+    getDBTracksRowsAsPromise().then((tracks) => {
+      const entityPromises = [] as Promise<Cesium.Entity>[];
+      tracks.forEach((track) => {
+        entityPromises.push(getDBFixesRowsAsPromise(track.id).then((fixes) => {
+          const INTERVAL = track.type === trackTypes.FLY ? CESIUM_MIN_FLY_INTERVAL : CESIUM_MIN_HIKE_INTERVAL;
+          let previousPoint = { ts: 0 } as Fix;
+          const positions = [] as Cesium.Cartesian3[];
+          return new Promise<Cesium.Entity>((resolve) => {
+            for (let i = 0; i < fixes.length; i++) {
+              const currentPoint = fixes[i] as Fix;
+              if (currentPoint.point !== undefined) {
+                if ((currentPoint.ts - previousPoint.ts) > INTERVAL) { //one point each CESIUM_MIN_INTERVAL
+                  positions.push(Cesium.Cartesian3.fromDegrees(currentPoint.point.lon, currentPoint.point.lat, currentPoint.gpsAltitude));
+                  previousPoint = currentPoint;
+                }
+              }
             }
-          } else {
-            position = Cesium.Cartesian3.fromDegrees(currentPoint.point.lon, currentPoint.point.lat, currentPoint.gpsAltitude);
-            viewer.entities.add({
-              description: `Vol: (${currentPoint.point.lon}, ${currentPoint.point.lat}, ${currentPoint.gpsAltitude})`,
-              position: position,
-              point: { pixelSize: 3, color: Cesium.Color.RED }
-            });
-          }
-          positionProperty.addSample(time, position);
-        }
-      }
-      // Fly the camera to first point.
-      viewer.flyTo(viewer.entities);
+            resolve(viewer.entities.add({
+              name: track.name,
+              polyline: {
+                positions: positions,
+                material: track.type === trackTypes.HIKE ? Cesium.Color.ALICEBLUE : Cesium.Color.RED,
+                width: 3,
+                distanceDisplayCondition: new Cesium.DistanceDisplayCondition(),
+                clampToGround: track.type === trackTypes.HIKE ? true : false,
+              }
+            }));
+          })
+        }));
+      });
+      Promise.all(entityPromises).then(() => {
+        viewer.flyTo(viewer.entities);
+      });
       viewer.homeButton.viewModel.command.beforeExecute.addEventListener(
-        function (e) {
+        (e) => {
           e.cancel = true;
           viewer.flyTo(viewer.entities);
         });
     })
-
   },
   created() {
     window.addEventListener("resize", this.handleResize);
