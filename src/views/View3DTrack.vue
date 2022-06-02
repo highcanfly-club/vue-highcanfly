@@ -40,8 +40,10 @@ import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 import cesiumConf from "@/config/cesium-conf.json";
 import * as Cesium from "cesium";
-import { createDB, getDBFixesRowsAsPromise } from 'trackjoiner';
+import { createDB, getDBFixesRowsAsPromise, trackTypes } from 'trackjoiner';
 import type { Fix } from 'trackjoiner';
+import Cartesian2 from "cesium/Source/Core/Cartesian2";
+import Cartesian3 from "cesium/Source/Core/Cartesian3";
 //import "cesium_src/Widgets/widgets.css";
 
 const backgroundImage = "static-web-highcanfly/mountain";
@@ -65,19 +67,23 @@ export default defineComponent({
   mounted() {
     createDB();
     getDBFixesRowsAsPromise().then((values) => {
-      //eslint-disable-next-line no-debugger
-      //debugger;
       window.CESIUM_BASE_URL = window.location.origin + '/cesium';
       Cesium.Ion.defaultAccessToken = cesiumConf.token;
       const viewer = new Cesium.Viewer('cesiumContainer', {
-        terrainProvider: Cesium.createWorldTerrain()
+        terrainProvider: Cesium.createWorldTerrain(),
+        // imageryProvider: new Cesium.OpenStreetMapImageryProvider({
+        //   url: 'https://a.tile.openstreetmap.org/'
+        // }),
+        imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+          url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
+        })
       });
       const osmBuildings = viewer.scene.primitives.add(Cesium.createOsmBuildings());
       this.fixes = values;
 
       const positionProperty = new Cesium.SampledPositionProperty();
       const start = Cesium.JulianDate.fromDate(values[0].dt)
-      const stop = Cesium.JulianDate.fromDate(values[values.length-1].dt)
+      const stop = Cesium.JulianDate.fromDate(values[values.length - 1].dt)
       viewer.clock.startTime = start.clone();
       viewer.clock.stopTime = stop.clone();
       viewer.clock.currentTime = start.clone();
@@ -85,19 +91,35 @@ export default defineComponent({
       // Speed up the playback speed 50x.
       viewer.clock.multiplier = 50;
       // Start playing the scene.
-      viewer.clock.shouldAnimate = true;
+      viewer.clock.shouldAnimate = false;
 
       // Create a point for each.
-      for (let j = 0; j < values.length; j++) {
-        const dataPoint = values[j] as Fix;
-        if (dataPoint.point !== undefined) {
-          const time = Cesium.JulianDate.fromDate(values[j].dt);
-          const position = Cesium.Cartesian3.fromDegrees(dataPoint.point.lon, dataPoint.point.lat, dataPoint.gpsAltitude);
-          viewer.entities.add({
-            description: `Location: (${dataPoint.point.lon}, ${dataPoint.point.lat}, ${dataPoint.gpsAltitude})`,
-            position: position,
-            point: { pixelSize: 10, color: Cesium.Color.RED }
-          });
+      let previousPoint = { ts: 0 } as Fix;
+      for (let i = 0; i < values.length; i++) {
+        const currentPoint = values[i] as Fix;
+        if (currentPoint.point !== undefined) {
+          const time = Cesium.JulianDate.fromDate(values[i].dt);
+          let position = new Cesium.Cartesian3(0, 0, 0);
+          if (currentPoint.type === trackTypes.HIKE) {
+            //eslint-disable-next-line no-debugger
+            //debugger;
+            if ((currentPoint.ts - previousPoint.ts) > 10000) { //one point each 30s for hike
+              position = Cesium.Cartesian3.fromDegrees(currentPoint.point.lon, currentPoint.point.lat, 2);
+              viewer.entities.add({
+                description: `Marche: (${currentPoint.point.lon}, ${currentPoint.point.lat}, ${currentPoint.gpsAltitude})`,
+                position: position,
+                point: { pixelSize: 3, color: Cesium.Color.GREEN, heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND }
+              });
+              previousPoint = currentPoint;
+            }
+          } else {
+            position = Cesium.Cartesian3.fromDegrees(currentPoint.point.lon, currentPoint.point.lat, currentPoint.gpsAltitude);
+            viewer.entities.add({
+              description: `Vol: (${currentPoint.point.lon}, ${currentPoint.point.lat}, ${currentPoint.gpsAltitude})`,
+              position: position,
+              point: { pixelSize: 3, color: Cesium.Color.RED }
+            });
+          }
           positionProperty.addSample(time, position);
         }
       }
