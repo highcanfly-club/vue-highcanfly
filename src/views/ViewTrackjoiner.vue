@@ -1,26 +1,15 @@
 <template>
   <div>
-    <navbar-default
-      color="text-white"
-      colorhover="text-slate-200"
-      iconscolor="text-slate-200"
-      buttoncolor="bg-white text-slate-700 active:bg-slate-50"
-    />
+    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200"
+      buttoncolor="bg-white text-slate-700 active:bg-slate-50" />
     <main class="profile-page">
       <section class="relative block h-500-px">
-        <div
-          class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{
-            backgroundImage: 'url(' + reactiveBackground + ')',
-          }"
-        >
-          <span
-            id="blackOverlay"
-            class="w-full h-full absolute opacity-50 bg-grey"
-          ></span>
+        <div class="absolute top-0 w-full h-full bg-center bg-cover" v-bind:style="{
+          backgroundImage: 'url(' + reactiveBackground + ')',
+        }">
+          <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-grey"></span>
         </div>
-        <div
-          class="
+        <div class="
             top-auto
             bottom-0
             left-0
@@ -30,29 +19,16 @@
             pointer-events-none
             overflow-hidden
             h-70-px
-          "
-          style="transform: translateZ(0)"
-        >
-          <svg
-            class="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              class="text-slate-200 fill-current"
-              points="2560 0 2560 100 0 100"
-            />
+          " style="transform: translateZ(0)">
+          <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+            version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+            <polygon class="text-slate-200 fill-current" points="2560 0 2560 100 0 100" />
           </svg>
         </div>
       </section>
       <section class="relative py-16 bg-slate-200">
         <div class="container mx-auto px-4">
-          <div
-            class="
+          <div class="
               relative
               flex flex-col
               min-w-0
@@ -63,10 +39,31 @@
               shadow-xl
               rounded-lg
               -mt-64
-            "
-          >
+            ">
             <div class="px-6 py-6 min-h-screen-1/3">
               <track-joiner />
+            </div>
+            <div class="px-6 py-6 min-h-screen-1/3">
+              <button v-if="!view3d" @click="view3d = true" class="
+              absolute left-0 bottom-0
+              inline-flex
+              items-center
+              font-semibold
+              leading-6
+              text-sm
+              shadow
+              rounded-md
+              text-white
+              bg-blue-500
+              hover:bg-blue-700
+              transition
+              ease-in-out
+              duration-150
+              py-2
+              px-4
+              m-2
+        ">Tracer en 3D</button>
+              <card-cesium v-if="view3d" />
             </div>
           </div>
         </div>
@@ -81,6 +78,7 @@ import MainFooter from "@/components/Footers/MainFooter.vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
 import TrackJoiner from "@/components/TrackJoinerComponent.vue";
+import CardCesium from "@/components/Cards/CardCesium.vue";
 
 import { ref } from "vue";
 
@@ -92,9 +90,11 @@ export default {
   reactiveBackground: ref(""),
   resizeId: 0,
   previousWindowSize: 0,
+  view3d: ref(false),
   data() {
     return {
       reactiveBackground: this.reactiveBackground,
+      view3d: this.view3d,
     };
   },
   created() {
@@ -108,6 +108,7 @@ export default {
     NavbarDefault,
     MainFooter,
     TrackJoiner,
+    CardCesium,
   },
   methods: {
     handleResize: function () {
