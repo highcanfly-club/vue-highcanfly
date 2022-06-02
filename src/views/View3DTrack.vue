@@ -22,7 +22,7 @@
           <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
             <div class="px-6 py-6">
               <!-- goes_here -->
-              <div id="cesiumContainer"></div>
+              <card-cesium />
               <!-- /goes_here -->
             </div>
           </div>
@@ -38,12 +38,8 @@ import MainFooter from "@/components/Footers/MainFooter.vue";
 import { ref, defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
-import cesiumConf from "@/config/cesium-conf.json";
-import * as Cesium from "cesium";
-import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from 'trackjoiner';
-import type { Fix } from 'trackjoiner';
-import Cartesian2 from "cesium/Source/Core/Cartesian2";
-import Cartesian3 from "cesium/Source/Core/Cartesian3";
+import CardCesium from "@/components/Cards/CardCesium.vue";
+
 //import "cesium_src/Widgets/widgets.css";
 
 const CESIUM_MIN_FLY_INTERVAL = 1; //1ms
@@ -55,76 +51,13 @@ export default defineComponent({
   description: "Club de parapente dans le Nord FFVL n°29070. À propos de nous…",
   canonical: new URL(window.location.href),
   setup() {
-    const fixes = [] as Fix[];
     const reactiveBackground = ref("");
     const resizeId = 0;
     const previousWindowSize = 0;
     return {
-      fixes,
       logo,
       reactiveBackground,
-      cesiumConf
     }
-  },
-  mounted() {
-    window.CESIUM_BASE_URL = window.location.origin + '/cesium';
-    Cesium.Ion.defaultAccessToken = cesiumConf.token;
-    const viewer = new Cesium.Viewer('cesiumContainer', {
-      geocoder: false,
-      infoBox: true,
-      timeline: false,
-      animation: false,
-      navigationHelpButton: true,
-      sceneModePicker: false,
-      terrainProvider: Cesium.createWorldTerrain(),
-      // imageryProvider: new Cesium.OpenStreetMapImageryProvider({
-      //   url: 'https://a.tile.openstreetmap.org/'
-      // }),
-      imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-        url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
-      })
-    });
-    const osmBuildings = viewer.scene.primitives.add(Cesium.createOsmBuildings());
-    createDB();
-    getDBTracksRowsAsPromise().then((tracks) => {
-      const entityPromises = [] as Promise<Cesium.Entity>[];
-      tracks.forEach((track) => {
-        entityPromises.push(getDBFixesRowsAsPromise(track.id).then((fixes) => {
-          const INTERVAL = track.type === trackTypes.FLY ? CESIUM_MIN_FLY_INTERVAL : CESIUM_MIN_HIKE_INTERVAL;
-          let previousPoint = { ts: 0 } as Fix;
-          const positions = [] as Cesium.Cartesian3[];
-          return new Promise<Cesium.Entity>((resolve) => {
-            for (let i = 0; i < fixes.length; i++) {
-              const currentPoint = fixes[i] as Fix;
-              if (currentPoint.point !== undefined) {
-                if ((currentPoint.ts - previousPoint.ts) > INTERVAL) { //one point each CESIUM_MIN_INTERVAL
-                  positions.push(Cesium.Cartesian3.fromDegrees(currentPoint.point.lon, currentPoint.point.lat, currentPoint.gpsAltitude + track.type === trackTypes.FLY ? 30 : 0));
-                  previousPoint = currentPoint;
-                }
-              }
-            }
-            resolve(viewer.entities.add({
-              name: track.name,
-              polyline: {
-                positions: positions,
-                material: track.type === trackTypes.HIKE ? Cesium.Color.ALICEBLUE : Cesium.Color.RED,
-                width: 3,
-                distanceDisplayCondition: new Cesium.DistanceDisplayCondition(),
-                clampToGround: track.type === trackTypes.HIKE ? true : false,
-              }
-            }));
-          })
-        }));
-      });
-      Promise.all(entityPromises).then(() => {
-        viewer.flyTo(viewer.entities);
-      });
-      viewer.homeButton.viewModel.command.beforeExecute.addEventListener(
-        (e) => {
-          e.cancel = true;
-          viewer.flyTo(viewer.entities);
-        });
-    })
   },
   created() {
     window.addEventListener("resize", this.handleResize);
@@ -136,6 +69,7 @@ export default defineComponent({
   components: {
     NavbarDefault,
     MainFooter,
+    CardCesium,
   },
   methods: {
     handleResize: function () {
