@@ -206,12 +206,12 @@ module.exports = {
     plugins: webpackPlugins,
     devtool: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'source-map' : false) : 'source-map',
     mode: process.env.CF_PAGES === '1' ? (process.env.__DEBUG__ === '1' ? 'development' : 'production') : 'development',
-    optimization: {
-      splitChunks: {
-        // include all types of chunks
-        chunks: 'all',
-      },
-    },
+    // optimization: {
+    //   splitChunks: {
+    //     // include all types of chunks
+    //     chunks: 'all',
+    //   },
+    // },
     resolve: {
       alias: {
         cesium_src: path.resolve(__dirname,cesiumSource),

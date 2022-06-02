@@ -80,7 +80,7 @@ const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
 import TrackJoiner from "@/components/TrackJoinerComponent.vue";
 import CardCesium from "@/components/Cards/CardCesium.vue";
 
-import { ref } from "vue";
+import { ref, defineAsyncComponent } from "vue";
 
 export default {
   description:
@@ -108,7 +108,9 @@ export default {
     NavbarDefault,
     MainFooter,
     TrackJoiner,
-    CardCesium,
+    CardCesium: defineAsyncComponent(() =>
+      import("@/components/Cards/CardCesium.vue")
+    )
   },
   methods: {
     handleResize: function () {

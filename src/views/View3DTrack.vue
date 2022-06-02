@@ -35,10 +35,9 @@
 <script lang="ts">
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent,defineAsyncComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
-import CardCesium from "@/components/Cards/CardCesium.vue";
 
 //import "cesium_src/Widgets/widgets.css";
 
@@ -69,7 +68,9 @@ export default defineComponent({
   components: {
     NavbarDefault,
     MainFooter,
-    CardCesium,
+    CardCesium: defineAsyncComponent(() =>
+      import("@/components/Cards/CardCesium.vue")
+    )
   },
   methods: {
     handleResize: function () {
