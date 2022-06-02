@@ -70,6 +70,10 @@ export default defineComponent({
       window.CESIUM_BASE_URL = window.location.origin + '/cesium';
       Cesium.Ion.defaultAccessToken = cesiumConf.token;
       const viewer = new Cesium.Viewer('cesiumContainer', {
+        geocoder: false,
+        infoBox: true,
+        navigationHelpButton: true,
+        sceneModePicker: false,
         terrainProvider: Cesium.createWorldTerrain(),
         // imageryProvider: new Cesium.OpenStreetMapImageryProvider({
         //   url: 'https://a.tile.openstreetmap.org/'
@@ -108,7 +112,7 @@ export default defineComponent({
               viewer.entities.add({
                 description: `Marche: (${currentPoint.point.lon}, ${currentPoint.point.lat}, ${currentPoint.gpsAltitude})`,
                 position: position,
-                point: { pixelSize: 3, color: Cesium.Color.GREEN, heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND }
+                point: { pixelSize: 3, color: Cesium.Color.BLUE, heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND }
               });
               previousPoint = currentPoint;
             }
@@ -125,6 +129,11 @@ export default defineComponent({
       }
       // Fly the camera to first point.
       viewer.flyTo(viewer.entities);
+      viewer.homeButton.viewModel.command.beforeExecute.addEventListener(
+        function (e) {
+          e.cancel = true;
+          viewer.flyTo(viewer.entities);
+        });
     })
 
   },
