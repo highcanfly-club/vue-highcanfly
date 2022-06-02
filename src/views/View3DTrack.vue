@@ -42,7 +42,7 @@ import cesiumConf from "@/config/cesium-conf.json";
 import * as Cesium from "cesium";
 import { createDB, getDBFixesRowsAsPromise } from 'trackjoiner';
 import type { Fix } from 'trackjoiner';
-import "cesium_src/Widgets/widgets.css";
+//import "cesium_src/Widgets/widgets.css";
 
 const backgroundImage = "static-web-highcanfly/mountain";
 
@@ -135,3 +135,7 @@ export default defineComponent({
   },
 });
 </script>
+<style>
+/* must match cesium npm version in package.json */
+@import "https://cdnjs.cloudflare.com/ajax/libs/cesium/1.94.0/Widgets/widgets.min.css"
+</style>

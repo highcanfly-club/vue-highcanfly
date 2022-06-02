@@ -131,6 +131,19 @@ process.env.VUE_APP_ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID;
 
 const webpackPlugins = [];
 
+const cesiumSource = './node_modules/cesium/Source';
+const cesiumWorkers = '../Build/Cesium/Workers';
+
+const CopywebpackPlugin = require('copy-webpack-plugin');
+const myCopywebpackPlugin = new CopywebpackPlugin({ 
+  patterns: [
+      { from: path.join(cesiumSource, cesiumWorkers), to: 'cesium/Workers' },
+      { from: path.join(cesiumSource, 'Assets'), to: 'cesium/Assets' },
+      { from: path.join(cesiumSource, 'Widgets'), to: 'cesium/Widgets' }
+  ]
+})
+webpackPlugins.push(myCopywebpackPlugin);
+
 if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
   const PurgecssPlugin = require('purgecss-webpack-plugin');
   const glob = require('glob-all')
@@ -147,7 +160,7 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
         path.join(__dirname, './CFDTrackJoiner/src/**/*.js'),
         path.join(__dirname, './CFDTrackJoiner/src/**/*.ts')
       ]),
-    safelist: [/^dp/,/^leaflet/,/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
+    safelist: [/^dp/,/^cesium/,/^leaflet/,/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
     fontFace: true
   })
   webpackPlugins.push(purgeCssPlugin);
@@ -174,25 +187,12 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1') && (proces
     log: true,
     reserveClassName: ['fa', 'fas', 'far', 'fab', 'fad', 'h', 'p', 'm', 'w', 'z', 'el', 'pt', 'pb', 'px', 'py', 'pl', 'pr', 'mt', 'mb', 'mx', 'my', 'ml', 'mr', 'sr', 'to'],
     classNameRegExp: '(bg|[-]*p[xylrbt]*|[-]*m[xylrbt]*|[-]*left|[-]*top|[-]*right|[-]*bottom|[-]*w|[-]*z|h|fa|fas|far|fab|fad|justify|overflow|border|max|flex|text|font|inline|rounded|from|sr|to|via|contrast|brightness|leading|items|backdrop|shadow|duration|whitespace|self|cursor|transition|translate|outline)-[a-z0-9_-]+|shadow|flex|rounded|border',
-    ignorePrefixRegExp: '(.*tns.*|light[bB]ox|popover|el-|popper|is-|top-start|top-end|bottom-start|bottom-end|left-start|left-end|right-start|right-end)',
+    ignorePrefixRegExp: '(.*tns.*|light[bB]ox|cesium|popover|el-|popper|is-|top-start|top-end|bottom-start|bottom-end|left-start|left-end|right-start|right-end)',
     fileMatchRegExp: '.+\.js.*$|.+\.ts.*$|.+\.html.*$|.+\.vue.*$',
     fileExlusionRegExp: '.+\.json.*$|.+\.geojson.*$',
   });
   webpackPlugins.push(myManglePlugin);
 }
-
-const cesiumSource = './node_modules/cesium/Source';
-const cesiumWorkers = '../Build/Cesium/Workers';
-
-const CopywebpackPlugin = require('copy-webpack-plugin');
-const myCopywebpackPlugin = new CopywebpackPlugin({ 
-  patterns: [
-      { from: path.join(cesiumSource, cesiumWorkers), to: 'cesium/Workers' },
-      { from: path.join(cesiumSource, 'Assets'), to: 'cesium/Assets' },
-      { from: path.join(cesiumSource, 'Widgets'), to: 'cesium/Widgets' }
-  ]
-})
-webpackPlugins.push(myCopywebpackPlugin);
 
 module.exports = {
   pages: {
