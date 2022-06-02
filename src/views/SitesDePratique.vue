@@ -55,8 +55,7 @@ import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
-import MapsitesDePratique from "@/components/Maps/LeafletCard.vue";
-import { ref } from "vue";
+import { ref,defineAsyncComponent } from "vue";
 
 export default {
   title: "High Can Fly | Club de parapente du Nord | Nos sites de pratique",
@@ -81,7 +80,9 @@ export default {
   components: {
     NavbarDefault,
     MainFooter,
-    MapsitesDePratique,
+    MapsitesDePratique:defineAsyncComponent(() =>
+      import("@/components/Maps/LeafletCard.vue")
+    ),
   },
   methods: {
     handleResize: function () {

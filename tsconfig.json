@@ -7,6 +7,7 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "allowJs":true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
@@ -19,11 +20,13 @@
       "@cloudflare/workers-types",
       "node",
       "forecast-collection",
-      "geojson"
+      "geojson",
+      "cesium"
     ],
     "typeRoots": [
       "./src/types",
-      "./node_modules/@types"
+      "./node_modules/@types",
+      "./node_modules/cesium/Source"
     ],
     "paths": {
       "@/*": [
