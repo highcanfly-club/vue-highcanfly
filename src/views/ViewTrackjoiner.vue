@@ -41,7 +41,14 @@
               -mt-64
             ">
             <div class="px-6 py-6 min-h-screen-1/3">
-              <track-joiner />
+              <Suspense>
+                <template #default>
+                  <track-joiner />
+                </template>
+                <template #fallback>
+                  <p> Chargement de l'API TrackJoiner... </p>
+                </template>
+              </Suspense>
             </div>
             <div class="px-6 py-6 min-h-screen-1/3">
               <button v-if="!view3d" @click="view3d = true" class="
@@ -63,7 +70,14 @@
               px-4
               m-2
         ">Tracer en 3D</button>
-              <card-cesium v-if="view3d" />
+              <Suspense v-if="view3d">
+                <template #default>
+                  <card-cesium />
+                </template>
+                <template #fallback>
+                  <p> Chargement de l'API 3D... </p>
+                </template>
+              </Suspense>
             </div>
           </div>
         </div>
@@ -77,8 +91,6 @@ import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
-import TrackJoiner from "@/components/TrackJoinerComponent.vue";
-import CardCesium from "@/components/Cards/CardCesium.vue";
 
 import { ref, defineAsyncComponent } from "vue";
 
@@ -107,10 +119,8 @@ export default {
   components: {
     NavbarDefault,
     MainFooter,
-    TrackJoiner,
-    CardCesium: defineAsyncComponent(() =>
-      import("@/components/Cards/CardCesium.vue")
-    )
+    TrackJoiner: defineAsyncComponent(() => { return import("@/components/TrackJoinerComponent.vue") }),
+    CardCesium: defineAsyncComponent(() => { return import("@/components/Cards/CardCesium.vue") })
   },
   methods: {
     handleResize: function () {
