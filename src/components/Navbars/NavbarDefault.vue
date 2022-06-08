@@ -1,6 +1,6 @@
 <template>
   <nav
-    id="top-nav" class="top-0 absolute z-40 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
+    id="top-nav" class="top-0 absolute z-40 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg z-[9999]"
   >
     <div
       class="container px-4 mx-auto flex flex-wrap items-start justify-between"
