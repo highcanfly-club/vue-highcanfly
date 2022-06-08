@@ -71,11 +71,11 @@ const routes = [
     name: "login",
     component: () => import('@/views/ViewLogin.vue'),
   },
-  {
-    path: "/3dtrack",
-    name: "3dtrack",
-    component: () => import('@/views/View3DTrack.vue'),
-  },
+  // {
+  //   path: "/3dtrack",
+  //   name: "3dtrack",
+  //   component: () => import('@/views/View3DTrack.vue'),
+  // },
   {
     path: "/meteo/:slug",
     component: () => import('@/views/ViewMeteo.vue'),
