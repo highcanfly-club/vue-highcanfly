@@ -661,11 +661,18 @@
           </div>
           <div class="flex flex-wrap mt-12 justify-center">
             <div class="w-full overflow-hidden rounded-lg bg-white shadow-lg">
-                <lazy-observer @on-change="onChangeMap">
-                  <div class="h-screen-1/2 w-full overflow-hidden">
-                    <mapsites-de-pratique class="rounded"/>
-                  </div>
-                </lazy-observer>
+              <lazy-observer @on-change="onChangeMap">
+                <div class="h-screen-1/2 w-full overflow-hidden">
+                  <suspense v-if="loadMap">
+                    <template #default>
+                      <mapsites-de-pratique class="rounded" />
+                    </template>
+                    <template #fallback>
+                      <p>Chargement de l'API de cartographie… </p>
+                    </template>
+                  </suspense>
+                </div>
+              </lazy-observer>
             </div>
           </div>
         </div>

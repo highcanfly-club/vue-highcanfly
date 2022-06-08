@@ -39,10 +39,6 @@ import { ref, defineComponent,defineAsyncComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 
-//import "cesium_src/Widgets/widgets.css";
-
-const CESIUM_MIN_FLY_INTERVAL = 1; //1ms
-const CESIUM_MIN_HIKE_INTERVAL = 10000; //10s
 const backgroundImage = "static-web-highcanfly/mountain";
 
 export default defineComponent({
@@ -51,8 +47,7 @@ export default defineComponent({
   canonical: new URL(window.location.href),
   setup() {
     const reactiveBackground = ref("");
-    const resizeId = 0;
-    const previousWindowSize = 0;
+
     return {
       logo,
       reactiveBackground,

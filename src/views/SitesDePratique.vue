@@ -41,7 +41,14 @@
               -mt-64
             ">
             <div class="h-screen-2/3 w-full overflow-hidden">
-                <mapsites-de-pratique class="rounded"/>
+                  <suspense>
+                    <template #default>
+                      <mapsites-de-pratique class="rounded" />
+                    </template>
+                    <template #fallback>
+                      <p>Chargement de l'API de cartographie… </p>
+                    </template>
+                  </suspense>
             </div>
           </div>
         </div>

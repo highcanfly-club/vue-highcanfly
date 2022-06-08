@@ -41,9 +41,16 @@
               -mt-64
             ">
             <div class="px-6 py-6 min-h-screen-1/3">
-              <track-joiner />
+              <Suspense>
+                <template #default>
+                  <track-joiner />
+                </template>
+                <template #fallback>
+                  <p> Chargement de l'API TrackJoiner... </p>
+                </template>
+              </Suspense>
             </div>
-            <div class="px-6 py-6 min-h-screen-1/3">
+            <div class="px-6 py-6 min-h-screen-1/3" v-if="tracksLength > 0">
               <button v-if="!view3d" @click="view3d = true" class="
               absolute left-0 bottom-0
               inline-flex
@@ -63,7 +70,14 @@
               px-4
               m-2
         ">Tracer en 3D</button>
-              <card-cesium v-if="view3d" />
+              <Suspense v-if="view3d">
+                <template #default>
+                  <card-cesium />
+                </template>
+                <template #fallback>
+                  <p> Chargement de l'API 3D... </p>
+                </template>
+              </Suspense>
             </div>
           </div>
         </div>
@@ -73,28 +87,31 @@
   </div>
 </template>
 <script>
-import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
+import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
-const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
-import TrackJoiner from "@/components/TrackJoinerComponent.vue";
-import CardCesium from "@/components/Cards/CardCesium.vue";
+import { createDB, getDBTracksRowsAsPromise, myTrackjoinerDB } from 'trackjoiner';
+import { defineAsyncComponent, ref } from "vue";
 
-import { ref, defineAsyncComponent } from "vue";
+const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
+const CHECKDB_INTERVAL = 500;
 
 export default {
   description:
     "Assemblez vos traces de marche et vol venant de votre vario, de votre téléphone et de votre montre",
   title: "High Can Fly | Club de parapente du Nord | Assemblage de traces",
   canonical: new URL(window.location),
-  reactiveBackground: ref(""),
-  resizeId: 0,
-  previousWindowSize: 0,
-  view3d: ref(false),
-  data() {
+  setup() {
+    const reactiveBackground = ref("");
+    const view3d = ref(false);
+    let loopTrackId = 0;
+    const tracksLength = ref(0);
+    let resizeId = 0;
+    let previousWindowSize = 0;
     return {
-      reactiveBackground: this.reactiveBackground,
-      view3d: this.view3d,
+      reactiveBackground,
+      view3d,
+      tracksLength,
     };
   },
   created() {
@@ -103,17 +120,30 @@ export default {
     this.reactiveBackground = getCloudinaryResponsiveBackground(backgroundImage)
       .format("auto")
       .toURL();
+
+  },
+  mounted() {
+    this.loopTrack = this.getTrackLenthLoop();
+  },
+  beforeUnmount() {
+    clearInterval(this.loopTrack);
   },
   components: {
     NavbarDefault,
     MainFooter,
-    TrackJoiner,
-    CardCesium: defineAsyncComponent(() =>
-      import("@/components/Cards/CardCesium.vue")
-    )
+    TrackJoiner: defineAsyncComponent(() => { return import("@/components/TrackJoinerComponent.vue") }),
+    CardCesium: defineAsyncComponent(() => { return import("@/components/Cards/CardCesium.vue") })
   },
   methods: {
-    handleResize: function () {
+    getTrackLenthLoop() {
+      if (myTrackjoinerDB === undefined) {
+        createDB();
+      }
+      return setInterval(() => {
+        getDBTracksRowsAsPromise().then((tracks) => { this.tracksLength = tracks.length });
+      }, CHECKDB_INTERVAL)
+    },
+    handleResize() {
       clearTimeout(this.resizeId);
       this.resizeId = setTimeout(() => {
         if (window.innerWidth > this.previousWindowSize) {

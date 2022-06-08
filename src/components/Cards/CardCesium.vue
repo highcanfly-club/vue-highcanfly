@@ -2,35 +2,25 @@
     <div id="cesiumContainer"></div>
 </template>
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
-import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 import cesiumConf from "@/config/cesium-conf.json";
 import * as Cesium from "cesium";
 import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from 'trackjoiner';
 import type { Fix } from 'trackjoiner';
-//import "cesium_src/Widgets/widgets.css";
 
 const CESIUM_MIN_FLY_INTERVAL = 1; //1ms
 const CESIUM_MIN_HIKE_INTERVAL = 10000; //10s
-const backgroundImage = "static-web-highcanfly/mountain";
 
 declare interface IGNElevations {
     elevations: number[]
 }
 export default defineComponent({
-    title: "High Can Fly | Club de parapente du Nord | Test",
-    description: "Club de parapente dans le Nord FFVL n°29070. À propos de nous…",
-    canonical: new URL(window.location.href),
     setup() {
         const fixes = [] as Fix[];
-        const reactiveBackground = ref("");
-        const resizeId = 0;
-        const previousWindowSize = 0;
         return {
             fixes,
             logo,
-            reactiveBackground,
             cesiumConf
         }
     },
@@ -44,6 +34,7 @@ export default defineComponent({
             animation: false,
             navigationHelpButton: true,
             sceneModePicker: false,
+            baseLayerPicker: this.$auth0.user.value !== undefined,
             terrainProvider: Cesium.createWorldTerrain(),
             // imageryProvider: new Cesium.OpenStreetMapImageryProvider({
             //   url: 'https://a.tile.openstreetmap.org/'
@@ -108,32 +99,9 @@ export default defineComponent({
                 });
         })
     },
-    created() {
-        window.addEventListener("resize", this.handleResize);
-        this.previousWindowSize = window.innerWidth;
-        this.reactiveBackground = getCloudinaryResponsiveBackground(backgroundImage)
-            .format("auto")
-            .toURL();
-    },
-    methods: {
-        handleResize: function () {
-            clearTimeout(this.resizeId);
-            this.resizeId = setTimeout(() => {
-                if (window.innerWidth > this.previousWindowSize) {
-                    this.previousWindowSize = window.innerWidth;
-                    let newUrl = getCloudinaryResponsiveBackground(backgroundImage)
-                        .format("auto")
-                        .toURL();
-                    if (newUrl != this.reactiveBackground) {
-                        this.reactiveBackground = newUrl;
-                    }
-                }
-            }, 500);
-        },
-    },
 });
 </script>
 <style>
 /* must match cesium npm version in package.json */
-@import "https://cdnjs.cloudflare.com/ajax/libs/cesium/1.94.0/Widgets/widgets.min.css"
+@import "https://cdnjs.cloudflare.com/ajax/libs/cesium/1.94.2/Widgets/widgets.min.css"
 </style>
