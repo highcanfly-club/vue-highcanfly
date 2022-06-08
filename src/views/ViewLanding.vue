@@ -668,7 +668,7 @@
                       <mapsites-de-pratique class="rounded" />
                     </template>
                     <template #fallback>
-                      <p> Chargement de l'API TrackJoiner... </p>
+                      <p>Chargement de l'API de cartographie… </p>
                     </template>
                   </suspense>
                 </div>
