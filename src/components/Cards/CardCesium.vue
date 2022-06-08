@@ -103,5 +103,5 @@ export default defineComponent({
 </script>
 <style>
 /* must match cesium npm version in package.json */
-@import "https://cdnjs.cloudflare.com/ajax/libs/cesium/1.94.0/Widgets/widgets.min.css"
+@import "https://cdnjs.cloudflare.com/ajax/libs/cesium/1.94.2/Widgets/widgets.min.css"
 </style>
