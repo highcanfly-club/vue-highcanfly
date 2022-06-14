@@ -110,7 +110,7 @@ export default defineComponent({
     const hasDevelopmentPreview = ref(false);
     const hasProductionPreview = ref(false);
     const hasDevelopmentDataset = ref(false);
-    let developmentMode = ref(
+    const developmentMode = ref(
       (this.$sanityConf as unknown as SanityConf).dataset ===
         HIGHCANFLY_DATASET.development
     );

@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     getPlaces(slug) {
-      let _places = slug
+      const _places = slug
         ? this.getPlaceWithSlug(slug).length > 0
           ? this.getPlaceWithSlug(slug) || slug === "all"
           : places.features

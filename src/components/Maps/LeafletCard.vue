@@ -83,7 +83,7 @@ export default defineComponent({
          * @param data A Collection of GeoJSON.FlyingPlace features
          */
         getBBox(data: GeoJSON.FlyingPlaceCollection) {
-            let bounds = { longMin: Number.POSITIVE_INFINITY, latMin: Number.POSITIVE_INFINITY, longMax: Number.NEGATIVE_INFINITY, latMax: Number.NEGATIVE_INFINITY }
+            const bounds = { longMin: Number.POSITIVE_INFINITY, latMin: Number.POSITIVE_INFINITY, longMax: Number.NEGATIVE_INFINITY, latMax: Number.NEGATIVE_INFINITY }
             let coordinates: GeoJSON.Position;
             for (let i = 0; i < data.features.length; i++) {
                 coordinates = data.features[i].geometry.coordinates;

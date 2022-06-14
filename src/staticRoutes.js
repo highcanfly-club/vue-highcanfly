@@ -4,10 +4,10 @@ import places from "@/config/places.json";
 
 const getRoutes = function(now = Date.now()){
     const getRandomISODateNearLastHour = function (now) {//workaroud for Cloudflare always return 0
-        let dt = new Date(now); 
+        const dt = new Date(now); 
         let timesamp = dt.getTime();
         timesamp -= 3600 * 1000;
-        let dt2 = new Date(timesamp);
+        const dt2 = new Date(timesamp);
         dt2.setMinutes(Math.random() * 60, Math.random() * 60, Math.random() * 100);
         return dt2.toISOString();
     };

@@ -11,8 +11,8 @@ const isWorkingAtWorker = function(){
    return test;
 };
 
-let getRoutesList = function (router) {
-  let list = [];
+const getRoutesList = function (router) {
+  const list = [];
   for (let i = 0; i < router.length; i++) {
     if (router[i].name != undefined)
       list.push({
@@ -34,12 +34,12 @@ let getRoutesList = function (router) {
   return list;
 };
 
-let getRoutesXML = function (router, baseURL) {
+const getRoutesXML = function (router, baseURL) {
   let list = "";
   for (let i = 0; i < router.length; i++) {
     if (!(typeof(router[i].path) === 'undefined'))
     {
-      let lastmod = typeof(router[i]._updatedAt) === 'undefined' ? '' : `<lastmod>${router[i]._updatedAt}</lastmod>` ;
+      const lastmod = typeof(router[i]._updatedAt) === 'undefined' ? '' : `<lastmod>${router[i]._updatedAt}</lastmod>` ;
       list += `<url><loc>${baseURL}${router[i].path}</loc>${lastmod}</url>\n`;
     }
   }
@@ -49,8 +49,8 @@ let getRoutesXML = function (router, baseURL) {
     </urlset>`;
 };
 
-let getSlugList = function (posts) {
-  let ret = [];
+const getSlugList = function (posts) {
+  const ret = [];
   for (let i = 0; i < posts.length; i++) {
     ret.push({ id: i, path: `/sanity-blog/${posts[i].slug.current}`, _updatedAt: `${posts[i]._updatedAt}` });
   }
@@ -75,8 +75,8 @@ const getSanityClient = function(){
         });
     }
 };
-let getResponsePaths = function (canonicalURL,now = Date.now()) {
-  let baseURL = canonicalURL;
+const getResponsePaths = function (canonicalURL,now = Date.now()) {
+  const baseURL = canonicalURL;
   return new Promise((resolve, reject) => {
     getSanityClient().fetch(query).then(
           (posts) => {

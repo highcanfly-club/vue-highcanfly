@@ -248,7 +248,7 @@ export default {
     },
     lightBox: (image) => {
       if (zoom) {
-        let url = imageBuilder.image(image).auto('format').toString();
+        const url = imageBuilder.image(image).auto('format').toString();
         basiclightbox
           .create(`<img src="${url}" />`)
           .show(() =>
@@ -258,9 +258,9 @@ export default {
     },
     splitArrayPerRow: (array, max) => {
       let srcArray = array;
-      let arrays = [];
+      const arrays = [];
       while (srcArray.length) {
-        let row = srcArray.slice(
+        const row = srcArray.slice(
           0,
           max < srcArray.length ? max : srcArray.length
         );

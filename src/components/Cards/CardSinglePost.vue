@@ -90,7 +90,7 @@ import SanityLazyImgSerializer from "@/components/Utilities/SanityLazyImgSeriali
 import SanityBlockquoteSerializer from "@/components/Utilities/SanityBlockquoteSerializer.vue";
 import * as basiclightbox from "basiclightbox";
 
-let imageBuilder = imageUrlBuilder(sanityClient(window.app.config.globalProperties.$sanityConf));
+const imageBuilder = imageUrlBuilder(sanityClient(window.app.config.globalProperties.$sanityConf));
 
 const query = `*[slug.current == $slug] {
   _id,
@@ -157,7 +157,7 @@ export default {
     };
   },
   mounted() {
-    let slug = this.slug !== undefined ? this.slug : this.$route.params.slug;
+    const slug = this.slug !== undefined ? this.slug : this.$route.params.slug;
     this.loading = true;
     if (!this.$props.lazy) {
       this.fetchData(slug);
@@ -165,7 +165,7 @@ export default {
   },
   methods: {
     lightBox: (image) => {
-      let url = imageBuilder.image(image).auto("format").toString();
+      const url = imageBuilder.image(image).auto("format").toString();
       basiclightbox
         .create(`<img src="${url}" />`)
         .show(() => console.log(`lightbox ${image.url} now visible`));
@@ -179,7 +179,7 @@ export default {
         const client = sanityClient(this.$sanityConf);
         client.fetch(query, { slug: slug }).then(
           (post) => {
-            let _post = post;
+            const _post = post;
             sanityReplaceReferences(_post, client).then(() => {
               this.loading = false;
               this.post = _post;

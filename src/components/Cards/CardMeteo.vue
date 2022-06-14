@@ -143,9 +143,9 @@ import { weatherIsFlyable, weatherGetRain } from '@/plugins/highcanfly'
 const icons_base = "/assets/forecast/";
 // const icons_base =  "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/";
 const API_TOKEN = "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
-let ephemerideClicked = -1;
-let weatherDetailClicked = -1;
-let windDetailClicked = -1;
+const ephemerideClicked = -1;
+const weatherDetailClicked = -1;
+const windDetailClicked = -1;
 
 import _places from "@/config/places.json";
 const places: GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection;
@@ -204,7 +204,7 @@ export default defineComponent({
       return sun.sunrise < givendate && givendate < sun.sunset;
     },
     getWindAdequate(flying: GeoJSON.FlyingPlaceProperties["fly"]) {
-      let speed = `v ≤ ${Math.round(flying.wind.max_speed)} m/s `;
+      const speed = `v ≤ ${Math.round(flying.wind.max_speed)} m/s `;
       let sectors = "orientation ";
       flying.sectors.forEach((sector, index) => {
         sectors += `${index ? "et " : ""}de ${sector.min_angle}° à ${sector.max_angle}° `;
@@ -229,11 +229,11 @@ export default defineComponent({
     },
     getEphemeride(daily_forecasts: DailyForecast[], givendate: Date) {
       const sun = this.getSunRiseAndSunSet(daily_forecasts, givendate);
-      let sunrisetext = new Intl.DateTimeFormat(this.lang, {
+      const sunrisetext = new Intl.DateTimeFormat(this.lang, {
         hour: "numeric",
         minute: "numeric",
       }).format(sun.sunrise);
-      let sunsettext = new Intl.DateTimeFormat(this.lang, {
+      const sunsettext = new Intl.DateTimeFormat(this.lang, {
         hour: "numeric",
         minute: "numeric",
       }).format(sun.sunset);
@@ -264,7 +264,7 @@ export default defineComponent({
       return sun;
     },
     getWeatherAtPlace(place: GeoJSON.FlyingPlace = this.place) {
-      let src = `https://webservice.meteofrance.com/forecast?token=${API_TOKEN}&lat=${place.geometry.coordinates[1]}&lon=${place.geometry.coordinates[0]}&lang=${this.lang}`;
+      const src = `https://webservice.meteofrance.com/forecast?token=${API_TOKEN}&lat=${place.geometry.coordinates[1]}&lon=${place.geometry.coordinates[0]}&lang=${this.lang}`;
       console.log(`Retrieve forecasts from ${src}`);
       fetch(src).then((result) => {
         result.json().then((forecastCollection: ForecastCollection) => {
@@ -273,7 +273,7 @@ export default defineComponent({
       });
     },
     getWeather(weather: Weather12HOrWeather | Weather12HOrWeatherLong) {
-      let wt =
+      const wt =
         weather === null
           ? { desc: null, icon: null, url: null }
           : {
@@ -293,7 +293,7 @@ export default defineComponent({
       return weatherGetRain(rain);
     },
     getShortDate(dt: number) {
-      let ts = new Intl.DateTimeFormat(this.lang, {
+      const ts = new Intl.DateTimeFormat(this.lang, {
         year: "numeric",
         month: "short",
         day: "2-digit",
@@ -301,7 +301,7 @@ export default defineComponent({
       return ts;
     },
     getDate(dt: number) {
-      let ts = new Intl.DateTimeFormat(this.lang, {
+      const ts = new Intl.DateTimeFormat(this.lang, {
         year: "numeric",
         month: "short",
         day: "2-digit",
@@ -311,7 +311,7 @@ export default defineComponent({
       return ts;
     },
     getHour(dt: number) {
-      let ts = new Intl.DateTimeFormat(this.lang, {
+      const ts = new Intl.DateTimeFormat(this.lang, {
         hour: "numeric",
       }).format(new Date(dt * 1000));
       return ts;
