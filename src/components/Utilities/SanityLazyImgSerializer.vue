@@ -34,14 +34,14 @@ export default {
   },
   methods: {
     imageUrlFor(source) {
-      let url = imageBuilder.image(source);
+      const url = imageBuilder.image(source);
       return url;
     },
     lazyImgLoad: (url) => {
       console.log(`image ${url} lazy loaded`);
     },
     lightBox: (image) => {
-      let url = imageBuilder.image(image).auto("format").toString();
+      const url = imageBuilder.image(image).auto("format").toString();
       basiclightbox
         .create(`<img src="${url}" />`)
         .show(() => console.log(`lightbox ${image.url} now visible`));

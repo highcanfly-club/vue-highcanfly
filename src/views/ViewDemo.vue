@@ -99,7 +99,7 @@ export default defineComponent({
       this.resizeId = setTimeout(() => {
         if (window.innerWidth > this.previousWindowSize) {
           this.previousWindowSize = window.innerWidth;
-          let newUrl = getCloudinaryResponsiveBackground(backgroundImage)
+          const newUrl = getCloudinaryResponsiveBackground(backgroundImage)
             .format("auto")
             .toURL();
           if (newUrl != this.reactiveBackground) {

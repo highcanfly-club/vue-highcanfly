@@ -95,9 +95,9 @@ import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/highcanfly-102";
 import { getResponsePaths } from "@/sitemapHelper.js";
 
-let getDownloadSitemapXMLHREF = function (text) {
+const getDownloadSitemapXMLHREF = function (text) {
   //eslint-disable-line
-  var theDownloadlink =
+  const theDownloadlink =
     "data:octet/stream;charset=utf-8," + encodeURIComponent(text);
   return theDownloadlink;
 };
@@ -132,7 +132,7 @@ export default {
       this.resizeId = setTimeout(() => {
         if (window.innerWidth > this.previousWindowSize) {
           this.previousWindowSize = window.innerWidth;
-          let newUrl = getCloudinaryResponsiveBackground(backgroundImage)
+          const newUrl = getCloudinaryResponsiveBackground(backgroundImage)
             .format("auto")
             .toURL();
           if (newUrl != this.reactiveBackground) {

@@ -104,10 +104,10 @@ export default {
   setup() {
     const reactiveBackground = ref("");
     const view3d = ref(false);
-    let loopTrackId = 0;
+    const loopTrackId = 0;
     const tracksLength = ref(0);
-    let resizeId = 0;
-    let previousWindowSize = 0;
+    const resizeId = 0;
+    const previousWindowSize = 0;
     return {
       reactiveBackground,
       view3d,
@@ -148,7 +148,7 @@ export default {
       this.resizeId = setTimeout(() => {
         if (window.innerWidth > this.previousWindowSize) {
           this.previousWindowSize = window.innerWidth;
-          let newUrl = getCloudinaryResponsiveBackground(backgroundImage)
+          const newUrl = getCloudinaryResponsiveBackground(backgroundImage)
             .format("auto")
             .toURL();
           if (newUrl != this.reactiveBackground) {
