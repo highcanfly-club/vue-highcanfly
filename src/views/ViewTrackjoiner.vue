@@ -104,10 +104,7 @@ export default {
   setup() {
     const reactiveBackground = ref("");
     const view3d = ref(false);
-    const loopTrackId = 0;
     const tracksLength = ref(0);
-    const resizeId = 0;
-    const previousWindowSize = 0;
     return {
       reactiveBackground,
       view3d,
