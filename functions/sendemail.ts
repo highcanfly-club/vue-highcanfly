@@ -3,11 +3,10 @@
 //MAILJET_API_PWD = '69168d2a48f80294f3ffd51241f14856';
 //MAILJET_TO = 'your@email.com';
 //HCAPTCHA_SECRET = 'yoursecret'
-
 const hcaptcha_host = "hcaptcha.com";
 const hcaptcha_path = "/siteverify";
 
-function verifyHCaptcha(secret, token) {
+function verifyHCaptcha(secret:string, token:string) {
   const rawResponse = fetch(`https://${hcaptcha_host}/${hcaptcha_path}`, {
     method: 'POST',
     headers: {
@@ -19,28 +18,31 @@ function verifyHCaptcha(secret, token) {
   return rawResponse;
 }
 
-async function readRequestBody(request) {
+async function readRequestBody(request:Request) {
   const { headers } = request
   const contentType = headers.get('content-type')
   if (contentType.includes('application/json')) {
-    const body = await request.json()
+    const body = await request.json() as SendmailParams
     return body
   } else if (contentType.includes('form')) {
     const formData = await request.formData()
-    let body = {}
-    for (let entry of formData.entries()) {
+    const body = {} as SendmailParams
+    for (const entry of formData.entries()) {
       body[entry[0]] = entry[1]
     }
-    return JSON.stringify(body)
-    // return body;
-  } else {
-    let myBlob = await request.blob()
-    var objectURL = URL.createObjectURL(myBlob)
-    return objectURL
+    return body;
   }
 }
 
-async function sendEmail({ api_key, api_pwd, dest, fromemail, name, message, redirect }) {
+async function sendEmail({ api_key, api_pwd, dest, fromemail, name, message, redirect }: {
+  api_key: string;
+  api_pwd: string;
+  dest: string;
+  fromemail: string;
+  name: string;
+  message: string;
+  redirect: string;
+}) {
   const MAILJET_API_KEY = api_key;
   const MAILJET_API_PWD = api_pwd;
   if (!dest) {
@@ -83,38 +85,63 @@ async function sendEmail({ api_key, api_pwd, dest, fromemail, name, message, red
   return email
 }
 
-let getRedirectURL = function (context) {
-  let url = new URL(context.request.url);
+const getRedirectURL = function (request:Request) {
+  const url = new URL(request.url);
   return url.protocol + url.hostname + ':' + url.port + '/';
 }
 /*
 * All get return to index
 * */
-export async function onRequestGet(context) {
-  return Response.redirect(getRedirectURL(context));
+export const onRequestGet:PagesFunction = async ({request}) => {
+  return Response.redirect(getRedirectURL(request));
 
 }
 
+export interface SendmailParams {
+  name: string,
+  email: string,
+  message: string,
+  sitekey: string,
+  token: string,
+  ekey?: string,
+}
 
-export async function onRequestPost(context) {
-  let MAILJET_TO = context.env.MAILJET_TO;
-  let MAILJET_API_KEY = context.env.MAILJET_API_KEY;
-  let MAILJET_API_PWD = context.env.MAILJET_API_PWD;
-  let HCAPTCHA_SECRET = context.env.HCAPTCHA_SECRET;
-  let response_code = { hCaptchaResponse: false, mailjetResponse: 'ERROR' };
-  let reqBody = await readRequestBody(context.request);
-  let params = reqBody; //JSON.parse(reqBody); //automatically parsed
-  let hCaptchaSitekey = params.sitekey;
-  let hCaptchaToken = params.token;
-  let hCaptchaEkey = params.ekey; //eslint-disable-line
-  let name = params.name;
-  let email = params.email;
-  let message = params.message;
-  let hCaptchaVerified = await verifyHCaptcha(HCAPTCHA_SECRET, hCaptchaToken);
-  let hCaptchaResponse = await hCaptchaVerified.json();
-  let hCaptchaSucess = hCaptchaResponse.success;
+type HCaptchaVerifyError = string | string[]
 
-  let sendMailJetApi = { "statusText": "ERROR", "error-codes": "ERROR API" };
+export type HCaptchaVerifyResponse = {
+  success: boolean // is the passcode valid, and does it meet security criteria you specified, e.g. sitekey?
+  challenge_ts: string // timestamp of the challenge (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
+  hostname: string // the hostname of the site where the challenge was solved
+  credit?: boolean // optional: whether the response will be credited
+  'error-codes'?: HCaptchaVerifyError // optional: any error codes
+  score?: number // ENTERPRISE feature: a score denoting malicious activity.
+  score_reason?: string[] // ENTERPRISE feature: reason(s) for score.
+}
+
+export const onRequestPost: PagesFunction<{
+  MAILJET_TO: string;
+  MAILJET_API_KEY: string;
+  MAILJET_API_PWD: string;
+  HCAPTCHA_SECRET: string;
+}> = async ({ request, env }) => {
+  const MAILJET_TO = env.MAILJET_TO;
+  const MAILJET_API_KEY = env.MAILJET_API_KEY;
+  const MAILJET_API_PWD = env.MAILJET_API_PWD;
+  const HCAPTCHA_SECRET = env.HCAPTCHA_SECRET;
+  const response_code = { hCaptchaResponse: false, mailjetResponse: 'ERROR' };
+  const reqBody = await readRequestBody(request);
+  const params = reqBody; //JSON.parse(reqBody); //automatically parsed
+  const hCaptchaSitekey = params.sitekey;
+  const hCaptchaToken = params.token;
+  // let hCaptchaEkey = params.ekey; //eslint-disable-line
+  const name = params.name;
+  const email = params.email;
+  const message = params.message;
+  const hCaptchaVerified = await verifyHCaptcha(HCAPTCHA_SECRET, hCaptchaToken);
+  const hCaptchaResponse = (await hCaptchaVerified.json()) as HCaptchaVerifyResponse;
+  const hCaptchaSucess = hCaptchaResponse.success;
+
+  let sendMailJetApi = { "statusText": "ERROR"} as Response;
   if (hCaptchaSucess) {
     sendMailJetApi = await sendEmail({
       api_key: MAILJET_API_KEY,
@@ -123,7 +150,7 @@ export async function onRequestPost(context) {
       fromemail: email,
       name: name,
       message: message,
-      redirect: getRedirectURL(context)
+      redirect: getRedirectURL(request)
     });
   }
   console.log('NAME: ' + name + ' EMAIL: ' + email + ' MESAGE: ' + message + ' Sitekey: ' + hCaptchaSitekey + ' hCaptchaStatus: ' + hCaptchaSucess + ' API: ' + sendMailJetApi.statusText);
@@ -133,5 +160,5 @@ export async function onRequestPost(context) {
     headers: {
       "content-type": "application/json;charset=UTF-8"
     }
-  })
+  });
 }
