@@ -189,7 +189,9 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1') && (proces
     reserveClassName: ['fa', 'fas', 'far', 'fab', 'fad', 'h', 'p', 'm', 'w', 'z', 'el', 'pt', 'pb', 'px', 'py', 'pl', 'pr', 'mt', 'mb', 'mx', 'my', 'ml', 'mr', 'sr', 'to'],
     classNameRegExp: '(bg|[-]*p[xylrbt]*|[-]*m[xylrbt]*|[-]*left|[-]*top|[-]*right|[-]*bottom|[-]*w|[-]*z|h|fa|fas|far|fab|fad|justify|overflow|border|max|flex|text|font|inline|rounded|from|sr|to|via|contrast|brightness|leading|items|backdrop|shadow|duration|whitespace|self|cursor|transition|translate|outline)-[a-z0-9_-]+|shadow|flex|rounded|border',
     ignorePrefixRegExp: '(.*tns.*|light[bB]ox|cesium|popover|el-|popper|is-|top-start|top-end|bottom-start|bottom-end|left-start|left-end|right-start|right-end)',
+    // eslint-disable-next-line no-useless-escape
     fileMatchRegExp: '.+\.js.*$|.+\.ts.*$|.+\.html.*$|.+\.vue.*$',
+    // eslint-disable-next-line no-useless-escape
     fileExlusionRegExp: '.+\.json.*$|.+\.geojson.*$',
   });
   webpackPlugins.push(myManglePlugin);
