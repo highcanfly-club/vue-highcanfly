@@ -59,14 +59,15 @@
     "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
-    "@vue/cli-plugin-babel": "^5.0.6",
-    "@vue/cli-plugin-eslint": "^5.0.6",
-    "@vue/cli-plugin-typescript": "^5.0.6",
-    "@vue/cli-service": "^5.0.6",
+    "@vue/cli-plugin-babel": "^5.0.4",
+    "@vue/cli-plugin-eslint": "^5.0.4",
+    "@vue/cli-plugin-typescript": "^5.0.4",
+    "@vue/cli-service": "^5.0.4",
     "@vue/eslint-config-typescript": "^11.0.0",
+    "eslint": "^8.17.0",
+    "eslint-plugin-vue": "^9.1.1",
     "autoprefixer": "^10.4.7",
     "copy-webpack-plugin": "^11.0.0",
-    "eslint": "^8.18.0",
     "fontmin-webpack": "file:fontmin-webpack",
     "geojson": "^0.5.0",
     "gitlog": "^4.0.4",
@@ -92,7 +93,7 @@
       "@vue/typescript/recommended"
     ],
     "parserOptions": {
-      "ecmaVersion": 12
+      "ecmaVersion": 13
     },
     "rules": {}
   },

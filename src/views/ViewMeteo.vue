@@ -50,19 +50,7 @@
         </div>
       </section>
       <section class="relative pb-16 bg-slate-200">
-        <!--
-        <div class=" px-4">
-          <div
-            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
-          >
-            <div class="px-6 py-6">
-              -->
         <card-multi-meteo :key="slug" />
-        <!--
-            </div>
-          </div>
-        </div>
-        -->
       </section>
     </main>
     <main-footer />

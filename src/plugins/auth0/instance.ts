@@ -1,14 +1,14 @@
-//adapted from https://github.com/dreamonkey/vue-auth0/tree/main/src
+// adapted from https://github.com/dreamonkey/vue-auth0/tree/main/src
 
 import createAuth0Client, {
   Auth0Client as Auth0ClientClass,
   Auth0ClientOptions,
   GetTokenSilentlyOptions,
   GetTokenSilentlyVerboseResponse,
-  User,
-} from '@auth0/auth0-spa-js';
-import { invoke, until } from '@vueuse/core';
-import { reactive, ToRefs, toRefs } from 'vue';
+  User
+} from '@auth0/auth0-spa-js'
+import { invoke, until } from '@vueuse/core'
+import { reactive, ToRefs, toRefs } from 'vue'
 
 /**
  * The user data object returned from Auth0,
@@ -79,30 +79,29 @@ interface Auth0InitConfig<AppStateType> extends Auth0ClientOptions {
 
 /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK: RedirectCallback = () =>
-  window.history.replaceState({}, document.title, window.location.pathname);
+  window.history.replaceState({}, document.title, window.location.pathname)
 
-let _instance: Auth0Instance | undefined;
+let _instance: Auth0Instance | undefined
 
 /** Returns the current instance of the SDK */
-export function useAuth0() {
+export function useAuth0 () {
   if (!_instance) {
     throw new Error(
       'Auth0 instance has not been initialized yet, but sure to call initAuth0 first'
-    );
+    )
   }
 
-  return _instance;
+  return _instance
 }
 
 /** Creates an instance of the Auth0 SDK. If one has already been created, it returns that instance */
-export function initAuth0<AppStateType>({
+export function initAuth0<AppStateType> ({
   onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
   redirectUri = window.location.origin,
   ...options
 }: Auth0InitConfig<AppStateType>) {
-
   if (_instance) {
-    return _instance;
+    return _instance
   }
 
   const state = reactive<Auth0State>({
@@ -114,8 +113,8 @@ export function initAuth0<AppStateType>({
     isAuthenticated: false,
     user: undefined,
     popupOpen: false,
-    error: undefined,
-  });
+    error: undefined
+  })
 
   /** Instantiate the SDK client */
   void (async () => {
@@ -123,8 +122,8 @@ export function initAuth0<AppStateType>({
     state.auth0Client = await createAuth0Client({
       ...options,
       client_id: options.client_id,
-      redirect_uri: redirectUri,
-    });
+      redirect_uri: redirectUri
+    })
 
     try {
       // If the user is returning to the app after authentication..
@@ -133,133 +132,132 @@ export function initAuth0<AppStateType>({
         window.location.search.includes('state=')
       ) {
         // handle the redirect and retrieve tokens
-        const result = await state.auth0Client.handleRedirectCallback();
+        const result = await state.auth0Client.handleRedirectCallback()
 
-        state.error = undefined;
+        state.error = undefined
 
         // Notify subscribers that the redirect callback has happened, passing the appState
         // (useful for retrieving any pre-authentication state)
-        onRedirectCallback(result.appState as AppStateType | undefined);
+        onRedirectCallback(result.appState as AppStateType | undefined)
       }
     } catch (e) {
-      state.error = e;
+      state.error = e
     } finally {
       // Initialize our internal authentication state
-      state.isAuthenticated = await state.auth0Client.isAuthenticated();
-      state.user = await state.auth0Client.getUser();
-      state.loading = false;
+      state.isAuthenticated = await state.auth0Client.isAuthenticated()
+      state.user = await state.auth0Client.getUser()
+      state.loading = false
     }
-  })();
+  })()
 
   /** Authenticates the user using a popup window */
   const loginWithPopup: Auth0Client['loginWithPopup'] = async (
     options,
     config
   ) => {
-    state.popupOpen = true;
+    state.popupOpen = true
 
     try {
-      await state.auth0Client.loginWithPopup(options, config);
-      state.user = await state.auth0Client.getUser();
-      state.isAuthenticated = await state.auth0Client.isAuthenticated();
-      state.error = undefined;
+      await state.auth0Client.loginWithPopup(options, config)
+      state.user = await state.auth0Client.getUser()
+      state.isAuthenticated = await state.auth0Client.isAuthenticated()
+      state.error = undefined
     } catch (e) {
-      state.error = e;
-      console.error(e);
+      state.error = e
+      console.error(e)
     } finally {
-      state.popupOpen = false;
+      state.popupOpen = false
     }
 
-    state.user = await state.auth0Client.getUser();
-    state.isAuthenticated = true;
-  };
+    state.user = await state.auth0Client.getUser()
+    state.isAuthenticated = true
+  }
 
   /** Handles the callback when logging in using a redirect */
   const handleRedirectCallback: Auth0Client['handleRedirectCallback'] =
     async () => {
-      state.loading = true;
+      state.loading = true
       try {
-        const result = await state.auth0Client.handleRedirectCallback();
-        state.user = await state.auth0Client.getUser();
-        state.isAuthenticated = true;
-        state.error = undefined;
-        return result;
+        const result = await state.auth0Client.handleRedirectCallback()
+        state.user = await state.auth0Client.getUser()
+        state.isAuthenticated = true
+        state.error = undefined
+        return result
       } catch (e) {
-        state.error = e;
+        state.error = e
         // Won't be compliant with `Auth0Client['handleRedirectCallback']` without a returned object
-        return {};
+        return {}
       } finally {
-        state.loading = false;
+        state.loading = false
       }
-    };
+    }
 
   /** Authenticates the user using the redirect method */
   const loginWithRedirect: Auth0Client['loginWithRedirect'] = (options) => {
-    return state.auth0Client.loginWithRedirect(options);
-  };
+    return state.auth0Client.loginWithRedirect(options)
+  }
 
   /** Returns all the claims present in the ID token */
   const getIdTokenClaims: Auth0Client['getIdTokenClaims'] = (options) => {
-    return state.auth0Client.getIdTokenClaims(options);
-  };
+    return state.auth0Client.getIdTokenClaims(options)
+  }
 
   /** Returns the access token. If the token is invalid or missing, a new one is retrieved */
   const getTokenSilently = (options: GetTokenSilentlyOptions = {}) => {
     return state.auth0Client.getTokenSilently({
       ...options,
-      detailedResponse: false,
-    });
-  };
+      detailedResponse: false
+    })
+  }
 
   /** Fetches a new access token and returns the response from the /oauth/token endpoint, omitting the refresh token */
   const getTokenSilentlyVerbose = (options: GetTokenSilentlyOptions = {}) => {
     return state.auth0Client.getTokenSilently({
       ...options,
-      detailedResponse: true,
-    });
-  };
+      detailedResponse: true
+    })
+  }
 
   /** Gets the access token using a popup window */
   const getTokenWithPopup: Auth0Client['getTokenWithPopup'] = (options) => {
-    return state.auth0Client.getTokenWithPopup(options);
-  };
+    return state.auth0Client.getTokenWithPopup(options)
+  }
   /** Logs the user out and removes their session on the authorization server */
   const logout: Auth0Client['logout'] = async (options) => {
-    await state.auth0Client.logout(options);
-    state.isAuthenticated = false;
-    state.user = undefined;
-    return;
-  };
+    await state.auth0Client.logout(options)
+    state.isAuthenticated = false
+    state.user = undefined
+  }
 
   const onInitializationCompleted: InitializationCompletedHookCallback = (
     callback
   ) => {
     void invoke(async () => {
-      await until(() => state.loading).toBe(false);
-      await callback();
-    });
-  };
+      await until(() => state.loading).toBe(false)
+      await callback()
+    })
+  }
 
   const onLogin: LoginHookCallback = (callback) => {
     void invoke(async () => {
-      await until(() => state.isAuthenticated && !!state.user).toBe(true);
+      await until(() => state.isAuthenticated && !!state.user).toBe(true)
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      await callback(state.user!);
-    });
-  };
+      await callback(state.user!)
+    })
+  }
 
   // We leverage onLogin hook to make sure the logout took place after a login
   const onLogout: LogoutHookCallback = (callback) => {
     onLogin(async () => {
-      await until(() => !state.isAuthenticated && !state.user).toBe(true);
-      await callback();
-    });
-  };
+      await until(() => !state.isAuthenticated && !state.user).toBe(true)
+      await callback()
+    })
+  }
 
   const initializationCompleted: InitializationCompleted = () =>
     new Promise((resolve) => {
-      onInitializationCompleted(() => resolve());
-    });
+      onInitializationCompleted(() => resolve())
+    })
 
   _instance = {
     loginWithPopup,
@@ -274,8 +272,8 @@ export function initAuth0<AppStateType>({
     initializationCompleted,
     onLogin,
     onLogout,
-    ...toRefs(state),
-  };
+    ...toRefs(state)
+  }
 
-  return _instance;
+  return _instance
 }
