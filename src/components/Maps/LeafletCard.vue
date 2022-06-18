@@ -20,7 +20,6 @@ npm i --save leaflet
 const places = _places as unknown as GeoJSON.FlyingPlaceCollection
 export default defineComponent({
     data() {
-        this.$router.push
         return {
             count: 1
         }
