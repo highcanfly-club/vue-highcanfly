@@ -58,18 +58,21 @@ export enum oAuthTokenType {
  * Verify a token async, tokenType is 'access_token'|'id_token'
  * issuer is those in jwks.json
  * @param promisedTokens Promise wich is returning an object containing {id_token:string; access_token:string} | GetTokenSilentlyVerboseResponse
+ * @param issuer Auth0 domain. Optional, if not provided use jwks.domains
  * @param now Optional number of seconds from 01/01/1970 (Cloudflare Workers must get Date.now() in onPost/Get function otherwise 0 is returnes)
  * @returns a promise containing a jose.JWTVerifyResult if valid or null
  */
 export const verifyTokenAsync = (
   promisedTokens: Promise<GetTokenSilentlyVerboseResponse>,
   tokenType: oAuthTokenType,
+  issuer?: string,
   now?: number
 ): Promise<jose.JWTVerifyResult> => {
+  issuer = issuer === undefined ? jwks.domain : issuer;
   now = now === undefined ? Date.now() / 1000 : now;
   return new Promise((resolve, reject) => {
     promisedTokens.then((tokens: GetTokenSilentlyVerboseResponse) => {
-      verifyToken(tokens[tokenType], jwks.domain, now).then(
+      verifyToken(tokens[tokenType], issuer, now).then(
         (jwt: boolean | jose.JWTVerifyResult) => {
           if (typeof jwt !== "boolean") {
             resolve(jwt as jose.JWTVerifyResult);
@@ -219,7 +222,7 @@ export const isAllowedAsync = (
   }
   return new Promise((resolve, reject) => {
     if (promisedTokens) {
-      verifyTokenAsync(promisedTokens, oAuthTokenType.access_token, now).then(
+      verifyTokenAsync(promisedTokens, oAuthTokenType.access_token, issuer, now).then(
         (jwt) => {
           if (jwt.payload.permissions !== undefined) {
             const permissions: string[] = jwt.payload.permissions as string[];
