@@ -42,7 +42,7 @@ fs.writeFile('./CFDTrackJoiner/commit.json',
     if (err) return console.log(err);
   }
 );
-var path = require('path');
+const path = require('path');
 
 /*generate auth0-conf.json*/
 const auth0Conf = {
@@ -61,9 +61,10 @@ fs.writeFile('./src/config/auth0-conf.json',
 );
 
 /*generate mapbox.json */
-const mapboxConf ={
+const mapboxConf = {
   "token": process.env.MAPBOX_TOKEN
-}
+};
+
 fs.writeFile('./src/config/mapbox-conf.json',
   JSON.stringify(mapboxConf),
   'utf8', function (err) {
@@ -73,7 +74,7 @@ fs.writeFile('./src/config/mapbox-conf.json',
 /*generate jwks.json */
 /* might be already done with node jwks.js */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const loadJwks = require('./jwks.js');
+require('./jwks.js');
 
 /*generate sanity-conf.json*/
 const sanityApiVersion = "2021-10-21";
@@ -135,18 +136,18 @@ const cesiumSource = './node_modules/cesium/Source';
 const cesiumWorkers = '../Build/Cesium/Workers';
 
 const CopywebpackPlugin = require('copy-webpack-plugin');
-const myCopywebpackPlugin = new CopywebpackPlugin({ 
+const myCopywebpackPlugin = new CopywebpackPlugin({
   patterns: [
-      { from: path.join(cesiumSource, cesiumWorkers), to: 'cesium/Workers' },
-      { from: path.join(cesiumSource, 'Assets'), to: 'cesium/Assets' },
-      { from: path.join(cesiumSource, 'Widgets'), to: 'cesium/Widgets' }
+    { from: path.join(cesiumSource, cesiumWorkers), to: 'cesium/Workers' },
+    { from: path.join(cesiumSource, 'Assets'), to: 'cesium/Assets' },
+    { from: path.join(cesiumSource, 'Widgets'), to: 'cesium/Widgets' }
   ]
-})
+});
 webpackPlugins.push(myCopywebpackPlugin);
 
 if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
   const PurgecssPlugin = require('purgecss-webpack-plugin');
-  const glob = require('glob-all')
+  const glob = require('glob-all');
 
   const purgeCssPlugin = new PurgecssPlugin({
     paths: glob.sync(
@@ -160,9 +161,9 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
         path.join(__dirname, './CFDTrackJoiner/src/**/*.js'),
         path.join(__dirname, './CFDTrackJoiner/src/**/*.ts')
       ]),
-    safelist: [/^dp/,/^cesium/,/^leaflet/,/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
-    fontFace: true
-  })
+    safelist: [/^dp/, /^cesium/, /^leaflet/, /^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
+    fontFace: true,
+  });
   webpackPlugins.push(purgeCssPlugin);
 }
 
@@ -214,8 +215,8 @@ module.exports = {
     // },
     resolve: {
       alias: {
-        cesium_src: path.resolve(__dirname,cesiumSource),
-        cesium: path.resolve(__dirname,cesiumSource+'/Cesium.js'),
+        cesium_src: path.resolve(__dirname, cesiumSource),
+        cesium: path.resolve(__dirname, cesiumSource + '/Cesium.js'),
       },
       extensions: ['.geojson'],
       fallback: {
