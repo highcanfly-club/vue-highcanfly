@@ -66,6 +66,7 @@
     "@vue/eslint-config-typescript": "^11.0.0",
     "autoprefixer": "^10.4.7",
     "copy-webpack-plugin": "^11.0.0",
+    "eslint": "^8.18.0",
     "fontmin-webpack": "file:fontmin-webpack",
     "geojson": "^0.5.0",
     "gitlog": "^4.0.4",
@@ -91,7 +92,7 @@
       "@vue/typescript/recommended"
     ],
     "parserOptions": {
-      "ecmaVersion": 2020
+      "ecmaVersion": 13
     },
     "rules": {}
   },
