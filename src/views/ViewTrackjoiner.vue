@@ -128,7 +128,7 @@ export default {
   components: {
     NavbarDefault,
     MainFooter,
-    TrackJoiner: defineAsyncComponent(() => { return import("@/components/TrackJoinerComponent.vue") }),
+    TrackJoiner: defineAsyncComponent(() => { return import("../../node_modules/CFDTrackJoiner/src/views/TrackJoinerView.vue") }),
     CardCesium: defineAsyncComponent(() => { return import("@/components/Cards/CardCesium.vue") })
   },
   methods: {

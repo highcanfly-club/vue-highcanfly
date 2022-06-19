@@ -9,21 +9,21 @@ const commits = gitlog({
   fields: ["authorDate"],
 });
 
-const commits_trackjoiner = gitlog(
-  {
-    repo: "CFDTrackJoiner",
-    number: 1,
-    fields: ["authorDate"],
-  }
-);
+// const commits_trackjoiner = gitlog(
+//   {
+//     repo: "CFDTrackJoiner",
+//     number: 1,
+//     fields: ["authorDate"],
+//   }
+// );
 
 const commit = {
   vue_highcanfly: (new Date(commits[0].authorDate)),
-  cfdtrackjoiner: (new Date(commits_trackjoiner[0].authorDate)).toISOString(),
+  cfdtrackjoiner: (new Date(commits[0].authorDate)).toISOString(),
 };
 
 process.env.VUE_APP_GIT_LAST_COMMIT = new Date(commits[0].authorDate);
-process.env.VUE_APP_GIT_TRACKJOINER_LAST_COMMIT = new Date(commits_trackjoiner[0].authorDate);
+//process.env.VUE_APP_GIT_TRACKJOINER_LAST_COMMIT = new Date(commits_trackjoiner[0].authorDate);
 fs.writeFile('./src/config/commit.json',
   JSON.stringify(commit),
   'utf8', function (err) {
@@ -36,7 +36,7 @@ fs.writeFile('./commit.json',
     if (err) return console.log(err);
   }
 );
-fs.writeFile('./CFDTrackJoiner/commit.json',
+fs.writeFile('./node_modules/CFDTrackJoiner/commit.json',
   JSON.stringify(commit),
   'utf8', function (err) {
     if (err) return console.log(err);
