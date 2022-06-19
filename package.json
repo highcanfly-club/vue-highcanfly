@@ -11,6 +11,7 @@
   "scripts": {
     "update": "npx npm-check-updates -u",
     "serve": "vue-cli-service serve",
+    "vercel-build": "cp -af CFDTrackJoiner/src/views/TrackJoinerView.vue src/components/ && cp -af CFDTrackJoiner/src/views/trackJoinerHelp.vue src/components/ && npm run build",
     "wrangler": "npx wrangler pages dev -- yarn serve",
     "build": "node jwks.js && vue-cli-service build && gulp licenses",
     "build-prod": "CF_PAGES=\"1\" __DEBUG__=\"0\" vue-cli-service build && gulp licenses",
