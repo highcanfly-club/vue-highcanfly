@@ -14,7 +14,7 @@
     "wrangler": "npx wrangler pages dev -- yarn serve",
     "build": "node jwks.js && vue-cli-service build && gulp licenses",
     "build-prod": "CF_PAGES=\"1\" __DEBUG__=\"0\" vue-cli-service build && gulp licenses",
-    "build-cf": "git fetch --recurse-submodules && node jwks.js && vue-cli-service build --report && gulp licenses",
+    "build-cf": "node jwks.js && vue-cli-service build --report && gulp licenses",
     "build-report": "vue-cli-service build --report",
     "lint": "vue-cli-service lint",
     "get-meteo-icons": "node get-meteo-icons.mjs",
