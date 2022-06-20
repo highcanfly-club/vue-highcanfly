@@ -33,7 +33,7 @@ import { weatherIsFlyable } from '@/plugins/highcanfly'
 import { Forecast } from '@/types/ForecastCollection';
 
 const places: GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection;
-const globalRouter = (window as any).app.config.globalProperties.$router as Router; //because it will run in a distinct App
+const globalRouter = window.app.config.globalProperties.$router as Router; //because it will run in a distinct App
 
 const baliseNull = {
     idbalise: "",
@@ -90,7 +90,7 @@ export default defineComponent({
         this.flyingPlace = this.getFlyingPlace(this.slug);
     },
     methods: {
-        routerPush(event: Event) {
+        routerPush() {
             globalRouter.push({ path: `/meteo/${this.slug}`, hash: "#top-nav" });
         },
         getFFVLOpendataUrl(idBalise: number) {
