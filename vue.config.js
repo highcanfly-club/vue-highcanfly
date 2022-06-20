@@ -36,7 +36,8 @@ fs.writeFile('./commit.json',
     if (err) return console.log(err);
   }
 );
-fs.writeFile('./node_modules/CFDTrackJoiner/commit.json',
+/* minimal workaround must be generate at install from package */
+fs.writeFile('./node_modules/cfdtrackjoiner/commit.json',
   JSON.stringify(commit),
   'utf8', function (err) {
     if (err) return console.log(err);
