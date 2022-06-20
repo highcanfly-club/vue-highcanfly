@@ -11,7 +11,6 @@
   "scripts": {
     "update": "npx npm-check-updates -u",
     "serve": "vue-cli-service serve",
-    "vercel-build": "npm version && git fetch --recurse-submodules && ls CFDTrackJoiner && node jwks.js && cp -af CFDTrackJoiner/src/views/TrackJoinerView.vue src/components/ && cp -af CFDTrackJoiner/src/views/trackJoinerHelp.vue src/components/ && npm run build",
     "wrangler": "npx wrangler pages dev -- yarn serve",
     "build": "node jwks.js && vue-cli-service build && gulp licenses",
     "build-prod": "CF_PAGES=\"1\" __DEBUG__=\"0\" vue-cli-service build && gulp licenses",
@@ -33,7 +32,7 @@
     "@vue/compiler-sfc": "^3.2.37",
     "basiclightbox": "^5.0.4",
     "cesium": "^1.94.3",
-    "CFDTrackJoiner": "github:eltorio/cfdtrackjoiner",
+    "cfdtrackjoiner": "github:eltorio/cfdtrackjoiner",
     "chart.js": "^3.8.0",
     "core-js": "^3.23.1",
     "crypto-js": "^4.1.1",
