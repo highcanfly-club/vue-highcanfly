@@ -24,7 +24,7 @@
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.22.1",
     "@cloudinary/url-gen": "^1.8.0",
-    "@headlessui/vue": "^1.6.4",
+    "@headlessui/vue": "^1.6.5",
     "@heroicons/vue": "^1.0.6",
     "@popperjs/core": "2.11.5",
     "@sanity/client": "^3.3.2",
@@ -61,8 +61,8 @@
     "@tailwindcss/typography": "^0.5.2",
     "@types/leaflet": "^1.7.11",
     "@types/node": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
-    "@typescript-eslint/parser": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
     "@vue/cli-plugin-babel": "^5.0.6",
     "@vue/cli-plugin-eslint": "^5.0.6",
     "@vue/cli-plugin-typescript": "^5.0.6",
@@ -111,9 +111,11 @@
     }
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
+    "last 2 version",
+    " >1%",
+    "not ie <= 99",
+    "not ie_mob <= 99",
+    "not op_mini all"
   ],
   "keywords": []
 }
