@@ -9,40 +9,37 @@ const commits = gitlog({
   fields: ["authorDate"],
 });
 
-// const commits_trackjoiner = gitlog(
-//   {
-//     repo: "CFDTrackJoiner",
-//     number: 1,
-//     fields: ["authorDate"],
-//   }
-// );
+//workaround
+import('./getcfdtrackjoinerversion.mjs').then((module) => {
+  module.getLastCommit('eltorio', 'cfdtrackjoiner').then((_date)=>{
+    console.log(_date)
+    const commit = {
+      vue_highcanfly: (new Date(commits[0].authorDate)),
+      cfdtrackjoiner: (new Date(_date)),
+    };
 
-const commit = {
-  vue_highcanfly: (new Date(commits[0].authorDate)),
-  cfdtrackjoiner: (new Date(commits[0].authorDate)).toISOString(),
-};
+    fs.writeFile('./src/config/commit.json',
+      JSON.stringify(commit),
+      'utf8', function (err) {
+        if (err) return console.log(err);
+      }
+    );
+    fs.writeFile('./commit.json',
+      JSON.stringify(commit),
+      'utf8', function (err) {
+        if (err) return console.log(err);
+      }
+    );
+    /* minimal workaround must be generate at install from package */
+    fs.writeFile('./node_modules/cfdtrackjoiner/commit.json',
+      JSON.stringify(commit),
+      'utf8', function (err) {
+        if (err) return console.log(err);
+      }
+    );
+  })
+})
 
-process.env.VUE_APP_GIT_LAST_COMMIT = new Date(commits[0].authorDate);
-//process.env.VUE_APP_GIT_TRACKJOINER_LAST_COMMIT = new Date(commits_trackjoiner[0].authorDate);
-fs.writeFile('./src/config/commit.json',
-  JSON.stringify(commit),
-  'utf8', function (err) {
-    if (err) return console.log(err);
-  }
-);
-fs.writeFile('./commit.json',
-  JSON.stringify(commit),
-  'utf8', function (err) {
-    if (err) return console.log(err);
-  }
-);
-/* minimal workaround must be generate at install from package */
-fs.writeFile('./node_modules/cfdtrackjoiner/commit.json',
-  JSON.stringify(commit),
-  'utf8', function (err) {
-    if (err) return console.log(err);
-  }
-);
 const path = require('path');
 
 /*generate auth0-conf.json*/

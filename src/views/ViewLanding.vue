@@ -701,6 +701,7 @@ import LazyImg from "@/components/Utilities/LazyImg.vue";
 import * as basiclightbox from "basiclightbox";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 import { ref } from "vue";
+import Commit from '@/config/commit.json'
 
 const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
 const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
@@ -780,7 +781,7 @@ export default {
         day: "2-digit",
         hour: "numeric",
         minute: "numeric",
-      }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT))
+      }).format(new Date(Commit.vue_highcanfly))
     );
     const loadMap = this.loadMap;
     const errors = [];
