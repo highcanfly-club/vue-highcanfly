@@ -1,4 +1,6 @@
-function getDescription (vm) {
+import type { ComponentPublicInstance } from 'vue'
+
+function getDescription (vm:ComponentPublicInstance) {
   const { description } = vm.$options
   if (description) {
     return typeof description === 'function'
@@ -7,7 +9,7 @@ function getDescription (vm) {
   }
 }
 
-function getTitle (vm) {
+function getTitle (vm:ComponentPublicInstance) {
   const { title } = vm.$options
   if (title) {
     return typeof title === 'function'
@@ -16,7 +18,7 @@ function getTitle (vm) {
   }
 }
 
-function getCanonical (vm) {
+function getCanonical (vm:ComponentPublicInstance) {
   const { canonical } = vm.$options
   if (canonical) {
     return typeof canonical === 'function'
@@ -27,9 +29,9 @@ function getCanonical (vm) {
 
 export default {
   created () {
-    const title = getTitle(this)
-    const description = getDescription(this)
-    const canonical = getCanonical(this)
+    const title = getTitle(this) as string
+    const description = getDescription(this) as string
+    const canonical = getCanonical(this) as string
 
     if (title) {
       document.title = title
@@ -39,7 +41,7 @@ export default {
         .setAttribute('content', description)
     }
     if (canonical) {
-      document.querySelector('link[rel="canonical"]').href = canonical
+      (document.querySelector('link[rel="canonical"]') as HTMLLinkElement).href = canonical
     }
   }
 }
