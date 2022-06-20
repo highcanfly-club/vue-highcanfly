@@ -1,7 +1,7 @@
-import type { Auth0Instance } from "./plugins/auth0";
-import type {SanityConf} from '@/plugins/auth0/sanityStore';
-import type { RouteLocation, Router } from "vue-router";
-import type {App,Element} from 'vue';
+import type { Auth0Instance } from './plugins/auth0'
+import type { SanityConf } from '@/plugins/auth0/sanityStore'
+import type { RouteLocation, Router } from 'vue-router'
+import type { App, Element } from 'vue'
 
 /* eslint-disable */
 declare module '*.vue' {

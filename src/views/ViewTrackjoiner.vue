@@ -43,8 +43,8 @@
             <div class="px-6 py-6 min-h-screen-1/3">
               <Suspense>
                 <template #default>
-                  <track-joiner />
-                </template>
+              <track-joiner />
+              </template>
                 <template #fallback>
                   <p> Chargement de l'API TrackJoiner... </p>
                 </template>
@@ -90,7 +90,7 @@
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
-import { createDB, getDBTracksRowsAsPromise, myTrackjoinerDB } from 'trackjoiner';
+import { createDB, getDBTracksRowsAsPromise, myTrackjoinerDB } from 'cfdtrackjoiner';
 import { defineAsyncComponent, ref } from "vue";
 
 const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
@@ -104,10 +104,7 @@ export default {
   setup() {
     const reactiveBackground = ref("");
     const view3d = ref(false);
-    const loopTrackId = 0;
     const tracksLength = ref(0);
-    const resizeId = 0;
-    const previousWindowSize = 0;
     return {
       reactiveBackground,
       view3d,
@@ -131,7 +128,13 @@ export default {
   components: {
     NavbarDefault,
     MainFooter,
-    TrackJoiner: defineAsyncComponent(() => { return import("@/components/TrackJoinerComponent.vue") }),
+    TrackJoiner: defineAsyncComponent(() => {
+      return new Promise((resolve,reject) => {
+        import('cfdtrackjoiner').then((module)=>{
+          resolve(module.TrackJoinerView)
+        }).catch((reason)=>reject(reason))
+      })
+    }),
     CardCesium: defineAsyncComponent(() => { return import("@/components/Cards/CardCesium.vue") })
   },
   methods: {

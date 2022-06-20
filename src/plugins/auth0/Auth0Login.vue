@@ -148,7 +148,6 @@ interface LoginQuery {
 }
 
 import { defineComponent, ref } from "vue";
-import { Auth0Instance } from "./instance";
 import { GetTokenSilentlyVerboseResponse } from "@auth0/auth0-spa-js";
 import {
   getCustomClaim,
@@ -250,6 +249,7 @@ export default defineComponent<{
       verifyTokenAsync(
         this.$auth0.getTokenSilentlyVerbose(),
         oAuthTokenType.access_token,
+        undefined,
         Date.now() / 1000
       ).then((jwt) => {
         this.access_token_valid = jwt !== null;
@@ -260,6 +260,7 @@ export default defineComponent<{
       verifyTokenAsync(
          this.$auth0.getTokenSilentlyVerbose(),
         oAuthTokenType.id_token,
+        undefined,
         Date.now() / 1000
       ).then((jwt) => {
         this.id_token_valid = jwt !== null;
@@ -280,6 +281,7 @@ export default defineComponent<{
       verifyTokenAsync(
          this.$auth0.getTokenSilentlyVerbose(),
         oAuthTokenType.access_token,
+        undefined,
         Date.now() / 1000
       ).then((jwt) => {
         console.log(jwt);

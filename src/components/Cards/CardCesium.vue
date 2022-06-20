@@ -6,8 +6,8 @@ import { defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import cesiumConf from "@/config/cesium-conf.json";
 import * as Cesium from "cesium";
-import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from 'trackjoiner';
-import type { Fix } from 'trackjoiner';
+import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from 'cfdtrackjoiner';
+import type { Fix } from 'cfdtrackjoiner';
 
 const CESIUM_MIN_FLY_INTERVAL = 1; //1ms
 const CESIUM_MIN_HIKE_INTERVAL = 10000; //10s
@@ -43,7 +43,7 @@ export default defineComponent({
                 url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
             })
         });
-        const osmBuildings = viewer.scene.primitives.add(Cesium.createOsmBuildings());
+        viewer.scene.primitives.add(Cesium.createOsmBuildings());
         createDB();
         getDBTracksRowsAsPromise().then((tracks) => {
             const entityPromises = [] as Promise<Cesium.Entity>[];
@@ -87,7 +87,7 @@ export default defineComponent({
                     })
                 }));
             });
-            Promise.all(entityPromises).then((entities) => {
+            Promise.all(entityPromises).then(() => {
                 viewer.flyTo(viewer.entities);
                 //eslint-disable-next-line no-debugger
                 //debugger;

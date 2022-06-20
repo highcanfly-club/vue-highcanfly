@@ -159,7 +159,7 @@
           bg-transparent
           text-slate-700
         "
-        >Assemblez vos traces</router-link
+        >Assemblez vos traces en 3D</router-link
       >
       <div class="h-0 mx-4 my-2 border border-solid border-slate-100" />
       <span

@@ -9,40 +9,38 @@ const commits = gitlog({
   fields: ["authorDate"],
 });
 
-const commits_trackjoiner = gitlog(
-  {
-    repo: "CFDTrackJoiner",
-    number: 1,
-    fields: ["authorDate"],
-  }
-);
+//workaround
+import('./getcfdtrackjoinerversion.mjs').then((module) => {
+  module.getLastCommit('eltorio', 'cfdtrackjoiner').then((_date)=>{
+    console.log(_date)
+    const commit = {
+      vue_highcanfly: (new Date(commits[0].authorDate)),
+      cfdtrackjoiner: (new Date(_date)),
+    };
 
-const commit = {
-  vue_highcanfly: (new Date(commits[0].authorDate)),
-  cfdtrackjoiner: (new Date(commits_trackjoiner[0].authorDate)).toISOString(),
-};
+    fs.writeFile('./src/config/commit.json',
+      JSON.stringify(commit),
+      'utf8', function (err) {
+        if (err) return console.log(err);
+      }
+    );
+    fs.writeFile('./commit.json',
+      JSON.stringify(commit),
+      'utf8', function (err) {
+        if (err) return console.log(err);
+      }
+    );
+    /* minimal workaround must be generate at install from package */
+    fs.writeFile('./node_modules/cfdtrackjoiner/commit.json',
+      JSON.stringify(commit),
+      'utf8', function (err) {
+        if (err) return console.log(err);
+      }
+    );
+  })
+})
 
-process.env.VUE_APP_GIT_LAST_COMMIT = new Date(commits[0].authorDate);
-process.env.VUE_APP_GIT_TRACKJOINER_LAST_COMMIT = new Date(commits_trackjoiner[0].authorDate);
-fs.writeFile('./src/config/commit.json',
-  JSON.stringify(commit),
-  'utf8', function (err) {
-    if (err) return console.log(err);
-  }
-);
-fs.writeFile('./commit.json',
-  JSON.stringify(commit),
-  'utf8', function (err) {
-    if (err) return console.log(err);
-  }
-);
-fs.writeFile('./CFDTrackJoiner/commit.json',
-  JSON.stringify(commit),
-  'utf8', function (err) {
-    if (err) return console.log(err);
-  }
-);
-var path = require('path');
+const path = require('path');
 
 /*generate auth0-conf.json*/
 const auth0Conf = {
@@ -61,9 +59,10 @@ fs.writeFile('./src/config/auth0-conf.json',
 );
 
 /*generate mapbox.json */
-const mapboxConf ={
+const mapboxConf = {
   "token": process.env.MAPBOX_TOKEN
-}
+};
+
 fs.writeFile('./src/config/mapbox-conf.json',
   JSON.stringify(mapboxConf),
   'utf8', function (err) {
@@ -73,7 +72,7 @@ fs.writeFile('./src/config/mapbox-conf.json',
 /*generate jwks.json */
 /* might be already done with node jwks.js */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const loadJwks = require('./jwks.js');
+require('./jwks.js');
 
 /*generate sanity-conf.json*/
 const sanityApiVersion = "2021-10-21";
@@ -135,18 +134,18 @@ const cesiumSource = './node_modules/cesium/Source';
 const cesiumWorkers = '../Build/Cesium/Workers';
 
 const CopywebpackPlugin = require('copy-webpack-plugin');
-const myCopywebpackPlugin = new CopywebpackPlugin({ 
+const myCopywebpackPlugin = new CopywebpackPlugin({
   patterns: [
-      { from: path.join(cesiumSource, cesiumWorkers), to: 'cesium/Workers' },
-      { from: path.join(cesiumSource, 'Assets'), to: 'cesium/Assets' },
-      { from: path.join(cesiumSource, 'Widgets'), to: 'cesium/Widgets' }
+    { from: path.join(cesiumSource, cesiumWorkers), to: 'cesium/Workers' },
+    { from: path.join(cesiumSource, 'Assets'), to: 'cesium/Assets' },
+    { from: path.join(cesiumSource, 'Widgets'), to: 'cesium/Widgets' }
   ]
-})
+});
 webpackPlugins.push(myCopywebpackPlugin);
 
 if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
   const PurgecssPlugin = require('purgecss-webpack-plugin');
-  const glob = require('glob-all')
+  const glob = require('glob-all');
 
   const purgeCssPlugin = new PurgecssPlugin({
     paths: glob.sync(
@@ -160,9 +159,9 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
         path.join(__dirname, './CFDTrackJoiner/src/**/*.js'),
         path.join(__dirname, './CFDTrackJoiner/src/**/*.ts')
       ]),
-    safelist: [/^dp/,/^cesium/,/^leaflet/,/^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
-    fontFace: true
-  })
+    safelist: [/^dp/, /^cesium/, /^leaflet/, /^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
+    fontFace: true,
+  });
   webpackPlugins.push(purgeCssPlugin);
 }
 
@@ -188,7 +187,9 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1') && (proces
     reserveClassName: ['fa', 'fas', 'far', 'fab', 'fad', 'h', 'p', 'm', 'w', 'z', 'el', 'pt', 'pb', 'px', 'py', 'pl', 'pr', 'mt', 'mb', 'mx', 'my', 'ml', 'mr', 'sr', 'to'],
     classNameRegExp: '(bg|[-]*p[xylrbt]*|[-]*m[xylrbt]*|[-]*left|[-]*top|[-]*right|[-]*bottom|[-]*w|[-]*z|h|fa|fas|far|fab|fad|justify|overflow|border|max|flex|text|font|inline|rounded|from|sr|to|via|contrast|brightness|leading|items|backdrop|shadow|duration|whitespace|self|cursor|transition|translate|outline)-[a-z0-9_-]+|shadow|flex|rounded|border',
     ignorePrefixRegExp: '(.*tns.*|light[bB]ox|cesium|popover|el-|popper|is-|top-start|top-end|bottom-start|bottom-end|left-start|left-end|right-start|right-end)',
+    // eslint-disable-next-line no-useless-escape
     fileMatchRegExp: '.+\.js.*$|.+\.ts.*$|.+\.html.*$|.+\.vue.*$',
+    // eslint-disable-next-line no-useless-escape
     fileExlusionRegExp: '.+\.json.*$|.+\.geojson.*$',
   });
   webpackPlugins.push(myManglePlugin);
@@ -214,8 +215,8 @@ module.exports = {
     // },
     resolve: {
       alias: {
-        cesium_src: path.resolve(__dirname,cesiumSource),
-        cesium: path.resolve(__dirname,cesiumSource+'/Cesium.js'),
+        cesium_src: path.resolve(__dirname, cesiumSource),
+        cesium: path.resolve(__dirname, cesiumSource + '/Cesium.js'),
       },
       extensions: ['.geojson'],
       fallback: {

@@ -1,5 +1,5 @@
-function getDescription(vm) {
-  const { description, } = vm.$options
+function getDescription (vm) {
+  const { description } = vm.$options
   if (description) {
     return typeof description === 'function'
       ? description.call(vm)
@@ -7,7 +7,7 @@ function getDescription(vm) {
   }
 }
 
-function getTitle(vm) {
+function getTitle (vm) {
   const { title } = vm.$options
   if (title) {
     return typeof title === 'function'
@@ -16,7 +16,7 @@ function getTitle(vm) {
   }
 }
 
-function getCanonical(vm) {
+function getCanonical (vm) {
   const { canonical } = vm.$options
   if (canonical) {
     return typeof canonical === 'function'
@@ -26,21 +26,20 @@ function getCanonical(vm) {
 }
 
 export default {
-  created() {
+  created () {
     const title = getTitle(this)
-    const description = getDescription(this);
-    const canonical = getCanonical(this);
+    const description = getDescription(this)
+    const canonical = getCanonical(this)
 
     if (title) {
       document.title = title
     }
     if (description) {
       document.querySelector('meta[name="description"]')
-        .setAttribute('content', description);
+        .setAttribute('content', description)
     }
     if (canonical) {
-      document.querySelector('link[rel="canonical"]').href = canonical;
-        
+      document.querySelector('link[rel="canonical"]').href = canonical
     }
   }
 }

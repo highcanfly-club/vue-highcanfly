@@ -341,6 +341,7 @@
 </template>
 <script>
 import VueScrollUp from "@/plugins/vue-scroll-up";
+import Commit from '@/config/commit.json'
 import {
   resetSanityConfToDefaults,
 } from "@/plugins/auth0/sanityStore";
@@ -355,7 +356,7 @@ export default {
         day: "2-digit",
         hour: "numeric",
         minute: "numeric",
-      }).format(new Date(process.env.VUE_APP_GIT_LAST_COMMIT)),
+      }).format(new Date(Commit.vue_highcanfly)),
       date: new Date().getFullYear(),
     };
   },
