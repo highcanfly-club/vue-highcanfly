@@ -16,6 +16,6 @@ export interface SanityConf {
 export const sanityConf:SanityConf = { ...sanityConfDist }
 
 export const resetSanityConfToDefaults = () => {
-  ((window as any).app.config.globalProperties.$sanityConf as SanityConf) = { ...sanityConfDist };
-  ((window as any).app.config.globalProperties.$sanityConf as SanityConf).preview = false
+  (window.app.config.globalProperties.$sanityConf as SanityConf) = { ...sanityConfDist };
+  (window.app.config.globalProperties.$sanityConf as SanityConf).preview = false
 }
