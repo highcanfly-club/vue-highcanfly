@@ -36,8 +36,8 @@ import('./getcfdtrackjoinerversion.mjs').then((module) => {
         if (err) return console.log(err);
       }
     );
-  })
-})
+  });
+});
 
 const path = require('path');
 
@@ -153,10 +153,10 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
         path.join(__dirname, './src/**/*.vue'),
         path.join(__dirname, './src/**/*.js'),
         path.join(__dirname, './src/**/*.ts'),
-        path.join(__dirname, './CFDTrackJoiner/public/*.html'),
-        path.join(__dirname, './CFDTrackJoiner/src/**/*.vue'),
-        path.join(__dirname, './CFDTrackJoiner/src/**/*.js'),
-        path.join(__dirname, './CFDTrackJoiner/src/**/*.ts')
+        path.join(__dirname, './node_modules/cfdtrackjoiner/public/*.html'),
+        path.join(__dirname, './node_modules/cfdtrackjoiner/src/**/*.vue'),
+        path.join(__dirname, './node_modules/cfdtrackjoiner/src/**/*.js'),
+        path.join(__dirname, './node_modules/cfdtrackjoiner/src/**/*.ts')
       ]),
     safelist: [/^dp/, /^cesium/, /^leaflet/, /^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
     fontFace: true,

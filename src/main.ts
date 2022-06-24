@@ -132,4 +132,4 @@ app.config.globalProperties.$sanityConf.preview = app.config.globalProperties.$s
 app.use(Highcanfly)
 app.mixin(metaMixin)
 
-const vm = app.mount("#app"); //eslint-disable-line
+app.mount("#app")
