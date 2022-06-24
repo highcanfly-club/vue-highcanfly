@@ -36,8 +36,8 @@ import('./getcfdtrackjoinerversion.mjs').then((module) => {
         if (err) return console.log(err);
       }
     );
-  })
-})
+  });
+});
 
 const path = require('path');
 
