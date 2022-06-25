@@ -70,7 +70,6 @@ fs.writeFile('./src/config/mapbox-conf.json',
 );
 /*generate jwks.json */
 /* might be already done with node jwks.js */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 require('./jwks.js');
 
 /*generate sanity-conf.json*/
@@ -149,14 +148,14 @@ if ((process.env.CF_PAGES === '1') && (process.env.__DEBUG__ !== '1')) {
   const purgeCssPlugin = new PurgecssPlugin({
     paths: glob.sync(
       [
-        path.join(__dirname, './public/*.html'),
-        path.join(__dirname, './src/**/*.vue'),
-        path.join(__dirname, './src/**/*.js'),
-        path.join(__dirname, './src/**/*.ts'),
         path.join(__dirname, './node_modules/cfdtrackjoiner/public/*.html'),
         path.join(__dirname, './node_modules/cfdtrackjoiner/src/**/*.vue'),
         path.join(__dirname, './node_modules/cfdtrackjoiner/src/**/*.js'),
-        path.join(__dirname, './node_modules/cfdtrackjoiner/src/**/*.ts')
+        path.join(__dirname, './node_modules/cfdtrackjoiner/src/**/*.ts'),
+        path.join(__dirname, './public/*.html'),
+        path.join(__dirname, './src/**/*.vue'),
+        path.join(__dirname, './src/**/*.js'),
+        path.join(__dirname, './src/**/*.ts')
       ]),
     safelist: [/^dp/, /^cesium/, /^leaflet/, /^sm:/, /^md:/, /^lg:/, /^xl:/, /^2xl:/, /^focus:/, /^hover:/, /^group-hover:/, /^peer:/, /^peer-checked:/, /\[.*\]/, /^basicLightbox/, /\/[0-9]/, /^tns/, /^el-/, /^is-/, /popper/],
     fontFace: true,
@@ -220,12 +219,6 @@ module.exports = {
       extensions: ['.geojson'],
       fallback: {
         "path": require.resolve("path-browserify")
-        //"path": false, // for cesium
-        // "fs": false,
-        // "http": require.resolve("stream-http"),
-        // "https": require.resolve("https-browserify"),
-        // "timers": require.resolve("timers-browserify"),
-        // "stream": require.resolve("stream-browserify")
       }
     },
     module: {
@@ -233,7 +226,6 @@ module.exports = {
         {
           test: /\.geojson$/,
           loader: 'json-loader' //external loader
-          //type: 'json' //use internal loader
         }
       ]
     }
