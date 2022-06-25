@@ -225,7 +225,7 @@ import { ref, defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 //eslint-disable-next-line @typescript-eslint/no-var-requires
-const nodeVersion = require("@/config/node-version.json");
+import nodeVersion  from '@/config/node-version.json'
 const backgroundImage = "static-web-highcanfly/mountain";
 
 export default defineComponent({
