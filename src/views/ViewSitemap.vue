@@ -93,7 +93,7 @@ import MainFooter from "@/components/Footers/MainFooter.vue";
 import { ref, reactive} from "vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/highcanfly-102";
-import { getResponsePaths } from "@/sitemapHelper.js";
+import { getResponsePaths } from "@/sitemapHelper";
 
 const getDownloadSitemapXMLHREF = function (text) {
   //eslint-disable-line
