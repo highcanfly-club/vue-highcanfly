@@ -224,7 +224,6 @@ import MainFooter from "@/components/Footers/MainFooter.vue";
 import { ref, defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
-//eslint-disable-next-line @typescript-eslint/no-var-requires
 import nodeVersion  from '@/config/node-version.json'
 const backgroundImage = "static-web-highcanfly/mountain";
 
