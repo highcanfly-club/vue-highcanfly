@@ -44,6 +44,16 @@ export default defineComponent({
             })
         });
         viewer.scene.primitives.add(Cesium.createOsmBuildings());
+        const fullScreenHandler = () => {
+            const canvas = viewer.canvas;
+            if ('webkitRequestFullscreen' in canvas) {
+                canvas['webkitRequestFullscreen']() // Safari
+            } else {
+                canvas.requestFullscreen();
+            }
+        }
+        viewer.fullscreenButton.viewModel.command.beforeExecute.addEventListener(fullScreenHandler)
+        viewer.fullscreenButton.viewModel.command.afterExecute.addEventListener(fullScreenHandler)
         createDB();
         getDBTracksRowsAsPromise().then((tracks) => {
             const entityPromises = [] as Promise<Cesium.Entity>[];
