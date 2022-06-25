@@ -2,7 +2,7 @@ import { AsyncWalkBuilder } from 'walkjs'
 import type { SanityClient } from '@sanity/client'
 
 async function sanityReplaceReferences( //eslint-disable-line
-  input: any,
+  input: unknown,
   client: SanityClient,
   resolvedIds: string[] = []
 ) {
