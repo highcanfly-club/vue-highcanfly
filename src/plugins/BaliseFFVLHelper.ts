@@ -60,6 +60,13 @@ export function isFlyable(place: GeoJSON.FlyingPlace, wind_speed_ms: number, win
     return weatherIsFlyable(forecast, place.properties.fly)
 }
 
+function normalizeData(baliseData:Balise){
+    baliseData.vitesseVentMin = baliseData.vitesseVentMin === null ? "0" : baliseData.vitesseVentMin;
+    baliseData.vitesseVentMoy = baliseData.vitesseVentMoy === null ? "0" : baliseData.vitesseVentMoy;
+    baliseData.vitesseVentMax = baliseData.vitesseVentMax === null ? "0" : baliseData.vitesseVentMax;
+    baliseData.directVentInst = baliseData.directVentInst === null ? "0" : (Number(baliseData.directVentInst) % 360).toString();
+    baliseData.directVentMoy = baliseData.directVentMoy === null ? "0" : (Number(baliseData.directVentMoy) % 360).toString();
+}
 export function getBaliseData(flyingPlace: FlyingPlace) {
     return new Promise<BaliseData>((resolve, reject) => {
         fetch(getFFVLOpendataUrl(flyingPlace.properties.idBalise)).then(response => response.json() as Promise<Balise[]>)
@@ -69,11 +76,12 @@ export function getBaliseData(flyingPlace: FlyingPlace) {
                 let retIsOk: boolean;
                 if (baliseData.length > 0) {
                     retBalise = baliseData[0];
+                    normalizeData(retBalise);
                     retBaliseName = flyingPlace.properties.name
                     retIsOk = isFlyable(flyingPlace,
-                        Number(baliseData[0].vitesseVentMoy) / 3.6,
-                        Number(baliseData[0].vitesseVentMax) / 3.6,
-                        Number(baliseData[0].directVentMoy) / 3.6);
+                        Number(retBalise.vitesseVentMoy) / 3.6,
+                        Number(retBalise.vitesseVentMax) / 3.6,
+                        Number(retBalise.directVentMoy));
                     resolve({ balise: retBalise, baliseName: retBaliseName, flyable: retIsOk });
                 }
                 else {
@@ -83,11 +91,7 @@ export function getBaliseData(flyingPlace: FlyingPlace) {
                             .then(baliseData => {
                                 if (baliseData.length > 0) {
                                     retBalise = baliseData[0];
-                                    retBalise.vitesseVentMin = retBalise.vitesseVentMin === null ? "0" : retBalise.vitesseVentMin;
-                                    retBalise.vitesseVentMoy = retBalise.vitesseVentMoy === null ? "0" : retBalise.vitesseVentMoy;
-                                    retBalise.vitesseVentMax = retBalise.vitesseVentMax === null ? "0" : retBalise.vitesseVentMax;
-                                    retBalise.directVentInst = retBalise.directVentInst === null ? "0" : (Number(retBalise.directVentInst) % 360).toString();
-                                    retBalise.directVentMoy = retBalise.directVentMoy === null ? "0" : (Number(retBalise.directVentMoy) % 360).toString();
+                                    normalizeData(retBalise);
                                     retBaliseName = flyingPlace.properties.nameAlt;
                                     retIsOk = isFlyable(flyingPlace,
                                         Number(retBalise.vitesseVentMoy) / 3.6,
