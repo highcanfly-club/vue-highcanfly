@@ -1,24 +1,14 @@
 <template>
   <div>
-    <navbar-default
-      color="text-white"
-      colorhover="text-slate-200"
-      iconscolor="text-slate-200"
-      buttoncolor="bg-white text-slate-700 active:bg-slate-50"
-    />
+    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200"
+      buttoncolor="bg-white text-slate-700 active:bg-slate-50" />
     <main class="profile-page">
       <section class="relative block h-500-px">
-        <div
-          class="absolute top-0 w-full h-full bg-center bg-cover"
-          v-bind:style="{ backgroundImage: 'url(' + reactiveBackground + ')' }"
-        >
-          <span
-            id="blackOverlay"
-            class="w-full h-full absolute opacity-50 bg-black"
-          ></span>
+        <div class="absolute top-0 w-full h-full bg-center bg-cover"
+          v-bind:style="{ backgroundImage: 'url(' + reactiveBackground + ')' }">
+          <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
         </div>
-        <div
-          class="
+        <div class="
             top-auto
             bottom-0
             left-0
@@ -28,29 +18,16 @@
             pointer-events-none
             overflow-hidden
             h-70-px
-          "
-          style="transform: translateZ(0)"
-        >
-          <svg
-            class="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              class="text-slate-200 fill-current"
-              points="2560 0 2560 100 0 100"
-            />
+          " style="transform: translateZ(0)">
+          <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+            version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+            <polygon class="text-slate-200 fill-current" points="2560 0 2560 100 0 100" />
           </svg>
         </div>
       </section>
       <section class="relative py-16 bg-slate-200">
         <div class="container mx-auto px-4">
-          <div
-            class="
+          <div class="
               relative
               flex flex-col
               min-w-0
@@ -61,18 +38,12 @@
               shadow-xl
               rounded-lg
               -mt-64
-            "
-          >
+            ">
             <div class="px-6">
               <div class="flex flex-wrap justify-center">
-                <div
-                  class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center"
-                >
+                <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                   <div class="relative">
-                    <img
-                      alt="logo High Can Fly Parapente"
-                      :src="logo"
-                      class="
+                    <img alt="logo High Can Fly Parapente" :src="logo" class="
                         shadow-xl
                         rounded-full
                         h-auto
@@ -83,21 +54,17 @@
                         -ml-20
                         lg:-ml-16
                         max-w-150-px
-                      "
-                    />
+                      " />
                   </div>
                 </div>
-                <div
-                  class="
+                <div class="
                     w-full
                     lg:w-4/12
                     px-4
                     lg:order-3 lg:text-right lg:self-center
-                  "
-                >
+                  ">
                   <div class="py-6 px-3 mt-32 sm:mt-0">
-                    <button
-                      class="
+                    <button class="
                         bg-gradient-to-r
                         from-watermelon-500
                         to-pistachio-500
@@ -119,10 +86,8 @@
                         ease-linear
                         transition-all
                         duration-150
-                      "
-                      type="button"
-                      onclick="location.href='https://intranet.ffvl.fr/ffvl_licenceonline/pre_rempli/NEW/14172'"
-                    >
+                      " type="button"
+                      onclick="location.href='https://intranet.ffvl.fr/ffvl_licenceonline/pre_rempli/NEW/14172'">
                       Prenez votre licence
                     </button>
                   </div>
@@ -130,64 +95,52 @@
                 <div class="w-full lg:w-4/12 px-4 lg:order-1">
                   <div class="flex justify-center py-4 lg:pt-4 pt-8">
                     <div class="mr-4 p-3 text-center">
-                      <span
-                        class="
+                      <span class="
                           text-xl
                           font-bold
                           block
                           uppercase
                           tracking-wide
                           text-slate-600
-                        "
-                        >22</span
-                      >
+                        ">22</span>
                       <span class="text-sm text-slate-400">Amis</span>
                     </div>
                     <div class="mr-4 p-3 text-center">
-                      <span
-                        class="
+                      <span class="
                           text-xl
                           font-bold
                           block
                           uppercase
                           tracking-wide
                           text-slate-600
-                        "
-                        >10</span
-                      >
+                        ">10</span>
                       <span class="text-sm text-slate-400">Photos</span>
                     </div>
                     <div class="lg:mr-4 p-3 text-center">
-                      <span
-                        class="
+                      <span class="
                           text-xl
                           font-bold
                           block
                           uppercase
                           tracking-wide
                           text-slate-600
-                        "
-                        >89</span
-                      >
+                        ">89</span>
                       <span class="text-sm text-slate-400">Commentaires</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="text-center mt-12">
-                <h3
-                  class="
+                <h3 class="
                     text-4xl
                     font-semibold
                     leading-normal
                     mb-2
                     text-slate-700
-                  "
-                >
+                  ">
                   Association High Can Fly
                 </h3>
-                <div
-                  class="
+                <div class="
                     text-sm
                     leading-normal
                     mt-0
@@ -195,11 +148,8 @@
                     text-slate-400
                     font-bold
                     uppercase
-                  "
-                >
-                  <i
-                    class="fas fa-map-marker-alt mr-2 text-lg text-slate-400"
-                  ></i>
+                  ">
+                  <i class="fas fa-map-marker-alt mr-2 text-lg text-slate-400"></i>
                   Flers-en-Escrebieux, Nord, France
                   <br />119, rue Marceau Martin <br />59128 Marceau Martin
                 </div>
@@ -222,63 +172,41 @@
                         libre
                       </li>
                     </ol>
-                    <router-link
-                      to="/landing"
-                      class="tfont-normal text-emerald-500"
-                      >Accueil</router-link
-                    >
+                    <router-link to="/landing" class="tfont-normal text-emerald-500">Accueil</router-link>
                   </div>
                 </div>
               </div>
             </div>
             <div class="">
-              <span
-                class="
+              <span class="
                   flex flex-wrap
                   w-full
                   text-right text-sm text-slate-400
                   justify-end
                   pr-2
-                "
-                >Site hébergé gracieusement par
-                <a href="https://www.cloudflare.com"
-                  ><i style="color: #e7873b" class="fab fa-cloudflare"></i>
-                  Cloudflare™</a
-                >,&nbsp;
+                ">Site hébergé gracieusement par
+                <a href="https://www.cloudflare.com"><i style="color: #e7873b" class="fab fa-cloudflare"></i>
+                  Cloudflare™</a>,&nbsp;
                 <a class="flex flex-nowrap" href="https://www.sanity.io">
-                  <svg
-                    class="w-4 h-4"
-                    viewBox="0 0 28 28"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                  <svg class="w-4 h-4" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="28" height="28" rx="3" fill="#F03E2F"></rect>
                     <path
                       d="M8.62 7.25c0 2.41 1.52 3.84 4.54 4.6l3.21.73c2.87.64 4.61 2.25 4.61 4.87a4.91 4.91 0 01-1.07 3.15c0-2.61-1.37-4.02-4.69-4.87l-3.15-.7c-2.52-.57-4.47-1.89-4.47-4.73a4.89 4.89 0 011.02-3.05z"
-                      fill="#fff"
-                    ></path>
+                      fill="#fff"></path>
                     <path
                       d="M17.94 16.8c1.37.87 1.97 2.07 1.97 3.8-1.13 1.42-3.12 2.22-5.46 2.22-3.94 0-6.7-1.9-7.3-5.21h3.78c.48 1.52 1.77 2.22 3.5 2.22 2.1 0 3.49-1.1 3.52-3.03"
-                      fill="#F9B1AB"
-                    ></path>
+                      fill="#F9B1AB"></path>
                     <path
                       d="M10.59 10.82a3.99 3.99 0 01-1.97-3.57c1.1-1.4 3-2.27 5.32-2.27 4 0 6.33 2.08 6.9 5H17.2c-.4-1.15-1.4-2.05-3.23-2.05-1.96 0-3.3 1.12-3.37 2.9"
-                      fill="#F9B1AB"
-                    ></path>
+                      fill="#F9B1AB"></path>
                   </svg>
-                  &nbsp;Sanity.io</a
-                >
+                  &nbsp;Sanity.io</a>
                 &nbsp;, propulsé par&nbsp;
-                <a href="https://v3.vuejs.org/"
-                  ><span class="items-baseline"
-                    ><i style="color: #64b587" class="fab fa-vuejs"></i
-                  ></span>
-                  Vue.js {{ app.version }}</a
-                >
-                &nbsp;et&nbsp;<a href="https://vuejs.org/"
-                  ><span class="items-baseline"
-                    ><i style="color: #64a051" class="fab fa-node-js"></i></span
-                  >&nbsp;NodeJS&nbsp;{{ nodeVersion }}
+                <a href="https://v3.vuejs.org/"><span class="items-baseline"><i style="color: #64b587"
+                      class="fab fa-vuejs"></i></span>
+                  Vue.js {{ app.version }}</a>
+                &nbsp;et&nbsp;<a href="https://vuejs.org/"><span class="items-baseline"><i style="color: #64a051"
+                      class="fab fa-node-js"></i></span>&nbsp;NodeJS&nbsp;{{ nodeVersion }}
                 </a>
               </span>
             </div>
@@ -290,24 +218,24 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import { ref } from "vue";
+import { ref, defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
-//eslint-disable-next-line @typescript-eslint/no-var-requires
-const nodeVersion = require("@/config/node-version.json");
+import nodeVersion  from '@/config/node-version.json'
 const backgroundImage = "static-web-highcanfly/mountain";
 
-export default {
+export default defineComponent({
   title: "High Can Fly | Club de parapente du Nord | À propos",
   description: "Club de parapente dans le Nord FFVL n°29070. À propos de nous…",
-  canonical: new URL(window.location),
+  canonical: new URL(window.location.href),
   reactiveBackground: ref(""),
   resizeId: 0,
   previousWindowSize: 0,
   data() {
+    const app = window.app
     return {
       logo,
       app, //eslint-disable-line
@@ -342,5 +270,5 @@ export default {
       }, 500);
     },
   },
-};
+});
 </script>

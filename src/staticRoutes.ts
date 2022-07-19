@@ -1,7 +1,7 @@
 // ToDo extract automatically from router
 import places from '@/config/places.json'
 // eslint-disable-next-line no-undef
-const commit = require('@/config/commit.json')
+import commit from '@/config/commit.json'
 
 const getRoutes = function (now = Date.now()) {
   const getRandomISODateNearLastHour = function (now) { // workaroud for Cloudflare always return 0

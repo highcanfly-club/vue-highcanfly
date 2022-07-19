@@ -1,9 +1,10 @@
 import { AsyncWalkBuilder } from 'walkjs'
+import type { SanityClient } from '@sanity/client'
 
- async function sanityReplaceReferences( //eslint-disable-line
-  input,
-  client,
-  resolvedIds = []
+async function sanityReplaceReferences( //eslint-disable-line
+  input: unknown,
+  client: SanityClient,
+  resolvedIds: string[] = []
 ) {
   await new AsyncWalkBuilder()
     .withGlobalFilter((x) => x.val?._type === 'reference')

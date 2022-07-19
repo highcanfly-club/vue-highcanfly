@@ -6,8 +6,8 @@ import { defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import cesiumConf from "@/config/cesium-conf.json";
 import * as Cesium from "cesium";
-import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from 'cfdtrackjoiner';
-import type { Fix } from 'cfdtrackjoiner';
+import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from 'cfdtrackjoiner/src/trackjoiner/trackjoiner';
+import type { Fix } from 'cfdtrackjoiner/src/trackjoiner/trackjoiner';
 
 const CESIUM_MIN_FLY_INTERVAL = 1; //1ms
 const CESIUM_MIN_HIKE_INTERVAL = 10000; //10s
@@ -44,6 +44,16 @@ export default defineComponent({
             })
         });
         viewer.scene.primitives.add(Cesium.createOsmBuildings());
+        const fullScreenHandler = () => {
+            const canvas = viewer.canvas;
+            if ('webkitRequestFullscreen' in canvas) {
+                canvas['webkitRequestFullscreen']() // Safari
+            } else {
+                canvas.requestFullscreen();
+            }
+        }
+        viewer.fullscreenButton.viewModel.command.beforeExecute.addEventListener(fullScreenHandler)
+        viewer.fullscreenButton.viewModel.command.afterExecute.addEventListener(fullScreenHandler)
         createDB();
         getDBTracksRowsAsPromise().then((tracks) => {
             const entityPromises = [] as Promise<Cesium.Entity>[];

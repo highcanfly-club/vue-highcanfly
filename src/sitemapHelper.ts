@@ -1,5 +1,6 @@
 import sanityClient from '@sanity/client'
-import { getRoutes } from '@/staticRoutes.js'
+import { getRoutes } from '@/staticRoutes'
+import sanityConf from '@/config/sanity-conf.json'
 
 const isWorkingAtWorker = function () {
   let test = false
@@ -62,23 +63,7 @@ const query = `*[_type == "post" && !(_id in path('drafts.**'))]{
 }| order(slug asc)`
 
 const getSanityClient = function () {
-  if (isWorkingAtWorker()) {
-    // eslint-disable-next-line no-undef
-    const client = require('@/config/sanity-conf.json')
-    return sanityClient(client)
-  } else {
-    return sanityClient({
-      // eslint-disable-next-line no-undef
-      projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
-      // eslint-disable-next-line no-undef
-      dataset: process.env.VUE_APP_SANITY_DATASET,
-      // eslint-disable-next-line no-undef
-      token: process.env.VUE_APP_SANITY_READ_TOKEN,
-      useCdn: true,
-      // eslint-disable-next-line no-undef
-      apiVersion: process.env.VUE_APP_SANITY_VERSION
-    })
-  }
+  return sanityClient(sanityConf)
 }
 const getResponsePaths = function (canonicalURL, now = Date.now()) {
   const baseURL = canonicalURL

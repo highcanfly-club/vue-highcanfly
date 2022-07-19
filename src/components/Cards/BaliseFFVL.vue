@@ -29,26 +29,13 @@ import type { Balise } from '@/types/Balise';
 import { Router } from 'vue-router';
 import _places from "@/config/places.json";
 import type GeoJSON from '@/types/GeoJSON';
-import { weatherIsFlyable } from '@/plugins/highcanfly'
-import { Forecast } from '@/types/ForecastCollection';
+import type { BaliseData } from "@/plugins/BaliseFFVLHelper"
+import { getBaliseData, baliseNull } from "@/plugins/BaliseFFVLHelper"
+import { FlyingPlace } from '@/types/GeoJSON';
 
 const places: GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection;
 const globalRouter = window.app.config.globalProperties.$router as Router; //because it will run in a distinct App
 
-const baliseNull = {
-    idbalise: "",
-    date: "",
-    vitesseVentMoy: "",
-    vitesseVentMax: "",
-    vitesseVentMin: "",
-    directVentMoy: "",
-    directVentInst: "",
-    temperature: "",
-    hydrometrie: "",
-    pression: "",
-    luminosite: "",
-    LUM: "",
-} as Balise;
 
 export default defineComponent({
     props: {
@@ -86,8 +73,8 @@ export default defineComponent({
         }
     },
     mounted() {
-        this.getBaliseData(this.id);
-        this.flyingPlace = this.getFlyingPlace(this.slug);
+        this.flyingPlace = this.getFlyingPlace(this.slug) as FlyingPlace;
+        this.getFfvlData(this.flyingPlace);
     },
     methods: {
         routerPush() {
@@ -96,75 +83,17 @@ export default defineComponent({
         getFFVLOpendataUrl(idBalise: number) {
             return `https://data.ffvl.fr/php/historique_relevesmeteo.php?idbalise=${idBalise}&heures=3`
         },
-        getBaliseData() {
-            fetch(this.getFFVLOpendataUrl(this.id)).then(response => response.json() as Promise<Balise[]>)
-                .then(baliseData => {
-                    if (baliseData.length > 0) {
-                        this.baliseData = baliseData[0];
-                        this.baliseName = this.name;
-                        this.isOk = this.isFlyable(this.getFlyingPlace(this.slug),
-                            Number(baliseData[0].vitesseVentMoy) / 3.6,
-                            Number(baliseData[0].vitesseVentMax) / 3.6,
-                            Number(baliseData[0].directVentMoy) / 3.6)
-                    }
-                    else {
-                        if (this.idAlt !== 0 && this.idAlt !== undefined) {
-                            // second chance
-                            fetch(this.getFFVLOpendataUrl(this.idAlt)).then(response => response.json() as Promise<Balise[]>)
-                                .then(baliseData => {
-                                    if (baliseData.length > 0) {
-                                        this.baliseData = baliseData[0];
-                                        this.baliseData.vitesseVentMin = this.baliseData.vitesseVentMin === null ? "0" : this.baliseData.vitesseVentMin;
-                                        this.baliseData.vitesseVentMoy = this.baliseData.vitesseVentMoy === null ? "0" : this.baliseData.vitesseVentMoy;
-                                        this.baliseData.vitesseVentMax = this.baliseData.vitesseVentMax === null ? "0" : this.baliseData.vitesseVentMax;
-                                        this.baliseName = this.nameAlt;
-                                        this.isOk = this.isFlyable(this.getFlyingPlace(this.slug),
-                                            Number(baliseData[0].vitesseVentMoy) / 3.6,
-                                            Number(baliseData[0].vitesseVentMax) / 3.6,
-                                            Number(baliseData[0].directVentMoy) / 3.6)
-                                    }
-                                    else {
-                                        this.baliseData = baliseNull;
-                                    }
-                                })
+        getFfvlData(flyingPlace:FlyingPlace) {
+            getBaliseData(flyingPlace).then((baliseDataFfvl:BaliseData)=>{
+                        this.baliseData = baliseDataFfvl.balise as Balise;
+                        this.baliseName = baliseDataFfvl.baliseName;
+                        this.isOk = baliseDataFfvl.flyable;
+            })
 
-                        } else {
-                            this.baliseData = baliseNull;
-                        }
-                    }
-                });
         },
         getFlyingPlace(slug: string): GeoJSON.FlyingPlace {
             return places.features.filter((place: GeoJSON.FlyingPlace) => { return place.properties.slug === slug })[0];
-        },
-        isFlyable(place: GeoJSON.FlyingPlace, wind_speed_ms: number, wind_speed_max_ms: number, wind_dir_deg: number) {
-            const forecast: Forecast = { //Fake Météo France Forecast
-                dt: 0,
-                T: {
-                    value: 0,
-                    windchill: 0,
-                },
-                humidity: 0,
-                sea_level: 0,
-                wind: {
-                    speed: wind_speed_ms,
-                    gust: wind_speed_max_ms,
-                    direction: wind_dir_deg,
-                    icon: "",
-                },
-                rain: { "1h": 0 },
-                snow: { "1h": 0 },
-                iso0: 0,
-                "rain snow limit": 0,
-                clouds: 0,
-                weather: {
-                    icon: "",
-                    desc: "",
-                },
-            };
-            return weatherIsFlyable(forecast, place.properties.fly)
-        },
-
+        }
     }
 })
 </script>

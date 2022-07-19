@@ -275,6 +275,35 @@
                     }
                 }
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.696828,
+                    45.7873174
+                ]
+            },
+            "properties": {
+                "name": "Les Contamines, le Signal (1870m)",
+                "slug": "les-contamines",
+                "idBalise": 100,
+                "idBaliseAlt": 2521,
+                "nameAlt": "Le Prarion",
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": 74,
+                            "max_angle": 106
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5
+                    }
+                }
+            }
         }
     ]
 }

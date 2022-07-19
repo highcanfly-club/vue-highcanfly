@@ -90,7 +90,7 @@
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
-import { createDB, getDBTracksRowsAsPromise, myTrackjoinerDB } from 'cfdtrackjoiner';
+import { createDB, getDBTracksRowsAsPromise, myTrackjoinerDB } from 'cfdtrackjoiner/src/trackjoiner/trackjoiner';
 import { defineAsyncComponent, ref } from "vue";
 
 const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
@@ -130,8 +130,8 @@ export default {
     MainFooter,
     TrackJoiner: defineAsyncComponent(() => {
       return new Promise((resolve,reject) => {
-        import('cfdtrackjoiner').then((module)=>{
-          resolve(module.TrackJoinerView)
+        import('cfdtrackjoiner/src/views/TrackJoinerView.vue').then((TrackJoinerView)=>{
+          resolve(TrackJoinerView)
         }).catch((reason)=>reject(reason))
       })
     }),
