@@ -1,5 +1,5 @@
 import sanityClient from '@sanity/client'
-import { getRoutes } from '@/staticRoutes.js'
+import { getRoutes } from '@/staticRoutes'
 import sanityConf from '@/config/sanity-conf.json'
 
 const isWorkingAtWorker = function () {
