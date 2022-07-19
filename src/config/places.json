@@ -288,13 +288,14 @@
             "properties": {
                 "name": "Les Contamines, le Signal (1870m)",
                 "slug": "les-contamines",
-                "idBaliseAlt": 100,
-                "nameAlt": "Les Contamines-Monjoie",
+                "idBalise": 100,
+                "idBaliseAlt": 2521,
+                "nameAlt": "Le Prarion",
                 "fly": {
                     "sectors": [
                         {
-                            "min_angle": 80,
-                            "max_angle": 100
+                            "min_angle": 74,
+                            "max_angle": 106
                         }
                     ],
                     "wind": {
