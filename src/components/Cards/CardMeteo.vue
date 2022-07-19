@@ -27,15 +27,17 @@
         <template v-if="(baliseFfvl !== undefined) && (baliseFfvl.balise !== undefined)">
           <tr>
             <td colspan="11" class="text-center text-blue-500">
-              Temps réel {{ baliseFfvl.baliseName !== ($props as any).place.properties.name ? "" :
-                  baliseFfvl.baliseName
+              Temps réel {{ baliseFfvl.baliseName === ($props as any).place.properties.name ? "" :
+                  "balise " + baliseFfvl.baliseName
               }}
             </td>
           </tr>
           <tr>
             <td colspan="11" class="text-center text-blue-500">
-              Moy: <b>{{ baliseFfvl.balise.vitesseVentMoy }}km/h</b> - Max: {{ baliseFfvl.balise.vitesseVentMax }}km/h - Min:
-              {{ baliseFfvl.balise.vitesseVentMin }}km/h - <b>{{ getWindSector(Number(baliseFfvl.balise.directVentInst)) }}</b> -
+              Moy: <b>{{ baliseFfvl.balise.vitesseVentMoy }}km/h</b> - Max: {{ baliseFfvl.balise.vitesseVentMax }}km/h -
+              Min:
+              {{ baliseFfvl.balise.vitesseVentMin }}km/h - <b>{{ getWindSector(Number(baliseFfvl.balise.directVentInst))
+              }}</b> -
               {{ baliseFfvl.balise.temperature }}°C
               <svg :style="getWindImg(Number(baliseFfvl.balise.directVentMoy)).style"
                 class="mx-auto w-7 h-7 fill-transparent stroke-red-400 stroke-2" :class="
