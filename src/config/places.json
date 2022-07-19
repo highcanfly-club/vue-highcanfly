@@ -275,6 +275,34 @@
                     }
                 }
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    6.696828,
+                    45.7873174
+                ]
+            },
+            "properties": {
+                "name": "Les Contamines, le Signal (1870m)",
+                "slug": "les-contamines",
+                "idBaliseAlt": 100,
+                "nameAlt": "Les Contamines-Monjoie",
+                "fly": {
+                    "sectors": [
+                        {
+                            "min_angle": 80,
+                            "max_angle": 100
+                        }
+                    ],
+                    "wind": {
+                        "min_speed": 0,
+                        "max_speed": 5
+                    }
+                }
+            }
         }
     ]
 }
