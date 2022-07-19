@@ -64,7 +64,7 @@ export default {
     onlazyMeteo(entry, unobserve, id) {
       if (entry.isIntersecting && this.$refs.card_meteo !== undefined) {
         unobserve();
-        this.$refs.card_meteo[id].getWeatherAtPlace();
+        this.$refs.card_meteo[id].getWeatherData();
       }
     },
     getPlaceWithSlug(slug) {

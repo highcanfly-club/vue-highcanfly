@@ -24,6 +24,41 @@
             </a>
           </td>
         </tr>
+        <template v-if="(baliseFfvl !== undefined) && (baliseFfvl.balise !== undefined)">
+          <tr>
+            <td colspan="11" class="text-center text-blue-500">
+              Temps réel {{ baliseFfvl.baliseName !== ($props as any).place.properties.name ? "" :
+                  baliseFfvl.baliseName
+              }}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="11" class="text-center text-blue-500">
+              Moy: <b>{{ baliseFfvl.balise.vitesseVentMoy }}km/h</b> - Max: {{ baliseFfvl.balise.vitesseVentMax }}km/h - Min:
+              {{ baliseFfvl.balise.vitesseVentMin }}km/h - <b>{{ getWindSector(Number(baliseFfvl.balise.directVentInst)) }}</b> -
+              {{ baliseFfvl.balise.temperature }}°C
+              <svg :style="getWindImg(Number(baliseFfvl.balise.directVentMoy)).style"
+                class="mx-auto w-7 h-7 fill-transparent stroke-red-400 stroke-2" :class="
+                  isDaylight(
+                    forecastCollection.daily_forecast,
+                    new Date()
+                  )
+                    ? baliseFfvl.flyable
+                      ? 'stroke-green-400'
+                      : 'stroke-red-400'
+                    : 'stroke-slate-300'
+                " version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50"
+                style="enable-background: new 0 0 50 50" xml:space="preserve">
+                <g id="surface1">
+                  <path
+                    d="M43.1,24c-0.6,0.6-1.4,0.9-2.2,0.9s-1.6-0.3-2.2-0.9L28.2,13.7v30c0,1.7-1.4,3-3.1,3s-3.3-1.3-3.3-3v-30
+		L11.4,24c-1.2,1.2-3.2,1.2-4.5,0s-1.2-3.2,0-4.4L22.8,3.9c1.2-1.2,3.2-1.2,4.5,0l15.8,15.6C44.3,20.8,44.3,22.8,43.1,24z" />
+                </g>
+              </svg>
+            </td>
+          </tr>
+        </template>
         <tr>
           <th scope="col" class="text-center">Jour</th>
           <th scope="col">Heure</th>
@@ -138,6 +173,8 @@ import LazyImg from "@/components/Utilities/LazyImg.vue";
 import PopOverSimple from "@/components/Utilities/PopOverSimple.vue";
 import type GeoJSON from '@/types/GeoJSON';
 import type { ForecastCollection, Forecast, DailyForecast, Weather12HOrWeather, Weather12HOrWeatherLong, RainOrSnow } from '@/types/ForecastCollection';
+import type { BaliseData } from "@/plugins/BaliseFFVLHelper"
+import { getBaliseData, baliseNull, getWindSector } from "@/plugins/BaliseFFVLHelper"
 import { weatherIsFlyable, weatherGetRain } from '@/plugins/highcanfly'
 
 const icons_base = "/assets/forecast/";
@@ -152,6 +189,7 @@ const places: GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.Flyi
 
 export default defineComponent({
   forecastCollection: reactive<ForecastCollection>({} as ForecastCollection),
+  baliseFfvl: reactive<BaliseData>({ balise: baliseNull, baliseName: "", flyable: false } as BaliseData),
   props: {
     id: {
       type: Number,
@@ -174,15 +212,17 @@ export default defineComponent({
   },
   mounted() {
     if (!this.$props.lazy) {
-      this.getWeatherAtPlace(this.place);
+      this.getWeatherData(this.place);
     }
   },
   data() {
     return {
+      baliseFfvl: this.baliseFfvl as unknown as BaliseData,
       forecastCollection: this.forecastCollection as unknown as ForecastCollection,
       ephemerideClicked: ref(ephemerideClicked),
       windDetailClicked: ref(windDetailClicked),
       weatherDetailClicked: ref(weatherDetailClicked),
+      getWindSector
     };
   },
   components: {
@@ -262,6 +302,14 @@ export default defineComponent({
         }
       });
       return sun;
+    },
+    getWeatherData(place: GeoJSON.FlyingPlace = this.place) {
+      this.getWeatherAtPlace(place);
+      getBaliseData(place).then((baliseData: BaliseData) => {
+        console.log(baliseData);
+        this.baliseFfvl = baliseData
+      });
+
     },
     getWeatherAtPlace(place: GeoJSON.FlyingPlace = this.place) {
       const src = `https://webservice.meteofrance.com/forecast?token=${API_TOKEN}&lat=${place.geometry.coordinates[1]}&lon=${place.geometry.coordinates[0]}&lang=${this.lang}`;
