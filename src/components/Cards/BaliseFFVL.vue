@@ -25,7 +25,6 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import type { Balise } from '@/types/Balise';
 import { Router } from 'vue-router';
 import _places from "@/config/places.json";
 import type GeoJSON from '@/types/GeoJSON';
@@ -80,12 +79,9 @@ export default defineComponent({
         routerPush() {
             globalRouter.push({ path: `/meteo/${this.slug}`, hash: "#top-nav" });
         },
-        getFFVLOpendataUrl(idBalise: number) {
-            return `https://data.ffvl.fr/php/historique_relevesmeteo.php?idbalise=${idBalise}&heures=3`
-        },
         getFfvlData(flyingPlace:FlyingPlace) {
             getBaliseData(flyingPlace).then((baliseDataFfvl:BaliseData)=>{
-                        this.baliseData = baliseDataFfvl.balise as Balise;
+                        this.baliseData = baliseDataFfvl.balise;
                         this.baliseName = baliseDataFfvl.baliseName;
                         this.isOk = baliseDataFfvl.flyable;
             })
