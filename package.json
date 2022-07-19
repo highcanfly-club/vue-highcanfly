@@ -22,7 +22,7 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run serve"
   },
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.22.1",
+    "@auth0/auth0-spa-js": "^1.22.2",
     "@cloudinary/url-gen": "^1.8.0",
     "@headlessui/vue": "^1.6.7",
     "@heroicons/vue": "^1.0.6",
@@ -50,7 +50,7 @@
     "sanity-blocks-vue-component": "^1.0.1",
     "vue": "^3.2.37",
     "vue-agile": "^2.0.0",
-    "vue-instantsearch": "~4.4.0",
+    "vue-instantsearch": "~4.4.1",
     "vue-router": "^4.1.2",
     "vue3-openlayers": "^0.1.68",
     "walkjs": "^3.2.4"
