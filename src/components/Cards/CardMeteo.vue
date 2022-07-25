@@ -36,7 +36,7 @@
             <td colspan="11" class="text-center text-blue-500">
               Moy: <b>{{ baliseFfvl.balise.vitesseVentMoy }}km/h</b> - Max: {{ baliseFfvl.balise.vitesseVentMax }}km/h -
               Min:
-              {{ baliseFfvl.balise.vitesseVentMin }}km/h - <b>{{ getWindSector(Number(baliseFfvl.balise.directVentInst))
+              {{ baliseFfvl.balise.vitesseVentMin }}km/h - <b>{{ getWindSector(Number(baliseFfvl.balise.directVentInst),'fr')
               }}</b> -
               {{ baliseFfvl.balise.temperature }}°C
               <svg :style="getWindImg(Number(baliseFfvl.balise.directVentMoy)).style"

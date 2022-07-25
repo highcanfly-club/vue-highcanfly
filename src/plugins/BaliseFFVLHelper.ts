@@ -20,16 +20,19 @@ export const baliseNull = {
 
 export type BaliseData = { balise: Balise, baliseName: string, flyable: boolean };
 
-export const WindSectors = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
+export const WindSectors = {
+    en: ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"],
+    fr: ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSO", "SO", "OSO", "O", "ONO", "NO", "NNO"]
+}
 
 function getFFVLOpendataUrl(idBalise: number) {
     return `https://data.ffvl.fr/php/historique_relevesmeteo.php?idbalise=${idBalise}&heures=3`
 }
 
-export function getWindSector(windDeg: number): string {
+export function getWindSector(windDeg: number, lang: string): string {
     const windDegNorm = windDeg % 360;
     const sector = Math.floor(windDegNorm / 22.5)
-    return WindSectors[sector];
+    return WindSectors[lang][sector];
 }
 
 export function isFlyable(place: GeoJSON.FlyingPlace, wind_speed_ms: number, wind_speed_max_ms: number, wind_dir_deg: number) {
@@ -60,7 +63,7 @@ export function isFlyable(place: GeoJSON.FlyingPlace, wind_speed_ms: number, win
     return weatherIsFlyable(forecast, place.properties.fly)
 }
 
-function normalizeData(baliseData:Balise){
+function normalizeData(baliseData: Balise) {
     baliseData.vitesseVentMin = baliseData.vitesseVentMin === null ? "0" : baliseData.vitesseVentMin;
     baliseData.vitesseVentMoy = baliseData.vitesseVentMoy === null ? "0" : baliseData.vitesseVentMoy;
     baliseData.vitesseVentMax = baliseData.vitesseVentMax === null ? "0" : baliseData.vitesseVentMax;
