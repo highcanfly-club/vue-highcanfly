@@ -20,16 +20,19 @@ export const baliseNull = {
 
 export type BaliseData = { balise: Balise, baliseName: string, flyable: boolean };
 
-export const WindSectors =["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"]
+export const WindSectors = {
+    en: ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"],
+    fr: ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSO", "SO", "OSO", "O", "ONO", "NO", "NNO"]
+}
 
 function getFFVLOpendataUrl(idBalise: number) {
     return `https://data.ffvl.fr/php/historique_relevesmeteo.php?idbalise=${idBalise}&heures=3`
 }
 
-export function getWindSector(windDeg:number):string{
-    const windDegNorm = windDeg%360;
+export function getWindSector(windDeg: number, lang: string): string {
+    const windDegNorm = windDeg % 360;
     const sector = Math.floor(windDegNorm / 22.5)
-    return WindSectors[sector];
+    return WindSectors[lang][sector];
 }
 
 export function isFlyable(place: GeoJSON.FlyingPlace, wind_speed_ms: number, wind_speed_max_ms: number, wind_dir_deg: number) {
@@ -60,6 +63,13 @@ export function isFlyable(place: GeoJSON.FlyingPlace, wind_speed_ms: number, win
     return weatherIsFlyable(forecast, place.properties.fly)
 }
 
+function normalizeData(baliseData: Balise) {
+    baliseData.vitesseVentMin = baliseData.vitesseVentMin === null ? "0" : baliseData.vitesseVentMin;
+    baliseData.vitesseVentMoy = baliseData.vitesseVentMoy === null ? "0" : baliseData.vitesseVentMoy;
+    baliseData.vitesseVentMax = baliseData.vitesseVentMax === null ? "0" : baliseData.vitesseVentMax;
+    baliseData.directVentInst = baliseData.directVentInst === null ? "0" : (Number(baliseData.directVentInst) % 360).toString();
+    baliseData.directVentMoy = baliseData.directVentMoy === null ? "0" : (Number(baliseData.directVentMoy) % 360).toString();
+}
 export function getBaliseData(flyingPlace: FlyingPlace) {
     return new Promise<BaliseData>((resolve, reject) => {
         fetch(getFFVLOpendataUrl(flyingPlace.properties.idBalise)).then(response => response.json() as Promise<Balise[]>)
@@ -69,12 +79,13 @@ export function getBaliseData(flyingPlace: FlyingPlace) {
                 let retIsOk: boolean;
                 if (baliseData.length > 0) {
                     retBalise = baliseData[0];
+                    normalizeData(retBalise);
                     retBaliseName = flyingPlace.properties.name
                     retIsOk = isFlyable(flyingPlace,
-                        Number(baliseData[0].vitesseVentMoy) / 3.6,
-                        Number(baliseData[0].vitesseVentMax) / 3.6,
-                        Number(baliseData[0].directVentMoy) / 3.6)
-                    resolve({ balise: retBalise, baliseName: retBaliseName, flyable: retIsOk })
+                        Number(retBalise.vitesseVentMoy) / 3.6,
+                        Number(retBalise.vitesseVentMax) / 3.6,
+                        Number(retBalise.directVentMoy));
+                    resolve({ balise: retBalise, baliseName: retBaliseName, flyable: retIsOk });
                 }
                 else {
                     if (flyingPlace.properties.idBaliseAlt !== 0 && flyingPlace.properties.idBaliseAlt !== undefined) {
@@ -83,25 +94,23 @@ export function getBaliseData(flyingPlace: FlyingPlace) {
                             .then(baliseData => {
                                 if (baliseData.length > 0) {
                                     retBalise = baliseData[0];
-                                    retBalise.vitesseVentMin = retBalise.vitesseVentMin === null ? "0" : retBalise.vitesseVentMin;
-                                    retBalise.vitesseVentMoy = retBalise.vitesseVentMoy === null ? "0" : retBalise.vitesseVentMoy;
-                                    retBalise.vitesseVentMax = retBalise.vitesseVentMax === null ? "0" : retBalise.vitesseVentMax;
+                                    normalizeData(retBalise);
                                     retBaliseName = flyingPlace.properties.nameAlt;
                                     retIsOk = isFlyable(flyingPlace,
-                                        Number(baliseData[0].vitesseVentMoy) / 3.6,
-                                        Number(baliseData[0].vitesseVentMax) / 3.6,
-                                        Number(baliseData[0].directVentMoy) / 3.6)
-                                    resolve({ balise: retBalise, baliseName: retBaliseName, flyable: retIsOk })
+                                        Number(retBalise.vitesseVentMoy) / 3.6,
+                                        Number(retBalise.vitesseVentMax) / 3.6,
+                                        Number(retBalise.directVentMoy))
+                                    resolve({ balise: retBalise, baliseName: retBaliseName, flyable: retIsOk });
                                 }
                                 else {
                                     retBalise = baliseNull;
-                                    reject(`No data from balise=${flyingPlace.properties.idBaliseAlt}`)
+                                    reject(`No data from balise=${flyingPlace.properties.idBaliseAlt}`);
                                 }
                             })
 
                     } else {
                         retBalise = baliseNull;
-                        reject(`No data from main balise and no balise alternative`)
+                        reject(`No data from main balise and no balise alternative`);
                     }
                 }
             });

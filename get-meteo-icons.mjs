@@ -33,9 +33,9 @@ const getMeteoFranceIconsArray = function (
 
     const promised = [];
     places.forEach((place) => {
-        let query = `${METEO_FRANCE_WEBSERVICE}?token=${API_TOKEN}&lat=${place.lat}&lon=${place.lon}&lang=${LANG}`;
+        const query = `${METEO_FRANCE_WEBSERVICE}?token=${API_TOKEN}&lat=${place.lat}&lon=${place.lon}&lang=${LANG}`;
         console.log(query);
-        let promise = fetch(query).then((response) => response.json());
+        const promise = fetch(query).then((response) => response.json());
         promised.push(promise);
     });
     return new Promise(function (resolve, reject) { //eslint-disable-line
@@ -90,11 +90,11 @@ getMeteoFranceIconsArray().then(icons => {
         const curIcons = JSON.parse(data);
         console.log(`There was ${curIcons.length} in mf-icons.json`);
         icons.forEach(item => {
-            let i = curIcons.findIndex((element) => {
+            const i = curIcons.findIndex((element) => {
                 return element.name === item.name;
             })
             if (i > 0) {
-                let itemLang = Object.keys(item.desc)[0];
+                const itemLang = Object.keys(item.desc)[0];
                 if (curIcons[i].desc[itemLang] === undefined) {
                     Object.assign(curIcons[i].desc, item.desc);
                 }

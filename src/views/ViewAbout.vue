@@ -205,7 +205,7 @@
                 <a href="https://v3.vuejs.org/"><span class="items-baseline"><i style="color: #64b587"
                       class="fab fa-vuejs"></i></span>
                   Vue.js {{ app.version }}</a>
-                &nbsp;et&nbsp;<a href="https://vuejs.org/"><span class="items-baseline"><i style="color: #64a051"
+                &nbsp;et&nbsp;<a href="https://nodejs.org/fr/"><span class="items-baseline"><i style="color: #64a051"
                       class="fab fa-node-js"></i></span>&nbsp;NodeJS&nbsp;{{ nodeVersion }}
                 </a>
               </span>
