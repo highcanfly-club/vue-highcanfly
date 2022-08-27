@@ -15729,6 +15729,10 @@
     content: "\f513"
 }
 
+.fa-tripadvisor:before {
+    content: "\f262"
+}
+
 .fa-trello:before {
     content: "\f181"
 }
