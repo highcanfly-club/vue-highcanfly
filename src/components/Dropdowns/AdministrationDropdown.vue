@@ -49,6 +49,38 @@
     "
     >Authentification</router-link
   >
+    <router-link
+    v-if="$auth0.user.value"
+    to="/add-shortlink"
+    class="
+      text-sm
+      py-2
+      px-4
+      font-normal
+      block
+      w-full
+      whitespace-nowrap
+      bg-transparent
+      text-slate-700
+    "
+    >Ajouter un lien court</router-link
+  >
+    <router-link
+    v-if="$auth0.user.value"
+    to="/list-shortlinks"
+    class="
+      text-sm
+      py-2
+      px-4
+      font-normal
+      block
+      w-full
+      whitespace-nowrap
+      bg-transparent
+      text-slate-700
+    "
+    >Lister les liens courts</router-link
+  >
   <slider-check
     class="
       text-sm

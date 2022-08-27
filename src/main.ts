@@ -107,7 +107,17 @@ const routes = [
   {
     path: '/meteo/:slug',
     component: () => import('@/views/ViewMeteo.vue')
-  }
+  },
+  {
+    path: "/add-shortlink",
+    component: () => import("@/views/AddShortLink.vue"),
+    name: 'Add short link',
+  },
+  {
+    path: "/list-shortlinks",
+    component: () => import("@/views/ListShortLinks.vue"),
+    name: 'list short links',
+  },
 ] as RouteRecordRaw[]
 
 const router = createRouter({
