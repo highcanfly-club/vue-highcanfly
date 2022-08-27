@@ -14,6 +14,10 @@ export enum HIGHCANFLY_PERMISSION {
   production = 'blog:publisher:production',
   // eslint-disable-next-line no-unused-vars
   production_preview = 'blog:publisher:production:preview',
+  // eslint-disable-next-line no-unused-vars
+  add_short_url = "add:any_short_url",
+  // eslint-disable-next-line no-unused-vars
+  list_all_short_url = "list:all_short_url"
 }
 
 /**
