@@ -1,4 +1,4 @@
-# HighCanFly site web (activement basé sur Vue Notus) <a href="https://twitter.com/HighCanFlyClub" target="_blank">![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)</a>
+# HighCanFly site web <a href="https://twitter.com/HighCanFlyClub" target="_blank">![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)</a>
 
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/eltorio/vue-highcanfly.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/eltorio/vue-highcanfly/context:javascript)
 
