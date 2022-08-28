@@ -88,6 +88,8 @@ import imageUrlBuilder from "@sanity/image-url";
 import SanityGallerySerializer from "@/components/Utilities/SanityGallerySerializer.vue";
 import SanityLazyImgSerializer from "@/components/Utilities/SanityLazyImgSerializer.vue";
 import SanityBlockquoteSerializer from "@/components/Utilities/SanityBlockquoteSerializer.vue";
+import SanityYoutubeSerializerVue from "@/components/Utilities/SanityYoutubeSerializer.vue";
+import SanityVimeoSerializerVue from "../Utilities/SanityVimeoSerializer.vue";
 import * as basiclightbox from "basiclightbox";
 
 const imageBuilder = imageUrlBuilder(sanityClient(window.app.config.globalProperties.$sanityConf));
@@ -114,6 +116,8 @@ const postSerializers = {
   types: {
     image: SanityLazyImgSerializer,
     gallery: SanityGallerySerializer,
+    youtube: SanityYoutubeSerializerVue,
+    vimeo: SanityVimeoSerializerVue,
   },
   marks: {
     mark: (props, children) => {
