@@ -12,5 +12,5 @@ export async function onRequestGet(context) {
       }
     }
   }
-  return new Response("ERROR NO SHORT LINK PROVIDED", null, 2);
+  return new Response("ERROR NO SHORT LINK PROVIDED", null);
 }

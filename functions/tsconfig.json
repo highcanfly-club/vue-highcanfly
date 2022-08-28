@@ -4,10 +4,12 @@
       "module": "CommonJS",
       "lib": ["ES2020"],
       "types": ["@cloudflare/workers-types"],
+      "typeRoots": [
+        "../node_modules/@types"],
       "paths": {
         "@/*": [
           "../src/*"
         ]
-      },
+      }
     }
   }
