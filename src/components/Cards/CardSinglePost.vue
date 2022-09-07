@@ -79,8 +79,8 @@
   </section>
 </template>
 
-<script>
-import { h } from "vue";
+<script lang="ts">
+import { defineComponent, h } from "vue";
 import { SanityBlocks } from "sanity-blocks-vue-component";
 import sanityClient from "@sanity/client";
 import { sanityReplaceReferences } from "@/plugins/SanityReferenceWalker";
@@ -138,7 +138,7 @@ const postSerializers = {
   },
 };
 
-export default {
+export default defineComponent({
   name: "SinglePost",
   components: { SanityBlocks },
   error: null,
@@ -161,7 +161,7 @@ export default {
     };
   },
   mounted() {
-    const slug = this.slug !== undefined ? this.slug : this.$route.params.slug;
+   const slug = this.slug !== undefined ? this.slug : this.$route.params.slug;
     this.loading = true;
     if (!this.$props.lazy) {
       this.fetchData(slug);
@@ -174,10 +174,10 @@ export default {
         .create(`<img src="${url}" />`)
         .show(() => console.log(`lightbox ${image.url} now visible`));
     },
-    imageUrlFor(source) {
+    imageUrlFor(source:string) {
       return imageBuilder.image(source);
     },
-    fetchData(slug) {
+    fetchData(slug:string) {
         if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
         this.error = this.post = null;
         const client = sanityClient(this.$sanityConf);
@@ -197,5 +197,5 @@ export default {
 
     },
   },
-};
+});
 </script>

@@ -17,11 +17,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import CardSinglePost from "@/components/Cards/CardSinglePost.vue";
 import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import sanityClient from "@sanity/client";
+import { defineComponent } from "vue";
 
 const query = `*[_type == "post"]{
   _id,
@@ -31,7 +32,7 @@ const query = `*[_type == "post"]{
   excerpt
 }| order(publishedAt desc)[0...50]`;
 
-export default {
+export default defineComponent({
   data() {
     return {
       loading: true,
@@ -77,5 +78,5 @@ export default {
         );
     },
   },
-};
+});
 </script>

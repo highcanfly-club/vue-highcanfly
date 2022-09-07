@@ -12071,6 +12071,10 @@
     content: "\e28b"
 }
 
+.fa-star-extra-sharp:before {
+    content: "\2605"
+}
+
 .fa-star-sharp-half:before {
     content: "\e28c"
 }

@@ -688,7 +688,7 @@
     <footer-component />
   </div>
 </template>
-<script>
+<script lang="ts">
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
 import { defineAsyncComponent } from "vue";
@@ -702,17 +702,20 @@ import * as basiclightbox from "basiclightbox";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 import { ref } from "vue";
 import Commit from '@/config/commit.json'
+import sanityConf from '@/config/sanity-conf.json'
+import algoliaConf from '@/config/algolia-conf.json'
 
-const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
-const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
-const sanityDataset = process.env.VUE_APP_SANITY_DATASET;
+const algoliaSearchKey = algoliaConf.key
+const algoliaApplicationId = algoliaConf.id
+const sanityDataset = sanityConf.dataset
+
 const backgroundImage = "static-web-highcanfly/highcanfly-101";
 
 export default {
   description:
     "Club de parapente dans le Nord FFVL n°29070. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070.",
   title: "High Can Fly | Club de parapente du Nord",
-  canonical: new URL(window.location),
+  canonical: new URL(window.location.href),
   loadMap: false,
   reactiveBackground: ref(""),
   resizeId: 0,

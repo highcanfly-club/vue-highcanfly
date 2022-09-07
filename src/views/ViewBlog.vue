@@ -54,7 +54,7 @@
     <main-footer />
   </div>
 </template>
-<script>
+<script lang="ts">
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import { ref } from "vue";
@@ -66,7 +66,7 @@ export default {
   title: "High Can Fly | Club de parapente du Nord | News",
   description:
     "Nous sommes un club vivant, ici il y a quelques nouvelles. Mais nous sommes plus souvent dehors que devant un ordinateur",
-  canonical: new URL(window.location),
+  canonical: new URL(window.location.href),
   reactiveBackground: ref(""),
   resizeId: 0,
   previousWindowSize: 0,

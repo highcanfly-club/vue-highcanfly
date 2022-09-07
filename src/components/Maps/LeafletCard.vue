@@ -26,9 +26,9 @@ export default defineComponent({
     },
     created() {
         L.Marker.prototype.options.icon = L.icon({
-            iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-            iconUrl: require("leaflet/dist/images/marker-icon.png"),
-            shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
+            iconRetinaUrl: this.$requireNode("leaflet/dist/images/marker-icon-2x.png"),
+            iconUrl: this.$requireNode("leaflet/dist/images/marker-icon.png"),
+            shadowUrl: this.$requireNode("leaflet/dist/images/marker-shadow.png"),
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],
@@ -53,7 +53,7 @@ export default defineComponent({
                 const _feature = feature as unknown as GeoJSON.FlyingPlace;
                 if (_feature.properties && _feature.properties.name) {
                     let baliseFFVL: App<Element> = null;
-                    layer.bindPopup(`<div id="link-${_feature.properties.slug}"></div>`,{className:"w-56"})
+                    layer.bindPopup(`<div id="link-${_feature.properties.slug}"></div>`, { className: "w-56" })
                         .on("popupopen", () => {
                             console.log(`create BaliseFFVL component for ${_feature.properties.name}`)
                             baliseFFVL = createApp(BaliseFFVL, {

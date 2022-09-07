@@ -129,6 +129,36 @@ const app = createApp(App)
 
 const REDIRECT_CALLBACK: RedirectCallback = () => window.history.replaceState({}, document.title, `${window.location.origin}/login`)
 
+import type { Auth0Instance } from '@/plugins/auth0'
+import type { SanityConf } from '@/plugins/auth0/sanityStore'
+import type { Router } from 'vue-router'
+//import type { Element } from 'vue'
+
+const useImageInSrc = ((url: string) => {
+  return new URL(`/src/${url}`, import.meta.url).href;
+});
+
+const useImageInNodeModules = ((url: string) => {
+  return new URL(`/node_modules/${url}`, import.meta.url).href;
+});
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $auth0: Auth0Instance;
+    $sanityConf: SanityConf;
+    $router: Router;
+    $require: typeof useImageInSrc;
+    $requireNode: typeof useImageInNodeModules;
+  }
+}
+
+declare global {
+  interface Window {
+    app: typeof App;
+    CESIUM_BASE_URL: string;
+  }
+}
+
 window.app = app
 app.use(router)
 app.config.globalProperties.$auth0 = initAuth0({
@@ -138,6 +168,8 @@ app.config.globalProperties.$auth0 = initAuth0({
 }as never) // never because cacheLocation:"localstorage" is type as string but as CacheLocation = "localstorage" | "memory" in Auth0SDK
 app.config.globalProperties.$sanityConf = sanityConf
 app.config.globalProperties.$sanityConf.preview = app.config.globalProperties.$sanityConf.preview === undefined ? false : app.config.globalProperties.$sanityConf.preview
+app.config.globalProperties.$require = useImageInSrc
+app.config.globalProperties.$requireNode = useImageInNodeModules
 
 app.use(Highcanfly)
 app.mixin(metaMixin)

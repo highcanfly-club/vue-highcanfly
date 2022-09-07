@@ -1,22 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "strict": false,
-    "jsx": "preserve",
+    "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
-    "skipLibCheck": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "noEmit": true,
     "esModuleInterop": true,
-    "allowJs":true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": true,
-    "sourceMap": true,
     "resolveJsonModule": true,
-    "noErrorTruncation": false,
+    "jsx": "preserve",
+    "skipLibCheck": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env",
       "@cloudflare/workers-types",
       "node",
       "forecast-collection",
@@ -25,7 +20,6 @@
     ],
     "typeRoots": [
       "./src/types",
-      "./node_modules/@types",
       "./node_modules/cesium/Source"
     ],
     "paths": {

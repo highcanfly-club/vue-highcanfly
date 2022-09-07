@@ -54,19 +54,19 @@
     <footer-component />
   </div>
 </template>
-<script>
+<script lang="ts">
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import FooterComponent from "@/components/Footers/MainFooter.vue";
 import CardSinglePost from "@/components/Cards/CardSinglePost.vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
-import { ref } from "vue";
+import { defineComponent, ref } from "vue";
 
-export default {
+export default defineComponent({
   description:
     "Club de parapente dans le Nord FFVL n°29070. Voici la dernière nouvelle !",
   title: "High Can Fly | Club de parapente du Nord | News",
-  canonical: new URL(window.location),
+  canonical: new URL(window.location.href),
   reactiveBackground: ref(""),
   resizeId: 0,
   previousWindowSize: 0,
@@ -105,5 +105,5 @@ export default {
       }, 500);
     },
   },
-};
+});
 </script>

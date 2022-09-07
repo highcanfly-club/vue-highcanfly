@@ -121,19 +121,21 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { VueAgile } from "vue-agile";
 import * as basiclightbox from "basiclightbox";
 import LazyImg from "@/components/Utilities/LazyImg.vue";
 import sanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+import { defineComponent } from "vue";
+import sanityConf from "@/config/sanity-conf.json"
 
 const client = sanityClient({
-  projectId: process.env.VUE_APP_SANITY_PROJECT_ID,
-  dataset: process.env.VUE_APP_SANITY_DATASET,
-  token: process.env.VUE_APP_SANITY_READ_TOKEN,
-  useCdn: true,
-  apiVersion: process.env.VUE_APP_SANITY_VERSION,
+  projectId: sanityConf.projectId,//  process.env.VUE_APP_SANITY_PROJECT_ID,
+  dataset: sanityConf.dataset,// process.env.VUE_APP_SANITY_DATASET,
+  token: '',// process.env.VUE_APP_SANITY_READ_TOKEN,
+  useCdn: sanityConf.useCdn,
+  apiVersion: sanityConf.apiVersion//process.env.VUE_APP_SANITY_VERSION,
 });
 
 const imageBuilder = imageUrlBuilder(client);
@@ -173,7 +175,7 @@ const carouselThumbnailsOptions = {
     },
   ],
 };
-export default {
+export default defineComponent({
   props: {
     display: {
       type: String,
@@ -280,7 +282,7 @@ export default {
       return arrays;
     },
   },
-};
+});
 </script>
 <style>
 .basicLightbox {

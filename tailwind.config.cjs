@@ -15,7 +15,7 @@ module.exports = {
     "./node_modules/cfdtrackjoiner/src/**/*.vue",
     "./node_modules/cfdtrackjoiner/src/*.vue",
   ],
-  safelist: (process.env.SANITY_DATASET === 'production') ? [] : [{ pattern: /.*/ }],
+  //safelist: (process.env.SANITY_DATASET === 'production') ? [] : [{ pattern: /.*/ }],
   theme: {
 
     extend: {
