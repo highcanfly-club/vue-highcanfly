@@ -16,9 +16,9 @@
     "serve": "vite ",
     "buildmin": "vite build",
     "wrangler": "npx wrangler pages dev -- yarn serve",
-    "build": "node jwks.js && npx vite build && npm run fontawesomeminify && gulp licenses",
+    "build": "node --loader ts-node/esm ./prepare-env.ts && node jwks.js && npx vite build && npm run fontawesomeminify && gulp licenses",
     "build-prod": "CF_PAGES=\"1\" __DEBUG__=\"0\" vue-cli-service build && gulp licenses",
-    "build-cf": "node jwks.js && npx vite build  && gulp licenses",
+    "build-cf": "npm run prepare-env && node jwks.js && npx vite build  && gulp licenses",
     "get-meteo-icons": "node get-meteo-icons.mjs"
   },
   "dependencies": {

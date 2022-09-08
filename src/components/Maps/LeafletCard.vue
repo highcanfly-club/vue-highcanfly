@@ -26,9 +26,9 @@ export default defineComponent({
     },
     created() {
         L.Marker.prototype.options.icon = L.icon({
-            iconRetinaUrl: this.$requireNode("leaflet/dist/images/marker-icon-2x.png"),
-            iconUrl: this.$requireNode("leaflet/dist/images/marker-icon.png"),
-            shadowUrl: this.$requireNode("leaflet/dist/images/marker-shadow.png"),
+            iconRetinaUrl: this.$require("assets/img/marker-icon-2x.png"),
+            iconUrl: this.$require("assets/img/marker-icon.png"),
+            shadowUrl: this.$require("assets/img/marker-shadow.png"),
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],

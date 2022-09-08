@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ESNext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "importHelpers": true,
     "isolatedModules": true,
@@ -11,37 +11,10 @@
     "jsx": "preserve",
     "skipLibCheck": true,
     "baseUrl": ".",
-    "types": [
-      "@cloudflare/workers-types",
-      "node",
-      "forecast-collection",
-      "geojson",
-      "cesium"
-    ],
-    "typeRoots": [
-      "./src/types",
-      "./node_modules/cesium/Source"
-    ],
     "paths": {
       "@/*": [
         "src/*"
       ]
-    },
-    "lib": [
-      "ES2020",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    }
+  }
 }
