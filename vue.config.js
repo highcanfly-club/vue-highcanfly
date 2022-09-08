@@ -218,7 +218,12 @@ module.exports = {
       },
       extensions: ['.geojson'],
       fallback: {
-        "path": require.resolve("path-browserify")
+        "path": false,//require.resolve("path-browserify")
+        "http": false,
+        "https": false,
+        "stream-http": false,
+        "zlib": false,
+        "url": false
       }
     },
     module: {
