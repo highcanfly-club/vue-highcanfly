@@ -40,6 +40,7 @@ export default defineComponent({
         const filteredPlaces = { type: "FeatureCollection" as typeof places.type, features: places.features.filter((place: GeoJSON.FlyingPlace) => { return place.properties.default }) }
         const box = this.getBBox(filteredPlaces);
         const map: L.Map = L.map('map', { attributionControl: true }).fitBounds([[box.latMin, box.longMin], [box.latMax, box.longMax]]);
+        const router = this.$router;
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
@@ -61,7 +62,8 @@ export default defineComponent({
                                 name: _feature.properties.name,
                                 idAlt: _feature.properties.idBaliseAlt,
                                 nameAlt: _feature.properties.nameAlt,
-                                slug: _feature.properties.slug
+                                slug: _feature.properties.slug,
+                                router: router
                             }) as App<Element>;
                             baliseFFVL.mount(`#link-${_feature.properties.slug}`);
                         })

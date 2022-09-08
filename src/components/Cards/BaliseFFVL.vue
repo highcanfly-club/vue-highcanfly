@@ -33,8 +33,6 @@ import { getBaliseData, baliseNull } from "@/plugins/BaliseFFVLHelper"
 import { FlyingPlace } from '@/types/GeoJSON';
 
 const places: GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection;
-const globalRouter = window.app.config.globalProperties.$router as Router; //because it will run in a distinct App
-
 
 export default defineComponent({
     props: {
@@ -58,6 +56,9 @@ export default defineComponent({
             type: String,
             default: "null",
         },
+        router: {
+            type:Object
+        }
     },
     setup() {
         const baliseData = ref(baliseNull);
@@ -77,7 +78,7 @@ export default defineComponent({
     },
     methods: {
         routerPush() {
-            globalRouter.push({ path: `/meteo/${this.slug}`, hash: "#top-nav" });
+            this.router.push({ path: `/meteo/${this.slug}`, hash: "#top-nav" });
         },
         getFfvlData(flyingPlace:FlyingPlace) {
             getBaliseData(flyingPlace).then((baliseDataFfvl:BaliseData)=>{
