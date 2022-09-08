@@ -10,7 +10,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 
-await import('./prepare-env')
+//await import('./prepare-env')
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -24,4 +24,15 @@ export default defineConfig({
     },
   },
   optimizeDeps: { include: [ 'lodash.throttle', 'lodash.orderby' ] },
+  // build:{
+  //   rollupOptions:{
+  //     plugins:[
+  //       {
+  //       transform ( code, id ) {
+  //         console.log( id );
+  //         console.log( code );
+  //       }
+  //     } as any,]
+  //   }
+  // }
 })

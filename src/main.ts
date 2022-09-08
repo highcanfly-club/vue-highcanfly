@@ -1,33 +1,18 @@
 import { createApp } from 'vue'
 import { createWebHistory, createRouter, RouteRecordRaw } from 'vue-router'
-
-// styles
-import '@/assets/styles/index.css'
-
-// mouting point for the whole app
-
 import App from '@/App.vue'
-
-// Title mixin
 import metaMixin from '@/mixins/MetaMixin'
-
-// vue3 openlayers
-// import OpenLayersMap from 'vue3-openlayers';
-import 'vue3-openlayers/dist/vue3-openlayers.css'
-
-// element-plus
-import 'element-plus/dist/index.css'
-
-// Global functions
 import Highcanfly from '@/plugins/highcanfly'
-// routes
-
-// AuthO
 import type { RedirectCallback } from '@/plugins/auth0'
 import { initAuth0 } from '@/plugins/auth0'
 import auth0conf from '@/config/auth0-conf.json'
-
 import { sanityConf } from '@/plugins/auth0/sanityStore'
+import type { Auth0Instance } from '@/plugins/auth0'
+import type { SanityConf } from '@/plugins/auth0/sanityStore'
+import type { Router } from 'vue-router'
+import { addJsonLD } from '@/config/StructuredLDJson'
+// styles
+import '@/assets/styles/index.css'
 
 const routes = [
   {
@@ -126,12 +111,10 @@ const router = createRouter({
 })
 
 const app = createApp(App)
+addJsonLD()
 
 const REDIRECT_CALLBACK: RedirectCallback = () => window.history.replaceState({}, document.title, `${window.location.origin}/login`)
 
-import type { Auth0Instance } from '@/plugins/auth0'
-import type { SanityConf } from '@/plugins/auth0/sanityStore'
-import type { Router } from 'vue-router'
 //import type { Element } from 'vue'
 
 const useImageInSrc = ((url: string) => {

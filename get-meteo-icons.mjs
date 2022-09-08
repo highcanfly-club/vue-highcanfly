@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
-const METEO_FRANCE_STORE = './public/assets/forecast/';
+const METEO_FRANCE_STORE = './src/assets/forecast/';
 const LANG = "en";
 
 const getMeteoFranceIconsArray = function (

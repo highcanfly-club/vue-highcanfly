@@ -62,9 +62,13 @@
     </ol-vector-layer>
   </ol-map>
 </template>
-<script>
+<script lang="ts">
 import OpenLayersMap from 'vue3-openlayers'; 
 import markerIconRed from '@/assets/img/marker-orange.svg';
+// vue3 openlayers
+// import OpenLayersMap from 'vue3-openlayers';
+import 'vue3-openlayers/dist/vue3-openlayers.css'
+
 import {
   ref, inject,
 } from 'vue'
@@ -77,7 +81,7 @@ export default {
     }
   },
   setup() {
-    app.use(OpenLayersMap); //eslint-disable-line 
+    window.app.use(OpenLayersMap); //eslint-disable-line 
     const center = ref([706897.62, 7033567.10])
     const projection = ref('EPSG:2154');
     const zoom = ref(9);
