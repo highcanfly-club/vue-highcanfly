@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import { createWebHistory, createRouter, RouteRecordRaw } from 'vue-router'
+import { createWebHistory, createRouter } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 import App from '@/App.vue'
 import metaMixin from '@/mixins/MetaMixin'
 import Highcanfly from '@/plugins/highcanfly'
@@ -137,12 +138,10 @@ declare module '@vue/runtime-core' {
 
 declare global {
   interface Window {
-    app: typeof App;
     CESIUM_BASE_URL: string;
   }
 }
 
-window.app = app
 app.use(router)
 app.config.globalProperties.$auth0 = initAuth0({
   onRedirectCallback: REDIRECT_CALLBACK,

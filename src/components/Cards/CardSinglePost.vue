@@ -92,8 +92,6 @@ import SanityYoutubeSerializerVue from "@/components/Utilities/SanityYoutubeSeri
 import SanityVimeoSerializerVue from "../Utilities/SanityVimeoSerializer.vue";
 import * as basiclightbox from "basiclightbox";
 
-const imageBuilder = imageUrlBuilder(sanityClient(window.app.config.globalProperties.$sanityConf));
-
 const query = `*[slug.current == $slug] {
   _id,
   _createdAt,
@@ -169,13 +167,13 @@ export default defineComponent({
   },
   methods: {
     lightBox: (image) => {
-      const url = imageBuilder.image(image).auto("format").toString();
+      const url = imageUrlBuilder(sanityClient(this.$sanityConf)).image(image).auto("format").toString();
       basiclightbox
         .create(`<img src="${url}" />`)
         .show(() => console.log(`lightbox ${image.url} now visible`));
     },
     imageUrlFor(source:string) {
-      return imageBuilder.image(source);
+      return imageUrlBuilder(sanityClient(this.$sanityConf)).image(source);
     },
     fetchData(slug:string) {
         if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);

@@ -204,7 +204,7 @@
                 &nbsp;, propulsé par&nbsp;
                 <a href="https://v3.vuejs.org/"><span class="items-baseline"><i style="color: #64b587"
                       class="fab fa-vuejs"></i></span>
-                  Vue.js {{ app.version }}</a>
+                  Vue.js {{ version }}</a>
                 &nbsp;et&nbsp;<a href="https://nodejs.org/fr/"><span class="items-baseline"><i style="color: #64a051"
                       class="fab fa-node-js"></i></span>&nbsp;NodeJS&nbsp;{{ nodeVersion }}
                 </a>
@@ -235,10 +235,10 @@ export default defineComponent({
   resizeId: 0,
   previousWindowSize: 0,
   data() {
-    const app = window.app
+    const version = this.$.appContext.app.version
     return {
       logo,
-      app, //eslint-disable-line
+      version,
       reactiveBackground: this.reactiveBackground,
       nodeVersion: nodeVersion.version,
     };

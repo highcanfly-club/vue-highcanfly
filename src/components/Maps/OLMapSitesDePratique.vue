@@ -81,7 +81,7 @@ export default {
     }
   },
   setup() {
-    window.app.use(OpenLayersMap); //eslint-disable-line 
+    this.$.appContext.app.use(OpenLayersMap); //eslint-disable-line 
     const center = ref([706897.62, 7033567.10])
     const projection = ref('EPSG:2154');
     const zoom = ref(9);
