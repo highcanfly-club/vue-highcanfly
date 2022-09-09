@@ -86,13 +86,12 @@
     <main-footer />
   </div>
 </template>
-<script>
+<script lang="ts">
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
-import { createDB, getDBTracksRowsAsPromise, myTrackjoinerDB } from 'cfdtrackjoiner/src/trackjoiner/trackjoiner';
+import { createDB, getDBTracksRowsAsPromise, myTrackjoinerDB } from '@/trackjoiner/trackjoiner';
 import { defineAsyncComponent, ref } from "vue";
-
 const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
 const CHECKDB_INTERVAL = 500;
 
@@ -100,7 +99,7 @@ export default {
   description:
     "Assemblez vos traces de marche et vol venant de votre vario, de votre téléphone et de votre montre",
   title: "High Can Fly | Club de parapente du Nord | Assemblage de traces",
-  canonical: new URL(window.location),
+  canonical: new URL(window.location.href),
   setup() {
     const reactiveBackground = ref("");
     const view3d = ref(false);
@@ -128,13 +127,7 @@ export default {
   components: {
     NavbarDefault,
     MainFooter,
-    TrackJoiner: defineAsyncComponent(() => {
-      return new Promise((resolve,reject) => {
-        import('cfdtrackjoiner/src/views/TrackJoinerView.vue').then((TrackJoinerView)=>{
-          resolve(TrackJoinerView)
-        }).catch((reason)=>reject(reason))
-      })
-    }),
+    TrackJoiner : defineAsyncComponent( () => {return import('@/views/TrackJoinerView.vue')}),
     CardCesium: defineAsyncComponent(() => { return import("@/components/Cards/CardCesium.vue") })
   },
   methods: {
@@ -143,7 +136,9 @@ export default {
         createDB();
       }
       return setInterval(() => {
-        getDBTracksRowsAsPromise().then((tracks) => { this.tracksLength = tracks.length });
+        getDBTracksRowsAsPromise().then((tracks) => { 
+          if (tracks){this.tracksLength = tracks.length }
+        });
       }, CHECKDB_INTERVAL)
     },
     handleResize() {

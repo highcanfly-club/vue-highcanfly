@@ -179,7 +179,7 @@ import type { BaliseData } from "@/plugins/BaliseFFVLHelper"
 import { getBaliseData, baliseNull, getWindSector } from "@/plugins/BaliseFFVLHelper"
 import { weatherIsFlyable, weatherGetRain } from '@/plugins/highcanfly'
 
-const icons_base = "/assets/forecast/";
+const icons_base = "assets/forecast/";
 // const icons_base =  "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather/";
 const API_TOKEN = "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
 const ephemerideClicked = -1;
@@ -329,13 +329,13 @@ export default defineComponent({
           : {
             desc: weather.desc,
             icon: weather.icon,
-            url: `${icons_base}${weather.icon}.svg`,
+            url: this.$require(`${icons_base}${weather.icon}.svg`),
           };
       return wt;
     },
     getWindImg(direction: number): { src: string; style: { transform: string } } {
       return {
-        src: `${icons_base}wind.svg`,
+        src: this.$require(`${icons_base}wind.svg`),
         style: { transform: `rotate(${direction + 180}deg)` },
       };
     },

@@ -38,5 +38,10 @@ src/config/node-version.json
 src/config/places.json
 src/config/mapbox-conf.json
 src/config/cesium-conf.json
+src/config/algolia-conf.json
 mongodb-places.json
 mongodb-places.json
+
+src/views/TrackJoinerHelp.vue
+src/views/TrackJoinerView.vue
+src/trackjoiner

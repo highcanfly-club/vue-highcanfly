@@ -1,4 +1,5 @@
-const fs = require('fs');
+import fs from 'fs'
+import https from 'https'
 
 function listDir(dir) {
     fs.readdir(dir, (err, files) => {
@@ -11,7 +12,6 @@ function listDir(dir) {
 
 async function getJwks() {
     console.log(`retrieve https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`)
-    const https = require('https')
     const url = `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`;
     return new Promise((resolve, reject) => {
         https.get(url, res => {
@@ -37,7 +37,7 @@ async function getJwks() {
     fs.writeFile('./src/config/jwks.json',
     JSON.stringify(jwks),
     'utf8', function (err) {
-        listDir('.');
+        //listDir('.');
         if (err) return console.log(err);
     });
 })();

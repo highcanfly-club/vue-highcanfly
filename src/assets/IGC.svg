@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<font horiz-adv-x="2048">
+<!-- Arial is a trademark of The Monotype Corporation in the United States and/or other countries. -->
+<!-- Copyright: Copyright 2022 Adobe System Incorporated. All rights reserved. -->
+<font-face font-family="Arial-BoldMT" units-per-em="2048" underline-position="-217" underline-thickness="215"/>
+<missing-glyph horiz-adv-x="1536" d="M256,0l0,1280l1024,0l0,-1280M288,32l960,0l0,1216l-960,0z"/>
+<glyph unicode="C" horiz-adv-x="1479" d="M1087,539l287,-91C1330,288 1257,169 1155,92C1052,14 922,-25 765,-25C570,-25 410,42 285,175C160,308 97,489 97,720C97,964 160,1154 286,1289C412,1424 578,1491 783,1491C962,1491 1108,1438 1220,1332C1287,1269 1337,1179 1370,1062l-293,-70C1060,1068 1024,1128 969,1172C914,1216 847,1238 768,1238C659,1238 571,1199 504,1121C436,1043 402,917 402,742C402,557 435,425 502,346C569,267 655,228 762,228C841,228 908,253 965,303C1022,353 1062,432 1087,539z"/>
+<glyph unicode="G" horiz-adv-x="1593" d="M831,539l0,247l638,0l0,-584C1407,142 1317,89 1200,44C1082,-2 963,-25 842,-25C689,-25 555,7 441,72C327,136 241,228 184,348C127,467 98,597 98,738C98,891 130,1026 194,1145C258,1264 352,1355 475,1418C569,1467 686,1491 826,1491C1008,1491 1150,1453 1253,1377C1355,1300 1421,1195 1450,1060l-294,-55C1135,1077 1097,1134 1040,1176C983,1217 911,1238 826,1238C697,1238 594,1197 518,1115C441,1033 403,911 403,750C403,576 442,446 519,359C596,272 698,228 823,228C885,228 947,240 1010,265C1072,289 1125,318 1170,353l0,186z"/>
+<glyph unicode="I" horiz-adv-x="569" d="M140,0l0,1466l296,0l0,-1466z"/>
+</font>
+
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-810.0769" y1="396.39" x2="-810.0769" y2="395.39" gradientTransform="matrix(26 0 0 -30 21078 11892.7002)">
+	<stop  offset="0" style="stop-color:#EEEEEE"/>
+	<stop  offset="1" style="stop-color:#A1BCF6"/>
+</linearGradient>
+<path style="fill:url(#SVGID_1_);stroke:#2563EB;" d="M7,1h18c2.21,0,4,1.79,4,4v22c0,2.21-1.79,4-4,4H7c-2.21,0-4-1.79-4-4V5
+	C3,2.79,4.79,1,7,1z"/>
+<path style="fill:#2563EB;" d="M4,7h24c2.21,0,4,1.79,4,4v10c0,2.21-1.79,4-4,4H4c-2.21,0-4-1.79-4-4V11C0,8.79,1.79,7,4,7z"/>
+<text transform="matrix(1 0 0 1 3.9996 21)" style="fill:#FFFFFF; font-family:'Arial-BoldMT'; font-size:13.5px;">IGC</text>
+</svg>

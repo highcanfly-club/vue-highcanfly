@@ -223,15 +223,17 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { createPopper } from "@popperjs/core";
 import PagesDropdownMeteo from "@/components/Dropdowns/PagesDropdownMeteo.vue";
 import MiniCardAlgoliaSearch from "@/components/Cards/MiniCardAlgoliaSearch.vue";
 import AdministrationDropdown from "@/components/Dropdowns/AdministrationDropdown.vue";
+import sanityConf from '@/config/sanity-conf.json'
+import algoliaConf from '@/config/algolia-conf.json'
 
-const algoliaSearchKey = process.env.VUE_APP_ALGOLIA_SEARCH_KEY;
-const algoliaApplicationId = process.env.VUE_APP_ALGOLIA_APP_ID;
-const sanityDataset = process.env.VUE_APP_SANITY_DATASET;
+const algoliaSearchKey = algoliaConf.key
+const algoliaApplicationId = algoliaConf.id
+const sanityDataset = sanityConf.dataset
 
 export default {
   location: window.location.origin,

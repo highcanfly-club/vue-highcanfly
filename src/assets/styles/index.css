@@ -1,10 +1,10 @@
+@import '§/fontawesome/styles/fontawesome.css';
+
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
-
-@import "@/assets/fontawesome/styles/fontawesome.css";
 
 .vue-scroll-up {
   align-items: center;

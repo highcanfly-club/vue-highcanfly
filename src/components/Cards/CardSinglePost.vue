@@ -79,8 +79,8 @@
   </section>
 </template>
 
-<script>
-import { h } from "vue";
+<script lang="ts">
+import { defineComponent, h } from "vue";
 import { SanityBlocks } from "sanity-blocks-vue-component";
 import sanityClient from "@sanity/client";
 import { sanityReplaceReferences } from "@/plugins/SanityReferenceWalker";
@@ -91,8 +91,6 @@ import SanityBlockquoteSerializer from "@/components/Utilities/SanityBlockquoteS
 import SanityYoutubeSerializerVue from "@/components/Utilities/SanityYoutubeSerializer.vue";
 import SanityVimeoSerializerVue from "../Utilities/SanityVimeoSerializer.vue";
 import * as basiclightbox from "basiclightbox";
-
-const imageBuilder = imageUrlBuilder(sanityClient(window.app.config.globalProperties.$sanityConf));
 
 const query = `*[slug.current == $slug] {
   _id,
@@ -138,7 +136,7 @@ const postSerializers = {
   },
 };
 
-export default {
+export default defineComponent({
   name: "SinglePost",
   components: { SanityBlocks },
   error: null,
@@ -161,7 +159,7 @@ export default {
     };
   },
   mounted() {
-    const slug = this.slug !== undefined ? this.slug : this.$route.params.slug;
+   const slug = this.slug !== undefined ? this.slug : this.$route.params.slug;
     this.loading = true;
     if (!this.$props.lazy) {
       this.fetchData(slug);
@@ -169,15 +167,15 @@ export default {
   },
   methods: {
     lightBox: (image) => {
-      const url = imageBuilder.image(image).auto("format").toString();
+      const url = imageUrlBuilder(sanityClient(this.$sanityConf)).image(image).auto("format").toString();
       basiclightbox
         .create(`<img src="${url}" />`)
         .show(() => console.log(`lightbox ${image.url} now visible`));
     },
-    imageUrlFor(source) {
-      return imageBuilder.image(source);
+    imageUrlFor(source:string) {
+      return imageUrlBuilder(sanityClient(this.$sanityConf)).image(source);
     },
-    fetchData(slug) {
+    fetchData(slug:string) {
         if (this.$props.lazy) console.log(`lazy loading /sanity-blog/${slug}`);
         this.error = this.post = null;
         const client = sanityClient(this.$sanityConf);
@@ -197,5 +195,5 @@ export default {
 
     },
   },
-};
+});
 </script>

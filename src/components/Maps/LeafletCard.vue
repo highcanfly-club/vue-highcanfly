@@ -26,9 +26,9 @@ export default defineComponent({
     },
     created() {
         L.Marker.prototype.options.icon = L.icon({
-            iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-            iconUrl: require("leaflet/dist/images/marker-icon.png"),
-            shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
+            iconRetinaUrl: this.$require("assets/img/marker-icon-2x.png"),
+            iconUrl: this.$require("assets/img/marker-icon.png"),
+            shadowUrl: this.$require("assets/img/marker-shadow.png"),
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],
@@ -40,6 +40,7 @@ export default defineComponent({
         const filteredPlaces = { type: "FeatureCollection" as typeof places.type, features: places.features.filter((place: GeoJSON.FlyingPlace) => { return place.properties.default }) }
         const box = this.getBBox(filteredPlaces);
         const map: L.Map = L.map('map', { attributionControl: true }).fitBounds([[box.latMin, box.longMin], [box.latMax, box.longMax]]);
+        const router = this.$router;
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
@@ -53,7 +54,7 @@ export default defineComponent({
                 const _feature = feature as unknown as GeoJSON.FlyingPlace;
                 if (_feature.properties && _feature.properties.name) {
                     let baliseFFVL: App<Element> = null;
-                    layer.bindPopup(`<div id="link-${_feature.properties.slug}"></div>`,{className:"w-56"})
+                    layer.bindPopup(`<div id="link-${_feature.properties.slug}"></div>`, { className: "w-56" })
                         .on("popupopen", () => {
                             console.log(`create BaliseFFVL component for ${_feature.properties.name}`)
                             baliseFFVL = createApp(BaliseFFVL, {
@@ -61,7 +62,8 @@ export default defineComponent({
                                 name: _feature.properties.name,
                                 idAlt: _feature.properties.idBaliseAlt,
                                 nameAlt: _feature.properties.nameAlt,
-                                slug: _feature.properties.slug
+                                slug: _feature.properties.slug,
+                                router: router
                             }) as App<Element>;
                             baliseFFVL.mount(`#link-${_feature.properties.slug}`);
                         })
