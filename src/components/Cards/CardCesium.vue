@@ -6,7 +6,7 @@ import { defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import cesiumConf from "@/config/cesium-conf.json";
 //import * as Cesium from "cesium";
-import {Ion,Viewer,createWorldTerrain,ArcGisMapServerImageryProvider,createOsmBuildings,Cartesian3,Color} from 'cesium'
+import { Ion, Viewer, createWorldTerrain, ArcGisMapServerImageryProvider, createOsmBuildings, Cartesian3, Color } from 'cesium'
 import type { Entity } from 'cesium'
 import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from '@/trackjoiner/trackjoiner';
 import type { Fix } from '@/trackjoiner/trackjoiner';
@@ -27,6 +27,18 @@ export default defineComponent({
         }
     },
     mounted() {
+        const ldScript = document.createElement('script')
+        ldScript.setAttribute("src", "/cesium/Cesium.js")
+        document.head.appendChild(ldScript)
+        createDB();
+        
+        ldScript.onload = () => {
+            console.log('Cesium library asynchrously loaded, starting Cesium3D')
+            this.cesium()
+        }
+    },
+    methods:{
+        cesium() {
         window.CESIUM_BASE_URL = window.location.origin + '/cesium';
         Ion.defaultAccessToken = cesiumConf.token;
         const viewer = new Viewer('cesiumContainer', {
@@ -56,7 +68,7 @@ export default defineComponent({
         }
         viewer.fullscreenButton.viewModel.command.beforeExecute.addEventListener(fullScreenHandler)
         viewer.fullscreenButton.viewModel.command.afterExecute.addEventListener(fullScreenHandler)
-        createDB();
+
         getDBTracksRowsAsPromise().then((tracks) => {
             const entityPromises = [] as Promise<Entity>[];
             tracks.forEach((track) => {
@@ -111,9 +123,10 @@ export default defineComponent({
                 });
         })
     },
+    }
 });
 </script>
 <style>
 /* must match cesium npm version in package.json */
-@import "https://cdnjs.cloudflare.com/ajax/libs/cesium/1.94.2/Widgets/widgets.min.css"
+@import "cesium/Build/Cesium/Widgets/widgets.css"
 </style>

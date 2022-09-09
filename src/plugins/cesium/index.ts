@@ -1,3 +1,4 @@
+import { rangesOverlap } from 'dexie';
 import fs from 'fs-extra';
 import path from 'path';
 import externalGlobals from 'rollup-plugin-external-globals';
@@ -8,6 +9,7 @@ interface VitePluginCesiumOptions {
   /**
    * rebuild cesium library, default: false
    */
+  addTags?: boolean;
   rebuildCesium?: boolean;
   devMinifyCesium?: boolean;
   cesiumBuildRootPath?: string;
@@ -16,6 +18,7 @@ interface VitePluginCesiumOptions {
 
 export default function vitePluginCesium(options: VitePluginCesiumOptions = {}): Plugin {
   const {
+    addTags = false,
     rebuildCesium = false,
     devMinifyCesium = false,
     cesiumBuildRootPath = 'node_modules/cesium/Build',
@@ -94,16 +97,17 @@ export default function vitePluginCesium(options: VitePluginCesiumOptions = {}):
     },
 
     transformIndexHtml() {
-      const tags: HtmlTagDescriptor[] = [
-        {
+      const tags: HtmlTagDescriptor[] =  [];
+      if (addTags){
+        tags.push(        {
           tag: 'link',
           attrs: {
             rel: 'stylesheet',
             href: normalizePath(path.join(CESIUM_BASE_URL, 'Widgets/widgets.css')),
           }
-        }
-      ];
-      if (isBuild && !rebuildCesium) {
+        })
+      }
+      if (isBuild && !rebuildCesium && addTags) {
         tags.push({
           tag: 'script',
           attrs: {
