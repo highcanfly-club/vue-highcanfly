@@ -6,7 +6,7 @@ import { defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import cesiumConf from "@/config/cesium-conf.json";
 //import * as Cesium from "cesium";
-import {Ion,Viewer,createWorldTerrain,ArcGisMapServerImageryProvider,createOsmBuildings,Cartesian3,Color} from 'cesium'
+import { Ion, Viewer, createWorldTerrain, ArcGisMapServerImageryProvider, createOsmBuildings, Cartesian3, Color } from 'cesium'
 import type { Entity } from 'cesium'
 import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from '@/trackjoiner/trackjoiner';
 import type { Fix } from '@/trackjoiner/trackjoiner';
@@ -27,6 +27,15 @@ export default defineComponent({
         }
     },
     mounted() {
+        const ldScript = document.createElement('script')
+        ldScript.setAttribute("src", "/cesium/Cesium.js")
+        document.head.appendChild(ldScript)
+        ldScript.onload = () => {
+            this.cesium()
+        }
+    },
+    methods:{
+        ceisum() {
         window.CESIUM_BASE_URL = window.location.origin + '/cesium';
         Ion.defaultAccessToken = cesiumConf.token;
         const viewer = new Viewer('cesiumContainer', {
@@ -111,6 +120,7 @@ export default defineComponent({
                 });
         })
     },
+    }
 });
 </script>
 <style>
