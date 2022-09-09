@@ -339,14 +339,15 @@
     </VueScrollUp>
   </footer>
 </template>
-<script>
+<script lang="ts">
 import VueScrollUp from "@/plugins/vue-scroll-up";
 import Commit from '@/config/commit.json'
 import {
   resetSanityConfToDefaults,
 } from "@/plugins/auth0/sanityStore";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   data() {
     return {
       copyright_text: "2018-" + new Date().getFullYear(),
@@ -372,5 +373,5 @@ export default {
       console.log(this.$sanityConf);
     },
   },
-};
+});
 </script>
