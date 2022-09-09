@@ -1,6 +1,6 @@
 /*!
 =========================================================
-* © 2022 Ronan LE MEILLAT for Les Ailes du Mont-Blanc
+* © 2022 Ronan LE MEILLAT for High Can Fly
 =========================================================
 This website use:
 - Vite, Vue3, FontAwesome 6, TailwindCss 3
@@ -26,6 +26,7 @@ const SHA256_8_REGEX = /(fa-.*-[0-9]{3})\.(.*)\.(eot|ttf|svg|woff|woff2)$/
 const FONTMIN_EXTENSIONS = ['eot', 'woff', 'woff2', 'svg']
 const BASE_DIR = 'dist/assets'
 const FONTAWESOME_SRC_DIR = 'fontawesome/webfonts'
+const GLYPH_WHITELIST = ['?']
 
 function computeHash(filename: string): Promise<string> {
     const hash = cryptoCreateHash('sha256');
@@ -121,9 +122,10 @@ getFileList(BASE_DIR, TEXT_REGEX).then(files => {
         processes.push(getUnicodeGlyphs(BASE_DIR, _file, GLYPH_REGEX))
     })
     Promise.all(processes).then((glyphs) => {
+        const glyphsAndWhiteList = glyphs.concat(GLYPH_WHITELIST).join(' ')
         const fontmin = new Fontmin()
             .use(Fontmin.glyph({
-                text: glyphs.join(' '),
+                text: glyphsAndWhiteList,
                 hinting: true
             }))
             .src(`${BASE_DIR}/*.ttf`)
