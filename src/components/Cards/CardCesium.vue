@@ -5,7 +5,9 @@
 import { defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import cesiumConf from "@/config/cesium-conf.json";
-import * as Cesium from "cesium";
+//import * as Cesium from "cesium";
+import {Ion,Viewer,createWorldTerrain,ArcGisMapServerImageryProvider,createOsmBuildings,Cartesian3,Color} from 'cesium'
+import type { Entity } from 'cesium'
 import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from 'cfdtrackjoiner/src/trackjoiner/trackjoiner';
 import type { Fix } from 'cfdtrackjoiner/src/trackjoiner/trackjoiner';
 
@@ -26,8 +28,8 @@ export default defineComponent({
     },
     mounted() {
         window.CESIUM_BASE_URL = window.location.origin + '/cesium';
-        Cesium.Ion.defaultAccessToken = cesiumConf.token;
-        const viewer = new Cesium.Viewer('cesiumContainer', {
+        Ion.defaultAccessToken = cesiumConf.token;
+        const viewer = new Viewer('cesiumContainer', {
             geocoder: false,
             infoBox: true,
             timeline: false,
@@ -35,15 +37,15 @@ export default defineComponent({
             navigationHelpButton: true,
             sceneModePicker: false,
             baseLayerPicker: this.$auth0.user.value !== undefined,
-            terrainProvider: Cesium.createWorldTerrain(),
+            terrainProvider: createWorldTerrain(),
             // imageryProvider: new Cesium.OpenStreetMapImageryProvider({
             //   url: 'https://a.tile.openstreetmap.org/'
             // }),
-            imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+            imageryProvider: new ArcGisMapServerImageryProvider({
                 url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
             })
         });
-        viewer.scene.primitives.add(Cesium.createOsmBuildings());
+        viewer.scene.primitives.add(createOsmBuildings());
         const fullScreenHandler = () => {
             const canvas = viewer.canvas;
             if ('webkitRequestFullscreen' in canvas) {
@@ -56,11 +58,11 @@ export default defineComponent({
         viewer.fullscreenButton.viewModel.command.afterExecute.addEventListener(fullScreenHandler)
         createDB();
         getDBTracksRowsAsPromise().then((tracks) => {
-            const entityPromises = [] as Promise<Cesium.Entity>[];
+            const entityPromises = [] as Promise<Entity>[];
             tracks.forEach((track) => {
                 console.log(`Using ${track.id} track`);
                 entityPromises.push(getDBFixesRowsAsPromise(track.id).then((fixes) => {
-                    return new Promise<Cesium.Entity>((resolve) => {
+                    return new Promise<Entity>((resolve) => {
                         if (track.type === trackTypes.FLY) {
                             fetch(`https://wxs.ign.fr/calcul/alti/rest/elevation.json?lon=${fixes[0].point.lon}|${fixes[fixes.length - 1].point.lon}&lat=${fixes[0].point.lat}|${fixes[fixes.length - 1].point.lat}&zonly=true`)
                                 .then((resp) => resp.json() as Promise<IGNElevations>)
@@ -71,12 +73,12 @@ export default defineComponent({
                         }
                         const INTERVAL = track.type === trackTypes.FLY ? CESIUM_MIN_FLY_INTERVAL : CESIUM_MIN_HIKE_INTERVAL;
                         let previousPoint = { ts: 0 } as Fix;
-                        const positions = [] as Cesium.Cartesian3[];
+                        const positions = [] as Cartesian3[];
                         for (let i = 0; i < fixes.length; i++) {
                             const currentPoint = fixes[i] as Fix;
                             if (currentPoint.point !== undefined && !isNaN(currentPoint.point.lat) && !isNaN(currentPoint.point.lon)) {
                                 if ((currentPoint.ts - previousPoint.ts) > INTERVAL) { //one point each CESIUM_MIN_INTERVAL
-                                    positions.push(Cesium.Cartesian3
+                                    positions.push(Cartesian3
                                         .fromDegrees(currentPoint.point.lon,
                                             currentPoint.point.lat,
                                             track.type === trackTypes.FLY ? currentPoint.gpsAltitude + 30 : currentPoint.gpsAltitude));
@@ -88,7 +90,7 @@ export default defineComponent({
                             name: track.name,
                             polyline: {
                                 positions: positions,
-                                material: track.type === trackTypes.HIKE ? Cesium.Color.ALICEBLUE : Cesium.Color.RED,
+                                material: track.type === trackTypes.HIKE ? Color.ALICEBLUE : Color.RED,
                                 width: 3,
                                 // distanceDisplayCondition: new Cesium.DistanceDisplayCondition(),
                                 clampToGround: track.type === trackTypes.HIKE ? true : false,
