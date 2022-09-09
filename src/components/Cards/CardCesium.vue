@@ -8,8 +8,8 @@ import cesiumConf from "@/config/cesium-conf.json";
 //import * as Cesium from "cesium";
 import {Ion,Viewer,createWorldTerrain,ArcGisMapServerImageryProvider,createOsmBuildings,Cartesian3,Color} from 'cesium'
 import type { Entity } from 'cesium'
-import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from 'cfdtrackjoiner/src/trackjoiner/trackjoiner';
-import type { Fix } from 'cfdtrackjoiner/src/trackjoiner/trackjoiner';
+import { createDB, getDBFixesRowsAsPromise, getDBTracksRowsAsPromise, trackTypes } from '@/trackjoiner/trackjoiner';
+import type { Fix } from '@/trackjoiner/trackjoiner';
 
 const CESIUM_MIN_FLY_INTERVAL = 1; //1ms
 const CESIUM_MIN_HIKE_INTERVAL = 10000; //10s
