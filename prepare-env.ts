@@ -29,13 +29,13 @@ import('./getcfdtrackjoinerversion.mjs').then((module) => {
         if (err) return console.log(err);
       }
     );
-    /* minimal workaround must be generate at install from package */
-    fs.writeFile('./node_modules/cfdtrackjoiner/commit.json',
-      JSON.stringify(commit),
-      'utf8', function (err) {
-        if (err) return console.log(err);
-      }
-    );
+    // /* minimal workaround must be generate at install from package */
+    // fs.writeFile('./node_modules/cfdtrackjoiner/commit.json',
+    //   JSON.stringify(commit),
+    //   'utf8', function (err) {
+    //     if (err) return console.log(err);
+    //   }
+    // );
   });
 });
 
@@ -129,3 +129,31 @@ fs.writeFile('./src/config/algolia-conf.json',
     if (err) return console.log(err);
   }
 );
+
+import {writeFile, mkdir} from 'fs/promises'
+// Get latest View from cfdtrackjoiner
+const CFDTRACKJOINER_BRANCH = 'master'
+const CFDTRACKJOINER_BASE = 'highcanfly-club/cfdtrackjoiner'
+const GITHUB_BASE = 'https://raw.githubusercontent.com'
+function downloadFile(url: URL, outputPath: string) {
+  return fetch(url)
+      .then(x => x.arrayBuffer())
+      .then(x => writeFile(outputPath, Buffer.from(x)));
+}
+
+await mkdir('src/trackjoiner/fit-parser',{recursive:true})
+await mkdir('src/trackjoiner/gpx-parser',{recursive:true})
+await mkdir('src/trackjoiner/igc-parser',{recursive:true})
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/views/TrackJoinerView.vue`), './src/views/TrackJoinerView.vue')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/views/TrackJoinerHelp.vue`), './src/views/TrackJoinerHelp.vue')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/trackjoiner.ts`), './src/trackjoiner/trackjoiner.ts')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/igc-parser/index.ts`), './src/trackjoiner/igc-parser/index.ts')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/gpx-parser/index.ts`), './src/trackjoiner/gpx-parser/index.ts')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/fit-parser/binary.d.ts`), './src/trackjoiner/fit-parser/binary.d.ts')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/fit-parser/binary.js`), './src/trackjoiner/fit-parser/binary.js')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/fit-parser/fit.d.ts`), './src/trackjoiner/fit-parser/fit.d.ts')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/fit-parser/fit.js`), './src/trackjoiner/fit-parser/fit.js')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/fit-parser/index.d.ts`), './src/trackjoiner/fit-parser/index.d.ts')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/fit-parser/index.js`), './src/trackjoiner/fit-parser/index.js')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/fit-parser/messages.d.ts`), './src/trackjoiner/fit-parser/messages.d.ts')
+await downloadFile(new URL(`${GITHUB_BASE}/${CFDTRACKJOINER_BASE}/${CFDTRACKJOINER_BRANCH}/src/trackjoiner/fit-parser/messages.js`), './src/trackjoiner/fit-parser/messages.js')

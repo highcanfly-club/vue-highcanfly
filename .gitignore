@@ -41,3 +41,7 @@ src/config/cesium-conf.json
 src/config/algolia-conf.json
 mongodb-places.json
 mongodb-places.json
+
+src/views/TrackJoinerHelp.vue
+src/views/TrackJoinerView.vue
+src/trackjoiner

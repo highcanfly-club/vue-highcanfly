@@ -104,6 +104,10 @@ const routes = [
     component: () => import("@/views/ListShortLinks.vue"),
     name: "list short links",
   },
+  {
+    path: "/cfdmv",
+    component: () => {return import('@/views/TrackJoinerView.vue')}
+  }
 ] as RouteRecordRaw[];
 
 const router = createRouter({
