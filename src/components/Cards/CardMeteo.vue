@@ -174,7 +174,7 @@ import type { PropType } from 'vue';
 import LazyImg from "@/components/Utilities/LazyImg.vue";
 import PopOverSimple from "@/components/Utilities/PopOverSimple.vue";
 import type GeoJSON from '@/types/GeoJSON';
-import type { ForecastCollection, Forecast, DailyForecast, Weather12HOrWeather, Weather12HOrWeatherLong, RainOrSnow } from '@/types/ForecastCollection';
+import type { ForecastCollection, Forecast, DailyForecast, Weather12HOrWeather, Weather12HOrWeatherLong, RainOrSnow, Sun } from '@/types/ForecastCollection';
 import type { BaliseData } from "@/plugins/BaliseFFVLHelper"
 import { getBaliseData, baliseNull, getWindSector } from "@/plugins/BaliseFFVLHelper"
 import { weatherIsFlyable, weatherGetRain } from '@/plugins/highcanfly'
@@ -190,7 +190,7 @@ import _places from "@/config/places.json";
 const places: GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection;
 
 export default defineComponent({
-  forecastCollection: reactive<ForecastCollection>({} as ForecastCollection),
+  forecastCollection: reactive<ForecastCollection>({daily_forecast:[{sun:{rise:8,set:18 } as Sun} as DailyForecast]} as ForecastCollection),
   baliseFfvl: reactive<BaliseData>({ balise: baliseNull, baliseName: "", flyable: false } as BaliseData),
   props: {
     id: {
