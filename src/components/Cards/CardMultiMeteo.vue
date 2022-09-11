@@ -5,7 +5,7 @@
     >
       <div
         v-for="(place,index) in places" :key="place"
-        class="m-4 w-full sm:w-[38rem] h-[50rem] sm:min-w-[38rem] overflow-y-auto"
+        class="m-4 w-full sm:w-152 h-200 sm:min-w-152 overflow-y-auto"
       >
         <div
           class="shadow-slate-500/50 min-w-0 break-words w-full shadow-lg rounded-xl bg-slate-50 p-2"
@@ -23,21 +23,19 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import LazyObserver from "@/components/Utilities/LazyObserver.vue";
 import CardMeteo from "@/components/Cards/CardMeteo.vue";
-import { ref } from "vue";
-import places from "@/config/places.geojson";
+import { defineComponent, ref } from "vue";
+import placesJson from "@/config/places.json";
 
-export default {
-  slug: ref(''),
-  places: ref(places),
+export default defineComponent({
   data() {
-    this.slug =  this.$route.params.slug ? this.$route.params.slug : null;
-    this.places = this.getPlaces(this.slug);
+    const slug =  this.$route.params.slug ? this.$route.params.slug : null;
+    const places = this.getPlaces(this.slug);
     return {
-        slug: this.slug,
-        places: this.places,
+        slug: ref(slug),
+        places: ref(places),
     };
   },
   created() {
@@ -51,24 +49,24 @@ export default {
     )
   },
   methods: {
-    getPlaces(slug) {
+    getPlaces(slug:string) {
       const _places = slug
         ? this.getPlaceWithSlug(slug).length > 0
           ? this.getPlaceWithSlug(slug) || slug === "all"
-          : places.features
-        : places.features.filter((place) => {
+          : placesJson.features
+        : placesJson.features.filter((place) => {
             return place.properties.default === true;
           });
       return _places;
     },
-    onlazyMeteo(entry, unobserve, id) {
+    onlazyMeteo(entry:IntersectionObserverEntry, unobserve:Function, id:number) {
       if (entry.isIntersecting && this.$refs.card_meteo !== undefined) {
         unobserve();
         this.$refs.card_meteo[id].getWeatherData();
       }
     },
-    getPlaceWithSlug(slug) {
-      return places.features.filter((place) => {
+    getPlaceWithSlug(slug:string) {
+      return placesJson.features.filter((place) => {
         return place.properties.slug === slug;
       });
     },
@@ -77,5 +75,5 @@ export default {
     LazyObserver,
     CardMeteo,
   },
-};
+});
 </script>

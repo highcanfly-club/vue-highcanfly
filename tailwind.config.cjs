@@ -106,6 +106,7 @@ module.exports = {
         "350-px": "350px",
         "500-px": "500px",
         "600-px": "600px",
+        "200": "50rem",
         "screen-1/2": "50vh",
         "screen-1/3": "calc(100vh / 3)",
         "screen-2/3": "calc(2 * 100vh / 3)",
@@ -117,6 +118,9 @@ module.exports = {
         "screen-4/5": "calc(4 * 100vh / 5)",
         "screen-1/6": "calc(100vh / 6)",
         "screen-5/6": "calc(5 * 100vh / 6)",
+      },
+      width: {
+        "152" : "38rem"
       },
       minHeight: {
         "95-px": "95px",
@@ -152,6 +156,7 @@ module.exports = {
       minWidth: {
         "140-px": "140px",
         "48": "12rem",
+        "152": "38rem"
       },
       backgroundSize: {
         full: "100%",
