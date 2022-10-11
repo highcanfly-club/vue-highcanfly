@@ -3,7 +3,7 @@ import * as fsc from 'fs'
 import path from 'path'
 import { Transform } from 'stream'
 import glob from 'glob'
-import Fontmin from 'fontmin'
+import Fontminify from '@sctg/fontminify'
 import { Plugin, UserConfig, ResolvedConfig } from 'vite';
 import colors from 'picocolors'
 
@@ -20,7 +20,7 @@ const GLYPH_WHITELIST = ['']
 const FONTAWESOME_SRC_DIR = './fontawesome/webfonts'
 
 function makeYellow(str: string) {
-  return `\x1b[33m${str}\x1b[0m`
+  return colors.yellow(str);
 }
 
 const enum WriteType {
@@ -192,18 +192,18 @@ export default function vitePluginFontawesomeminify(options: VitePluginFontaweso
           })
           Promise.all(processes).then((glyphs) => {
             const glyphsAndWhiteList = glyphs.concat(glyphWhitelist).join(' ')
-            const fontmin = new Fontmin()
-              .use(Fontmin.glyph({
+            const fontmin = new Fontminify()
+              .use(Fontminify.glyph({
                 text: glyphsAndWhiteList,
                 hinting: true
               }))
               .src(`${BASE_DIR}/${faTTFFontFilter}`)
               .dest(`${BASE_DIR}/`)
               //.use(Fontmin.ttf2eot())
-              .use(Fontmin.ttf2woff({
+              .use(Fontminify.ttf2woff({
                 deflate: true
               } as any))
-              .use(Fontmin.ttf2woff2())
+              .use(Fontminify.ttf2woff2())
             //.use(Fontmin.ttf2svg())
             fontmin.use(new Transform({
               objectMode: true,
@@ -218,7 +218,7 @@ export default function vitePluginFontawesomeminify(options: VitePluginFontaweso
                     glob(srcFile, function (err, matches) {
                       if (matches.length) {
                         const origSplitted = matches[0].match(SHA256_8_REGEX)
-                        chunk.basename = `${origSplitted[1]}.${origSplitted[2]}.${origSplitted[3]}`
+                        chunk.basename = `${origSplitted ? origSplitted[1]:''}.${origSplitted ? origSplitted[2]: ''}.${origSplitted ? origSplitted[3]:''}`
                         const dstFileStat = fsc.statSync(`${BASE_DIR}/${chunk.basename}`)
                         //printFileInfo(baseDir, chunk.basename, dstFileStat.size, getWriteType(chunk.basename), 70, config)
                       }
