@@ -83,7 +83,7 @@
 import { defineComponent, h } from "vue";
 import { SanityBlocks } from "sanity-blocks-vue-component";
 import sanityClient from "@sanity/client";
-import { sanityReplaceReferences } from "@/plugins/SanityReferenceWalker";
+import { sanityReplaceReferences } from "@/components/Utilities/SanityReferenceWalker";
 import imageUrlBuilder from "@sanity/image-url";
 import SanityGallerySerializer from "@/components/Utilities/SanityGallerySerializer.vue";
 import SanityLazyImgSerializer from "@/components/Utilities/SanityLazyImgSerializer.vue";
