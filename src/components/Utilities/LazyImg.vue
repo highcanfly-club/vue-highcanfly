@@ -1,5 +1,4 @@
-<script>
-//adapted from https://github.com/alexjoverm/v-lazy-image/blob/master/v-lazy-image/index.js
+<script lang="ts">
 import { reactive, h, computed, ref, onMounted, onBeforeUnmount } from "vue";
 
 export default {
