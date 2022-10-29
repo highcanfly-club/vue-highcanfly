@@ -13,7 +13,7 @@ export interface Position {
 export interface Temp {
   min: number;
   max?: number;
-  sea?: null;
+  sea?: number;
 }
 export interface Humidity {
   min?: number;
@@ -62,7 +62,7 @@ export interface RainOrSnowLong {
   '3h'?: number;
   '6h'?: number;
 }
-export interface Forecast {
+export type Forecast = {
   dt: number;
   T: TempLong;
   humidity: number;
@@ -84,7 +84,7 @@ export interface ProbabilityForecast {
 export interface ForecastCollection {
   position: Position;
   updated_on: number;
-  daily_forecast?: (DailyForecast)[];
-  forecast?: (Forecast)[];
-  probability_forecast?: (ProbabilityForecast)[];
+  daily_forecast?: DailyForecast[];
+  forecast?: Forecast[];
+  probability_forecast?: ProbabilityForecast[];
 }
