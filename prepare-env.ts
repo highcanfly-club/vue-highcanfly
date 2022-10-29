@@ -112,6 +112,15 @@ fs.writeFile('./src/config/node-version.json',
   }
 );
 
+/*generate meteo-france-conf.json*/
+const meteoFranceKey = { api_key: process.env.METEO_FRANCE_API_KEY };
+fs.writeFile('./src/config/meteo-france-conf.json',
+  JSON.stringify(meteoFranceKey),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
+
 /*generate cesium-onf.json*/
 const cesiumConf = { token: process.env.CESIUM_TOKEN };
 fs.writeFile('./src/config/cesium-conf.json',
