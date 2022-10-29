@@ -1,6 +1,7 @@
 // adapted from https://github.com/dreamonkey/vue-auth0/tree/main/src
 
-import createAuth0Client, {
+import {
+  createAuth0Client,
   Auth0Client as Auth0ClientClass,
   Auth0ClientOptions,
   GetTokenSilentlyOptions,
