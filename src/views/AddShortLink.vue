@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar-default color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200"
+    <NavbarDefault color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200"
       buttoncolor="bg-white text-slate-700 active:bg-slate-50" />
     <main class="profile-page">
       <section class="relative block h-500-px">
@@ -21,13 +21,13 @@
         <div class="container mx-auto px-4">
           <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
             <div class="px-6 py-6">
-              <add-shortlink />
+              <AddShortlink />
             </div>
           </div>
         </div>
       </section>
     </main>
-    <main-footer />
+    <MainFooter />
   </div>
 </template>
 <script lang="ts">

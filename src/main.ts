@@ -1,9 +1,8 @@
 import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
-//import App from '@/App.vue'
 import metaMixin from "@/mixins/MetaMixin";
-import Highcanfly from "@/plugins/highcanfly";
+import Highcanfly, { useImageInSrc } from "@/plugins/highcanfly";
 import type { RedirectCallback } from "@/plugins/auth0";
 import { initAuth0 } from "@/plugins/auth0";
 import auth0conf from "@/config/auth0-conf.json";
@@ -13,7 +12,7 @@ import type { SanityConf } from "@/plugins/auth0/sanityStore";
 import type { Router } from "vue-router";
 import { addJsonLD } from "@/config/StructuredLDJson";
 // styles
-import "@/assets/styles/index.css";
+import "@/assets/styles/index.scss";
 
 const routes = [
   {
@@ -119,10 +118,6 @@ const REDIRECT_CALLBACK: RedirectCallback = () =>
   );
 
 //import type { Element } from 'vue'
-
-const useImageInSrc = (url: string) => {
-  return new URL(`/src/${url}`, import.meta.url).href;
-};
 
 const useImageInNodeModules = (url: string) => {
   //return new URL(`/node_modules/${url}`, import.meta.url).href;
