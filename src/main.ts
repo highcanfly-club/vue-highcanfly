@@ -150,7 +150,9 @@ import("./App.vue").then((App) => {
   app.use(router);
   app.config.globalProperties.$auth0 = initAuth0({
     onRedirectCallback: REDIRECT_CALLBACK,
-    redirectUri: `${window.location.origin}/login`,
+    authorizationParams: {
+      redirect_uri: `${window.location.origin}/login`
+    },
     ...auth0conf,
   } as never); // never because cacheLocation:"localstorage" is type as string but as CacheLocation = "localstorage" | "memory" in Auth0SDK
   app.config.globalProperties.$sanityConf = sanityConf;
