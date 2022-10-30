@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
+import meteoFranceConf from './src/config/meteo-france-conf.json' assert {type:'json'}
 const METEO_FRANCE_STORE = './src/assets/forecast/';
 const LANG = "en";
 
@@ -26,7 +27,7 @@ const getMeteoFranceIconsArray = function (
         { lat: -22.366341, lon: 40.338066, name: 'Île Europa' }
     ]
 ) {
-    const API_TOKEN = "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__";
+    const API_TOKEN = meteoFranceConf.api_key;
     const METEO_FRANCE_WEBSERVICE = "https://webservice.meteofrance.com/forecast";
     const METEO_FRANCE_ICONS_BASE =
         "https://meteofrance.com/modules/custom/mf_tools_common_theme_public/svg/weather";

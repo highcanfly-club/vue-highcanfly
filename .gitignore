@@ -39,6 +39,7 @@ src/config/places.json
 src/config/mapbox-conf.json
 src/config/cesium-conf.json
 src/config/algolia-conf.json
+src/config/meteo-france-conf.json
 mongodb-places.json
 mongodb-places.json
 

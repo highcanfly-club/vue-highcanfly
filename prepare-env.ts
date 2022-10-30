@@ -42,11 +42,15 @@ import('./getcfdtrackjoinerversion.mjs').then((module) => {
 /*generate auth0-conf.json*/
 const auth0Conf = {
   "domain": process.env.AUTH0_DOMAIN,
-  "client_id": process.env.AUTH0_CLIENT_ID,
+  "clientId": process.env.AUTH0_CLIENT_ID,
   "scope": 'openid email profile user_metadata app_metadata picture',
   "useRefreshTokens": true,
   "cacheLocation": "localstorage",
-  "audience": "https://highcanfly.api"
+  "audience": "https://highcanfly.api",
+  "authorizationParams": {
+    "scope": 'openid email profile user_metadata app_metadata picture',
+    "audience": "https://highcanfly.api"
+  }
 };
 fs.writeFile('./src/config/auth0-conf.json',
   JSON.stringify(auth0Conf),
@@ -107,6 +111,15 @@ fs.writeFile('./src/config/cloudinary-conf.json',
 const nodeVersion = { version: process.version };
 fs.writeFile('./src/config/node-version.json',
   JSON.stringify(nodeVersion),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
+
+/*generate meteo-france-conf.json*/
+const meteoFranceKey = { api_key: process.env.METEO_FRANCE_API_KEY };
+fs.writeFile('./src/config/meteo-france-conf.json',
+  JSON.stringify(meteoFranceKey),
   'utf8', function (err) {
     if (err) return console.log(err);
   }
