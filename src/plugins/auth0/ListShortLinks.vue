@@ -36,7 +36,12 @@ interface kvStoreElement {
 }
 type kvStore = kvStoreElement[]
 
-export default defineComponent({
+export default defineComponent<{
+  token: string;
+  canListShortUrl: boolean;
+  kvData: kvStore;
+  canonical: URL
+}>({
   mounted() {
     this.$auth0
       .getTokenSilentlyVerbose()

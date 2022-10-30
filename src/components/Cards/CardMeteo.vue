@@ -173,7 +173,8 @@ import type GeoJSON from '@/types/GeoJSON';
 import type { ForecastCollection, Forecast, DailyForecast, Weather12HOrWeather, Weather12HOrWeatherLong, RainOrSnow, Sun,Precipitation, Temp } from '@/types/ForecastCollection';
 import type { BaliseData } from "@/plugins/BaliseFFVLHelper"
 import { getBaliseData, baliseNull, getWindSector } from "@/plugins/BaliseFFVLHelper"
-import { weatherIsFlyable, weatherGetRain, useImageInSrc } from '@/plugins/highcanfly'
+import { weatherIsFlyable, weatherGetRain } from '@/plugins/highcanfly'
+//import _places from "@/config/places.json";
 import meteoFranceConf from "@/config/meteo-france-conf.json";
 
 const icons_base = "assets/forecast/";
@@ -311,14 +312,14 @@ function getWeather(weather: Weather12HOrWeather | Weather12HOrWeatherLong) {
       : {
         desc: weather.desc,
         icon: weather.icon,
-        url: useImageInSrc(`${icons_base}${weather.icon}.svg`),// `/src/${icons_base}${weather.icon}.svg`, //$require(`${icons_base}${weather.icon}.svg`),
+        url: `/src/${icons_base}${weather.icon}.svg`, //$require(`${icons_base}${weather.icon}.svg`),
       };
   return wt;
 }
 
 function getWindImg(direction: number): { src: string; style: { transform: string } } {
   return {
-    src: useImageInSrc(`${icons_base}wind.svg`),//`/src/${icons_base}wind.svg`, //$require(`${icons_base}wind.svg`),
+    src: `/src/${icons_base}wind.svg`, //$require(`${icons_base}wind.svg`),
     style: { transform: `rotate(${direction + 180}deg)` },
   };
 }

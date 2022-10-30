@@ -1,15 +1,26 @@
 <template>
   <div>
-    <NavbarDefault color="text-white" colorhover="text-slate-200" iconscolor="text-slate-200"
-      buttoncolor="bg-white text-slate-700 active:bg-slate-50" />
+    <navbar-default
+      color="text-white"
+      colorhover="text-slate-200"
+      iconscolor="text-slate-200"
+      buttoncolor="bg-white text-slate-700 active:bg-slate-50"
+    />
     <main class="profile-page">
       <section class="relative block h-500-px">
-        <div class="absolute top-0 w-full h-full bg-center bg-cover" v-bind:style="{
-          backgroundImage: 'url(' + reactiveBackground + ')',
-        }">
-          <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-grey"></span>
+        <div
+          class="absolute top-0 w-full h-full bg-center bg-cover"
+          v-bind:style="{
+            backgroundImage: 'url(' + reactiveBackground + ')',
+          }"
+        >
+          <span
+            id="blackOverlay"
+            class="w-full h-full absolute opacity-50 bg-grey"
+          ></span>
         </div>
-        <div class="
+        <div
+          class="
             top-auto
             bottom-0
             left-0
@@ -19,16 +30,28 @@
             pointer-events-none
             overflow-hidden
             h-70-px
-          " style="transform: translateZ(0)">
-          <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
-            version="1.1" viewBox="0 0 2560 100" x="0" y="0">
-            <polygon class="text-slate-200 fill-current" points="2560 0 2560 100 0 100" />
+          "
+          style="transform: translateZ(0)"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-slate-200 fill-current"
+              points="2560 0 2560 100 0 100"
+            />
           </svg>
         </div>
       </section>
-      <CardSinglePost :slug="slug" />
+      <card-single-post :slug="slug" />
     </main>
-    <FooterComponent />
+    <footer-component />
   </div>
 </template>
 <script lang="ts">
@@ -48,7 +71,7 @@ export default defineComponent({
   resizeId: 0,
   previousWindowSize: 0,
   data() {
-    const slug = this.$route.params.slug as string;
+    const slug = this.$route.params.slug;
     return {
       reactiveBackground: this.reactiveBackground,
       slug,
@@ -62,9 +85,9 @@ export default defineComponent({
       .toURL();
   },
   components: {
+    NavbarDefault,
     FooterComponent,
     CardSinglePost,
-    NavbarDefault,
   },
   methods: {
     handleResize: function () {

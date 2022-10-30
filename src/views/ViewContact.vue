@@ -54,7 +54,7 @@
     <main-footer />
   </div>
 </template>
-<script lang="ts">
+<script>
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import contactForm from "@/components/Forms/EmailForm.vue";
@@ -66,7 +66,7 @@ const backgroundImage = "static-web-highcanfly/blancnezhugues-101";
 export default {
   title: "High Can Fly | Club de parapente du Nord | Contactez-nous",
   description: "Pour contacter le club, chercher des informations…",
-  canonical: new URL(window.location.href),
+  canonical: new URL(window.location),
   reactiveBackground: ref(""),
   resizeId: 0,
   previousWindowSize: 0,

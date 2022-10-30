@@ -17,7 +17,7 @@ export default defineConfig({
   plugins: [
     vue(),
     cesium({ addTags: false }),
-    //vitePluginFontawesomeminify({ glyphWhitelist: ["?"] }),
+    vitePluginFontawesomeminify({ glyphWhitelist: ["?"] }),
   ],
   resolve: {
     alias: {
