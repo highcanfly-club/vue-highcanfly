@@ -197,8 +197,8 @@ export function initAuth0<AppStateType> ({
   }
 
   /** Returns all the claims present in the ID token */
-  const getIdTokenClaims: Auth0Client['getIdTokenClaims'] = (options) => {
-    return state.auth0Client.getIdTokenClaims(options)
+  const getIdTokenClaims: Auth0Client['getIdTokenClaims'] = () => {
+    return state.auth0Client.getIdTokenClaims()
   }
 
   /** Returns the access token. If the token is invalid or missing, a new one is retrieved */
