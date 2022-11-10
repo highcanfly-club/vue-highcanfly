@@ -110,10 +110,6 @@ export const getWebKitImageSet = (imageAsset1x, imageAssetWebp1x, imageAsset2x, 
   return window.innerWidth < minSize ? srcSet.low : srcSet.high
 }
 
-export function useImageInSrc(url: string): string {
-  return new URL(`/src/${url}`, import.meta.url).href
-}
-
 export default {
   install: (app, options) => { //eslint-disable-line
     app.provide('isWebpCompatible', isWebpCompatible)

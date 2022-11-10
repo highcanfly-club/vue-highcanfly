@@ -118,23 +118,11 @@ const REDIRECT_CALLBACK: RedirectCallback = () =>
     `${window.location.origin}/login`
   );
 
-//import type { Element } from 'vue'
-
-const useImageInSrc = (url: string) => {
-  return new URL(`/src/${url}`, import.meta.url).href;
-};
-
-const useImageInNodeModules = (url: string) => {
-  //return new URL(`/node_modules/${url}`, import.meta.url).href;
-  return "";
-};
-
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
     $auth0: Auth0Instance;
     $sanityConf: SanityConf;
     $router: Router;
-    $require: typeof useImageInSrc;
   }
 }
 
@@ -160,8 +148,6 @@ import("./App.vue").then((App) => {
     app.config.globalProperties.$sanityConf.preview === undefined
       ? false
       : app.config.globalProperties.$sanityConf.preview;
-  app.config.globalProperties.$require = useImageInSrc;
-
   app.use(Highcanfly);
   app.mixin(metaMixin);
 
