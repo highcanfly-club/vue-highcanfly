@@ -100,6 +100,36 @@
         }
       },{
         "_id": {
+          "$oid": "62d6da39fe08c204d77d491d"
+        },
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.698365,
+            50.928352
+          ]
+        },
+        "properties": {
+          "slug": "blanc-nez",
+          "name": "Cap Blanc-Nez",
+          "default": true,
+          "idBalise": 159,
+          "fly": {
+            "sectors": [
+              {
+                "min_angle": 275,
+                "max_angle": 358
+              }
+            ],
+            "wind": {
+              "min_speed": 0,
+              "max_speed": 6.11
+            }
+          }
+        }
+      },{
+        "_id": {
           "$oid": "62d6da39fe08c204d77d4916"
         },
         "type": "Feature",
