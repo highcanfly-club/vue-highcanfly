@@ -166,8 +166,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onRenderTriggered } from "vue";
-import LazyImg from "@/components/Utilities/LazyImg.vue";
+import { ref, onMounted } from "vue";
+import {LazyImg} from "@sctg/lazy-vue"
 import PopOverSimple from "@/components/Utilities/PopOverSimple.vue";
 import type GeoJSON from '@/types/GeoJSON';
 import type { ForecastCollection, Forecast, DailyForecast, Weather12HOrWeather, Weather12HOrWeatherLong, RainOrSnow, Sun,Precipitation, Temp } from '@/types/ForecastCollection';

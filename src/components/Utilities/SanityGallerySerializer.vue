@@ -85,13 +85,13 @@ This website use:
 <script setup lang="ts">
 import { VueAgile } from "vue-agile";
 import * as basiclightbox from "basiclightbox";
-import LazyImg from "@/components/Utilities/LazyImg.vue";
+import {LazyImg,CssLightbox} from "@sctg/lazy-vue"
 import sanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import { onMounted, ref } from "vue";
 import sanityConf from "@/config/sanity-conf.json"
 import type { Image, ImageAsset } from "@sanity/types";
-import CssLightbox from "@/utilities/CssLightbox.vue";
+import '@sctg/lazy-vue/dist/index.css'
 
 type SplittedImages = { images: Image[], sumAspectRatio: number }[]
 interface CarouselImages extends Array<Image> {asNavFor1: Image[], asNavFor2: Image[]}//{asNavFor1:Image[], asNavFor2:Image[], carouselOptions: typeof carouselOptions, carouselThumbnailsOptions: typeof carouselThumbnailsOptions}

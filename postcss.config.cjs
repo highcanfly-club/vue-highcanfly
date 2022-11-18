@@ -15,7 +15,7 @@ module.exports = {
     tailwindcss,
     autoprefixer,
     (process.env.NODE_ENV !== 'development') ? purgecss({
-      content: ['./index.html', './src/**/*.ts', './src/**/*.js', './src/**/*.vue'],
+      content: ['./index.html', './src/**/*.ts', './src/**/*.js', './src/**/*.vue','./node_modules/@sctg/lazy-vue/src/**/*.vue'],
       defaultExtractor(content) {
         const contentWithoutStyleBlocks = content.replace(/<style[^]+?<\/style>/gi, '')
         return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || []

@@ -14,7 +14,7 @@
       </div>
     </div>
 </template>
-<style scoped>
+<style>
 .loader {
   border-top-color: #3498db;
   -webkit-animation: spinner 1.5s linear infinite;

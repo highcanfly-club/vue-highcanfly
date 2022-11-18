@@ -25,8 +25,8 @@ import sanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import { sanityConf } from "@/plugins/auth0/sanityStore"
 import type { Asset } from "@sanity/types";
-import CssLightbox from "@/utilities/CssLightbox.vue";
-
+import {CssLightbox} from "@sctg/lazy-vue";
+import '@sctg/lazy-vue/dist/index.css'
 const props = defineProps<{
   asset: Asset;
 }>()
