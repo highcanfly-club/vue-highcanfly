@@ -11,6 +11,7 @@ import mapboxConf from '@/config/mapbox-conf.json'
 import { GeoJsonObject } from 'geojson'
 import BaliseFFVL from '@/components/Cards/BaliseFFVL.vue'
 import type { App } from 'vue'
+import {$require} from '@/utilities/viteHelper.js'
 /*
 Needs 
 npm i -D --save geojson @types/leaflet
@@ -26,9 +27,9 @@ export default defineComponent({
     },
     created() {
         L.Marker.prototype.options.icon = L.icon({
-            iconRetinaUrl: this.$require("assets/img/marker-icon-2x.png"),
-            iconUrl: this.$require("assets/img/marker-icon.png"),
-            shadowUrl: this.$require("assets/img/marker-shadow.png"),
+            iconRetinaUrl: $require("@/assets/img/marker-icon-2x.png"),
+            iconUrl: $require("@/assets/img/marker-icon.png"),
+            shadowUrl: $require("@/assets/img/marker-shadow.png"),
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],

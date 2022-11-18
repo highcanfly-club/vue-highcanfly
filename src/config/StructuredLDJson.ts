@@ -7,6 +7,8 @@ This website use:
 - Font Awesome
 - And many others
 */
+import {$require} from '@/utilities/viteHelper.js'
+
 const daysOfWeek = [
     'Monday',
     'Tuesday',
@@ -64,8 +66,8 @@ export const addJsonLD = () => {
         "name": "High Can Fly Parapente",
         "alternateName": "Highcanfly",
         "naics": "711211",
-        "image": new URL(`/src/${'assets/img/logo_high_can_fly.svg'}`, import.meta.url).href,
-        "logo": new URL(`/src/${'assets/img/logo_high_can_fly.svg'}`, import.meta.url).href,
+        "image": $require('@/assets/img/logo_high_can_fly.svg'),
+        "logo": $require('@/assets/img/logo_high_can_fly.svg'),
         "telephone": "+33 3 66 72 14 65",
         "nonprofitStatus": "Nonprofit501c7",
         "url": "https://www.highcanfly.club",
