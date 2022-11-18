@@ -20,7 +20,7 @@
 <script lang="ts">
 import CardSinglePost from "@/components/Cards/CardSinglePost.vue";
 import LoadingSpinner from "@/components/Utilities/ComponentLoadingSpinner.vue";
-import LazyObserver from "@/components/Utilities/LazyObserver.vue";
+import {LazyObserver} from "@sctg/lazy-vue"
 import sanityClient from "@sanity/client";
 import { defineComponent } from "vue";
 

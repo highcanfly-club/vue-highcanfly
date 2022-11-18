@@ -161,6 +161,14 @@ module.exports = {
       backgroundSize: {
         full: "100%",
       },
+      zIndex: {
+        2: 2,
+        3: 3,
+        50: 50,
+        100: 100,
+        998: 998,
+        999: 999,
+      },
     },
   },
   variants: [
