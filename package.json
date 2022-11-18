@@ -52,7 +52,7 @@
     "walkjs": "^3.2.4"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^3.18.0",
+    "@cloudflare/workers-types": "^4.20221111.1",
     "@fullhuman/postcss-purgecss": "^5.0.0",
     "@highcanfly-club/fontawesome": "^1.0.0",
     "@sanity/types": "^2.35.0",
