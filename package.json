@@ -17,8 +17,7 @@
     "wrangler": "npx wrangler pages dev -- yarn serve",
     "build": "node --experimental-fetch --loader ts-node/esm ./prepare-env.ts && node jwks.js && npx vite build && gulp licenses",
     "build-prod": "CF_PAGES=\"1\" __DEBUG__=\"0\" vue-cli-service build && gulp licenses",
-    "build-cf": "npm run prepare-env && node jwks.js && npx vite build  && gulp licenses",
-    "get-meteo-icons": "node get-meteo-icons.mjs"
+    "build-cf": "npm run prepare-env && node jwks.js && npx vite build  && gulp licenses"
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^2.0.0",
