@@ -27,7 +27,7 @@
         </div>
       </section>
       <section class="relative pb-16 bg-slate-200">
-        <card-multi-meteo :key="slug" :places="placesJson" />
+        <card-multi-meteo :slug="slug" :places="placesJson" />
       </section>
     </main>
     <main-footer />
@@ -80,7 +80,7 @@ onMounted(() => {
 
 watch(() => $route.params,
       () => {
-        slug.value = $route.params.slug ? <string>$route.params.slug : null;
+        slug.value = $route.params.slug ? <string>$route.params.slug : 'default';
       },
       { immediate: true })
 
