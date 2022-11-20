@@ -17,18 +17,18 @@
     "wrangler": "npx wrangler pages dev -- yarn serve",
     "build": "node --experimental-fetch --loader ts-node/esm ./prepare-env.ts && node jwks.js && npx vite build && gulp licenses",
     "build-prod": "CF_PAGES=\"1\" __DEBUG__=\"0\" vue-cli-service build && gulp licenses",
-    "build-cf": "npm run prepare-env && node jwks.js && npx vite build  && gulp licenses",
-    "get-meteo-icons": "node get-meteo-icons.mjs"
+    "build-cf": "npm run prepare-env && node jwks.js && npx vite build  && gulp licenses"
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^2.0.0",
     "@cloudinary/url-gen": "^1.8.6",
     "@headlessui/vue": "^1.7.4",
     "@heroicons/vue": "^2.0.13",
+    "@highcanfly-club/meteo": "^1.0.2",
     "@popperjs/core": "2.11.6",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
-    "@sctg/lazy-vue": "^1.0.2",
+    "@sctg/lazy-vue": "^1.0.3",
     "@vuepic/vue-datepicker": "^3.5.3",
     "@vueuse/core": "^9.5.0",
     "basiclightbox": "^5.0.4",
@@ -40,7 +40,7 @@
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.9",
     "jose": "^4.11.0",
-    "leaflet": "^1.9.2",
+    "leaflet": "^1.9.3",
     "path-browserify": "^1.0.1",
     "qrcode.vue": "^3.3.3",
     "sanity-blocks-vue-component": "^1.0.1",
@@ -52,7 +52,7 @@
     "walkjs": "^3.2.4"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^3.18.0",
+    "@cloudflare/workers-types": "^4.20221111.1",
     "@fullhuman/postcss-purgecss": "^5.0.0",
     "@highcanfly-club/fontawesome": "^1.0.0",
     "@sanity/types": "^2.35.0",

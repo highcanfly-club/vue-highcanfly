@@ -27,7 +27,7 @@
         </div>
       </section>
       <section class="relative pb-16 bg-slate-200">
-        <card-multi-meteo :key="slug" :places="placesJson" />
+        <card-multi-meteo :slug="slug" :places="placesJson" />
       </section>
     </main>
     <main-footer />
@@ -36,12 +36,14 @@
 <script setup lang="ts">
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import CardMultiMeteo from "@/components/Cards/CardMultiMeteo.vue";
+import {CardMultiMeteo} from "@highcanfly-club/meteo";
+import "@highcanfly-club/meteo/dist/index.css"
 import { onMounted, ref, watch } from "vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 import { useRoute } from "vue-router";
 import _places from "@/config/places.json";
-const slug = ref("")
+const $route = useRoute()
+const slug = ref($route.params.slug ? $route.params.slug as string : "")
 const backgroundImage = "static-web-highcanfly/highcanfly-101";
 const description =
   "La météo sur nos sites est l'élément indispensable pour un club de parapente du Nord FFVL. Nous encourageons la pratique du parapete sans utiliser de moteur. Vive le marche et vol. Affiliés à la FFVL n°29070."
@@ -49,7 +51,7 @@ const title =
   "High Can Fly | Club de parapente du Nord | La météo sur nos sites de pratiques "
 const canonical = new URL(window.location.href)
 const reactiveBackground = ref("")
-const $route = useRoute()
+
 let resizeId: ReturnType<typeof setTimeout>  = null
   const placesJson: GeoJSON.FlyingPlaceCollection = _places as unknown as GeoJSON.FlyingPlaceCollection
 let previousWindowSize = 0
@@ -78,7 +80,7 @@ onMounted(() => {
 
 watch(() => $route.params,
       () => {
-        slug.value = $route.params.slug ? <string>$route.params.slug : null;
+        slug.value = $route.params.slug ? <string>$route.params.slug : 'default';
       },
       { immediate: true })
 
