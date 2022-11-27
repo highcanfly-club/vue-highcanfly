@@ -24,7 +24,7 @@
     "@cloudinary/url-gen": "^1.8.6",
     "@headlessui/vue": "^1.7.4",
     "@heroicons/vue": "^2.0.13",
-    "@highcanfly-club/meteo": "^1.0.4",
+    "@highcanfly/meteo": "^1.0.7",
     "@popperjs/core": "2.11.6",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
