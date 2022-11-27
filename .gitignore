@@ -46,3 +46,4 @@ mongodb-places.json
 src/views/TrackJoinerHelp.vue
 src/views/TrackJoinerView.vue
 src/trackjoiner
+src/config/codeStats.json

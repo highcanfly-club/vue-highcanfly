@@ -1,7 +1,17 @@
 // vue.config.js
 import {gitlogPromise, GitlogOptions} from "gitlog"
 import fs from 'fs'
+import {LineCount} from "@sctg/code-stats"
 
+const results = await LineCount.countLines(['src','functions'])
+fs.writeFile(
+  "./src/config/codeStats.json",
+  JSON.stringify(results),
+  "utf8",
+  function (err) {
+    if (err) return console.log(err);
+  }
+);
 // Option 1: Just use the function, returned commit type has specified fields
 const commits = await gitlogPromise({
   repo: ".",
