@@ -207,7 +207,7 @@
                   Vue.js {{ version }}</a>
                 &nbsp;et&nbsp;<a href="https://nodejs.org/fr/"><span class="items-baseline"><i style="color: #64a051"
                       class="fab fa-node-js"></i></span>&nbsp;NodeJS&nbsp;{{ nodeVersion }}
-                </a>
+                </a>&nbsp;Metric:{{codeStats.JavaScript.codeLines+codeStats.Typescript.codeLines+codeStats.Vue.codeLines+codeStats.Stylesheets.codeLines}}
               </span>
             </div>
           </div>
@@ -225,6 +225,7 @@ import { ref, defineComponent } from "vue";
 import logo from "@/assets/img/logo_high_can_fly.svg";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 import nodeVersion  from '@/config/node-version.json'
+import codeStats from '@/config/codeStats.json'
 const backgroundImage = "static-web-highcanfly/mountain";
 
 export default defineComponent({
@@ -241,6 +242,7 @@ export default defineComponent({
       version,
       reactiveBackground: this.reactiveBackground,
       nodeVersion: nodeVersion.version,
+      codeStats
     };
   },
   created() {
