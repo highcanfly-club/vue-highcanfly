@@ -27,7 +27,7 @@
         </div>
       </section>
       <section class="relative pb-16 bg-slate-200">
-        <card-multi-meteo :slug="slug" :places="placesJson" />
+        <card-multi-meteo :slug="slug" :places="placesJson" lang="fr-FR"/>
       </section>
     </main>
     <main-footer />
@@ -36,8 +36,8 @@
 <script setup lang="ts">
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
-import {CardMultiMeteo} from "@highcanfly-club/meteo";
-import "@highcanfly-club/meteo/dist/index.css"
+import {CardMultiMeteo} from "@highcanfly/meteo";
+import "@highcanfly/meteo/dist/index.css"
 import { onMounted, ref, watch } from "vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
 import { useRoute } from "vue-router";

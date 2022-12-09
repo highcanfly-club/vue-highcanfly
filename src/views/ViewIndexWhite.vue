@@ -673,8 +673,8 @@
 import NavbarDefault from "@/components/Navbars/NavbarDefault.vue";
 import MainFooter from "@/components/Footers/MainFooter.vue";
 import CardWindy from "@/components/Cards/CardWindy.vue";
-import {CardMultiMeteo} from "@highcanfly-club/meteo";
-import "@highcanfly-club/meteo/dist/index.css"
+import {CardMultiMeteo} from "@highcanfly/meteo";
+import "@highcanfly/meteo/dist/index.css"
 import patternVue from "@/assets/img/pattern_vue.png";
 import componentBtn from "@/assets/img/component-btn.png";
 import componentProfileCard from "@/assets/img/component-profile-card.png";

@@ -59,7 +59,7 @@ function getOpeningHours():OpeningHoursSpecification[] {
 }
 
 export const addJsonLD = () => {
-    const jsonld = {
+    const jsonld = [{
         "@context": "https://schema.org",
         "@type": "SportsClub",
         "description": "Club de Parapente du Nord",
@@ -118,7 +118,22 @@ export const addJsonLD = () => {
           "url": "https://www.ffvl.fr"
         }
        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "description": "Licence FFVL 2023",
+        "name": "Licence FFVL 2023",
+        "image": $require('@/assets/img/FFVL.svg'),
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "price": "108.00",
+          "priceValidUntil": "2023-12-31",
+          "priceCurrency": "EUR"
+        }
       }
+    ]
     const ldScript = document.createElement('script')
     ldScript.setAttribute("type", "application/ld+json")
     ldScript.setAttribute("type", "application/ld+json")

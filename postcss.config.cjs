@@ -22,7 +22,7 @@ module.exports = {
             "./src/**/*.js",
             "./src/**/*.vue",
             "./node_modules/@sctg/lazy-vue/src/**/*.vue",
-            "./node_modules/@highcanfly-club/meteo/src/**/*.vue",
+            "./node_modules/@highcanfly/meteo/src/**/*.vue",
           ],
           defaultExtractor(content) {
             const contentWithoutStyleBlocks = content.replace(
