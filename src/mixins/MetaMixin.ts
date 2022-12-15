@@ -45,3 +45,16 @@ export default {
     }
   }
 }
+
+export function setMeta(canonical: string, title: string, description: string) {
+  const link = !!document.querySelector("link[rel='canonical']") ? document.querySelector("link[rel='canonical']") as HTMLLinkElement : document.createElement('link') as HTMLLinkElement;
+  link.setAttribute('rel', 'canonical');
+  link.setAttribute('href', canonical);
+  document.head.appendChild(link);
+  const titleTag = !!document.querySelector("title") ? document.querySelector("title") as HTMLTitleElement : document.createElement('title') as HTMLTitleElement;
+  titleTag.innerHTML = title
+  document.head.appendChild(titleTag);
+  const metaDescription = !!document.querySelector("meta[name='description']") ? document.querySelector("meta[name='description']") as HTMLMetaElement : document.createElement('meta') as HTMLMetaElement;
+  metaDescription.setAttribute('content', description);
+  document.head.appendChild(metaDescription);
+}
