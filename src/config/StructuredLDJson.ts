@@ -7,18 +7,18 @@ This website use:
 - Font Awesome
 - And many others
 */
-import {
-  Organization,
+import type {
   SportsOrganization,
   WithContext,
   OpeningHoursSpecification,
   Product,
   PostalAddress,
   AggregateRating,
+  DayOfWeek
 } from "schema-dts";
 import { $require } from "@/utilities/viteHelper.js";
 
-const daysOfWeek = [
+const daysOfWeek:DayOfWeek[] = [
   "Monday",
   "Tuesday",
   "Wednesday",
@@ -128,7 +128,7 @@ export const addJsonLD = () => {
         postalCode: "59128",
         addressLocality: "Flers-en-Escrebieux",
         addressCountry: "FR",
-      },
+      } as PostalAddress,
       geo: {
         "@type": "GeoCoordinates",
         latitude: 50.399619,
@@ -154,7 +154,6 @@ export const addJsonLD = () => {
     license,
   ];
   const ldScript = document.createElement("script");
-  ldScript.setAttribute("type", "application/ld+json");
   ldScript.setAttribute("type", "application/ld+json");
   ldScript.textContent = JSON.stringify(jsonld);
   document.head.appendChild(ldScript);
