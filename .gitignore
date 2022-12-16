@@ -47,3 +47,7 @@ src/views/TrackJoinerHelp.vue
 src/views/TrackJoinerView.vue
 src/trackjoiner
 src/config/codeStats.json
+loc*.key
+loc*.pem
+loc*.csr
+loc*.srl

@@ -11,6 +11,7 @@ import vue from "@vitejs/plugin-vue";
 import path from "path";
 import cesium from "./src/plugins/cesium";
 import vitePluginFontawesomeminify from "@highcanfly-club/fontawesome";
+import fs from "fs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -27,4 +28,12 @@ export default defineConfig({
     },
   },
   optimizeDeps: { include: ["lodash.throttle", "lodash.orderby"] },
+  server: {
+    https: fs.existsSync("./localhost.key")
+      ? {
+          key: fs.readFileSync("./localhost.key"),
+          cert: fs.readFileSync("./localhost.pem"),
+        }
+      : false,
+  },
 });
