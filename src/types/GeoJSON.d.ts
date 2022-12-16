@@ -1,3 +1,12 @@
+/*!
+=========================================================
+* © 2018-2022 Ronan LE MEILLAT for Association Highcanfly
+=========================================================
+This website use:
+- Vite, Vue3, FontAwesome 6, TailwindCss 3
+- Vue Notus theme from Creative Tim (MIT License)
+- And many others
+*/
 /* eslint-disable no-use-before-define */
 /**
  * Typescript types for the GeoJSON RFC7946 specification. This is not fully RFC-compliant due to lack of support for

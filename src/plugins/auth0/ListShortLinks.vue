@@ -1,3 +1,12 @@
+<!--
+=========================================================
+* © 2018-2022 Ronan LE MEILLAT for Association Highcanfly
+=========================================================
+This website use:
+- Vite, Vue3, FontAwesome 6, TailwindCss 3
+- Vue Notus theme from Creative Tim (MIT License)
+- And many others
+-->
 <template>
   <div class="overflow-scroll">
     <table class="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
