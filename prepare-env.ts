@@ -162,6 +162,22 @@ fs.writeFile('./src/config/algolia-conf.json',
   }
 );
 
+
+const sumupConf = {
+  application_type: "web",
+  client_id: process.env.SUMUP_CLIENT_ID,
+  client_secret: process.env.SUMUP_SECRET,
+  id: process.env.SUMUP_ID,
+  name: process.env.SUMUP_NAME,
+  redirect_uris: process.env.SUMUP_REDIRECT_URIS.split(' '),
+};
+fs.writeFile('./functions/config/sumup-conf.json',
+  JSON.stringify(sumupConf),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
+
 import {writeFile, mkdir} from 'fs/promises'
 // Get latest View from cfdtrackjoiner
 const CFDTRACKJOINER_BRANCH = 'master'

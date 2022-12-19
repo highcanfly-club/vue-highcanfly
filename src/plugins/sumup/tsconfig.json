@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "isolatedModules": false,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "sourceMap": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "types": ["vue","node"]
+  },
+  "include": ["./**/*.ts", "./**/*.vue"],
+  "exclude": ["node_modules"]
+}

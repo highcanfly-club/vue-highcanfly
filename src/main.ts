@@ -1,3 +1,12 @@
+/*!
+=========================================================
+* © 2018-2022 Ronan LE MEILLAT for Association Highcanfly
+=========================================================
+This website use:
+- Vite, Vue3, FontAwesome 6, TailwindCss 3
+- Vue Notus theme from Creative Tim (MIT License)
+- And many others
+*/
 import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
@@ -84,6 +93,11 @@ const routes = [
     path: "/login",
     name: "login",
     component: () => import("@/views/ViewLogin.vue"),
+  },
+  {
+    path: "/payment",
+    name: "payment",
+    component: () => import("@/views/ViewPayment.vue"),
   },
   // {
   //   path: "/3dtrack",
