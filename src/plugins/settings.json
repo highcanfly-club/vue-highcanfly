@@ -1,0 +1,28 @@
+{
+	"terminal.integrated.env.osx": {
+		"NODE_OPTIONS": "--experimental-fetch",
+		"NODE_EXTRA_CA_CERTS": "${workspaceFolder}/localhost-rootCA.pem",
+		"PROJECT_ROOT": "${workspaceFolder} ",
+		"MAILJET_TO": "parapente@highcanfly.club",
+		"MAILJET_API_KEY": "73c9b3b4be679bcc1e96f5bba401d1fc",
+		"MAILJET_API_PWD": "f2c9b49308731c8bf6432fcf28c07cbb",
+		"MAPBOX_TOKEN": "pk.eyJ1IjoiaGlnaGNhbmZseSIsImEiOiJjbDM4cnh0NWgwMnNsM2lxbWZ5d2pnbXI2In0.q2kOjggnUDrx358edTvTug",
+		"HCAPTCHA_SECRET": "0xAA2e2a7a922D8eB59b1d88FDDC1AaEd34fb664e5",
+		"METEOBLUE_API_KEY": "TA56DmKunx9UiJ32",
+		"METEOBLUE_SHARED_SECRET": "08e701701de32e61b3e245529ac5934a",
+		"METEO_FRANCE_API_KEY": "__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__",
+		"SANITY_PROJECT_ID": "kh6phz18",
+		"SANITY_DATASET": "development",
+		"SANITY_VERSION_STRING": "2021-10-21",
+		"ALGOLIA_APP_ID": "FBJQ44A01A",
+		"ALGOLIA_SEARCH_KEY": "a2a5298ced7dcf728fd1125d97676913",
+		"HOOK_TOKEN": "fcd14e7e4b9d4442324c9362fbb2bba5019c559c",
+		"AUTH0_DOMAIN": "highcanfly.eu.auth0.com",
+		"AUTH0_CUSTOM_NAMESPACE": "https://www.highcanfly.club",
+		"AUTH0_CLIENT_ID": "NTOziUZMoN6Y0Uudu4NqNDA8NhALsC76",
+		"AUTH0_CLIENT_SECRET": "KsRVoIXqP4-F64MDSpCBid9XIUcNJ3Y72nj95pOj6cmwxhZnUvOoDL4tRiXi7k_o",
+		"CLOUDINARY_CLOUD_NAME": "www-highcanfly-club",
+		"CESIUM_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzNmRmMTdhYS0xZjU2LTRjOGMtYWQyOC0zNzgwYmE3NTk2YzUiLCJpZCI6OTU5NzgsImlhdCI6MTY1NDA3NTUzN30.fhgbscxdcnbFsRfvS4huYB8kN6KAL9QgjVZ6mxtMyiI",
+		"TOKEN_FOR_GITHUB": "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"
+	}
+}

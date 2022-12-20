@@ -1,3 +1,12 @@
+/*!
+=========================================================
+* © 2018-2022 Ronan LE MEILLAT for Association Highcanfly
+=========================================================
+This website use:
+- Vite, Vue3, FontAwesome 6, TailwindCss 3
+- Vue Notus theme from Creative Tim (MIT License)
+- And many others
+*/
 // vue.config.js
 import {gitlogPromise, GitlogOptions} from "gitlog"
 import fs from 'fs'
@@ -148,6 +157,23 @@ fs.writeFile('./src/config/cesium-conf.json',
 const algoliaConf = { key: process.env.ALGOLIA_SEARCH_KEY,  id:process.env.ALGOLIA_APP_ID};
 fs.writeFile('./src/config/algolia-conf.json',
   JSON.stringify(algoliaConf),
+  'utf8', function (err) {
+    if (err) return console.log(err);
+  }
+);
+
+import crypto from "node:crypto"
+const sumupConf = {
+  application_type: "web",
+  client_id: process.env.SUMUP_CLIENT_ID,
+  client_secret: process.env.SUMUP_SECRET,
+  id: process.env.SUMUP_ID,
+  name: process.env.SUMUP_NAME,
+  redirect_uris: process.env.SUMUP_REDIRECT_URIS.split(' '),
+  bearerKey: crypto.randomUUID()
+};
+fs.writeFile('./functions/config/sumup-conf.json',
+  JSON.stringify(sumupConf),
   'utf8', function (err) {
     if (err) return console.log(err);
   }

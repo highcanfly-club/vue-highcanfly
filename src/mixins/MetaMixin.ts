@@ -1,3 +1,12 @@
+/*!
+=========================================================
+* © 2018-2022 Ronan LE MEILLAT for Association Highcanfly
+=========================================================
+This website use:
+- Vite, Vue3, FontAwesome 6, TailwindCss 3
+- Vue Notus theme from Creative Tim (MIT License)
+- And many others
+*/
 import type { ComponentPublicInstance } from 'vue'
 
 function getDescription (vm:ComponentPublicInstance) {
@@ -44,4 +53,17 @@ export default {
       (document.querySelector('link[rel="canonical"]') as HTMLLinkElement).href = canonical
     }
   }
+}
+
+export function setMeta(canonical: string, title: string, description: string) {
+  const link = !!document.querySelector("link[rel='canonical']") ? document.querySelector("link[rel='canonical']") as HTMLLinkElement : document.createElement('link') as HTMLLinkElement;
+  link.setAttribute('rel', 'canonical');
+  link.setAttribute('href', canonical);
+  document.head.appendChild(link);
+  const titleTag = !!document.querySelector("title") ? document.querySelector("title") as HTMLTitleElement : document.createElement('title') as HTMLTitleElement;
+  titleTag.innerHTML = title
+  document.head.appendChild(titleTag);
+  const metaDescription = !!document.querySelector("meta[name='description']") ? document.querySelector("meta[name='description']") as HTMLMetaElement : document.createElement('meta') as HTMLMetaElement;
+  metaDescription.setAttribute('content', description);
+  document.head.appendChild(metaDescription);
 }

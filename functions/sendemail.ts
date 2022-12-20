@@ -1,3 +1,12 @@
+/*!
+=========================================================
+* © 2018-2022 Ronan LE MEILLAT for Association Highcanfly
+=========================================================
+This website use:
+- Vite, Vue3, FontAwesome 6, TailwindCss 3
+- Vue Notus theme from Creative Tim (MIT License)
+- And many others
+*/
 // store these environment variables in Clouflare Pages UI
 // MAILJET_API_KEY = '89c9b3b4be6f6bcc1e96f5b17401d1fc';
 // MAILJET_API_PWD = '69168d2a48f80294f3ffd51241f14856';

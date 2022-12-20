@@ -1,0 +1,24 @@
+{
+  "name": "sumup",
+  "version": "0.9.0",
+  "description": "Sumup helper for Vue3",
+  "main": "index.js",
+  "build": "rollup -c",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ronan Le Meillat",
+  "license": "MIT",
+  "dependencies": {
+    "vue":"^3.2.45"
+  },
+  "devDependencies": {
+    "@rollup/plugin-image": "^3.0.1",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "rollup-plugin-copy-assets": "^2.0.3",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-sass": "^1.12.17",
+    "rollup-plugin-typescript2": "^0.34.1"
+  }
+}
