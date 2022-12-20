@@ -1,5 +1,15 @@
+/*!
+=========================================================
+* © 2018-2022 Ronan LE MEILLAT for Association Highcanfly
+=========================================================
+This website use:
+- Vite, Vue3, FontAwesome 6, TailwindCss 3
+- Vue Notus theme from Creative Tim (MIT License)
+- And many others
+*/
 import {
   getCheckout,
+  getCheckoutSecured,
   isValidEmailAddress,
   SumupSecret,
 } from "@/plugins/sumup/api.js";
@@ -31,7 +41,7 @@ export const onRequestGet: PagesFunction = async (context) => {
       lastName,
       sumupConf
     );
-    return new Response(JSON.stringify(checkout));
+    return new Response(JSON.stringify(getCheckoutSecured(checkout,sumupConf.bearerKey)));
   } else {
     return new Response(JSON.stringify({ error: "incorrect params" }), {
       headers: { "content-type": "application/json" },

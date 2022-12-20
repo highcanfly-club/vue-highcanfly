@@ -30,7 +30,23 @@ This website use:
         <div class="container mx-auto px-4">
           <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
             <div class="px-6 py-6">
-              <SumupCard />
+              <div class="flex flex-col " v-if="!send">
+                <label class="block font-neutra-light text-blue-500" for="id">Entrez-votre e-mail</label><input required
+                  class="invalid:border-red-500 invalid:text-red-600" id="email" type="email" v-model="email" />
+                <label class="block font-neutra-light text-blue-500" for="first_name">Entrez votre prénom</label><input
+                  required class="invalid:border-red-500 invalid:text-red-600" id="first_name" type="text"
+                  v-model="firstName" />
+                <label class="block font-neutra-light text-blue-500" for="last_name">Entrez votre nom</label><input
+                  required class="invalid:border-red-500 invalid:text-red-600" id="last_name" type="text"
+                  v-model="lastName" />
+                <label class="block font-neutra-light text-blue-500" for="amount">Entrez le montant</label><input
+                  required class="invalid:border-red-500 invalid:text-red-600" id="amount" type="number"
+                  v-model="amount" />
+                <button v-if="isFormValid()" type="button" @click="send = true"
+                  class="rounded-l-full rounded-r-full bg-blue-700 text-white px-4 py-2 text-center shadow-lg text-lg">Envoyer le paiement</button>
+              </div>
+              <SumupCard v-if="send" :email="email" :amount="parseFloat(amount as string)"
+                :firstName="firstName" :lastName="lastName" />
             </div>
           </div>
         </div>
@@ -45,7 +61,7 @@ import MainFooter from "@/components/Footers/MainFooter.vue";
 import CloudinaryLazyImg from "@/components/Utilities/CloudinaryLazyImg.vue";
 import { ref, onMounted } from "vue";
 import { getCloudinaryResponsiveBackground } from "@/plugins/highcanfly";
-import {setMeta} from "@/mixins/MetaMixin"
+import { setMeta } from "@/mixins/MetaMixin"
 import SumupCard from "@/plugins/sumup/SumupCard.vue";
 const backgroundImage = "static-web-highcanfly/mountain";
 const title = "High Can Fly | Club de parapente du Nord | Payment"
@@ -54,6 +70,11 @@ const canonical = new URL(window.location.href)
 const reactiveBackground = ref("")
 const resizeId = ref(0)
 const previousWindowSize = ref(0)
+const email = ref<string>('')
+const firstName = ref<string>('')
+const lastName = ref<string>('')
+const amount = ref<string>('')
+const send = ref<boolean>(false)
 
 onMounted(() => {
   setMeta(canonical.href, title, description)
@@ -78,4 +99,7 @@ function handleResize() {
   }, 500) as any;
 }
 
+function isFormValid(): boolean {
+  return email.value.length > 3 && firstName.value.length > 3 && lastName.value.length > 3 && parseFloat(amount.value) > 1
+}
 </script>

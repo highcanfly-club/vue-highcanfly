@@ -7,6 +7,7 @@ This website use:
 - Vue Notus theme from Creative Tim (MIT License)
 - And many others
 */
+import CryptoES from "crypto-es";
 
 const sumupApi = "https://gateway.sumup.com/gateway/ecom/card/v2/sdk.js";
 const sumupScriptId = "sumupSdkV2";
@@ -36,7 +37,9 @@ export type TDateISOTime = `${THours}:${TMinutes}:${TSeconds}.${TMilliseconds}`;
  * it would result in a warning from TypeScript:
  *   "Expression produces a union type that is too complex to represent. ts(2590)
  */
-export type TDateISO = `${TDateISODate}T${TDateISOTime}Z`;
+export type TDateISO =
+  | `${TDateISODate}T${TDateISOTime}Z`
+  | `${TDateISODate}T${TDateISOTime}+${number}:${number}`;
 
 export type SumupSecret = {
   application_type: "web";
@@ -45,6 +48,7 @@ export type SumupSecret = {
   id: string;
   name: string;
   redirect_uris: string[];
+  bearerKey: string;
 };
 
 export type SumupCountry =
@@ -185,13 +189,19 @@ export type SumupCheckoutRequest = {
   personal_details: SumupPersonalDetails;
 };
 
-export type SumupPaymentStatus = "PENDING" | "FAILED" | "PAID";
+export type SumupPaymentStatus =
+  | "SUCCESSFUL"
+  | "CANCELLED"
+  | "PENDING"
+  | "FAILED"
+  | "PAID";
 
 export type SumupCheckout = {
   checkout_reference: string;
   amount: number;
   currency: SumupCurrency;
   merchant_code: string;
+  merchant_name?: string;
   pay_to_email?: string;
   description?: string;
   return_url?: string;
@@ -201,8 +211,15 @@ export type SumupCheckout = {
   customer_id?: string;
   date: TDateISO;
   valid_until?: TDateISO;
-  mandate: [];
-  transactions: [];
+  mandate?: [];
+  transactions: SumupTransaction[];
+};
+export type SumupCheckoutAccess = SumupCheckout & {
+  access_token: string;
+};
+
+export type SumupCheckoutAccessSecured = SumupCheckout & {
+  access_token_aes: string;
 };
 
 export type SumupAddress = {
@@ -213,13 +230,22 @@ export type SumupAddress = {
   postal_code: string;
 };
 
+export type SumupPaymentType =
+  | "MOTO"
+  | "CASH"
+  | "CC_SIGNATURE"
+  | "ELV"
+  | "CC_CUSTOMER_ENTERED"
+  | "MANUAL_ENTRY"
+  | "EMV";
+
 export type SumupTransaction = {
   id: string;
   transaction_code: string;
   amount: number;
   currency: SumupCurrency;
   timestamp: TDateISODate;
-  status: "SUCCESSFUL" | "CANCELLED" | "FAILED" | "PENDING";
+  status: SumupPaymentStatus;
   payment_type: "ECOM" | "RECURRING";
   installments_count: number;
   merchant_code: string;
@@ -236,17 +262,7 @@ export type SumupTransaction = {
     | "TRUE_INSTALLMENT"
     | "ACCELERATED_INSTALLMENT";
   username: string;
-  lat: number;
-  lon: number;
-  horizontal_accuracy: number;
-  simple_payment_type:
-    | "MOTO"
-    | "CASH"
-    | "CC_SIGNATURE"
-    | "ELV"
-    | "CC_CUSTOMER_ENTERED"
-    | "MANUAL_ENTRY"
-    | "EMV";
+  simple_payment_type: SumupPaymentType;
   verification_method:
     | "none"
     | "signature"
@@ -263,7 +279,7 @@ export type SumupTransaction = {
   simple_status: string;
   links: [];
   events: [];
-  location: Location;
+  location: { lat: number; lon: number; horizontal_accuracy: number };
   tax_enabled: boolean;
 };
 
@@ -284,8 +300,41 @@ export type SumupCardInfo = {
     | "VISA_ELECTRON"
     | "VISA_VPAY"
     | "UNKNOWN";
+  cardholder_name?: string;
+  expiry_month?: string;
+  expiry_year?: string;
+  token?: string;
 };
 
+export type SumupReceipt = {
+  transaction_data: SumupTransaction & { receipt_no: string };
+  merchant_data: {
+    merchant_profile: {
+      merchant_code: string;
+      business_name: string;
+      email: string;
+      address: {
+        address_line1: string;
+        city: string;
+        country: string;
+        country_en_name: string;
+        country_native_name: string;
+        landline: string;
+        post_code: string;
+      };
+      settings: [Object];
+      legal_type: [Object];
+      national_id: string;
+    };
+  };
+  locale: string;
+  emv_data: any;
+  acquirer_data: {
+    tid: string;
+    return_code: string;
+    local_time: TDateISO;
+  };
+};
 
 export function getCheckout(
   amount: number,
@@ -293,9 +342,9 @@ export function getCheckout(
   clientFirstName: string,
   clientLastName: string,
   sumupSecret: SumupSecret
-): Promise<SumupCheckout> {
+): Promise<SumupCheckoutAccess> {
   // return fetch("https://api.sumup.com/v0.1/checkouts", config);
-  return new Promise<SumupCheckout>((resolve, reject) => {
+  return new Promise<SumupCheckoutAccess>((resolve, reject) => {
     getSumupMerchantToken(sumupSecret.client_id, sumupSecret.client_secret)
       .then((tokenAnswer) => {
         const checkoutRequest: SumupCheckoutRequest = {
@@ -323,7 +372,7 @@ export function getCheckout(
             value
               .json()
               .then((data) => {
-                resolve(data);
+                resolve({ ...data, access_token: tokenAnswer.access_token });
               })
               .catch((reason) => {
                 //json()
@@ -442,3 +491,65 @@ export function isValidEmailAddress(emailAddress: string) {
   const _r = pattern.test(emailAddress);
   return _r;
 }
+
+export function getCheckoutFromCheckoutAccess(
+  checkoutAccess: SumupCheckoutAccess
+): SumupCheckout {
+  const { access_token, ...checkout } = checkoutAccess;
+  return checkout;
+}
+
+export function getCheckoutSecured(
+  checkoutAccess: SumupCheckoutAccess,
+  aesPassword: string
+): SumupCheckoutAccessSecured {
+  const { access_token, ...checkout } = checkoutAccess;
+  const encrypted = CryptoES.AES.encrypt(
+    checkoutAccess.access_token,
+    aesPassword + checkoutAccess.checkout_reference
+  );
+  return { ...checkout, access_token_aes: encrypted.toString() };
+}
+
+export function getAcessTokenFromSecured(
+  encrypted: string,
+  aesPassword: string,
+  checkout_reference: string
+): string {
+  const decrypted = CryptoES.AES.decrypt(
+    encrypted,
+    aesPassword + checkout_reference
+  );
+  return decrypted.toString(CryptoES.enc.Utf8);
+}
+
+export function getReceipt(
+  accessToken: string,
+  transactionID: string,
+  merchantId: string
+) {
+  const config = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  } as RequestInit;
+  return new Promise((resolve) => {
+    const rURL = `https://api.sumup.com/v1.0/receipts/${transactionID}?mid=${merchantId}`;
+    console.log(rURL);
+    fetch(rURL, config).then((value) => {
+      value.json().then((data) => {
+        resolve(data);
+      });
+    });
+  });
+}
+
+export const SumupPaymentStatusFR =
+{ "SUCCESSFUL": "Paiement réussi",
+ "CANCELLED" : "Paiement annulé",
+ "PENDING" : "Paiement en attente",
+ "FAILED" : "Paiement echoué",
+ "PAID" : "Payé"};

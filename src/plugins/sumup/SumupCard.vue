@@ -8,23 +8,41 @@ This website use:
 - And many others
 -->
 <template>
-  <div v-if="sumupStep === SumupStep.start"><span
-      @click='startPayment(1.14, "toto@world.com", "Ronan", "Le Meillat")'>Process test payment 1.14 EUR from
-      toto@world.com</span></div>
+  <div v-if="sumupStep === SumupStep.start"><button type="button"
+      @click="startPayment(props.amount, props.email, props.firstName, props.lastName)"
+      class="rounded-l-full rounded-r-full bg-blue-700 text-white px-4 py-2 text-center shadow-lg text-lg">{{ buttonTextComputed
+      }}</button></div>
   <div v-if="sumupStep === SumupStep.input" id="sumup-card"></div>
-  <div v-if="sumupStep === SumupStep.result">{{ JSON.stringify(sumupCheckout) }}</div>
+  <div v-if="sumupStep === SumupStep.result">
+    <sumup-ticket :checkout="sumupCheckout" :secured-token="securedToken"/>
+  </div>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { loadSumupSdk } from './api';
-import type {SumupCheckout} from "./api"
+import { loadSumupSdk, SumupCheckoutAccessSecured } from './api';
+import type { SumupCheckout } from "./api"
+import SumupTicket from './SumupTicket.vue';
 
 enum SumupStep { start, input, result }
 const sumupStep = ref<SumupStep>(SumupStep.start)
 const sumupCheckout = ref<SumupCheckout>(null)
 let sumupWidget: SumUpWidget = {} as SumUpWidget;
+const buttonTextComputed = ref<string>('')
+const props = defineProps<{
+  amount: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  buttonText?: string
+}>()
+let securedToken:string
 
 onMounted(() => {
+  if (props.buttonText === undefined) {
+    buttonTextComputed.value = `Payer ${props.amount}€ avec carte de crédit/débit pour ${props.email}`
+  } else {
+    buttonTextComputed.value = props.buttonText
+  }
   loadSumupSdk()
 })
 
@@ -36,7 +54,8 @@ function startPayment(
 ) {
   sumupStep.value = SumupStep.input
   retrieveCheckout(amount, clientEmail, clientName, clientLastName).then(checkout => {
-    console.log(checkout)
+    securedToken = checkout.access_token_aes
+
     loadSumupSdk().then(() => {
       sumupWidget = SumUpCard.mount({
         checkoutId: checkout.id,
@@ -52,6 +71,7 @@ function startPayment(
             case 'success':
               sumupStep.value = SumupStep.result
               sumupCheckout.value = body as SumupCheckout
+              break;
           }
         },
       });
@@ -64,21 +84,21 @@ function retrieveCheckout(
   clientEmail: string,
   clientFirstName: string,
   clientLastName: string
-): Promise<SumupCheckout> {
+): Promise<SumupCheckoutAccessSecured> {
   const searchParams = new URLSearchParams();
   searchParams.append("amount", amount.toString())
-  searchParams.append("last_name",clientLastName)
-  searchParams.append("first_name",clientFirstName)
-  searchParams.append("email",clientEmail)
-  return new Promise<SumupCheckout>((resolve, reject) => {
-    fetch(`/sumup/checkout?${searchParams.toString()}`).then(value=>{
-      value.json().then(data=>{
-        resolve(data as SumupCheckout)
-      }).catch(reason=>{
-        console.log(value)
+  searchParams.append("last_name", clientLastName)
+  searchParams.append("first_name", clientFirstName)
+  searchParams.append("email", clientEmail)
+  return new Promise<SumupCheckoutAccessSecured>((resolve, reject) => {
+    fetch(`/sumup/checkout?${searchParams.toString()}`).then(value => {
+      value.json().then(data => {
+        resolve(data as SumupCheckoutAccessSecured)
+      }).catch(reason => {
         return "error parsing json checkout"
       })
     })
   })
 }
+
 </script>

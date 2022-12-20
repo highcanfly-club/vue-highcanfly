@@ -162,7 +162,7 @@ fs.writeFile('./src/config/algolia-conf.json',
   }
 );
 
-
+import crypto from "node:crypto"
 const sumupConf = {
   application_type: "web",
   client_id: process.env.SUMUP_CLIENT_ID,
@@ -170,6 +170,7 @@ const sumupConf = {
   id: process.env.SUMUP_ID,
   name: process.env.SUMUP_NAME,
   redirect_uris: process.env.SUMUP_REDIRECT_URIS.split(' '),
+  bearerKey: crypto.randomUUID()
 };
 fs.writeFile('./functions/config/sumup-conf.json',
   JSON.stringify(sumupConf),

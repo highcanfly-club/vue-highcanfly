@@ -99,11 +99,6 @@ const routes = [
     name: "payment",
     component: () => import("@/views/ViewPayment.vue"),
   },
-  // {
-  //   path: "/3dtrack",
-  //   name: "3dtrack",
-  //   component: () => import('@/views/View3DTrack.vue'),
-  // },
   {
     path: "/meteo/:slug",
     component: () => import("@/views/ViewMeteo.vue"),
