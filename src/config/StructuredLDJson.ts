@@ -23,11 +23,12 @@ import type {
   Product,
   PostalAddress,
   AggregateRating,
-  DayOfWeek
+  DayOfWeek,
+  Brand,
 } from "schema-dts";
 import { $require } from "@/utilities/viteHelper.js";
 
-const daysOfWeek:DayOfWeek[] = [
+const daysOfWeek: DayOfWeek[] = [
   "Monday",
   "Tuesday",
   "Wednesday",
@@ -96,13 +97,19 @@ const ffvl: SportsOrganization = {
   } as PostalAddress,
 };
 
+const ffvlBrand: Brand = {
+  "@type": "Brand",
+  name: "Fédération Française de Vol Libre",
+  logo: "https://federation.ffvl.fr/sites/ffvl.fr/files/FFVL_3.png",
+  url: "https://federation.ffvl.fr",
+};
 const license: WithContext<Product> = {
   "@context": "https://schema.org",
   "@type": "Product",
   description: "Licence FFVL 2023",
   name: "Licence FFVL 2023",
   image: $require("@/assets/img/FFVL.svg"),
-  brand: ffvl,
+  brand: ffvlBrand,
   offers: {
     "@type": "Offer",
     availability: "https://schema.org/InStock",
@@ -112,9 +119,9 @@ const license: WithContext<Product> = {
   },
   aggregateRating: {
     "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "4"
-  } as AggregateRating
+    ratingValue: "5",
+    reviewCount: "4",
+  } as AggregateRating,
 };
 
 export const addJsonLD = () => {
