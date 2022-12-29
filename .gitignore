@@ -51,3 +51,5 @@ loc*.key
 loc*.pem
 loc*.csr
 loc*.srl
+functions/config/sumup-conf.json
+functions/config/sumup-conf.json
