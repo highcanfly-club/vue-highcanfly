@@ -42,7 +42,7 @@
     "basiclightbox": "^5.0.4",
     "buffer": "^6.0.3",
     "cesium": "^1.101.0",
-    "chart.js": "^4.1.1",
+    "chart.js": "^4.1.2",
     "crypto-es": "^1.2.7",
     "dexie": "^4.0.0-alpha.4",
     "gulp": "4.0.2",
