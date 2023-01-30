@@ -54,7 +54,7 @@
     "sanity-blocks-vue-component": "^1.0.1",
     "vue": "^3.2.45",
     "vue-agile": "^2.0.0",
-    "vue-instantsearch": "~4.7.0",
+    "vue-instantsearch": "~4.8.2",
     "vue-router": "^4.1.6",
     "vue3-openlayers": "^0.1.71",
     "walkjs": "^3.2.4"
