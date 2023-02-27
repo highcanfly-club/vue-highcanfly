@@ -34,7 +34,7 @@
     "@heroicons/vue": "^2.0.13",
     "@highcanfly/meteo": "^1.0.9",
     "@popperjs/core": "2.11.6",
-    "@sanity/client": "^3.4.1",
+    "@sanity/client": "^5.2.2",
     "@sanity/image-url": "^1.0.1",
     "@sctg/lazy-vue": "^1.0.3",
     "@vuepic/vue-datepicker": "^3.6.3",
