@@ -354,5 +354,39 @@
             }
           }
         }
+      },{
+        "_id": {
+          "$oid": "97f821e94c58dffbc1e15c4fff732c18"
+        },
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [49.787528 , 
+          1.293886,
+          49.787528
+          ]
+        },
+        "properties": {
+          "name": "Osmoy-Saint-Valery",
+          "slug": "osmoy-saint-valery",
+          "idBaliseAlt": 2914,
+          "nameAlt": "Londinières",
+          "fly": {
+            "sectors": [
+              {
+                "min_angle": 20,
+                "max_angle": 70
+              },
+              {
+                "min_angle": 170,
+                "max_angle": 250
+              }
+            ],
+            "wind": {
+              "min_speed": 0,
+              "max_speed": 5
+            }
+          }
+        }
       }]
 }
