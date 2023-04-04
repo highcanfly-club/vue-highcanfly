@@ -386,13 +386,13 @@
         "fly": {
           "sectors": [
             {
-              "min_angle": 30,
+              "min_angle": 15,
               "max_angle": 90
             }
           ],
           "wind": {
-            "min_speed": 0,
-            "max_speed": 5
+            "min_speed": 4,
+            "max_speed": 5.5
           }
         }
       }
@@ -421,8 +421,8 @@
             }
           ],
           "wind": {
-            "min_speed": 0,
-            "max_speed": 5
+            "min_speed": 4,
+            "max_speed": 5.5
           }
         }
       }
