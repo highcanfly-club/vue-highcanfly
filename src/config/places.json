@@ -386,12 +386,8 @@
         "fly": {
           "sectors": [
             {
-              "min_angle": 20,
-              "max_angle": 70
-            },
-            {
-              "min_angle": 170,
-              "max_angle": 250
+              "min_angle": 30,
+              "max_angle": 90
             }
           ],
           "wind": {
