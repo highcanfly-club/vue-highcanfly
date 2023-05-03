@@ -247,7 +247,7 @@ This website use:
                       pb-2
                       text-sm
                     "
-                    href="https://cdvl59.cf"
+                    href="https://wwww.cdvl59.cf"
                     >Comité Départemental de Vol Libre du Nord</a
                   >
                 </li>

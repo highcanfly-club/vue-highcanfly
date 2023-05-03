@@ -69,7 +69,7 @@ function getOpeningHours(): OpeningHoursSpecification[] {
 const cdvl59: SportsOrganization = {
   "@type": "SportsOrganization",
   name: "Comité Départemental de Vol Libre du Nord",
-  url: "https://cdvl59.cf",
+  url: "https://wwww.cdvl59.cf",
   address: {
     "@type": "PostalAddress",
     streetAddress: "2 digue Nicolas II",
