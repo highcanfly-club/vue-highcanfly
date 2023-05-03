@@ -181,7 +181,7 @@ fs.writeFile('./functions/config/sumup-conf.json',
 
 import {writeFile, mkdir} from 'fs/promises'
 // Get latest View from cfdtrackjoiner
-const CFDTRACKJOINER_BRANCH = 'master'
+const CFDTRACKJOINER_BRANCH = 'dev'
 const CFDTRACKJOINER_BASE = 'highcanfly-club/cfdtrackjoiner'
 const GITHUB_BASE = 'https://raw.githubusercontent.com'
 function downloadFile(url: URL, outputPath: string) {
