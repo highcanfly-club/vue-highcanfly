@@ -30,7 +30,7 @@ const commits = await gitlogPromise({
 
 //workaround
 import('./getcfdtrackjoinerversion.mjs').then((module) => {
-  module.getLastCommit('eltorio', 'cfdtrackjoiner').then((_date)=>{
+  module.getLastCommit('highcanfly-club', 'cfdtrackjoiner').then((_date:string)=>{
     const commit = {
       vue_highcanfly: (new Date(commits[0].authorDate)),
       cfdtrackjoiner: (new Date(_date)),
