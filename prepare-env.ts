@@ -8,7 +8,7 @@ This website use:
 - And many others
 */
 // vue.config.js
-import {gitlogPromise, GitlogOptions} from "gitlog"
+import gitlog, { GitlogOptions} from "gitlog"
 import fs from 'fs'
 import {LineCount} from "@sctg/code-stats"
 
@@ -22,7 +22,7 @@ fs.writeFile(
   }
 );
 // Option 1: Just use the function, returned commit type has specified fields
-const commits = await gitlogPromise({
+const commits = await gitlog({
   repo: ".",
   number: 1,
   fields: ["authorDate"],
