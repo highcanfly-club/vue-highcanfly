@@ -1,25 +1,17 @@
 /*!
 =========================================================
-* © 2018-2022 Ronan LE MEILLAT for Association Highcanfly
+* © 2018-2024 Ronan LE MEILLAT for Association Highcanfly
 =========================================================
 This website use:
 - Vite, Vue3, FontAwesome 6, TailwindCss 3
 - Vue Notus theme from Creative Tim (MIT License)
 - And many others
 */
-/*!
-=========================================================
-* © 2022 Ronan LE MEILLAT for High Can Fly
-=========================================================
-This website use:
-- Vite, Vue3, FontAwesome 6, TailwindCss 3
-- And many others
-*/
-const tailwindcss = require("tailwindcss");
-const autoprefixer = require("autoprefixer");
-const purgecss = require("@fullhuman/postcss-purgecss");
+import tailwindcss from "tailwindcss";
+import autoprefixer from "autoprefixer";
+import { purgeCSSPlugin as purgecss } from "@fullhuman/postcss-purgecss";
 
-module.exports = {
+export default {
   plugins: [
     tailwindcss,
     autoprefixer,
