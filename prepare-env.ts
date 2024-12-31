@@ -8,7 +8,7 @@ This website use:
 - And many others
 */
 // vue.config.js
-import {gitlogPromise, GitlogOptions} from "gitlog"
+import gitlog, { GitlogOptions} from "gitlog"
 import fs from 'fs'
 import {LineCount} from "@sctg/code-stats"
 
@@ -22,7 +22,7 @@ fs.writeFile(
   }
 );
 // Option 1: Just use the function, returned commit type has specified fields
-const commits = await gitlogPromise({
+const commits = await gitlog({
   repo: ".",
   number: 1,
   fields: ["authorDate"],
@@ -30,7 +30,7 @@ const commits = await gitlogPromise({
 
 //workaround
 import('./getcfdtrackjoinerversion.mjs').then((module) => {
-  module.getLastCommit('eltorio', 'cfdtrackjoiner').then((_date)=>{
+  module.getLastCommit('highcanfly-club', 'cfdtrackjoiner').then((_date:string)=>{
     const commit = {
       vue_highcanfly: (new Date(commits[0].authorDate)),
       cfdtrackjoiner: (new Date(_date)),

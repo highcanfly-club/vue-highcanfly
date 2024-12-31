@@ -7,7 +7,7 @@ This website use:
 - Vue Notus theme from Creative Tim (MIT License)
 - And many others
 */
-import CryptoES from "crypto-es";
+import CryptoES from "@highcanfly/crypto-es";
 
 const sumupApi = "https://gateway.sumup.com/gateway/ecom/card/v2/sdk.js";
 const sumupScriptId = "sumupSdkV2";

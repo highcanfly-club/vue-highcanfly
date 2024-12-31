@@ -1,4 +1,4 @@
-const licenseMini = `© 2018-2022 Ronan LE MEILLAT for Association Highcanfly`;
+const licenseMini = `© 2018-2024 Ronan LE MEILLAT for Association Highcanfly`;
 const licenseTxt = `=========================================================
 * ${licenseMini}
 =========================================================
@@ -70,7 +70,7 @@ gulp.task("licenses", async function () {
 
   // this is to add Copyright in the production mode for the minified css
   gulp
-    .src("dist/css/*.css", { base: "./" })
+    .src("dist/**/*.css", { base: "./" })
     .pipe(gap.prependText(licenseJS))
     .pipe(gulp.dest("./", { overwrite: true }));
   return;

@@ -21,6 +21,9 @@ import { GeoJsonObject } from 'geojson'
 import BaliseFFVL from '@/components/Cards/BaliseFFVL.vue'
 import type { App } from 'vue'
 import {$require} from '@/utilities/viteHelper.js'
+import markerIcon2x from '@/assets/img/marker-icon-2x.png'
+import markerIcon from '@/assets/img/marker-icon.png'
+import markerShadow from '@/assets/img/marker-shadow.png'
 /*
 Needs 
 npm i -D --save geojson @types/leaflet
@@ -36,9 +39,9 @@ export default defineComponent({
     },
     created() {
         L.Marker.prototype.options.icon = L.icon({
-            iconRetinaUrl: $require("@/assets/img/marker-icon-2x.png"),
-            iconUrl: $require("@/assets/img/marker-icon.png"),
-            shadowUrl: $require("@/assets/img/marker-shadow.png"),
+            iconRetinaUrl: markerIcon2x,
+            iconUrl: markerIcon,
+            shadowUrl: markerShadow,
             iconSize: [25, 41],
             iconAnchor: [12, 41],
             popupAnchor: [1, -34],
