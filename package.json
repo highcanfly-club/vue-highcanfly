@@ -75,6 +75,7 @@
     "@typescript-eslint/parser": "^8.19.0",
     "@vitejs/plugin-vue": "^5.2.1",
     "autoprefixer": "^10.4.20",
+    "fonteditor-core": "^2.6.3",
     "fs-extra": "^11.2.0",
     "geojson": "^0.5.0",
     "gitlog": "^5.1.0",
