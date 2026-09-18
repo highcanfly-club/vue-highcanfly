@@ -19,7 +19,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import cesium from "./src/plugins/cesium";
-import vitePluginFontawesomeminify from "@highcanfly-club/fontawesome";
+//import vitePluginFontawesomeminify from "@highcanfly-club/fontawesome";
 import fs from "fs";
 
 // https://vitejs.dev/config/
@@ -27,7 +27,7 @@ export default defineConfig({
   plugins: [
     vue(),
     cesium({ addTags: false }),
-    vitePluginFontawesomeminify({ glyphWhitelist: ["?"] }),
+    // vitePluginFontawesomeminify({ glyphWhitelist: ["?"] }),
   ],
   resolve: {
     alias: {

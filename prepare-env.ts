@@ -169,7 +169,7 @@ const sumupConf = {
   client_secret: process.env.SUMUP_SECRET,
   id: process.env.SUMUP_ID,
   name: process.env.SUMUP_NAME,
-  redirect_uris: process.env.SUMUP_REDIRECT_URIS.split(' '),
+  redirect_uris: process.env.SUMUP_REDIRECT_URIS?.split(' '),
   bearerKey: crypto.randomUUID()
 };
 fs.writeFile('./functions/config/sumup-conf.json',
